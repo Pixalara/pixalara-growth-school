@@ -1,0 +1,197 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sun, 07 Dec 2025 11:21:35 at https://srtechops.com/ +*.css +*.js +*.json +*.jpg +*.jpeg +*.png +*.gif +*.svg +*.webp +*.mp4 +*.webm +*.mov +*.woff +*.woff2 +*.ttf +*.eot +*.otf +*.ico
+(winhttrack -qwr25%e0C2%Ps0u0%s%u0N0%I0p3DaK0M0G0m0,0H0%kf2E0A25000%c10#L500000%f#f -F  -%F  -%l "en, *" -%X "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36" https://srtechops.com/ -O1 "C:\Users\91998\OneDrive\Desktop\rtops\RTOPS" +*.css +*.js +*.json +*.jpg +*.jpeg +*.png +*.gif +*.svg +*.webp +*.mp4 +*.webm +*.mov +*.woff +*.woff2 +*.ttf +*.eot +*.otf +*.ico )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+11:21:35	Warning: 	* security warning: maximum number of connections per second limited to 5.000000 to avoid server overload
+11:22:37	Error: 	"Unknown error" (451) at link https://srtechops.com/?page_id=1212 (from https://srtechops.com/)
+11:22:38	Error: 	"Unknown error" (451) at link https://srtechops.com/?page_id=2741 (from https://srtechops.com/)
+11:22:39	Error: 	"Unknown error" (451) at link https://srtechops.com/?page_id=2739 (from https://srtechops.com/)
+11:23:30	Warning: 	Moved Permanently for srtechops.com/wp-content/plugins/quiz-maker/admin/images/icons/icon-128x128.png
+11:23:30	Warning: 	Warning moved treated for srtechops.com/wp-content/plugins/quiz-maker/admin/images/icons/icon-128x128.png (real one is https://srtechops.com/wp-content/plugins/quiz-maker/admin/images/icons/icon-128x128.png)
+11:23:30	Warning: 	Moved Permanently for srtechops.com/wp-content/plugins/quiz-maker/public/images/correct.png
+11:23:30	Warning: 	Warning moved treated for srtechops.com/wp-content/plugins/quiz-maker/public/images/correct.png (real one is https://srtechops.com/wp-content/plugins/quiz-maker/public/images/correct.png)
+11:23:31	Warning: 	Moved Permanently for srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/images/ui-icons_444444_256x240.png
+11:23:31	Warning: 	Warning moved treated for srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/images/ui-icons_444444_256x240.png (real one is https://srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/images/ui-icons_444444_256x240.png)
+11:23:31	Warning: 	Moved Permanently for srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-brands-400.eot
+11:23:31	Warning: 	File has moved from srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-brands-400.eot to https://srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-brands-400.eot
+11:23:31	Warning: 	Moved Permanently for srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-regular-400.eot
+11:23:31	Warning: 	File has moved from srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-regular-400.eot to https://srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-regular-400.eot
+11:23:32	Warning: 	Moved Permanently for srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-solid-900.eot
+11:23:32	Warning: 	File has moved from srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-solid-900.eot to https://srtechops.com/wp-content/plugins/ymc-smart-filter/includes/assets/fonts/webfonts/fa-solid-900.eot
+11:23:32	Warning: 	Moved Permanently for srtechops.com/wp-content/plugins/tablepress/css/build/tablepress.woff
+11:23:32	Warning: 	File has moved from srtechops.com/wp-content/plugins/tablepress/css/build/tablepress.woff to https://srtechops.com/wp-content/plugins/tablepress/css/build/tablepress.woff
+11:24:00	Warning: 	Moved Permanently for https://srtechops.com/?p=2623
+11:24:00	Warning: 	File has moved from https://srtechops.com/?p=2623 to https://srtechops.com/corporate-training/
+11:24:02	Warning: 	Moved Permanently for https://srtechops.com/azure/
+11:24:02	Warning: 	File has moved from https://srtechops.com/azure/ to https://srtechops.com/azure-deployment-tutorial-for-beginners-architecture/
+11:24:03	Error: 	"Unknown error" (451) at link https://srtechops.com/front-end/ (from https://srtechops.com/corporate-training/)
+11:24:04	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/uploads/2023/12/19.png (from https://srtechops.com/corporate-training/)
+11:24:04	Error: 	"Unknown error" (451) at link https://srtechops.com/java (from https://srtechops.com/corporate-training/)
+11:24:05	Warning: 	Moved Permanently for https://srtechops.com/python
+11:24:05	Warning: 	File has moved from https://srtechops.com/python to https://srtechops.com/python-for-devops-engineer-automate-everything/
+11:24:06	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/uploads/2023/12/16.png (from https://srtechops.com/corporate-training/)
+11:24:07	Error: 	"Unknown error" (451) at link https://srtechops.com/shell-scripting (from https://srtechops.com/corporate-training/)
+11:24:08	Error: 	"Unknown error" (451) at link https://srtechops.com/git-github (from https://srtechops.com/corporate-training/)
+11:24:09	Warning: 	Moved Permanently for https://srtechops.com/ansible
+11:24:09	Warning: 	File has moved from https://srtechops.com/ansible to https://srtechops.com/ansible-ad-hoc-commands-a-quick-guide/
+11:24:10	Warning: 	Moved Permanently for https://srtechops.com/docker
+11:24:10	Warning: 	File has moved from https://srtechops.com/docker to https://srtechops.com/docker-command/
+11:24:10	Warning: 	Moved Permanently for https://srtechops.com/kubernetes
+11:24:10	Warning: 	File has moved from https://srtechops.com/kubernetes to https://srtechops.com/kubernetes-devops-usecase-real-time-examples/
+11:24:11	Error: 	"Unknown error" (451) at link https://srtechops.com/jenkins (from https://srtechops.com/corporate-training/)
+11:24:11	Error: 	"Unknown error" (451) at link https://srtechops.com/gitlab (from https://srtechops.com/corporate-training/)
+11:24:11	Error: 	"Unknown error" (451) at link https://srtechops.com/aws-eks (from https://srtechops.com/corporate-training/)
+11:24:12	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/uploads/2023/12/11.png (from https://srtechops.com/corporate-training/)
+11:24:12	Warning: 	Moved Permanently for https://srtechops.com/terraform
+11:24:12	Warning: 	File has moved from https://srtechops.com/terraform to https://srtechops.com/terraform-vs-ansible-beginners-guide/
+11:24:12	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/uploads/2023/12/12.png (from https://srtechops.com/corporate-training/)
+11:24:12	Error: 	"Unknown error" (451) at link https://srtechops.com/prometheus-grafana (from https://srtechops.com/corporate-training/)
+11:24:12	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/uploads/2023/12/13.png (from https://srtechops.com/corporate-training/)
+11:24:13	Error: 	"Unknown error" (451) at link https://srtechops.com/splunk (from https://srtechops.com/corporate-training/)
+11:24:13	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/uploads/2023/12/14.png (from https://srtechops.com/corporate-training/)
+11:24:14	Error: 	"Unknown error" (451) at link https://srtechops.com/linux-security (from https://srtechops.com/corporate-training/)
+11:24:14	Error: 	"Unknown error" (451) at link https://srtechops.com/my-sql (from https://srtechops.com/corporate-training/)
+11:24:16	Warning: 	Moved Permanently for https://srtechops.com/?p=908
+11:24:16	Warning: 	File has moved from https://srtechops.com/?p=908 to https://srtechops.com/online-events/
+11:24:21	Warning: 	Moved Permanently for https://srtechops.com/?p=542
+11:24:21	Warning: 	File has moved from https://srtechops.com/?p=542 to https://srtechops.com/services/
+11:24:22	Warning: 	Moved Permanently for https://srtechops.com/internships/
+11:24:22	Warning: 	File has moved from https://srtechops.com/internships/ to https://srtechops.com/internship-program/
+11:24:24	Warning: 	Moved Permanently for https://srtechops.com/courses
+11:24:24	Warning: 	File has moved from https://srtechops.com/courses to https://srtechops.com/corporate-training/
+11:24:33	Warning: 	Moved Permanently for https://srtechops.com/?p=543
+11:24:33	Warning: 	File has moved from https://srtechops.com/?p=543 to https://srtechops.com/blogs/
+11:25:05	Error: 	"Error when decompressing" (-1) at link https://srtechops.com/⚙️-maven-goals-cheat-sheet-for-devops-engineers/ (from https://srtechops.com/blogs/)
+11:25:10	Error: 	"Error when decompressing" (-1) at link https://srtechops.com/💡-multi-cloud-the-future-of-cloud-computing/ (from https://srtechops.com/blogs/)
+11:25:16	Error: 	"Error when decompressing" (-1) at link https://srtechops.com/understanding-aws-instance-types-a-simple-guide-🖥️/ (from https://srtechops.com/blogs/)
+11:25:46	Error: 	"Error when decompressing" (-1) at link https://srtechops.com/mastering-linux-essential-commands-every-novice-should-know-🐧/ (from https://srtechops.com/blogs/)
+11:25:51	Error: 	"Unknown error" (451) at link https://srtechops.com/aws-cloud/ (from https://srtechops.com/blogs/)
+11:27:46	Warning: 	Moved Permanently for https://srtechops.com/?p=4310
+11:27:46	Warning: 	File has moved from https://srtechops.com/?p=4310 to https://srtechops.com/login/
+11:29:09	Error: 	"Unknown error" (451) at link https://srtechops.com/GET (from https://srtechops.com/wp-content/cache/autoptimize/js/autoptimize_single_f10f10368bb1407fe7a0b392952ee5ab.js?ver=3.0.6)
+11:29:09	Error: 	"Unknown error" (451) at link https://srtechops.com/Error pJS - No image.src (from https://srtechops.com/wp-content/cache/autoptimize/js/autoptimize_single_f10f10368bb1407fe7a0b392952ee5ab.js?ver=3.0.6)
+11:29:09	Error: 	"Unknown error" (451) at link https://srtechops.com/Trident/ (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/js/lib/jarallax/jarallax.min.js?ver=1.12.7)
+11:29:09	Error: 	"Unknown error" (451) at link https://srtechops.com/Edge/ (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/js/lib/jarallax/jarallax.min.js?ver=1.12.7)
+11:29:10	Error: 	"Unknown error" (451) at link https://srtechops.com/m.location (from https://srtechops.com/wp-content/plugins/creame-whatsapp-me/public/js/joinchat.min.js?ver=5.0.12)
+11:29:10	Warning: 	Moved Permanently for https://srtechops.com/e
+11:29:10	Warning: 	File has moved from https://srtechops.com/e to https://srtechops.com/elementor-5291/
+11:29:11	Error: 	"Unknown error" (451) at link https://srtechops.com/picker.js (from https://srtechops.com/wp-content/plugins/ultimate-member/assets/libs/pickadate/picker.date.min.js?ver=3.6.2)
+11:29:11	Error: 	"Unknown error" (451) at link https://srtechops.com/youtu.be/ (from https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-js/prettyPhoto.min.js?ver=4.10.59)
+11:29:12	Error: 	"Unknown error" (451) at link https://srtechops.com/-negative.svg (from https://srtechops.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.16.5)
+11:29:13	Error: 	"Unknown error" (451) at link https://srtechops.com/OPR/ (from https://srtechops.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.16.5)
+11:29:14	Error: 	"Unknown error" (451) at link https://srtechops.com/r (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/js/frontend.min.js?ver=1.7.1041)
+11:29:14	Error: 	"Unknown error" (451) at link https://srtechops.com/a.redirect (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/js/frontend.min.js?ver=1.7.1041)
+11:29:15	Warning: 	Moved Permanently for https://srtechops.com/i
+11:29:15	Warning: 	File has moved from https://srtechops.com/i to https://srtechops.com/install-jenkins-linux-aws-easy-jenkins-linux-setup/
+11:29:19	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/plugins/premium-addons-for-elementor/assets/editor/fonts/pa-elements.eot?1jmcw0 (from https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min.css?ver=4.10.59)
+11:29:19	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/plugins/premium-addons-for-elementor/assets/editor/fonts/pa-elements.ttf?1jmcw0 (from https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min.css?ver=4.10.59)
+11:29:20	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/plugins/premium-addons-for-elementor/assets/editor/fonts/pa-elements.woff?1jmcw0 (from https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min.css?ver=4.10.59)
+11:29:20	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/plugins/premium-addons-for-elementor/assets/editor/fonts/pa-elements.svg?1jmcw0 (from https://srtechops.com/wp-content/plugins/premium-addons-for-elementor/assets/frontend/min-css/premium-addons.min.css?ver=4.10.59)
+11:29:20	Warning: 	Moved Permanently for https://srtechops.com/online-events/${l}
+11:29:20	Warning: 	File has moved from https://srtechops.com/online-events/${l} to https://srtechops.com/linux-commands/
+11:29:21	Warning: 	Moved Permanently for https://srtechops.com/online-events/e
+11:29:21	Warning: 	File has moved from https://srtechops.com/online-events/e to https://srtechops.com/elementor-5291/
+11:29:22	Error: 	"Unknown error" (451) at link https://srtechops.com/online-events/t.params.url (from https://srtechops.com/wp-content/plugins/elementor/assets//lib/swiper/v8/swiper.min.js?ver=6.7.2)
+11:29:22	Warning: 	Moved Permanently for https://srtechops.com/internship-program/
+11:29:22	Warning: 	File has moved from https://srtechops.com/internship-program/ to https://srtechops.com/
+11:29:25	Warning: 	Moved Permanently for https://srtechops.com/?p=8139
+11:29:25	Warning: 	File has moved from https://srtechops.com/?p=8139 to https://srtechops.com/aws-cloud-interview-questions-every-engineer-should-practice/
+11:29:27	Error: 	"Method Not Allowed" (405) at link https://srtechops.com/xmlrpc.php (from https://srtechops.com/aws-cloud-interview-questions-every-engineer-should-practice/)
+11:29:29	Warning: 	Found for https://srtechops.com/author/admin/
+11:29:29	Warning: 	File has moved from https://srtechops.com/author/admin/ to https://srtechops.com/dashboard/admin/
+11:29:44	Warning: 	Moved Permanently for https://srtechops.com/?p=8100
+11:29:44	Warning: 	File has moved from https://srtechops.com/?p=8100 to https://srtechops.com/devops-engineer-playbook-practical-commands-for-everyday-use/
+11:29:44	Warning: 	Moved Permanently for https://srtechops.com/category/general/
+11:29:44	Warning: 	File has moved from https://srtechops.com/category/general/ to https://srtechops.com/
+11:29:52	Warning: 	Moved Permanently for https://srtechops.com/?p=7864
+11:29:52	Warning: 	File has moved from https://srtechops.com/?p=7864 to https://srtechops.com/deep-dive-into-aws-s3-storage-classes-choose-the-right-tier-for-every-use-case/
+11:30:23	Warning: 	Moved Permanently for https://srtechops.com/?p=7710
+11:30:23	Warning: 	File has moved from https://srtechops.com/?p=7710 to https://srtechops.com/devops-vs-sre-key-differences-you-must-know/
+11:30:24	Warning: 	Moved Permanently for https://srtechops.com/?p=7535
+11:30:24	Warning: 	File has moved from https://srtechops.com/?p=7535 to https://srtechops.com/will-ai-replace-devops-engineers-role/
+11:30:27	Warning: 	Moved Permanently for https://srtechops.com/?p=6863
+11:30:27	Warning: 	File has moved from https://srtechops.com/?p=6863 to https://srtechops.com/aws-ec2-setup-jenkins/
+11:30:35	Warning: 	Moved Permanently for https://srtechops.com/?p=6833
+11:30:35	Warning: 	File has moved from https://srtechops.com/?p=6833 to https://srtechops.com/install-jenkins-linux-aws-easy-jenkins-linux-setup/
+11:30:40	Warning: 	Moved Permanently for https://srtechops.com/?p=6653
+11:30:40	Warning: 	File has moved from https://srtechops.com/?p=6653 to https://srtechops.com/azure-deployment-tutorial-for-beginners-architecture/
+11:30:44	Warning: 	Found for https://srtechops.com/author/anu/
+11:30:44	Warning: 	File has moved from https://srtechops.com/author/anu/ to https://srtechops.com/dashboard/anu/
+11:30:50	Warning: 	Moved Permanently for https://srtechops.com/?p=6634
+11:30:50	Warning: 	File has moved from https://srtechops.com/?p=6634 to https://srtechops.com/kubernetes-devops-usecase-real-time-examples/
+11:30:56	Warning: 	Moved Permanently for https://srtechops.com/?p=6618
+11:30:56	Warning: 	File has moved from https://srtechops.com/?p=6618 to https://srtechops.com/azure-static-web-app-deploy-on-6-steps/
+11:31:17	Warning: 	Moved Permanently for https://srtechops.com/?p=6577
+11:31:17	Warning: 	File has moved from https://srtechops.com/?p=6577 to https://srtechops.com/top-network-port-numbers-devops/
+11:31:20	Warning: 	Moved Permanently for https://srtechops.com/?p=6315
+11:31:20	Warning: 	File has moved from https://srtechops.com/?p=6315 to https://srtechops.com/docker-command/
+11:31:24	Warning: 	Moved Permanently for https://srtechops.com/?p=6269
+11:31:24	Warning: 	File has moved from https://srtechops.com/?p=6269 to https://srtechops.com/ansible-vs-docker-what-is-the-difference/
+11:31:31	Warning: 	Moved Permanently for https://srtechops.com/?p=6103
+11:31:31	Warning: 	File has moved from https://srtechops.com/?p=6103 to https://srtechops.com/configuration-management-tools/
+11:31:36	Warning: 	Moved Permanently for https://srtechops.com/?p=5938
+11:31:36	Warning: 	File has moved from https://srtechops.com/?p=5938 to https://srtechops.com/understanding-15-essential-devops-terms/
+11:31:41	Warning: 	Moved Permanently for https://srtechops.com/?p=6010
+11:31:41	Warning: 	File has moved from https://srtechops.com/?p=6010 to https://srtechops.com/ansible-ad-hoc-commands-a-quick-guide/
+11:31:43	Warning: 	Moved Permanently for https://srtechops.com/?p=5836
+11:31:43	Warning: 	File has moved from https://srtechops.com/?p=5836 to https://srtechops.com/terraform-vs-ansible-beginners-guide/
+11:31:44	Warning: 	Moved Permanently for https://srtechops.com/?p=5774
+11:31:44	Warning: 	File has moved from https://srtechops.com/?p=5774 to https://srtechops.com/install-terraform-on-windows-step-by-step-guide/
+11:31:47	Warning: 	Moved Permanently for https://srtechops.com/?p=5687
+11:31:47	Warning: 	File has moved from https://srtechops.com/?p=5687 to https://srtechops.com/4-easy-steps-of-eks-setup-aws/
+11:31:49	Warning: 	Moved Permanently for https://srtechops.com/?p=5620
+11:31:49	Warning: 	File has moved from https://srtechops.com/?p=5620 to https://srtechops.com/step-by-step-guide-installing-terraform-on-aws-ec2-amazon-linux/
+11:31:52	Warning: 	Moved Permanently for https://srtechops.com/?p=5490
+11:31:52	Warning: 	File has moved from https://srtechops.com/?p=5490 to https://srtechops.com/elementor-5490/
+11:31:53	Warning: 	Found for https://srtechops.com/author/charanya/
+11:31:53	Warning: 	File has moved from https://srtechops.com/author/charanya/ to https://srtechops.com/dashboard/charanya/
+11:31:54	Warning: 	Moved Permanently for https://srtechops.com/?p=5291
+11:31:54	Warning: 	File has moved from https://srtechops.com/?p=5291 to https://srtechops.com/elementor-5291/
+11:31:54	Warning: 	Moved Permanently for https://srtechops.com/?p=5275
+11:31:54	Warning: 	File has moved from https://srtechops.com/?p=5275 to https://srtechops.com/5275-2/
+11:31:55	Warning: 	Moved Permanently for https://srtechops.com/?p=5244
+11:31:55	Warning: 	File has moved from https://srtechops.com/?p=5244 to https://srtechops.com/python-for-devops-engineer-automate-everything/
+11:31:59	Warning: 	Moved Permanently for https://srtechops.com/?p=5215
+11:31:59	Warning: 	File has moved from https://srtechops.com/?p=5215 to https://srtechops.com/docker-commands-for-beginners-duplicate-4853/
+11:32:00	Warning: 	Moved Permanently for https://srtechops.com/?p=4853
+11:32:00	Warning: 	File has moved from https://srtechops.com/?p=4853 to https://srtechops.com/docker-commands-for-beginners-2/
+11:32:01	Warning: 	Moved Permanently for https://srtechops.com/?p=4806
+11:32:01	Warning: 	File has moved from https://srtechops.com/?p=4806 to https://srtechops.com/guide-to-git-commands-blog/
+11:32:04	Warning: 	Moved Permanently for https://srtechops.com/?p=3775
+11:32:04	Warning: 	File has moved from https://srtechops.com/?p=3775 to https://srtechops.com/devops-certifications-find-the-right-path-for-you/
+11:32:06	Warning: 	Moved Permanently for https://srtechops.com/?p=3738
+11:32:06	Warning: 	File has moved from https://srtechops.com/?p=3738 to https://srtechops.com/a-comparison-of-popular-ci-cd-tools-for-yourdevelopment-workflow/
+11:32:08	Warning: 	Moved Permanently for https://srtechops.com/?p=3537
+11:32:08	Warning: 	File has moved from https://srtechops.com/?p=3537 to https://srtechops.com/linux-interview-q-a/
+11:32:13	Warning: 	Moved Permanently for https://srtechops.com/?p=3484
+11:32:13	Warning: 	File has moved from https://srtechops.com/?p=3484 to https://srtechops.com/short-roadmap-to-becoming-a-devops-engineer/
+11:32:17	Warning: 	Moved Permanently for https://srtechops.com/?p=3236
+11:32:17	Warning: 	File has moved from https://srtechops.com/?p=3236 to https://srtechops.com/aws-learning-roadmap-a-step-by-step-guide/
+11:32:19	Warning: 	Moved Permanently for https://srtechops.com/?p=2451
+11:32:19	Warning: 	File has moved from https://srtechops.com/?p=2451 to https://srtechops.com/linux-vs-windows-duplicate-2438/
+11:32:27	Warning: 	Moved Permanently for https://srtechops.com/?p=2002
+11:32:27	Warning: 	File has moved from https://srtechops.com/?p=2002 to https://srtechops.com/company-terms/
+11:32:29	Warning: 	Moved Permanently for https://srtechops.com/?p=1930
+11:32:29	Warning: 	File has moved from https://srtechops.com/?p=1930 to https://srtechops.com/linux-commands/
+11:32:33	Warning: 	Moved Permanently for https://srtechops.com/?p=1905
+11:32:33	Warning: 	File has moved from https://srtechops.com/?p=1905 to https://srtechops.com/hosting-a-static-webpage-on-windows-instance/
+11:32:37	Warning: 	Moved Permanently for https://srtechops.com/?p=873
+11:32:37	Warning: 	File has moved from https://srtechops.com/?p=873 to https://srtechops.com/host-wordpress-site-on-aws-ec2-with-custom-domain/
+11:32:41	Warning: 	Moved Permanently for https://srtechops.com/?p=1
+11:32:41	Warning: 	File has moved from https://srtechops.com/?p=1 to https://srtechops.com/devops-career/
+11:32:44	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/css/lib/lightgallery/img/vimeo-play.png (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/css/lib/lightgallery/lightgallery.min.css?ver=1.7.1041)
+11:32:45	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/css/lib/lightgallery/img/video-play.png (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/css/lib/lightgallery/lightgallery.min.css?ver=1.7.1041)
+11:32:46	Error: 	"Unknown error" (451) at link https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/css/lib/lightgallery/img/youtube-play.png (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/css/lib/lightgallery/lightgallery.min.css?ver=1.7.1041)
+11:32:47	Error: 	"Unknown error" (451) at link https://srtechops.com/blogs/GET (from https://srtechops.com/wp-content/plugins/royal-elementor-addons/assets/js/lib/isotope/isotope.min.js?ver=3.0.8)
+11:32:53	Error: 	"Unknown error" (451) at link https://srtechops.com/aws-cloud-interview-questions-every-engineer-should-practice/GET (from https://srtechops.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.17)
+11:33:25	Warning: 	Found for https://srtechops.com/dashboard/
+11:33:25	Warning: 	File has moved from https://srtechops.com/dashboard/ to https://srtechops.com
+11:33:26	Warning: 	Moved Permanently for https://srtechops.com/?p=4343
+11:33:26	Warning: 	File has moved from https://srtechops.com/?p=4343 to https://srtechops.com/dashboard/
+
+HTTrack Website Copier/3.49-2 mirror complete in 11 minutes 51 seconds : 994 links scanned, 878 files written (49665186 bytes overall) [25413633 bytes received at 35743 bytes/sec], 40818761 bytes transferred using HTTP compression in 562 files, ratio 23%, 5.4 requests per connection
+(47 errors, 139 warnings, 0 messages)

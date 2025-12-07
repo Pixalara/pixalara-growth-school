@@ -1,0 +1,8 @@
+-qwr25%e0C2%Ps0u0%s%u0N0%I0p3DaK0M0G0m0,0H0%kf2E0A25000%c10#L500000%f#f -F "" -%F "" -%l "en, *" -%X "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.71 Safari/537.36" https://srtechops.com/ -O1 "C:\Users\91998\OneDrive\Desktop\rtops\RTOPS" +*.css +*.js +*.json +*.jpg +*.jpeg +*.png +*.gif +*.svg +*.webp +*.mp4 +*.webm +*.mov +*.woff +*.woff2 +*.ttf +*.eot +*.otf +*.ico
+File generated automatically on Sun, 07 Dec 2025 11:21:35, do NOT edit
+
+To update a mirror, just launch httrack without any parameters
+The existing cache will be used (and modified)
+To have other options, retype all parameters and launch HTTrack
+To continue an interrupted mirror, just launch httrack without any parameters
+

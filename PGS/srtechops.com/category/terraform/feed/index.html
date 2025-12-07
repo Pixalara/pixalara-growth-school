@@ -1,0 +1,1307 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Terraform &#8211; SRTechOps</title>
+	<atom:link href="https://srtechops.com/category/terraform/feed/" rel="self" type="application/rss+xml" />
+	<link>https://srtechops.com</link>
+	<description>Learn ♾️ Grow ♾️ Shine ♾️</description>
+	<lastBuildDate>Thu, 07 Aug 2025 13:39:18 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.7.2</generator>
+
+<image>
+	<url>https://srtechops.com/wp-content/uploads/2024/10/cropped-SRTechOps-icon-32x32.png</url>
+	<title>Terraform &#8211; SRTechOps</title>
+	<link>https://srtechops.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Install Terraform on Windows: Step-by-Step Guide</title>
+		<link>https://srtechops.com/install-terraform-on-windows-step-by-step-guide/</link>
+					<comments>https://srtechops.com/install-terraform-on-windows-step-by-step-guide/#respond</comments>
+		
+		<dc:creator><![CDATA[Sangavi]]></dc:creator>
+		<pubDate>Sat, 22 Mar 2025 11:36:10 +0000</pubDate>
+				<category><![CDATA[Terraform]]></category>
+		<guid isPermaLink="false">https://srtechops.com/?p=5774</guid>
+
+					<description><![CDATA[Install Terraform on Windows: Step-by-Step Guide Terraform is a powerful Infrastructure as Code (IaC) tool used to manage cloud resources efficiently. In this guide, you&#8217;ll learn how to install Terraform on Windows quickly and correctly. Whether you&#8217;re new to cloud automation or switching systems, knowing how to install Terraform on Windows is essential. Follow along as we walk you through the steps to install Terraform on Windows and get started! ✅ Step 1: Download Terraform Visit the official Terraform website: Terraform Downloads Select Windows and choose the appropriate version (typically amd64 for most users). Click Download and save the file. 📥 Once the download completes, proceed to the next step. 📦 Step 2: Extract the Terraform Files Locate the downloaded .zip file. Use a tool like WinRAR, 7-Zip, or Windows Extractor to extract the contents. You will find a single file named terraform.exe.   💡 Tip: Create a dedicated folder like C:terraform and move  terraform.exe there. ⚙️ Step 3: Add Terraform to System Path To run Terraform from any command prompt, add it to your system&#8217;s Path variable. Search for Environment Variables from the Start Menu. Click on Edit the system environment variables → Environment Variables. Under System Variables, locate the variable named Path and click Edit. Click New and enter the path where you placed terraform.exe (e.g., C:terraform). Click OK to save the changes. 🧑‍💻 With this done, Terraform is now accessible from your terminal. 🧪 Step 4: Verify Installation Now it&#8217;s time to check if Terraform is installed correctly. Open Command Prompt or PowerShell. Run the following command: terraform version You should see the installed Terraform version displayed. 🎉 Congratulations! Terraform is successfully installed. 🚀 Bonus: Install Using Chocolatey (Optional) If you have Chocolatey installed, you can install Terraform with one command: choco install terraform This method is faster and automatically adds Terraform to your system path. 🙌 Next Steps Now that you have Terraform installed, you can start building and managing cloud infrastructure. Try running: terraform init 🏁 Run Your First Terraform Script Here is a simple example to create two AWS EC2 instances using Terraform. 1.Create a new directory and navigate to it: mkdir terraform-aws-democd terraform-aws-demo 2.Create a file named main.tf and add the following content: provider &#8220;aws&#8221; {        region = &#8220;us-east-1&#8221;        access_key = &#8220;YOUR_ACCESS_KEY&#8221;        secret_key = &#8220;YOUR_SECRET_KEY&#8221;} resource &#8220;aws_instance&#8221; &#8220;myfirstVM&#8221; {        count = 2        ami = &#8220;ami-08b5b3a93ed654d19&#8221;        instance_type = &#8220;t2.micro&#8221;        key_name = &#8220;terraformserverkey&#8221;tags = {       Name = &#8220;linuxserver&#8221;    }} ⚠️ Ensure your access and secret keys are correct. Never share your keys publicly. 3.Initialize and apply the configuration: terraform initterraform apply 4 .Confirm with yes when prompted. ✅ Your AWS EC2 instances will be created shortly. Congratulations on running your first Terraform script! 💬 Need help? Drop your questions in the comments! https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4 Devops Multi cloud Training Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access. Feature Self-Paced Training Live Training 🎯 Mode 🎥Pre-Recorded Session 🧑‍🏫Live Class + Recordings 💼 Projects 🕒 Weekend Real-Time Projects 📅 Weekdays + Weekend Real-Time Projects ❓ Doubt Clearing 📞 Weekend Live Support Session 🧠 Anytime Doubt Clearing Session 👥 Career Support &#38; Mentorship ❌ No ✅ Yes 🎓 Global Certification Training ❌ No ✅ Yes 🔑 Access ♾️ Lifetime Access ♾️ Lifetime Access 💰 Fees ₹4,999 (2 x ₹2,500) ₹7,999 (2 x ₹4,000) ℹ️ For More Info Explore Self-Paced Training Explore Live Training]]></description>
+										<content:encoded><![CDATA[		<div data-elementor-type="wp-post" data-elementor-id="5774" class="elementor elementor-5774">
+							<div class="elementor-element elementor-element-afdcc26 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="afdcc26" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-4bee87d elementor-widget elementor-widget-heading" data-id="4bee87d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h2 class="elementor-heading-title elementor-size-default">Install Terraform on Windows: Step-by-Step Guide</h2>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-a32eb18 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="a32eb18" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-12ea5f1 elementor-widget elementor-widget-text-editor" data-id="12ea5f1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap{background-color:#69727d;color:#fff}.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap{color:#69727d;border:3px solid;background-color:transparent}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap{margin-top:8px}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter{width:1em;height:1em}.elementor-widget-text-editor .elementor-drop-cap{float:left;text-align:center;line-height:1;font-size:50px}.elementor-widget-text-editor .elementor-drop-cap-letter{display:inline-block}</style>				<p data-pm-slice="1 1 []">Terraform is a powerful Infrastructure as Code (IaC) tool used to manage cloud resources efficiently. In this guide, you&#8217;ll learn how to <strong data-start="301" data-end="333">install Terraform on Windows</strong> quickly and correctly. Whether you&#8217;re new to cloud automation or switching systems, knowing how to <strong data-start="433" data-end="465">install Terraform on Windows</strong> is essential. Follow along as we walk you through the steps to <strong data-start="529" data-end="561">install Terraform on Windows</strong> and get started!</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-e1b76fd elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="e1b76fd" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-widget-divider{--divider-border-style:none;--divider-border-width:1px;--divider-color:#0c0d0e;--divider-icon-size:20px;--divider-element-spacing:10px;--divider-pattern-height:24px;--divider-pattern-size:20px;--divider-pattern-url:none;--divider-pattern-repeat:repeat-x}.elementor-widget-divider .elementor-divider{display:flex}.elementor-widget-divider .elementor-divider__text{font-size:15px;line-height:1;max-width:95%}.elementor-widget-divider .elementor-divider__element{margin:0 var(--divider-element-spacing);flex-shrink:0}.elementor-widget-divider .elementor-icon{font-size:var(--divider-icon-size)}.elementor-widget-divider .elementor-divider-separator{display:flex;margin:0;direction:ltr}.elementor-widget-divider--view-line_icon .elementor-divider-separator,.elementor-widget-divider--view-line_text .elementor-divider-separator{align-items:center}.elementor-widget-divider--view-line_icon .elementor-divider-separator:after,.elementor-widget-divider--view-line_icon .elementor-divider-separator:before,.elementor-widget-divider--view-line_text .elementor-divider-separator:after,.elementor-widget-divider--view-line_text .elementor-divider-separator:before{display:block;content:"";border-bottom:0;flex-grow:1;border-top:var(--divider-border-width) var(--divider-border-style) var(--divider-color)}.elementor-widget-divider--element-align-left .elementor-divider .elementor-divider-separator>.elementor-divider__svg:first-of-type{flex-grow:0;flex-shrink:100}.elementor-widget-divider--element-align-left .elementor-divider-separator:before{content:none}.elementor-widget-divider--element-align-left .elementor-divider__element{margin-left:0}.elementor-widget-divider--element-align-right .elementor-divider .elementor-divider-separator>.elementor-divider__svg:last-of-type{flex-grow:0;flex-shrink:100}.elementor-widget-divider--element-align-right .elementor-divider-separator:after{content:none}.elementor-widget-divider--element-align-right .elementor-divider__element{margin-right:0}.elementor-widget-divider:not(.elementor-widget-divider--view-line_text):not(.elementor-widget-divider--view-line_icon) .elementor-divider-separator{border-top:var(--divider-border-width) var(--divider-border-style) var(--divider-color)}.elementor-widget-divider--separator-type-pattern{--divider-border-style:none}.elementor-widget-divider--separator-type-pattern.elementor-widget-divider--view-line .elementor-divider-separator,.elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:after,.elementor-widget-divider--separator-type-pattern:not(.elementor-widget-divider--view-line) .elementor-divider-separator:before,.elementor-widget-divider--separator-type-pattern:not([class*=elementor-widget-divider--view]) .elementor-divider-separator{width:100%;min-height:var(--divider-pattern-height);-webkit-mask-size:var(--divider-pattern-size) 100%;mask-size:var(--divider-pattern-size) 100%;-webkit-mask-repeat:var(--divider-pattern-repeat);mask-repeat:var(--divider-pattern-repeat);background-color:var(--divider-color);-webkit-mask-image:var(--divider-pattern-url);mask-image:var(--divider-pattern-url)}.elementor-widget-divider--no-spacing{--divider-pattern-size:auto}.elementor-widget-divider--bg-round{--divider-pattern-repeat:round}.rtl .elementor-widget-divider .elementor-divider__text{direction:rtl}.e-con-inner>.elementor-widget-divider,.e-con>.elementor-widget-divider{width:var(--container-widget-width,100%);--flex-grow:var(--container-widget-flex-grow)}</style>		<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-eb358fc e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="eb358fc" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-fc7d6af e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="fc7d6af" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-9ea5b4f elementor-widget elementor-widget-image" data-id="9ea5b4f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>												<img fetchpriority="high" decoding="async" width="300" height="300" src="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-4-300x300.webp" class="attachment-medium size-medium wp-image-5791" alt="Install Terraform on Windows" srcset="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-4-300x300.webp 300w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-4-1024x1024.webp 1024w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-4-150x150.webp 150w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-4-768x768.webp 768w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-4-png.webp 1080w" sizes="(max-width: 300px) 100vw, 300px" />															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-d6a0438 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="d6a0438" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-a946559 elementor-widget elementor-widget-heading" data-id="a946559" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 1: Download Terraform</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a585be8 elementor-widget elementor-widget-text-editor" data-id="a585be8" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<ol start="1" data-spread="false" data-pm-slice="3 1 []"><li><p>Visit the official Terraform website: <a href="https://developer.hashicorp.com/terraform/install?product_intent=terraform#windows" target="_blank" rel="noopener">Terraform Downloads</a></p></li><li><p>Select <strong>Windows</strong> and choose the appropriate version (typically <code>amd64</code> for most users).</p></li><li><p>Click <strong>Download</strong> and save the file.</p></li></ol><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4e5.png" alt="📥" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <em>Once the download completes, proceed to the next step.</em></p>						</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-9366799 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="9366799" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-b477290 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="b477290" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-4dd974b elementor-widget elementor-widget-heading" data-id="4dd974b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4e6.png" alt="📦" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 2: Extract the Terraform Files</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-74cbbdb elementor-widget elementor-widget-text-editor" data-id="74cbbdb" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<ol start="1" data-spread="false" data-pm-slice="3 1 []"><li><p>Locate the downloaded <code>.zip</code> file.</p></li><li><p>Use a tool like <strong>WinRAR</strong>, <strong>7-Zip</strong>, or <strong>Windows Extractor</strong> to extract the contents.</p></li><li><p>You will find a single file named <code>terraform.exe</code>.</p></li></ol><p>  <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4a1.png" alt="💡" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <em>Tip: Create a dedicated folder like </em><code><em>C:\terraform</em></code><em> and move  </em><code><em>terraform.exe</em></code><em> there.</em></p>						</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-5f3d1cc e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="5f3d1cc" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-b038a8c elementor-widget elementor-widget-image" data-id="b038a8c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="300" height="300" src="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-5-300x300.webp" class="attachment-medium size-medium wp-image-5792" alt="Install Terraform on Windows" srcset="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-5-300x300.webp 300w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-5-1024x1024.webp 1024w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-5-150x150.webp 150w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-5-768x768.webp 768w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-5-png.webp 1080w" sizes="(max-width: 300px) 100vw, 300px" />															</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-519781c e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="519781c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-d83753f e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="d83753f" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-ecdbad5 elementor-widget elementor-widget-image" data-id="ecdbad5" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="300" height="300" src="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-6-300x300.webp" class="attachment-medium size-medium wp-image-5793" alt="Install Terraform on Windows" srcset="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-6-300x300.webp 300w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-6-1024x1024.webp 1024w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-6-150x150.webp 150w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-6-768x768.webp 768w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-6-png.webp 1080w" sizes="(max-width: 300px) 100vw, 300px" />															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-6063b1d e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="6063b1d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-b516b9e elementor-widget elementor-widget-heading" data-id="b516b9e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2699.png" alt="⚙" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 3: Add Terraform to System Path</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-68b35be elementor-widget elementor-widget-text-editor" data-id="68b35be" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">To run Terraform from any command prompt, add it to your system&#8217;s <code>Path</code> variable.</p><ol start="1" data-spread="false"><li><p><strong>Search</strong> for <code>Environment Variables</code> from the Start Menu.</p></li><li><p>Click on <strong>Edit the system environment variables</strong> → <strong>Environment Variables</strong>.</p></li><li><p>Under <strong>System Variables</strong>, locate the variable named <strong>Path</strong> and click <strong>Edit</strong>.</p></li><li><p>Click <strong>New</strong> and enter the path where you placed <code>terraform.exe</code> (e.g., <code>C:\terraform</code>).</p></li><li><p>Click <strong>OK</strong> to save the changes.</p></li></ol><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9d1-200d-1f4bb.png" alt="🧑‍💻" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <em>With this done, Terraform is now accessible from your terminal.</em></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-ca38cfa elementor-widget elementor-widget-text-editor" data-id="ca38cfa" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+													</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-f4d47c3 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="f4d47c3" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-2a44076 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="2a44076" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-1687b65 elementor-widget elementor-widget-heading" data-id="1687b65" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9ea.png" alt="🧪" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 4: Verify Installation</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-dff8712 elementor-widget elementor-widget-text-editor" data-id="dff8712" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 3 []">Now it&#8217;s time to check if Terraform is installed correctly.</p><ol start="1" data-spread="false"><li><p>Open <strong>Command Prompt</strong> or <strong>PowerShell</strong>.</p></li><li><p>Run the following command:</p></li></ol>						</div>
+				</div>
+				<div class="elementor-element elementor-element-3c747e8 elementor-widget elementor-widget-heading" data-id="3c747e8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform version</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-638a980 elementor-widget elementor-widget-text-editor" data-id="638a980" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<ol start="3" data-spread="false" data-pm-slice="3 1 []"><li><p>You should see the installed Terraform version displayed.</p></li></ol><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f389.png" alt="🎉" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <em>Congratulations! Terraform is successfully installed.</em></p>						</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-2a7855e e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="2a7855e" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-351776f elementor-widget elementor-widget-image" data-id="351776f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="300" height="300" src="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-7-300x300.webp" class="attachment-medium size-medium wp-image-5794" alt="Install Terraform on Windows" srcset="https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-7-300x300.webp 300w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-7-1024x1024.webp 1024w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-7-150x150.webp 150w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-7-768x768.webp 768w, https://srtechops.com/wp-content/uploads/2025/03/Cream-Professional-5-Steps-Digital-Marketing-Strategy-Instagram-Post-7-png.webp 1080w" sizes="(max-width: 300px) 100vw, 300px" />															</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-c577158 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="c577158" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-a6e3658 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="a6e3658" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-25c9576 elementor-widget elementor-widget-heading" data-id="25c9576" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f680.png" alt="🚀" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Bonus: Install Using Chocolatey (Optional)</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-cb88a0b elementor-widget elementor-widget-text-editor" data-id="cb88a0b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">If you have <a>Chocolatey</a> installed, you can install Terraform with one command:</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-9a2ad20 elementor-widget elementor-widget-heading" data-id="9a2ad20" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">choco install terraform</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-cbcbe0f elementor-widget elementor-widget-heading" data-id="cbcbe0f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">This method is faster and automatically adds Terraform to your system path.</p>		</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-b2fb585 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="b2fb585" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-93036bc elementor-widget elementor-widget-heading" data-id="93036bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f64c.png" alt="🙌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Next Steps</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3e40994 elementor-widget elementor-widget-heading" data-id="3e40994" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">Now that you have Terraform installed, you can start building and managing cloud infrastructure. Try running:</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-d883922 elementor-widget elementor-widget-heading" data-id="d883922" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform init</p>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-e9872f5 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="e9872f5" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-22d22a3 elementor-widget elementor-widget-heading" data-id="22d22a3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3c1.png" alt="🏁" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Run Your First Terraform Script</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-389c6d1 elementor-widget elementor-widget-heading" data-id="389c6d1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">Here is a simple example to create two AWS EC2 instances using Terraform.</p>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-845125a e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="845125a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-aba6a62 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="aba6a62" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+		<div class="elementor-element elementor-element-2c1ff80 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="2c1ff80" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-826bf77 elementor-widget elementor-widget-heading" data-id="826bf77" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">1.Create a new directory and navigate to it:</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-68250fa elementor-widget elementor-widget-text-editor" data-id="68250fa" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>mkdir terraform-aws-demo<br />cd terraform-aws-demo</p>						</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-093d7df e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="093d7df" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-581a1d4 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="581a1d4" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-de2f87d elementor-widget elementor-widget-heading" data-id="de2f87d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">2.Create a file named main.tf and add the following content:</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4aa1f8e elementor-widget elementor-widget-text-editor" data-id="4aa1f8e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>provider &#8220;aws&#8221; {<br />        region = &#8220;us-east-1&#8221;<br />        access_key = &#8220;YOUR_ACCESS_KEY&#8221;<br />        secret_key = &#8220;YOUR_SECRET_KEY&#8221;<br />}</p><p>resource &#8220;aws_instance&#8221; &#8220;myfirstVM&#8221; {<br />        count = 2<br />        ami = &#8220;ami-08b5b3a93ed654d19&#8221;<br />        instance_type = &#8220;t2.micro&#8221;<br />        key_name = &#8220;terraformserverkey&#8221;<br />tags = {<br />       Name = &#8220;linuxserver&#8221;<br />    }<br />}</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-8763b2a elementor-widget elementor-widget-heading" data-id="8763b2a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/26a0.png" alt="⚠" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Ensure your access and secret keys are correct. Never share your keys publicly.</p>		</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-1fb570b e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="1fb570b" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-54c84e7 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="54c84e7" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-39b1f5d e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="39b1f5d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+		<div class="elementor-element elementor-element-5689327 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="5689327" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-43a16ec elementor-widget elementor-widget-heading" data-id="43a16ec" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">3.Initialize and apply the configuration:</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-683849f elementor-widget elementor-widget-text-editor" data-id="683849f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>terraform init<br />terraform apply</p>						</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-0ab5dfb e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="0ab5dfb" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-e855e71 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="e855e71" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-9ee5a25 elementor-widget elementor-widget-heading" data-id="9ee5a25" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default">4 .Confirm with yes when prompted.
+
+</h4>		</div>
+				</div>
+				<div class="elementor-element elementor-element-b788e67 elementor-widget elementor-widget-heading" data-id="b788e67" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Your AWS EC2 instances will be created shortly. Congratulations on running your first Terraform script!</p>		</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-5beebf7 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="5beebf7" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-9685d7e e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="9685d7e" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-2e264a1 elementor-widget elementor-widget-text-editor" data-id="2e264a1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4ac.png" alt="💬" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <em>Need help? Drop your questions in the comments!</em></p>						</div>
+				</div>
+					</div>
+				</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-20d95355 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no" data-id="20d95355" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-2efd940c" data-id="2efd940c" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-4926b7d5 elementor-widget elementor-widget-video" data-id="4926b7d5" data-element_type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;play_on_mobile&quot;:&quot;yes&quot;,&quot;loop&quot;:&quot;yes&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-widget-video .elementor-widget-container{overflow:hidden;transform:translateZ(0)}.elementor-widget-video .elementor-wrapper{aspect-ratio:var(--video-aspect-ratio)}.elementor-widget-video .elementor-wrapper iframe,.elementor-widget-video .elementor-wrapper video{height:100%;width:100%;display:flex;border:none;background-color:#000}@supports not (aspect-ratio:1/1){.elementor-widget-video .elementor-wrapper{position:relative;overflow:hidden;height:0;padding-bottom:calc(100% / var(--video-aspect-ratio))}.elementor-widget-video .elementor-wrapper iframe,.elementor-widget-video .elementor-wrapper video{position:absolute;top:0;right:0;bottom:0;left:0}}.elementor-widget-video .elementor-open-inline .elementor-custom-embed-image-overlay{position:absolute;top:0;right:0;bottom:0;left:0;background-size:cover;background-position:50%}.elementor-widget-video .elementor-custom-embed-image-overlay{cursor:pointer;text-align:center}.elementor-widget-video .elementor-custom-embed-image-overlay:hover .elementor-custom-embed-play i{opacity:1}.elementor-widget-video .elementor-custom-embed-image-overlay img{display:block;width:100%;aspect-ratio:var(--video-aspect-ratio);-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center}@supports not (aspect-ratio:1/1){.elementor-widget-video .elementor-custom-embed-image-overlay{position:relative;overflow:hidden;height:0;padding-bottom:calc(100% / var(--video-aspect-ratio))}.elementor-widget-video .elementor-custom-embed-image-overlay img{position:absolute;top:0;right:0;bottom:0;left:0}}.elementor-widget-video .e-hosted-video .elementor-video{-o-object-fit:cover;object-fit:cover}.e-con-inner>.elementor-widget-video,.e-con>.elementor-widget-video{width:var(--container-widget-width);--flex-grow:var(--container-widget-flex-grow)}</style>		<div class="e-hosted-video elementor-wrapper elementor-open-inline">
+					<video class="elementor-video" src="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" autoplay="" loop="" controls="" playsinline="" controlsList="nodownload"></video>
+				</div>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-139231ac" data-id="139231ac" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-121bd2f3 elementor-widget elementor-widget-heading" data-id="121bd2f3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Devops Multi cloud Training</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7bce1a14 elementor-widget elementor-widget-text-editor" data-id="7bce1a14" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p style="color:#000000">Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access.</p>
+
+<table style="width: 100%; border-collapse: collapse;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<th style="color: #000080; text-align: center;font-size:20px;">Feature</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Self-Paced Training</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Live Training</th>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3af.png" alt="🎯" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Mode</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3a5.png" alt="🎥" class="wp-smiley" style="height: 1em; max-height: 1em;" />Pre-Recorded Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9d1-200d-1f3eb.png" alt="🧑‍🏫" class="wp-smiley" style="height: 1em; max-height: 1em;" />Live Class + Recordings</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4bc.png" alt="💼" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Projects</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f552.png" alt="🕒" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Real-Time Projects</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4c5.png" alt="📅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekdays + Weekend Real-Time Projects</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Doubt Clearing</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4de.png" alt="📞" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Live Support Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9e0.png" alt="🧠" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Anytime Doubt Clearing Session</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f465.png" alt="👥" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Career Support &amp; Mentorship</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f393.png" alt="🎓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Global Certification Training</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f511.png" alt="🔑" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Access</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4b0.png" alt="💰" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Fees</b></td>
+<td>₹4,999 (2 x ₹2,500)</td>
+<td>₹7,999 (2 x ₹4,000)</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2139.png" alt="ℹ" class="wp-smiley" style="height: 1em; max-height: 1em;" /> For More Info</b></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-self-paced-training" target="_blank" rel="noopener"><u><i>Explore Self-Paced Training</i></u>
+</a></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-training" target="_blank" rel="noopener"><u><i>Explore Live Training</i></u>
+</a></td>
+</tr>
+</tbody>
+</table>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		]]></content:encoded>
+					
+					<wfw:commentRss>https://srtechops.com/install-terraform-on-windows-step-by-step-guide/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		<enclosure url="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" length="541290" type="video/mp4" />
+
+			</item>
+		<item>
+		<title>🚀 Step-by-Step Guide: Installing Terraform on AWS EC2 Amazon Linux</title>
+		<link>https://srtechops.com/step-by-step-guide-installing-terraform-on-aws-ec2-amazon-linux/</link>
+					<comments>https://srtechops.com/step-by-step-guide-installing-terraform-on-aws-ec2-amazon-linux/#respond</comments>
+		
+		<dc:creator><![CDATA[Sangavi]]></dc:creator>
+		<pubDate>Wed, 19 Mar 2025 11:08:43 +0000</pubDate>
+				<category><![CDATA[AWS Cloud]]></category>
+		<category><![CDATA[Terraform]]></category>
+		<guid isPermaLink="false">https://srtechops.com/?p=5620</guid>
+
+					<description><![CDATA[Terraform is a powerful Infrastructure as Code (IaC) tool that allows for efficient management and provisioning of infrastructure. Installing Terraform on AWS EC2 enables users to automate infrastructure setup directly on scalable cloud instances. This guide walks you through installing Terraform on AWS EC2 using Amazon Linux for a smooth and reliable setup. Whether you&#8217;re new to cloud automation or a DevOps engineer, installing Terraform on AWS EC2 is a critical step in streamlining infrastructure management. ✅ Prerequisites Before we begin, make sure you have the following: 🗂️ An AWS account 🖥️ An EC2 Amazon Linux instance up and running 🔑 SSH access to your instance using a key pair (PEM file) 📟 A terminal or SSH client (like PuTTY, Mobaxterm, or an equivalent) 🛠️ Step 1: Setting Up an EC2 Instance Ensure your EC2 instance is properly configured. Navigate to the AWS Management Console and follow these steps to verify your EC2 instance’s status: Go to the EC2 Dashboard in the AWS Management Console. ✅ Check that your instance is running. 📋 Copy the SSH Client Command of your instance, which will be required for SSH access. 🔗 Step 2: Connect to Your EC2 Instance Using SSH (Linux/macOS) Use the below command to connect via SSH: ssh -i /path/to/your-key.pem ec2-user@your-instance-public-ip Using PuTTY (Windows) 💻 Download and install PuTTY. Convert your .pem key to a .ppk key using PuTTYgen (included with PuTTY). Open PuTTY and enter your EC2 instance&#8217;s public IP address in the Host Name field. Under Connection &#62; SSH &#62; Auth, browse and select your .ppk file. Click Open to connect. Using Mobaxterm (Windows) 📦 Download and install Mobaxterm. Select Session &#62; SSH. Enter your EC2 instance&#8217;s public IP address. Provide the username (ec2-user) and browse for your .pem key under the Advanced SSH settings. Click OK to start the SSH session. 🔄 Step 3: Update the System Ensure your system is up-to-date by running: sudo yum update -y # For Amazon Linux 🧰 Step 4: Install yum-config-manager to Manage Your Repositories Install the necessary dependencies using the appropriate command: sudo yum install -y yum-utils 🌐 Step 5: Add the Official HashiCorp Linux Repository Add the official HashiCorp Linux repository to your instance using yum-config-manager: sudo yum-config-manager &#8211;add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo 📦 Step 6: Install Terraform from the New Repository Install Terraform using yum: sudo yum -y install terraform Verify the installation: terraform -v You should see the installed version of Terraform. 🎉 Conclusion You have successfully installed Terraform on your AWS EC2 Amazon Linux instance. From here, you can start building and managing cloud infrastructure using Terraform. If you have any questions or face issues, feel free to comment below! 💬 https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4 Devops Multi cloud Training Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access. Feature Self-Paced Training Live Training 🎯 Mode 🎥Pre-Recorded Session 🧑‍🏫Live Class + Recordings 💼 Projects 🕒 Weekend Real-Time Projects 📅 Weekdays + Weekend Real-Time Projects ❓ Doubt Clearing 📞 Weekend Live Support Session 🧠 Anytime Doubt Clearing Session 👥 Career Support &#38; Mentorship ❌ No ✅ Yes 🎓 Global Certification Training ❌ No ✅ Yes 🔑 Access ♾️ Lifetime Access ♾️ Lifetime Access 💰 Fees ₹4,999 (2 x ₹2,500) ₹7,999 (2 x ₹4,000) ℹ️ For More Info Explore Self-Paced Training Explore Live Training]]></description>
+										<content:encoded><![CDATA[		<div data-elementor-type="wp-post" data-elementor-id="5620" class="elementor elementor-5620">
+							<div class="elementor-element elementor-element-dadde03 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="dadde03" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-e091b73 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="e091b73" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;zoomIn&quot;}" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Terraform is a powerful Infrastructure as Code (IaC) tool that allows for efficient management and provisioning of infrastructure. <strong data-start="305" data-end="340">Installing Terraform on AWS EC2</strong> enables users to automate infrastructure setup directly on scalable cloud instances. This guide walks you through <strong data-start="455" data-end="490">installing Terraform on AWS EC2</strong> using Amazon Linux for a smooth and reliable setup. Whether you&#8217;re new to cloud automation or a DevOps engineer, <strong data-start="604" data-end="639">installing Terraform on AWS EC2</strong> is a critical step in streamlining infrastructure management.</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-e1ef439 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="e1ef439" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;bounce&quot;}" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<h3 data-pm-slice="1 3 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Prerequisites</h3><p>Before we begin, make sure you have the following:</p><ul data-spread="false"><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f5c2.png" alt="🗂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> An AWS account</p></li><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f5a5.png" alt="🖥" class="wp-smiley" style="height: 1em; max-height: 1em;" /> An EC2 Amazon Linux instance up and running</p></li><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f511.png" alt="🔑" class="wp-smiley" style="height: 1em; max-height: 1em;" /> SSH access to your instance using a key pair (PEM file)</p></li><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4df.png" alt="📟" class="wp-smiley" style="height: 1em; max-height: 1em;" /> A terminal or SSH client (like PuTTY, Mobaxterm, or an equivalent)</p></li></ul>						</div>
+				</div>
+				<div class="elementor-element elementor-element-6764cb7 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="6764cb7" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-965e88a e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="965e88a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-2224be4 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="2224be4" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+		<div class="elementor-element elementor-element-5cc203d e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no elementor-invisible e-con e-child" data-id="5cc203d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;animation&quot;:&quot;slideInRight&quot;}">
+				<div class="elementor-element elementor-element-fe87e79 elementor-widget elementor-widget-heading" data-id="fe87e79" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f6e0.png" alt="🛠" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 1: Setting Up an EC2 Instance</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-ee4905b elementor-widget elementor-widget-text-editor" data-id="ee4905b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Ensure your EC2 instance is properly configured. Navigate to the AWS Management Console and follow these steps to verify your EC2 instance’s status:</p><ol start="1" data-spread="false" data-pm-slice="3 3 []"><li><p>Go to the EC2 Dashboard in the AWS Management Console.</p></li><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Check that your instance is running.</p></li><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4cb.png" alt="📋" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Copy the SSH Client Command of your instance, which will be required for SSH access.</p></li></ol>						</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-e9db2be e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="e9db2be" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-acc41a4 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no elementor-invisible e-con e-child" data-id="acc41a4" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;animation&quot;:&quot;slideInLeft&quot;}">
+				<div class="elementor-element elementor-element-6bf698e elementor-widget elementor-widget-heading" data-id="6bf698e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f517.png" alt="🔗" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 2: Connect to Your EC2 Instance</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-663050d elementor-widget elementor-widget-text-editor" data-id="663050d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<h6 data-pm-slice="1 3 []">Using SSH (Linux/macOS)</h6><ol start="1" data-spread="false"><li><p>Use the below command to connect via SSH:</p></li></ol>						</div>
+				</div>
+				<div class="elementor-element elementor-element-83bf7f1 elementor-widget elementor-widget-heading" data-id="83bf7f1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">ssh -i /path/to/your-key.pem ec2-user@your-instance-public-ip</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-88671f6 elementor-widget elementor-widget-text-editor" data-id="88671f6" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<h6 data-pm-slice="1 3 []">Using PuTTY (Windows)</h6><ol start="1" data-spread="false"><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4bb.png" alt="💻" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Download and install <a>PuTTY</a>.</p></li><li><p>Convert your <code>.pem</code> key to a <code>.ppk</code> key using PuTTYgen (included with PuTTY).</p></li><li><p>Open PuTTY and enter your EC2 instance&#8217;s public IP address in the <strong>Host Name</strong> field.</p></li><li><p>Under <strong>Connection</strong> &gt; <strong>SSH</strong> &gt; <strong>Auth</strong>, browse and select your <code>.ppk</code> file.</p></li><li><p>Click <strong>Open</strong> to connect.</p></li></ol>						</div>
+				</div>
+				<div class="elementor-element elementor-element-2d883a2 elementor-widget elementor-widget-text-editor" data-id="2d883a2" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<h6 data-pm-slice="1 3 []">Using Mobaxterm (Windows)</h6><ol start="1" data-spread="false"><li><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4e6.png" alt="📦" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Download and install <a>Mobaxterm</a>.</p></li><li><p>Select <strong>Session</strong> &gt; <strong>SSH</strong>.</p></li><li><p>Enter your EC2 instance&#8217;s public IP address.</p></li><li><p>Provide the username (<code>ec2-user</code>) and browse for your <code>.pem</code> key under the <strong>Advanced SSH settings</strong>.</p></li><li><p>Click <strong>OK</strong> to start the SSH session.</p></li></ol>						</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-efd2b55 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="efd2b55" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-f66a4c8 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="f66a4c8" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-e72b3e7 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="e72b3e7" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+		<div class="elementor-element elementor-element-2c25127 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no elementor-invisible e-con e-child" data-id="2c25127" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;animation&quot;:&quot;slideInRight&quot;}">
+				<div class="elementor-element elementor-element-838f7a9 elementor-widget elementor-widget-heading" data-id="838f7a9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f504.png" alt="🔄" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 3: Update the System</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-2724206 elementor-widget elementor-widget-text-editor" data-id="2724206" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Ensure your system is up-to-date by running:</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-e80b7bc elementor-widget elementor-widget-heading" data-id="e80b7bc" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">sudo yum update -y  # For Amazon Linux</p>		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-158e125 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="158e125" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-67d1c93 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no elementor-invisible e-con e-child" data-id="67d1c93" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;animation&quot;:&quot;slideInLeft&quot;}">
+				<div class="elementor-element elementor-element-25b6a47 elementor-widget elementor-widget-heading" data-id="25b6a47" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9f0.png" alt="🧰" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 4: Install yum-config-manager to Manage Your Repositories</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a2e3c99 elementor-widget elementor-widget-text-editor" data-id="a2e3c99" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Install the necessary dependencies using the appropriate command:</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-97d7670 elementor-widget elementor-widget-heading" data-id="97d7670" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">sudo yum install -y yum-utils</p>		</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-42267e6 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="42267e6" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-a8d200a e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="a8d200a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-0c093e6 e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="0c093e6" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+		<div class="elementor-element elementor-element-75ce23a e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no elementor-invisible e-con e-child" data-id="75ce23a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;animation&quot;:&quot;slideInRight&quot;}">
+				<div class="elementor-element elementor-element-c1baaa7 elementor-widget elementor-widget-heading" data-id="c1baaa7" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f310.png" alt="🌐" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 5: Add the Official HashiCorp Linux Repository</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7f3fe20 elementor-widget elementor-widget-text-editor" data-id="7f3fe20" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Add the official HashiCorp Linux repository to your instance using <code><b>yum-config-manager</b></code><b>:</b></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-990475a elementor-widget elementor-widget-heading" data-id="990475a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo</p>		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-dfda11c e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="dfda11c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-becb55f e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no elementor-invisible e-con e-child" data-id="becb55f" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;animation&quot;:&quot;slideInLeft&quot;}">
+				<div class="elementor-element elementor-element-98b4f61 elementor-widget elementor-widget-heading" data-id="98b4f61" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4e6.png" alt="📦" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Step 6: Install Terraform from the New Repository</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-13e7e65 elementor-widget elementor-widget-text-editor" data-id="13e7e65" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>Install Terraform using yum:</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-597fa2b elementor-widget elementor-widget-heading" data-id="597fa2b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">sudo yum -y install terraform</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a6413ed elementor-widget elementor-widget-text-editor" data-id="a6413ed" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Verify the installation:</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-09d6a57 elementor-widget elementor-widget-heading" data-id="09d6a57" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform -v</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-ea9a2d5 elementor-widget elementor-widget-text-editor" data-id="ea9a2d5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">You should see the installed version of Terraform.</p>						</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-3f2edab e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="3f2edab" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-7508317 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="7508317" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-b774ac8 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="b774ac8" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-ef3e918 elementor-invisible elementor-widget elementor-widget-heading" data-id="ef3e918" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f389.png" alt="🎉" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Conclusion</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-16c8d6b elementor-invisible elementor-widget elementor-widget-text-editor" data-id="16c8d6b" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">You have successfully installed Terraform on your AWS EC2 Amazon Linux instance. From here, you can start building and managing cloud infrastructure using Terraform.</p><p>If you have any questions or face issues, feel free to comment below! <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4ac.png" alt="💬" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>						</div>
+				</div>
+					</div>
+				</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-f5ceda0 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no" data-id="f5ceda0" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-6b75b605" data-id="6b75b605" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2f9b8d8d elementor-widget elementor-widget-video" data-id="2f9b8d8d" data-element_type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;play_on_mobile&quot;:&quot;yes&quot;,&quot;loop&quot;:&quot;yes&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="e-hosted-video elementor-wrapper elementor-open-inline">
+					<video class="elementor-video" src="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" autoplay="" loop="" controls="" playsinline="" controlsList="nodownload"></video>
+				</div>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-35acc198" data-id="35acc198" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-724faa6c elementor-widget elementor-widget-heading" data-id="724faa6c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Devops Multi cloud Training</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-127ba0ad elementor-widget elementor-widget-text-editor" data-id="127ba0ad" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p style="color:#000000">Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access.</p>
+
+<table style="width: 100%; border-collapse: collapse;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<th style="color: #000080; text-align: center;font-size:20px;">Feature</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Self-Paced Training</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Live Training</th>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3af.png" alt="🎯" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Mode</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3a5.png" alt="🎥" class="wp-smiley" style="height: 1em; max-height: 1em;" />Pre-Recorded Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9d1-200d-1f3eb.png" alt="🧑‍🏫" class="wp-smiley" style="height: 1em; max-height: 1em;" />Live Class + Recordings</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4bc.png" alt="💼" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Projects</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f552.png" alt="🕒" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Real-Time Projects</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4c5.png" alt="📅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekdays + Weekend Real-Time Projects</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Doubt Clearing</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4de.png" alt="📞" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Live Support Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9e0.png" alt="🧠" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Anytime Doubt Clearing Session</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f465.png" alt="👥" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Career Support &amp; Mentorship</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f393.png" alt="🎓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Global Certification Training</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f511.png" alt="🔑" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Access</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4b0.png" alt="💰" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Fees</b></td>
+<td>₹4,999 (2 x ₹2,500)</td>
+<td>₹7,999 (2 x ₹4,000)</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2139.png" alt="ℹ" class="wp-smiley" style="height: 1em; max-height: 1em;" /> For More Info</b></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-self-paced-training" target="_blank" rel="noopener"><u><i>Explore Self-Paced Training</i></u>
+</a></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-training" target="_blank" rel="noopener"><u><i>Explore Live Training</i></u>
+</a></td>
+</tr>
+</tbody>
+</table>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		]]></content:encoded>
+					
+					<wfw:commentRss>https://srtechops.com/step-by-step-guide-installing-terraform-on-aws-ec2-amazon-linux/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		<enclosure url="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" length="541290" type="video/mp4" />
+
+			</item>
+		<item>
+		<title>Mastering Terraform Commands: A Complete Guide</title>
+		<link>https://srtechops.com/elementor-5490/</link>
+					<comments>https://srtechops.com/elementor-5490/#respond</comments>
+		
+		<dc:creator><![CDATA[Priya]]></dc:creator>
+		<pubDate>Wed, 19 Mar 2025 04:53:14 +0000</pubDate>
+				<category><![CDATA[Terraform]]></category>
+		<guid isPermaLink="false">https://srtechops.com/?p=5490</guid>
+
+					<description><![CDATA[Mastering Terraform Commands: A Complete Guide Introduction Terraform is a powerful Infrastructure as Code (IaC) tool that simplifies cloud resource management. To harness its full potential, understanding its commands is essential. This guide will cover the most commonly used Terraform commands with examples to get you started. If you&#8217;re looking for the best Terraform tutorial for beginners or want to understand Terraform CLI commands for AWS, Azure, or Google Cloud, you&#8217;re in the right place! 1. terraform init Purpose: Validates the Terraform configuration files for syntax errors. Example: terraform init ✅ Downloads necessary provider plugins. ✅ Sets up the backend for state management. ✅ Prepares your environment for other Terraform CLI commands. 2. terraform validate Purpose: Validates the Terraform configuration files for syntax errors. Example: terraform validate ✅ Helps identify any misconfigurations before deploying resources. 3. terraform plan Purpose: Generates an execution plan, showing the changes Terraform will apply. Example: terraform plan ✅ Provides a preview of resource additions, deletions, or modifications. ✅ Ensures visibility into infrastructure changes before applying them.&#160; ✅ Essential for Terraform AWS deployment. 4. terraform apply Purpose: Applies the changes required to reach the desired state of the configuration. Example: terraform apply ✅ Deploys the defined infrastructure.  ✅ Prompts for confirmation before making changes.  ✅ Useful in Terraform Azure deployments or Google Cloud infrastructure management. 5. terraform destroy Purpose: Destroys all managed infrastructure resources. Example: terraform destroy ✅ Useful for cleanup and deprovisioning environments.&#160; ✅ Always review the plan before executing. ✅ Recommended in Terraform DevOps automation workflows. 6. terraform state Purpose: Manages the state of Terraform resources. Common Commands: terraform state list # List all resourcesterraform state show &#60;resource&#62; # Show details of a specific resource ✅ Provides visibility into resource states. ✅ Useful for troubleshooting and managing infrastructure using Terraform on AWS or Azure Cloud. 7. terraform output Purpose: Displays the output values defined in the configuration. Example: terraform output ✅ Useful for retrieving values like IP addresses or resource IDs. ✅ Commonly used in Terraform AWS CLI workflows. 8. terraform fmt Purpose: Formats Terraform configuration files to a canonical style. Example: terraform fmt ✅ Maintains clean and readable code. ✅ Automatically adjusts code formatting, helpful in Terraform best practices. 9. terraform version Purpose: Displays the current Terraform version. Example: terraform version ✅ Ensures compatibility with modules and plugins.  ✅ Important when using Terraform AWS modules or third-party providers. Final Thoughts Mastering these Terraform commands will make your infrastructure management efficient and error-free. Whether you&#8217;re deploying on AWS using Terraform, Azure with Terraform, or managing Google Cloud with Terraform, these commands will be invaluable. Ready to dive deeper into Terraform CLI tutorials? Stay tuned for more tips and best practices! Happy Terraforming! 🚀 https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4 Devops Multi cloud Training Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access. Feature Self-Paced Training Live Training 🎯 Mode 🎥Pre-Recorded Session 🧑‍🏫Live Class + Recordings 💼 Projects 🕒 Weekend Real-Time Projects 📅 Weekdays + Weekend Real-Time Projects ❓ Doubt Clearing 📞 Weekend Live Support Session 🧠 Anytime Doubt Clearing Session 👥 Career Support &#38; Mentorship ❌ No ✅ Yes 🎓 Global Certification Training ❌ No ✅ Yes 🔑 Access ♾️ Lifetime Access ♾️ Lifetime Access 💰 Fees ₹4,999 (2 x ₹2,500) ₹7,999 (2 x ₹4,000) ℹ️ For More Info Explore Self-Paced Training Explore Live Training]]></description>
+										<content:encoded><![CDATA[		<div data-elementor-type="wp-post" data-elementor-id="5490" class="elementor elementor-5490">
+							<div class="elementor-element elementor-element-b9c08f0 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="b9c08f0" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-7f382b7 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="7f382b7" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-079c103 elementor-widget elementor-widget-heading" data-id="079c103" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default"><strong>Mastering Terraform Commands: A Complete Guide</strong></h1></h2>		</div>
+				</div>
+		<div class="elementor-element elementor-element-a537734 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="a537734" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-96c9af5 elementor-widget elementor-widget-heading" data-id="96c9af5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-large"><strong>Introduction</strong></h2>		</div>
+				</div>
+		<div class="elementor-element elementor-element-4f4ae0f e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="4f4ae0f" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-85572a5 elementor-widget elementor-widget-text-editor" data-id="85572a5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Terraform is a powerful <strong>Infrastructure as Code (IaC)</strong> tool that simplifies cloud resource management. To harness its full potential, understanding its commands is essential. This guide will cover the most commonly used <strong>Terraform commands</strong> with examples to get you started.</p><p>If you&#8217;re looking for the best <strong>Terraform tutorial for beginners</strong> or want to understand <strong>Terraform CLI commands</strong> for AWS, Azure, or Google Cloud, you&#8217;re in the right place!</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-2f62fdc e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="2f62fdc" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-98c78e3 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="98c78e3" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-0a85741 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="0a85741" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-66dc2ec elementor-widget elementor-widget-heading" data-id="66dc2ec" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">1. terraform init</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-2826dd7 elementor-widget elementor-widget-text-editor" data-id="2826dd7" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Validates the Terraform configuration files for syntax errors.</p><p data-pm-slice="1 1 []"><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-e22eee7 elementor-widget elementor-widget-text-editor" data-id="e22eee7" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>terraform init</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-efa784d elementor-widget elementor-widget-text-editor" data-id="efa784d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Downloads necessary provider plugins.</p><p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Sets up the backend for state management.</p><p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Prepares your environment for other <strong>Terraform CLI commands</strong>.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-4986c18 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="4986c18" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-4f6e528 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="4f6e528" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-fe14a80 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="fe14a80" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-6fa0a73 elementor-widget elementor-widget-heading" data-id="6fa0a73" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">2. terraform validate</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-ca751de elementor-widget elementor-widget-text-editor" data-id="ca751de" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Validates the Terraform configuration files for syntax errors.</p><p><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-4391b45 elementor-widget elementor-widget-heading" data-id="4391b45" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform validate</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-0312b1e elementor-widget elementor-widget-text-editor" data-id="0312b1e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Helps identify any misconfigurations before deploying resources.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-9cab937 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="9cab937" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-89bbf3c e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="89bbf3c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-5a8a14c e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="5a8a14c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-8074637 elementor-widget elementor-widget-heading" data-id="8074637" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">3. terraform plan</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-b7c166a elementor-widget elementor-widget-text-editor" data-id="b7c166a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Generates an execution plan, showing the changes Terraform will apply.</p><p><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-af6c96d elementor-widget elementor-widget-heading" data-id="af6c96d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform plan</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-19ab147 elementor-widget elementor-widget-text-editor" data-id="19ab147" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Provides a preview of resource additions, deletions, or modifications.</p>
+<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Ensures visibility into infrastructure changes before applying them.&nbsp;</p>
+<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Essential for <strong>Terraform AWS deployment</strong>.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-62a58cf e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="62a58cf" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-7075f18 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="7075f18" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-a0f4348 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="a0f4348" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-fee9567 elementor-widget elementor-widget-heading" data-id="fee9567" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">4. terraform apply</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-8ba8fd6 elementor-widget elementor-widget-text-editor" data-id="8ba8fd6" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Applies the changes required to reach the desired state of the configuration.</p><p><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-31aca37 elementor-widget elementor-widget-heading" data-id="31aca37" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform apply</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-55cd950 elementor-widget elementor-widget-text-editor" data-id="55cd950" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Deploys the defined infrastructure. </p><p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Prompts for confirmation before making changes. </p><p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Useful in <strong>Terraform Azure deployments</strong> or <strong>Google Cloud infrastructure management</strong>.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-39b015d e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="39b015d" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-68a805a e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="68a805a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-3c695c7 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="3c695c7" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-6ddf299 elementor-widget elementor-widget-heading" data-id="6ddf299" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">5. terraform destroy</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-b286574 elementor-widget elementor-widget-text-editor" data-id="b286574" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Destroys all managed infrastructure resources.</p><p><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-71b70b0 elementor-widget elementor-widget-heading" data-id="71b70b0" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform destroy</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-d7813de elementor-widget elementor-widget-text-editor" data-id="d7813de" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Useful for cleanup and deprovisioning environments.&nbsp;</p>
+<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Always review the plan before executing.</p>
+<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Recommended in <strong>Terraform DevOps automation</strong> workflows.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-a35afa3 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="a35afa3" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-7d1b19a e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="7d1b19a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-2e46caa e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="2e46caa" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-be2670c elementor-widget elementor-widget-heading" data-id="be2670c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">6. terraform state</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-c01745c elementor-widget elementor-widget-text-editor" data-id="c01745c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Manages the state of Terraform resources.</p><p><strong>Common Commands:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-ab87e6f elementor-widget elementor-widget-heading" data-id="ab87e6f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform state list                                   # List all resources<br>terraform state show &lt;resource&gt;      # Show details of a specific resource</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-39d2baf elementor-widget elementor-widget-text-editor" data-id="39d2baf" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Provides visibility into resource states.</p>
+<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Useful for troubleshooting and managing infrastructure using <strong>Terraform on AWS</strong> or <strong>Azure Cloud</strong>.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-02d09c5 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="02d09c5" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-29dc3af e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="29dc3af" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-73ed36b e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="73ed36b" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-f152c05 elementor-widget elementor-widget-heading" data-id="f152c05" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">7. terraform output</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1daf54a elementor-widget elementor-widget-text-editor" data-id="1daf54a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Displays the output values defined in the configuration.</p><p><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-423c06e elementor-widget elementor-widget-heading" data-id="423c06e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform output</p>		</div>
+				</div>
+					</div>
+				</div>
+				<div class="elementor-element elementor-element-2699938 elementor-widget elementor-widget-text-editor" data-id="2699938" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Useful for retrieving values like IP addresses or resource IDs.</p>
+<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Commonly used in <strong>Terraform AWS CLI</strong> workflows.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-c86b840 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="c86b840" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-8de0701 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="8de0701" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-b685786 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="b685786" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-7a09107 elementor-widget elementor-widget-heading" data-id="7a09107" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">8. terraform fmt</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3d74f95 elementor-widget elementor-widget-text-editor" data-id="3d74f95" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Formats Terraform configuration files to a canonical style.</p><p><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-cab6ac9 elementor-widget elementor-widget-heading" data-id="cab6ac9" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform fmt</p>		</div>
+				</div>
+					</div>
+				</div>
+				<div class="elementor-element elementor-element-9370b1e elementor-widget elementor-widget-text-editor" data-id="9370b1e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Maintains clean and readable code.</p>
+<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Automatically adjusts code formatting, helpful in <strong>Terraform best practices</strong>.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-07ce015 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="07ce015" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-b41cb8b e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="b41cb8b" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-c1f0673 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="c1f0673" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-ce9d84c elementor-widget elementor-widget-heading" data-id="ce9d84c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">9. terraform version</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7f1810c elementor-widget elementor-widget-text-editor" data-id="7f1810c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><strong>Purpose:</strong> Displays the current Terraform version.</p><p><strong>Example:</strong></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-a9a4cbe elementor-widget elementor-widget-heading" data-id="a9a4cbe" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">terraform version</p>		</div>
+				</div>
+					</div>
+				</div>
+				<div class="elementor-element elementor-element-fb01671 elementor-widget elementor-widget-text-editor" data-id="fb01671" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Ensures compatibility with modules and plugins. </p><p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Important when using <strong>Terraform AWS modules</strong> or third-party providers.</p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-2b3a9f4 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="2b3a9f4" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-660c90f e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="660c90f" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-95973af e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="95973af" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-347dc41 elementor-widget elementor-widget-heading" data-id="347dc41" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">Final Thoughts</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-b620aed elementor-widget elementor-widget-text-editor" data-id="b620aed" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Mastering these <strong>Terraform commands</strong> will make your infrastructure management efficient and error-free. Whether you&#8217;re deploying on <strong>AWS using Terraform</strong>, <strong>Azure with Terraform</strong>, or managing <strong>Google Cloud with Terraform</strong>, these commands will be invaluable.</p><p>Ready to dive deeper into <strong>Terraform CLI tutorials</strong>? Stay tuned for more tips and best practices!</p><p>Happy Terraforming! <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f680.png" alt="🚀" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-7fe9a2b9 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no" data-id="7fe9a2b9" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-1bf7560b" data-id="1bf7560b" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-65cf7e0 elementor-widget elementor-widget-video" data-id="65cf7e0" data-element_type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;play_on_mobile&quot;:&quot;yes&quot;,&quot;loop&quot;:&quot;yes&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="e-hosted-video elementor-wrapper elementor-open-inline">
+					<video class="elementor-video" src="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" autoplay="" loop="" controls="" playsinline="" controlsList="nodownload"></video>
+				</div>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-678430b2" data-id="678430b2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1972fea5 elementor-widget elementor-widget-heading" data-id="1972fea5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Devops Multi cloud Training</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6799423d elementor-widget elementor-widget-text-editor" data-id="6799423d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p style="color:#000000">Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access.</p>
+
+<table style="width: 100%; border-collapse: collapse;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<th style="color: #000080; text-align: center;font-size:20px;">Feature</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Self-Paced Training</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Live Training</th>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3af.png" alt="🎯" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Mode</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3a5.png" alt="🎥" class="wp-smiley" style="height: 1em; max-height: 1em;" />Pre-Recorded Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9d1-200d-1f3eb.png" alt="🧑‍🏫" class="wp-smiley" style="height: 1em; max-height: 1em;" />Live Class + Recordings</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4bc.png" alt="💼" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Projects</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f552.png" alt="🕒" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Real-Time Projects</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4c5.png" alt="📅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekdays + Weekend Real-Time Projects</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Doubt Clearing</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4de.png" alt="📞" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Live Support Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9e0.png" alt="🧠" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Anytime Doubt Clearing Session</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f465.png" alt="👥" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Career Support &amp; Mentorship</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f393.png" alt="🎓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Global Certification Training</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f511.png" alt="🔑" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Access</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4b0.png" alt="💰" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Fees</b></td>
+<td>₹4,999 (2 x ₹2,500)</td>
+<td>₹7,999 (2 x ₹4,000)</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2139.png" alt="ℹ" class="wp-smiley" style="height: 1em; max-height: 1em;" /> For More Info</b></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-self-paced-training" target="_blank" rel="noopener"><u><i>Explore Self-Paced Training</i></u>
+</a></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-training" target="_blank" rel="noopener"><u><i>Explore Live Training</i></u>
+</a></td>
+</tr>
+</tbody>
+</table>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		]]></content:encoded>
+					
+					<wfw:commentRss>https://srtechops.com/elementor-5490/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		<enclosure url="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" length="541290" type="video/mp4" />
+
+			</item>
+		<item>
+		<title>Terraform: The Ultimate Infrastructure as Code (IaC) Tool</title>
+		<link>https://srtechops.com/elementor-5291/</link>
+					<comments>https://srtechops.com/elementor-5291/#respond</comments>
+		
+		<dc:creator><![CDATA[Priya]]></dc:creator>
+		<pubDate>Tue, 18 Mar 2025 07:35:08 +0000</pubDate>
+				<category><![CDATA[Terraform]]></category>
+		<guid isPermaLink="false">https://srtechops.com/?p=5291</guid>
+
+					<description><![CDATA[Terraform: The Ultimate Infrastructure as Code (IaC) Tool Introduction Imagine being able to define, provision, and manage cloud infrastructure just like writing a script—automating deployments and eliminating manual errors. That’s exactly what Terraform does! Terraform, developed by HashiCorp, is an open-source Infrastructure as Code (IaC) tool that enables users to define infrastructure using a declarative configuration language. Whether you&#8217;re deploying on AWS using Terraform, Azure with Terraform, Google Cloud Terraform deployment, or even on-premises, Terraform makes it seamless and scalable. Why Use Terraform? Here are some compelling reasons why Terraform has become the go-to tool for DevOps and cloud engineers: ✅ Infrastructure as Code (IaC) – Define infrastructure in configuration files, making it reusable and version-controlled. ✅ Multi-Cloud Compatibility – Supports AWS Terraform automation, Azure Terraform deployments, Google Cloud Terraform templates, and more. ✅ Automation &#38; Efficiency – Automates infrastructure provisioning, reducing manual effort. ✅ Declarative Configuration – You specify what you want, and Terraform figures out how to achieve it. ✅ State Management – Keeps track of infrastructure state, allowing for efficient updates and rollbacks. ✅ Modular &#38; Scalable – Use Terraform modules for reusable infrastructure patterns. How Terraform Works Terraform follows a simple yet powerful workflow: 1️⃣ Write – Define infrastructure using HashiCorp Configuration Language (HCL). 2️⃣ Plan – Preview changes before applying them. 3️⃣ Apply – Deploy the infrastructure. 4️⃣ Destroy – Tear down resources when needed. provider &#8220;aws&#8221; {    region = &#8220;us-east-1&#8221;} resource &#8220;aws_instance&#8221; &#8220;example&#8221; {ami = &#8220;ami-12345678&#8221;instance_type = &#8220;t2.micro&#8221;} 👉 This simple code snippet provisions an AWS EC2 instance using Terraform. Terraform vs. Other IaC Tools Feature Terraform Ansible CloudFormation Language HCL YAML JSON/YAML State Management Yes No Yes Multi-Cloud Support Yes No No (AWS only) Agent Required? No No No Declarative? Yes Yes Yes Getting Started with Terraform 🚀 Ready to dive into Terraform for beginners? Here’s how to get started: Install Terraform – Download it from terraform.io. Write Configuration – Define infrastructure in .tf files using Terraform HCL examples. Initialize Terraform – Run terraform init to set up the working directory. Plan &#38; Apply – Run terraform plan and terraform apply to provision resources. Manage &#38; Destroy – Modify configurations and destroy resources when necessary. 💡 Pro Tip: Use Terraform modules to organize and reuse code efficiently! Final Thoughts Terraform revolutionizes infrastructure management by making it declarative, automated, and scalable. Whether you&#8217;re a DevOps engineer, cloud architect, or just starting in Terraform for AWS, mastering Terraform will give you a competitive edge. 🔹 What’s your experience with Terraform? Drop your thoughts in the comments below! 🚀 https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4 Devops Multi cloud Training Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access. Feature Self-Paced Training Live Training 🎯 Mode 🎥Pre-Recorded Session 🧑‍🏫Live Class + Recordings 💼 Projects 🕒 Weekend Real-Time Projects 📅 Weekdays + Weekend Real-Time Projects ❓ Doubt Clearing 📞 Weekend Live Support Session 🧠 Anytime Doubt Clearing Session 👥 Career Support &#38; Mentorship ❌ No ✅ Yes 🎓 Global Certification Training ❌ No ✅ Yes 🔑 Access ♾️ Lifetime Access ♾️ Lifetime Access 💰 Fees ₹4,999 (2 x ₹2,500) ₹7,999 (2 x ₹4,000) ℹ️ For More Info Explore Self-Paced Training Explore Live Training]]></description>
+										<content:encoded><![CDATA[		<div data-elementor-type="wp-post" data-elementor-id="5291" class="elementor elementor-5291">
+							<div class="elementor-element elementor-element-f8576fd e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="f8576fd" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-73aa89e elementor-widget elementor-widget-heading" data-id="73aa89e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Terraform: The Ultimate Infrastructure as Code (IaC) Tool</h2>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-bdf7d56 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent" data-id="bdf7d56" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-2195944 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="2195944" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-0c8913e elementor-widget elementor-widget-heading" data-id="0c8913e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">Introduction
+</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-8f2ea68 elementor-widget elementor-widget-text-editor" data-id="8f2ea68" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Imagine being able to define, provision, and manage cloud infrastructure just like writing a script—automating deployments and eliminating manual errors. That’s exactly what <strong>Terraform</strong> does!</p><p>Terraform, developed by <strong>HashiCorp</strong>, is an open-source <strong>Infrastructure as Code (IaC)</strong> tool that enables users to define infrastructure using a declarative configuration language. Whether you&#8217;re deploying on <strong>AWS using Terraform</strong>, <strong>Azure with Terraform</strong>, <strong>Google Cloud Terraform deployment</strong>, or even on-premises, Terraform makes it seamless and scalable.</p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-529eb45 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="529eb45" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-a48fc11 elementor-widget elementor-widget-heading" data-id="a48fc11" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">Why Use Terraform?</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-9819e99 elementor-widget elementor-widget-text-editor" data-id="9819e99" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Here are some compelling reasons why Terraform has become the go-to tool for DevOps and cloud engineers:</p><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>Infrastructure as Code (IaC)</strong> – Define infrastructure in configuration files, making it reusable and version-controlled.</p><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>Multi-Cloud Compatibility</strong> – Supports <strong>AWS Terraform automation</strong>, <strong>Azure Terraform deployments</strong>, <strong>Google Cloud Terraform templates</strong>, and more.</p><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>Automation &amp; Efficiency</strong> – Automates infrastructure provisioning, reducing manual effort.</p><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>Declarative Configuration</strong> – You specify what you want, and Terraform figures out how to achieve it.</p><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>State Management</strong> – Keeps track of infrastructure state, allowing for efficient updates and rollbacks.</p><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>Modular &amp; Scalable</strong> – Use <strong>Terraform modules</strong> for reusable infrastructure patterns.</p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-be3665e e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="be3665e" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-99ff73f elementor-widget elementor-widget-heading" data-id="99ff73f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">How Terraform Works</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-380e372 elementor-widget elementor-widget-text-editor" data-id="380e372" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Terraform follows a simple yet powerful workflow:</p><p>1&#x20e3; <strong>Write</strong> – Define infrastructure using <strong>HashiCorp Configuration Language (HCL)</strong>.</p><p>2&#x20e3; <strong>Plan</strong> – Preview changes before applying them.</p><p>3&#x20e3; <strong>Apply</strong> – Deploy the infrastructure.</p><p>4&#x20e3; <strong>Destroy</strong> – Tear down resources when needed.</p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-cb17fb0 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="cb17fb0" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-cff3540 elementor-widget elementor-widget-text-editor" data-id="cff3540" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>provider &#8220;aws&#8221; {<br />    region = &#8220;us-east-1&#8221;<br />}</p><p>resource &#8220;aws_instance&#8221; &#8220;example&#8221; {<br />ami = &#8220;ami-12345678&#8221;<br />instance_type = &#8220;t2.micro&#8221;<br />}</p>						</div>
+				</div>
+					</div>
+				</div>
+				<div class="elementor-element elementor-element-999f6f9 elementor-widget elementor-widget-text-editor" data-id="999f6f9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f449.png" alt="👉" class="wp-smiley" style="height: 1em; max-height: 1em;" /> This simple code snippet provisions an <strong>AWS EC2 instance using Terraform</strong>.</p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-8dbf04f e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="8dbf04f" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-1124f3d elementor-widget elementor-widget-heading" data-id="1124f3d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">Terraform vs. Other IaC Tools</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-dc135bd elementor-widget elementor-widget-html" data-id="dc135bd" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Terraform</th>
+                <th>Ansible</th>
+                <th>CloudFormation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Language</td>
+                <td>HCL</td>
+                <td>YAML</td>
+                <td>JSON/YAML</td>
+            </tr>
+            <tr>
+                <td>State Management</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Multi-Cloud Support</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No (AWS only)</td>
+            </tr>
+            <tr>
+                <td>Agent Required?</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Declarative?</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+        </tbody>
+    </table>
+
+		</div>
+				</div>
+		<div class="elementor-element elementor-element-973ed5c e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="973ed5c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-b3e9ba4 elementor-widget elementor-widget-heading" data-id="b3e9ba4" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">Getting Started with Terraform</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-8f8b1a9 elementor-widget elementor-widget-text-editor" data-id="8f8b1a9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []"><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f680.png" alt="🚀" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Ready to dive into <strong>Terraform for beginners</strong>? Here’s how to get started:</p><ol start="1" data-spread="false"><li><p><strong>Install Terraform</strong> – Download it from <a>terraform.io</a>.</p></li><li><p><strong>Write Configuration</strong> – Define infrastructure in <code>.tf</code> files using <strong>Terraform HCL examples</strong>.</p></li><li><p><strong>Initialize Terraform</strong> – Run <code>terraform init</code> to set up the working directory.</p></li><li><p><strong>Plan &amp; Apply</strong> – Run <code>terraform plan</code> and <code>terraform apply</code> to provision resources.</p></li><li><p><strong>Manage &amp; Destroy</strong> – Modify configurations and destroy resources when necessary.</p></li></ol><p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4a1.png" alt="💡" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>Pro Tip:</strong> Use <strong>Terraform modules</strong> to organize and reuse code efficiently!</p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-ff15013 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="ff15013" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-1a66e53 elementor-widget elementor-widget-heading" data-id="1a66e53" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-large">Final Thoughts</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7484393 elementor-widget elementor-widget-text-editor" data-id="7484393" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p data-pm-slice="1 1 []">Terraform revolutionizes infrastructure management by making it <strong>declarative, automated, and scalable</strong>. Whether you&#8217;re a DevOps engineer, cloud architect, or just starting in <strong>Terraform for AWS</strong>, mastering Terraform will give you a competitive edge.</p>
+<p><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f539.png" alt="🔹" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <strong>What’s your experience with Terraform?</strong> Drop your thoughts in the comments below! <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f680.png" alt="🚀" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>						</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-33d8ff02 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no" data-id="33d8ff02" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-7c91d042" data-id="7c91d042" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-35ad36e0 elementor-widget elementor-widget-video" data-id="35ad36e0" data-element_type="widget" data-settings="{&quot;video_type&quot;:&quot;hosted&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;play_on_mobile&quot;:&quot;yes&quot;,&quot;loop&quot;:&quot;yes&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+				<div class="elementor-widget-container">
+					<div class="e-hosted-video elementor-wrapper elementor-open-inline">
+					<video class="elementor-video" src="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" autoplay="" loop="" controls="" playsinline="" controlsList="nodownload"></video>
+				</div>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-56630b22" data-id="56630b22" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2071413b elementor-widget elementor-widget-heading" data-id="2071413b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Devops Multi cloud Training</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4abb32c7 elementor-widget elementor-widget-text-editor" data-id="4abb32c7" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p style="color:#000000">Choose the training style that fits your schedule — Self-Paced or Live Interactive Sessions. Both include hands-on projects, expert support, and lifetime access.</p>
+
+<table style="width: 100%; border-collapse: collapse;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<th style="color: #000080; text-align: center;font-size:20px;">Feature</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Self-Paced Training</th>
+<th style="color: #000080; text-align: center;font-size:20px;">Live Training</th>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3af.png" alt="🎯" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Mode</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f3a5.png" alt="🎥" class="wp-smiley" style="height: 1em; max-height: 1em;" />Pre-Recorded Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9d1-200d-1f3eb.png" alt="🧑‍🏫" class="wp-smiley" style="height: 1em; max-height: 1em;" />Live Class + Recordings</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4bc.png" alt="💼" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Projects</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f552.png" alt="🕒" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Real-Time Projects</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4c5.png" alt="📅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekdays + Weekend Real-Time Projects</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2753.png" alt="❓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Doubt Clearing</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4de.png" alt="📞" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Weekend Live Support Session</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f9e0.png" alt="🧠" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Anytime Doubt Clearing Session</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f465.png" alt="👥" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Career Support &amp; Mentorship</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f393.png" alt="🎓" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Global Certification Training</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/274c.png" alt="❌" class="wp-smiley" style="height: 1em; max-height: 1em;" /> No</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2705.png" alt="✅" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Yes</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f511.png" alt="🔑" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Access</b></td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+<td><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/267e.png" alt="♾" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Lifetime Access</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f4b0.png" alt="💰" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Fees</b></td>
+<td>₹4,999 (2 x ₹2,500)</td>
+<td>₹7,999 (2 x ₹4,000)</td>
+</tr>
+<tr>
+<td style="color: #000080;"><b><img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2139.png" alt="ℹ" class="wp-smiley" style="height: 1em; max-height: 1em;" /> For More Info</b></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-self-paced-training" target="_blank" rel="noopener"><u><i>Explore Self-Paced Training</i></u>
+</a></td>
+<td><a href="https://srtechops.systeme.io/devops-with-multi-cloud-training" target="_blank" rel="noopener"><u><i>Explore Live Training</i></u>
+</a></td>
+</tr>
+</tbody>
+</table>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		]]></content:encoded>
+					
+					<wfw:commentRss>https://srtechops.com/elementor-5291/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		<enclosure url="https://srtechops.com/wp-content/uploads/2025/01/Remainder-App-Technology-Logo.mp4" length="541290" type="video/mp4" />
+
+			</item>
+	</channel>
+</rss>
