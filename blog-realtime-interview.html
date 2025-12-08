@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 100 Real-Time DevOps Interview Questions | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+
+    <style>
+        /* --- ACCORDION & LAYOUT STYLES --- */
+        .qa-section { margin-bottom: 60px; scroll-margin-top: 120px; }
+        .qa-category-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-bottom: 3px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        details {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: var(--primary);
+        }
+
+        summary {
+            padding: 18px 25px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-dark);
+            list-style: none;
+            position: relative;
+            font-size: 1.05rem;
+            background-color: #fff;
+            padding-right: 60px;
+            line-height: 1.5;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 300;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s;
+        }
+
+        details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+
+        details[open] summary {
+            background-color: #f8f9fa;
+            color: var(--primary);
+            border-bottom: 1px solid #eee;
+        }
+
+        .answer-box {
+            padding: 30px;
+            color: #444;
+            line-height: 1.8;
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        .answer-box p { margin-bottom: 15px; }
+        .answer-box strong { color: #222; font-weight: 700; }
+        
+        .scenario-tag {
+            display: inline-block;
+            background: #eef2ff;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .code-snippet {
+            background: #2d2d2d;
+            color: #ccc;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary);
+            overflow-x: auto;
+        }
+
+        /* TOC Box */
+        .toc-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .toc-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .toc-btn {
+            text-decoration: none;
+            background: #fff;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            border: 1px solid #ddd;
+            transition: 0.3s;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toc-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">Interview Prep</span>
+                <h1 class="blog-main-title">Top 25 Real-Time DevOps Interview Questions & Answers</h1>
+                <div class="blog-meta">
+                    <span><i class="fas fa-briefcase"></i> Real-World Scenarios</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="fas fa-check-circle"></i> Practical Solutions</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>This is not a textbook definition guide. This guide is designed to help you answer the question <strong>"Tell me about a time when..."</strong> or <strong>"How do you handle X in production?"</strong>. </p>
+                <p>These answers are written in a natural, conversational style suitable for experienced engineers.</p>
+
+                <div class="toc-box">
+                    <h3>Jump to Topic:</h3>
+                    <div class="toc-links">
+                        <a href="#git" class="toc-btn"><i class="fab fa-git-alt"></i> Git & CI/CD</a>
+                        <a href="#linux" class="toc-btn"><i class="fab fa-linux"></i> Linux & Shell</a>
+                        <a href="#aws" class="toc-btn"><i class="fab fa-aws"></i> AWS Cloud</a>
+                        <a href="#docker" class="toc-btn"><i class="fab fa-docker"></i> Docker</a>
+                        <a href="#k8s" class="toc-btn"><i class="fas fa-cubes"></i> Kubernetes</a>
+                        <a href="#terra" class="toc-btn"><i class="fas fa-layer-group"></i> Terraform</a>
+                        <a href="#monitor" class="toc-btn"><i class="fas fa-chart-line"></i> Monitoring</a>
+                    </div>
+                </div>
+
+                <div id="git" class="qa-section">
+                    <h2 class="qa-category-title"><i class="fab fa-git-alt"></i> 1. Git & CI/CD (Real Scenarios)</h2>
+
+                    <details>
+                        <summary>1. A developer accidentally pushed AWS Access Keys to a public GitHub repo. How do you handle this?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">Critical Security Incident</span>
+                            <p>This is a P0 (Priority Zero) incident. I would follow these exact steps:</p>
+                            <ol>
+                                <li><strong>Revoke Immediately:</strong> The moment keys are public, they are compromised. I would go to the AWS IAM console and deactivate/delete those keys immediately to stop any unauthorized access.</li>
+                                <li><strong>Clean History:</strong> Simply deleting the file in a new commit isn't enough because the keys exist in the commit history. I would use a tool like <strong>BFG Repo-Cleaner</strong> or <code>git filter-branch</code> to scrub that specific file from the entire Git history.</li>
+                                <li><strong>Force Push:</strong> After cleaning, I would run <code>git push --force</code> to update the remote repository.</li>
+                                <li><strong>Rotate Secrets:</strong> I would generate new keys and update them in our CI/CD secrets manager (like Jenkins Credentials or GitHub Secrets).</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>2. Explain the Git Branching Strategy used in your project.</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">Workflow</span>
+                            <p>In my current project, we follow the <strong>Feature Branch Workflow</strong> combined with Pull Requests:</p>
+                            <ul>
+                                <li><strong>Main/Master Branch:</strong> This is our production-ready code. It is locked; no one can push directly to it.</li>
+                                <li><strong>Feature Branches:</strong> When I start a task (e.g., creating a login page), I create a branch named <code>feature/login-page</code> from Main.</li>
+                                <li><strong>Pull Request (PR):</strong> Once I'm done, I push my branch and raise a PR. This triggers our CI pipeline which runs unit tests.</li>
+                                <li><strong>Review & Merge:</strong> A senior engineer reviews the code. If the tests pass and the review is approved, we merge it into Main using the "Squash and Merge" strategy to keep history clean.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>3. What is the difference between Git Merge and Git Rebase? When do you use which?</summary>
+                        <div class="answer-box">
+                            <p>This is a common debate, but here is how we apply it practically:</p>
+                            <p><strong>Git Merge:</strong> It preserves history exactly as it happened. It creates a "Merge Commit". We use this when merging Feature branches into the Main branch because we want a true record of when features were added.</p>
+                            <p><strong>Git Rebase:</strong> It rewrites history to make it look linear. It picks up my changes and places them <em>on top</em> of the latest code. I use this locally on my feature branch before raising a PR. It keeps my branch clean and up-to-date with Main without creating messy "merge commits".</p>
+                            <p><strong>Rule of Thumb:</strong> Never rebase a public/shared branch, only your local private branch.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>4. Your CI/CD pipeline passed, but the deployment failed in Production. How do you debug?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">Troubleshooting</span>
+                            <p>This usually happens due to environment differences. I would check:</p>
+                            <ol>
+                                <li><strong>Config/Secrets:</strong> Did we add a new environment variable (e.g., DB_PASSWORD) in the Dev environment but forget to add it to the Production secrets manager?</li>
+                                <li><strong>Networking:</strong> Is the Production server able to talk to the Database? I'd check Security Groups or Firewalls.</li>
+                                <li><strong>Logs:</strong> I would immediately check the application logs (CloudWatch or Splunk) to see the crash error.</li>
+                                <li><strong>Version Mismatch:</strong> Are we using the same Docker image tag? I’d verify the SHA/Tag of the deployed image.</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>5. Explain how you setup a Jenkins Pipeline from scratch.</summary>
+                        <div class="answer-box">
+                            <p>I usually write a <strong>Declarative Pipeline</strong> using a `Jenkinsfile` stored in the git repo. It has these stages:</p>
+                            <div class="code-snippet">
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') { steps { git 'https://github.com/my-repo.git' } }
+        stage('Build') { steps { sh 'mvn clean package' } }
+        stage('Test') { steps { sh 'mvn test' } }
+        stage('Docker Build') { steps { sh 'docker build -t myapp:v1 .' } }
+        stage('Deploy') { steps { sh './deploy.sh' } }
+    }
+}
+                            </div>
+                            <p>I configure a <strong>Webhook</strong> in GitHub so that every time a developer pushes code, Jenkins automatically triggers this pipeline.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div id="linux" class="qa-section">
+                    <h2 class="qa-category-title"><i class="fab fa-linux"></i> 2. Linux & Shell (Real Scenarios)</h2>
+
+                    <details>
+                        <summary>6. A production server is running extremely slow. How do you troubleshoot?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">Performance Tuning</span>
+                            <p>I follow a standard drill to identify the bottleneck:</p>
+                            <ol>
+                                <li><strong>Check CPU/Load:</strong> I run <code>top</code>. If the "Load Average" is higher than the number of CPU cores, the server is overloaded. I look for the process consuming the most %CPU.</li>
+                                <li><strong>Check Memory:</strong> I look at the memory line in <code>top</code> or run <code>free -m</code>. If free memory is near zero and "Swap" is being used heavily, it means the application is thrashing (swapping to disk), which kills performance.</li>
+                                <li><strong>Check Disk I/O:</strong> If CPU and RAM are fine, it might be the disk. I run <code>iostat</code> or <code>iotop</code> to see if a process is reading/writing too much data.</li>
+                                <li><strong>Check Disk Space:</strong> <code>df -h</code>. A full disk can cause services to hang.</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>7. You get an error "No space left on device", but 'df -h' shows 30% space free. Why?</summary>
+                        <div class="answer-box">
+                            <p>This is a classic Linux interview question. The issue is likely <strong>Inodes</strong>.</p>
+                            <p>In Linux, every file uses one Inode (Index Node). If an application creates millions of tiny 0kb files (like session files or cache), you can run out of Inodes even if you have GBs of storage left.</p>
+                            <p><strong>Solution:</strong> I run <code>df -i</code> to check Inode usage. If it's 100%, I find the folder with millions of files and delete them.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>8. How do you find which process is listening on Port 8080?</summary>
+                        <div class="answer-box">
+                            <p>I use the netstat or ss command:</p>
+                            <p><code>netstat -tulpn | grep 8080</code></p>
+                            <p>This will show me the Process ID (PID) and the name of the service (e.g., java or python) holding that port. If I need to free the port, I can then kill that PID.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>9. What is a Zombie Process and how do you kill it?</summary>
+                        <div class="answer-box">
+                            <p>A Zombie process (marked with `Z` in top) is a process that has completed execution but its entry is still in the process table because the Parent process hasn't read its exit code.</p>
+                            <p><strong>You cannot kill a Zombie directly</strong> because it's already dead! The only way to remove it is to kill its <strong>Parent Process</strong>. The parent will restart, or init will take over and clean up the zombies.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>10. How do you check live logs of a service?</summary>
+                        <div class="answer-box">
+                            <p>I use the <code>tail</code> command. For example: <code>tail -f /var/log/nginx/error.log</code>.</p>
+                            <p>The <code>-f</code> flag stands for "follow", which streams the logs in real-time to my screen as they are written.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div id="aws" class="qa-section">
+                    <h2 class="qa-category-title"><i class="fab fa-aws"></i> 3. AWS Cloud (Real Scenarios)</h2>
+
+                    <details>
+                        <summary>11. I created a web server in a Public Subnet, but I cannot access it from the internet. Why?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">VPC Troubleshooting</span>
+                            <p>I would check the "Path to the Internet" in this order:</p>
+                            <ol>
+                                <li><strong>Internet Gateway:</strong> Does the VPC have an Internet Gateway (IGW) attached?</li>
+                                <li><strong>Route Table:</strong> Does the Public Subnet's Route Table have a route <code>0.0.0.0/0 -> IGW</code>?</li>
+                                <li><strong>Security Group:</strong> Does the EC2 Security Group allow Inbound traffic on Port 80 (HTTP) from <code>0.0.0.0/0</code>?</li>
+                                <li><strong>NACL:</strong> Is the Network ACL blocking traffic at the subnet level?</li>
+                                <li><strong>Public IP:</strong> Did the instance actually get a Public IP address assigned?</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>12. How do you reduce AWS costs for a Dev environment?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">Cost Optimization</span>
+                            <p>I implement a few strategies:</p>
+                            <ul>
+                                <li><strong>Auto-Stop:</strong> I use AWS Lambda to automatically stop all Dev EC2 instances at 7 PM on Friday and start them at 8 AM on Monday. This saves about 30% cost.</li>
+                                <li><strong>Spot Instances:</strong> For stateless workloads (like Jenkins agents or batch processing), I use Spot Instances which are up to 90% cheaper.</li>
+                                <li><strong>S3 Lifecycle:</strong> I set up rules to move old logs to S3 Glacier Deep Archive after 30 days.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>13. Explain the difference between Security Group and NACL.</summary>
+                        <div class="answer-box">
+                            <p>Think of <strong>Security Group (SG)</strong> as the Doorman for the <strong>House (Instance)</strong>. It is <strong>Stateful</strong>—if the doorman lets a guest in, he remembers them and lets them out automatically.</p>
+                            <p>Think of <strong>NACL</strong> as the Guard at the <strong>Street Gate (Subnet)</strong>. It is <strong>Stateless</strong>—the guard checks your ID when you enter AND when you leave. You must explicitly allow traffic in both directions.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>14. How do you securely store Database passwords?</summary>
+                        <div class="answer-box">
+                            <p>We never store passwords in plain text code or Git. We use <strong>AWS Secrets Manager</strong> or <strong>Systems Manager (SSM) Parameter Store</strong>.</p>
+                            <p>The application retrieves the password at runtime using the AWS SDK or an environment variable injection, ensuring the secret never touches the disk.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>15. What is the difference between Horizontal and Vertical Scaling?</summary>
+                        <div class="answer-box">
+                            <p><strong>Vertical Scaling (Scale Up):</strong> Increasing the size of the machine (e.g., t2.micro to t2.large). It requires downtime (reboot) and has a limit.</p>
+                            <p><strong>Horizontal Scaling (Scale Out):</strong> Adding <em>more</em> machines (e.g., going from 2 servers to 5 servers). This is done using Auto Scaling Groups. It has zero downtime and unlimited scale.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div id="docker" class="qa-section">
+                    <h2 class="qa-category-title"><i class="fab fa-docker"></i> 4. Docker (Real Scenarios)</h2>
+
+                    <details>
+                        <summary>16. Why does a Docker container exit immediately after starting?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">Container Fundamentals</span>
+                            <p>A container is not a Virtual Machine; it is just a process. It only stays alive as long as the <strong>Main Process (PID 1)</strong> is running.</p>
+                            <p>If you run a container with a command like <code>echo "Hello"</code>, it prints hello and finishes. Since the task is done, the container exits. To keep it running, you need a long-running process like a Web Server (Nginx) or use <code>sleep infinity</code> for debugging.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>17. How do you optimize Docker Image size?</summary>
+                        <div class="answer-box">
+                            <p>Small images are faster to pull and more secure. My techniques:</p>
+                            <ol>
+                                <li><strong>Use Alpine:</strong> Switch from <code>ubuntu</code> (700MB) to <code>alpine</code> (5MB) base images.</li>
+                                <li><strong>Multi-Stage Builds:</strong> Use a large image with compilers to build the app, then copy <em>only</em> the executable binary to a tiny runtime image. This discards all the source code and build tools.</li>
+                                <li><strong>.dockerignore:</strong> Exclude files like `.git`, `node_modules`, and local logs from the build context.</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>18. How do containers communicate with each other?</summary>
+                        <div class="answer-box">
+                            <p>By default, they can talk via IP, but IPs change. The best way is to create a <strong>User-Defined Bridge Network</strong>.</p>
+                            <p><code>docker network create my-net</code></p>
+                            <p>When containers are on the same custom network, they can reach each other using their <strong>Container Name</strong> as a DNS hostname (e.g., `ping db-container`).</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div id="k8s" class="qa-section">
+                    <h2 class="qa-category-title"><i class="fas fa-cubes"></i> 5. Kubernetes (Real Scenarios)</h2>
+
+                    <details>
+                        <summary>19. A Pod status shows 'CrashLoopBackOff'. What does this mean and how do you fix it?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">K8s Debugging</span>
+                            <p>This means the Pod starts, crashes, K8s restarts it, and it crashes again in a loop.</p>
+                            <p><strong>Fix:</strong> I immediately check the logs using <code>kubectl logs [pod-name]</code>. Usually, it's an application error (like a missing database password or a syntax error in code). If logs are empty, I check <code>kubectl describe pod</code> to see if it ran out of memory (OOMKilled).</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>20. Explain the difference between ClusterIP, NodePort, and LoadBalancer.</summary>
+                        <div class="answer-box">
+                            <ul>
+                                <li><strong>ClusterIP:</strong> The default. Exposes the service on an internal IP. Only reachable from <em>inside</em> the cluster. Good for Databases.</li>
+                                <li><strong>NodePort:</strong> Opens a specific port (e.g., 30005) on every Worker Node. You can access it via <code>NodeIP:30005</code>. Good for testing.</li>
+                                <li><strong>LoadBalancer:</strong> Provisions a real Cloud Load Balancer (AWS ALB) to expose the app to the internet. Good for Production Web Apps.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>21. What is the difference between Deployment and StatefulSet?</summary>
+                        <div class="answer-box">
+                            <p><strong>Deployment:</strong> Used for "Stateless" apps like Web Servers. Pods are interchangeable. If Pod-ABC dies, Pod-XYZ replaces it. They don't have unique identities.</p>
+                            <p><strong>StatefulSet:</strong> Used for Databases. Pods have fixed identities (db-0, db-1). Order matters (db-0 starts before db-1). Storage is sticky—if db-0 dies, the new db-0 reconnects to the exact same hard drive.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>22. What is Ingress?</summary>
+                        <div class="answer-box">
+                            <p>If I have 10 microservices, I don't want to buy 10 Load Balancers (expensive!).</p>
+                            <p><strong>Ingress</strong> is a smart router. It sits behind one Load Balancer and routes traffic based on rules. For example, <code>domain.com/cart</code> goes to Cart Service, and <code>domain.com/user</code> goes to User Service.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div id="terra" class="qa-section">
+                    <h2 class="qa-category-title"><i class="fas fa-layer-group"></i> 6. Terraform (IaC)</h2>
+
+                    <details>
+                        <summary>23. What is Terraform State and why do we lock it?</summary>
+                        <div class="answer-box">
+                            <p>The <strong>State File</strong> (`terraform.tfstate`) is the map. It tells Terraform what resources exist in the cloud.</p>
+                            <p>We <strong>Lock</strong> it (using DynamoDB) to prevent race conditions. Imagine two developers run <code>terraform apply</code> at the exact same second. Without locking, they would both try to write to the state file and corrupt it. Locking ensures only one person can modify infrastructure at a time.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>24. Someone manually deleted an EC2 instance. What happens when you run Terraform?</summary>
+                        <div class="answer-box">
+                            <span class="scenario-tag">Drift Detection</span>
+                            <p>This is called <strong>Drift</strong>. When I run <code>terraform plan</code>, Terraform refreshes the state and realizes "Hey, the State says there should be a server, but AWS says it's gone."</p>
+                            <p>Terraform will show a plan to <strong>Create</strong> that resource again to bring the reality back in sync with the code.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Note:</strong> We have included 25 high-detail scenarios here. In the full downloadable PDF, we cover all 100 variations including edge cases for Prometheus, Grafana, and Ansible.
+                </div>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
