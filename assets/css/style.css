@@ -193,6 +193,31 @@ img { max-width: 100%; height: auto; }
 }
 
 /* MOBILE RESPONSIVE */
+
+/* Mobile adjustments for Hero */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 0; /* Less padding on mobile */
+        text-align: center; /* Center text for better look */
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr; /* Stack into 1 column */
+        gap: 30px;
+        display: flex;       /* Use Flexbox to control order */
+        flex-direction: column-reverse; /* Puts image ON TOP of text if you prefer, or remove this line to keep text on top */
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Smaller font for mobile */
+    }
+
+    .hero-image img {
+        max-width: 80%; /* Don't let image take full width */
+        margin: 0 auto; /* Center the image */
+    }
+}
+
 @media (max-width: 900px) {
     .choose-layout { grid-template-columns: 1fr; text-align: center; }
     .choose-text .section-title { text-align: center; }
