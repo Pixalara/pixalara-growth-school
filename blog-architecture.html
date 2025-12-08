@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Architecture Explained | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">System Design</span>
+                <h1 class="blog-main-title">Single-Tier vs Two-Tier vs Three-Tier Architecture</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2024</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="fas fa-clock"></i> 6 Min Read</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>When building a software application, you cannot just throw all the code into one pile. You need to organize it. This organization is called <strong>"Architecture"</strong>.</p>
+                <p>The most common way to organize apps is by using <strong>"Tiers"</strong> (or layers). Think of tiers like the floors of a building. Each floor has a specific job. Let’s break down the three most common types in very simple English.</p>
+
+                <hr style="margin: 30px 0; border-top: 1px solid #eee;">
+
+                <h2>1. Single-Tier Architecture (All-in-One)</h2>
+                <p>In this architecture, everything is on <strong>one single computer</strong>. The Interface (what you see), the Logic (the brain), and the Database (the storage) are all installed together.</p>
+                
+                <h3>How it works:</h3>
+                <p>You download an app, install it on your laptop, and run it. It doesn't need the internet. It doesn't talk to any other server.</p>
+
+                <ul>
+                    <li><strong>Pros:</strong> Very fast, easy to install, no network needed.</li>
+                    <li><strong>Cons:</strong> If your computer crashes, all data is lost. It is hard to update.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Real World Example:</strong>
+                    "Think of MS Word or a simple Calculator app on your laptop. You type a document, and it saves directly to your hard drive. No internet required. It is a one-man army."
+                </div>
+
+                <h2>2. Two-Tier Architecture (Client-Server)</h2>
+                <p>Here, we split the application into two parts: The <strong>Client</strong> (User) and the <strong>Server</strong> (Database).</p>
+
+                <h3>How it works:</h3>
+                <p>The application runs on your computer (Client), but it saves all the data on a big central computer (Server). The Client talks directly to the Database.</p>
+
+                <ul>
+                    <li><strong>Pros:</strong> Multiple people can access the same data at the same time.</li>
+                    <li><strong>Cons:</strong> <strong>Security Risk!</strong> Since the user's computer talks directly to the database, a smart hacker can easily steal data. Also, if 10,000 people connect at once, the database gets slow.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Real World Example:</strong>
+                    "Imagine a Railway Ticket Booking Counter. The clerk (Client) types on their computer, but the ticket details are saved in the main Railway Database (Server). The clerk is connected directly to the database."
+                </div>
+
+                <h2>3. Three-Tier Architecture (The Professional Standard)</h2>
+                <p>This is what 99% of modern websites (like Facebook, Amazon, Pixalara) use. We introduce a "Middleman" to make things safe.</p>
+
+                <h3>The Three Layers:</h3>
+                <ol>
+                    <li><strong>Presentation Tier (Web Tier):</strong> This is the website you see in your browser (HTML/CSS). It runs on your laptop.</li>
+                    <li><strong>Application Tier (Logic Tier):</strong> This is the "Brain". It runs on a server in the cloud (like AWS EC2). It processes your request.</li>
+                    <li><strong>Data Tier (Database):</strong> This is the "Vault". It stores the data (SQL/NoSQL).</li>
+                </ol>
+
+                <h3>Why is this better?</h3>
+                <p><strong>Security.</strong> The user (Presentation Tier) <em>never</em> touches the Database directly. You talk to the Logic Tier, and the Logic Tier talks to the Database. It's like having a security guard.</p>
+
+                <div class="highlight-box">
+                    <strong>Real World Example:</strong>
+                    "Think of a <strong>Restaurant</strong>.
+                    <br><br>
+                    1. <strong>You (Presentation Tier):</strong> You sit at the table and look at the menu.<br>
+                    2. <strong>The Waiter (Logic Tier):</strong> You give your order to the waiter. You are not allowed to enter the kitchen.<br>
+                    3. <strong>The Kitchen (Data Tier):</strong> The waiter takes your order to the kitchen, gets the food, and brings it back to you.
+                    <br><br>
+                    This is secure because customers cannot mess up the kitchen!"
+                </div>
+
+                <h2>Comparison Summary</h2>
+                <table style="width:100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem;">
+                    <tr style="background:#f4f4f4; text-align:left;">
+                        <th style="padding:10px; border:1px solid #ddd;">Type</th>
+                        <th style="padding:10px; border:1px solid #ddd;">Where is Data?</th>
+                        <th style="padding:10px; border:1px solid #ddd;">Best For?</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border:1px solid #ddd;"><strong>Single-Tier</strong></td>
+                        <td style="padding:10px; border:1px solid #ddd;">On your laptop</td>
+                        <td style="padding:10px; border:1px solid #ddd;">Calculators, MS Office</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border:1px solid #ddd;"><strong>Two-Tier</strong></td>
+                        <td style="padding:10px; border:1px solid #ddd;">On a Server (Direct Access)</td>
+                        <td style="padding:10px; border:1px solid #ddd;">Office Intranet Apps</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border:1px solid #ddd;"><strong>Three-Tier</strong></td>
+                        <td style="padding:10px; border:1px solid #ddd;">On a Database (Protected)</td>
+                        <td style="padding:10px; border:1px solid #ddd;">Websites, Mobile Apps</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+                <a href="blog-ports.html" class="nav-link-blog">Next: Port Numbers &rarr;</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

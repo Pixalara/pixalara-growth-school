@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes for Beginners | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">Containerization</span>
+                <h1 class="blog-main-title">Kubernetes for Beginners: 10 Concepts Explained Simply</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2024</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="far fa-clock"></i> 10 Min Read</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>Kubernetes (often written as <strong>K8s</strong>) is the most popular tool in the DevOps world today. But if you read the official documentation, it sounds scary and complicated. Let's fix that.</p>
+                
+                <p>Imagine Kubernetes is the <strong>Captain of a massive Cargo Ship</strong>. Its job is to manage thousands of shipping containers (your applications) automatically. Here are the top 10 concepts you need to know.</p>
+
+                <h2>1. The Cluster (The Ship)</h2>
+                <p>A <strong>Cluster</strong> is just a group of computers working together as one big machine. In our analogy, this is the entire ship. You don't talk to individual computers; you talk to the Cluster, and it figures out the rest.</p>
+
+                <h2>2. Nodes (Master vs Worker)</h2>
+                <p>A Cluster is made up of computers called <strong>Nodes</strong>. There are two types:</p>
+                <ul>
+                    <li><strong>Master Node (Control Plane):</strong> The Captain. It makes decisions (e.g., "Start 3 apps"). It doesn't run the apps itself.</li>
+                    <li><strong>Worker Node:</strong> The Sailors. These are the servers that actually do the hard work and run your applications.</li>
+                </ul>
+
+                <h2>3. Pod (The Atom)</h2>
+                <p>This is the smallest unit in Kubernetes. You might think K8s manages "Containers" (like Docker), but it actually manages <strong>Pods</strong>.</p>
+                <div class="highlight-box">
+                    <strong>Simple English:</strong> A Pod is a wrapper around a container. Imagine your container is a peanut, and the Pod is the shell. K8s picks up the shell, not the peanut.
+                </div>
+
+                <h2>4. Deployment (The Manager)</h2>
+                <p>You rarely create a Pod directly. Instead, you create a <strong>Deployment</strong>. Why?</p>
+                <p>If you create a Pod and it crashes, it stays dead. If you create a Deployment and say "I want 3 copies," the Deployment acts like a manager. If one Pod crashes, the Deployment immediately notices and starts a new one to keep the count at 3.</p>
+
+                <h2>5. Service (The Phone Number)</h2>
+                <p>Pods are mortal. They die and get replaced, meaning their IP addresses change constantly. How do users find them?</p>
+                <p>A <strong>Service</strong> gives you a stable, permanent IP address. It acts like a Receptionist. You call the Service, and the Service forwards your call to whichever Pod is currently alive and running.</p>
+
+                <h2>6. Ingress (The Entry Gate)</h2>
+                <p>A Service works inside the cluster. But how does the outside world (the internet) reach your website?</p>
+                <p><strong>Ingress</strong> is the smart door. It sits at the edge and routes traffic based on rules. For example: "If user goes to <em>/store</em>, send them to the Store Service. If they go to <em>/blog</em>, send them to the Blog Service."</p>
+
+                <h2>7. Namespace (Virtual Walls)</h2>
+                <p>If you have 100 teams using one Cluster, it gets messy. <strong>Namespaces</strong> allow you to divide the cluster into virtual rooms.</p>
+                <p>Team A works in the "Dev" namespace, and Team B works in the "Prod" namespace. They cannot accidentally delete each other's work.</p>
+
+                <h2>8. ConfigMap & Secrets (Settings)</h2>
+                <p>You shouldn't hardcode passwords in your code. K8s separates code from configuration.</p>
+                <ul>
+                    <li><strong>ConfigMap:</strong> Stores plain text settings (e.g., "Background Color = Blue").</li>
+                    <li><strong>Secrets:</strong> Stores sensitive data securely (e.g., "Database Password = 12345").</li>
+                </ul>
+
+                <h2>9. Volume (The Hard Drive)</h2>
+                <p>Containers are temporary. If you restart a container, all files inside it are lost. This is bad for databases.</p>
+                <p>A <strong>Persistent Volume (PV)</strong> is like an external USB drive plugged into the cluster. Even if the Pod dies, the data on the Volume is safe.</p>
+
+                <h2>10. Helm (The App Store)</h2>
+                <p>Installing a complex app on K8s involves writing 10+ YAML files. It is tedious.</p>
+                <p><strong>Helm</strong> is the "Package Manager" for Kubernetes (like the App Store or Play Store). Instead of writing files manually, you just type <code>helm install my-database</code>, and it does everything for you.</p>
+
+                <hr style="margin: 40px 0; border:0; border-top:1px solid #eee;">
+
+                <h3>Conclusion</h3>
+                <p>Kubernetes seems complex because it has many moving parts, but each part solves a specific problem. Once you understand these 10 concepts, you are ready to start your first project!</p>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+                <a href="blog-playbook.html" class="nav-link-blog">Next: DevOps Playbook &rarr;</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

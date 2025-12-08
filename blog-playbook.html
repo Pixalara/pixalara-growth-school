@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Engineer Playbook | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+    
+    <style>
+        .cmd-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 40px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .cmd-table thead {
+            background-color: var(--primary);
+            color: white;
+        }
+        .cmd-table th, .cmd-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .cmd-table tr:hover {
+            background-color: #f9f9ff;
+        }
+        .cmd-code {
+            font-family: 'Courier New', monospace;
+            background: #f4f4f4;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #d63384; /* Pinkish code color */
+            font-weight: 600;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 50px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .section-header i {
+            font-size: 2rem;
+        }
+        /* Icon Colors */
+        .icon-linux { color: #f39c12; }
+        .icon-git { color: #e74c3c; }
+        .icon-docker { color: #3498db; }
+        .icon-k8s { color: #326ce5; }
+        .icon-tf { color: #8e44ad; }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">Ultimate Guide</span>
+                <h1 class="blog-main-title">DevOps Engineer Playbook: Practical Commands for Everyday Use</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2024</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="fas fa-bookmark"></i> Bookmark this page</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>Welcome to the ultimate "Cheat Sheet" for DevOps Engineers. Whether you are a beginner just starting or a professional who needs a quick reminder, this guide covers the most essential commands for Linux, Git, Docker, Kubernetes, and Terraform.</p>
+                
+                <p>We have selected the <strong>Top 25+ commands</strong> for each tool that you will actually use in a real job. No fluff, just practical commands.</p>
+
+                <div class="section-header">
+                    <i class="fab fa-linux icon-linux"></i>
+                    <h2>1. Linux Essentials</h2>
+                </div>
+                <p>Linux is the operating system of the cloud. You cannot survive in DevOps without mastering the terminal.</p>
+                
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Command</th>
+                            <th>Use Case (Simple English)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="cmd-code">ls -la</span></td><td>List all files, including hidden ones, with details.</td></tr>
+                        <tr><td><span class="cmd-code">pwd</span></td><td>Show me "Print Working Directory" (Where am I?).</td></tr>
+                        <tr><td><span class="cmd-code">cd ..</span></td><td>Go back one folder level.</td></tr>
+                        <tr><td><span class="cmd-code">mkdir folder_name</span></td><td>Create a new folder (directory).</td></tr>
+                        <tr><td><span class="cmd-code">touch file.txt</span></td><td>Create an empty file.</td></tr>
+                        <tr><td><span class="cmd-code">cp file1 file2</span></td><td>Copy file1 to file2.</td></tr>
+                        <tr><td><span class="cmd-code">mv file1 folder/</span></td><td>Move a file into a folder.</td></tr>
+                        <tr><td><span class="cmd-code">rm -rf folder/</span></td><td>Force delete a folder and everything inside it (Careful!).</td></tr>
+                        <tr><td><span class="cmd-code">cat file.txt</span></td><td>Show the content of a file on the screen.</td></tr>
+                        <tr><td><span class="cmd-code">tail -f log.txt</span></td><td>Watch the end of a file in real-time (Great for logs).</td></tr>
+                        <tr><td><span class="cmd-code">grep "error" file.txt</span></td><td>Search for the word "error" inside a file.</td></tr>
+                        <tr><td><span class="cmd-code">chmod 777 file.sh</span></td><td>Give full permissions (Read, Write, Execute) to everyone.</td></tr>
+                        <tr><td><span class="cmd-code">chown user:group file</span></td><td>Change who owns the file.</td></tr>
+                        <tr><td><span class="cmd-code">ps aux</span></td><td>Show all running processes (programs).</td></tr>
+                        <tr><td><span class="cmd-code">top</span></td><td>Show CPU and Memory usage in real-time (Task Manager).</td></tr>
+                        <tr><td><span class="cmd-code">kill 1234</span></td><td>Stop a process using its ID (PID).</td></tr>
+                        <tr><td><span class="cmd-code">df -h</span></td><td>Check disk space (Is your hard drive full?).</td></tr>
+                        <tr><td><span class="cmd-code">free -m</span></td><td>Check how much RAM memory is free.</td></tr>
+                        <tr><td><span class="cmd-code">tar -czvf backup.tar.gz folder/</span></td><td>Compress a folder into a zip/tar file.</td></tr>
+                        <tr><td><span class="cmd-code">curl http://google.com</span></td><td>Test if a website is reachable from the terminal.</td></tr>
+                        <tr><td><span class="cmd-code">wget link.zip</span></td><td>Download a file from the internet.</td></tr>
+                        <tr><td><span class="cmd-code">ping 8.8.8.8</span></td><td>Check if you are connected to the internet.</td></tr>
+                        <tr><td><span class="cmd-code">history</span></td><td>Show the list of commands you typed previously.</td></tr>
+                        <tr><td><span class="cmd-code">sudo su</span></td><td>Switch to the Administrator (Root) user.</td></tr>
+                        <tr><td><span class="cmd-code">systemctl restart nginx</span></td><td>Restart a service (like a web server).</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="section-header">
+                    <i class="fab fa-git-alt icon-git"></i>
+                    <h2>2. Git Version Control</h2>
+                </div>
+                <p>Git helps teams collaborate on code. It is the "Save Game" button for developers.</p>
+
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Command</th>
+                            <th>Use Case (Simple English)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="cmd-code">git init</span></td><td>Start a new Git repository in this folder.</td></tr>
+                        <tr><td><span class="cmd-code">git clone [url]</span></td><td>Download a project from GitHub to your computer.</td></tr>
+                        <tr><td><span class="cmd-code">git status</span></td><td>Check which files have been changed.</td></tr>
+                        <tr><td><span class="cmd-code">git add .</span></td><td>Select ALL changed files to be saved.</td></tr>
+                        <tr><td><span class="cmd-code">git commit -m "msg"</span></td><td>Save the selected files with a message.</td></tr>
+                        <tr><td><span class="cmd-code">git push origin main</span></td><td>Upload your saved changes to GitHub.</td></tr>
+                        <tr><td><span class="cmd-code">git pull</span></td><td>Download the latest changes from GitHub.</td></tr>
+                        <tr><td><span class="cmd-code">git branch</span></td><td>List all branches (versions) of your code.</td></tr>
+                        <tr><td><span class="cmd-code">git checkout -b new-feature</span></td><td>Create and switch to a new branch.</td></tr>
+                        <tr><td><span class="cmd-code">git checkout main</span></td><td>Switch back to the main branch.</td></tr>
+                        <tr><td><span class="cmd-code">git merge feature</span></td><td>Combine the 'feature' branch into the current branch.</td></tr>
+                        <tr><td><span class="cmd-code">git diff</span></td><td>Show exactly what lines of code changed.</td></tr>
+                        <tr><td><span class="cmd-code">git log</span></td><td>Show history of all commits (saves).</td></tr>
+                        <tr><td><span class="cmd-code">git reset --hard</span></td><td>Delete all unsaved changes (Dangerous!).</td></tr>
+                        <tr><td><span class="cmd-code">git stash</span></td><td>Temporarily hide changes to work on something else.</td></tr>
+                        <tr><td><span class="cmd-code">git stash pop</span></td><td>Bring back the hidden changes.</td></tr>
+                        <tr><td><span class="cmd-code">git remote -v</span></td><td>Show the URL of the GitHub repository.</td></tr>
+                        <tr><td><span class="cmd-code">git fetch</span></td><td>Check for updates without downloading them yet.</td></tr>
+                        <tr><td><span class="cmd-code">git revert [commit_id]</span></td><td>Undo a specific save without deleting history.</td></tr>
+                        <tr><td><span class="cmd-code">git tag v1.0</span></td><td>Label a specific point in history as "v1.0".</td></tr>
+                        <tr><td><span class="cmd-code">git config --global user.name "Me"</span></td><td>Set your name for Git.</td></tr>
+                        <tr><td><span class="cmd-code">git branch -d feature</span></td><td>Delete a branch you don't need anymore.</td></tr>
+                        <tr><td><span class="cmd-code">git show [commit_id]</span></td><td>See details of a specific save.</td></tr>
+                        <tr><td><span class="cmd-code">git blame file.txt</span></td><td>See who wrote each line of code (Good for debugging).</td></tr>
+                        <tr><td><span class="cmd-code">git clean -fd</span></td><td>Remove untracked files from the folder.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="section-header">
+                    <i class="fab fa-docker icon-docker"></i>
+                    <h2>3. Docker Commands</h2>
+                </div>
+                <p>Docker packages applications into containers so they run anywhere.</p>
+
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Command</th>
+                            <th>Use Case (Simple English)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="cmd-code">docker version</span></td><td>Check if Docker is installed and running.</td></tr>
+                        <tr><td><span class="cmd-code">docker build -t app:v1 .</span></td><td>Build an image from a Dockerfile.</td></tr>
+                        <tr><td><span class="cmd-code">docker images</span></td><td>List all images stored on your computer.</td></tr>
+                        <tr><td><span class="cmd-code">docker run -d -p 80:80 nginx</span></td><td>Start a container (Nginx) in background on port 80.</td></tr>
+                        <tr><td><span class="cmd-code">docker ps</span></td><td>Show only running containers.</td></tr>
+                        <tr><td><span class="cmd-code">docker ps -a</span></td><td>Show ALL containers (running and stopped).</td></tr>
+                        <tr><td><span class="cmd-code">docker stop [id]</span></td><td>Gracefully stop a running container.</td></tr>
+                        <tr><td><span class="cmd-code">docker kill [id]</span></td><td>Forcefully stop a container instantly.</td></tr>
+                        <tr><td><span class="cmd-code">docker rm [id]</span></td><td>Delete a stopped container.</td></tr>
+                        <tr><td><span class="cmd-code">docker rmi [image]</span></td><td>Delete an image to save space.</td></tr>
+                        <tr><td><span class="cmd-code">docker logs [id]</span></td><td>See what the container is printing (Debugging).</td></tr>
+                        <tr><td><span class="cmd-code">docker exec -it [id] bash</span></td><td>Log inside a running container to type commands.</td></tr>
+                        <tr><td><span class="cmd-code">docker login</span></td><td>Log in to Docker Hub.</td></tr>
+                        <tr><td><span class="cmd-code">docker push user/app:v1</span></td><td>Upload your image to Docker Hub.</td></tr>
+                        <tr><td><span class="cmd-code">docker pull nginx</span></td><td>Download an image from the internet.</td></tr>
+                        <tr><td><span class="cmd-code">docker network ls</span></td><td>List all networks.</td></tr>
+                        <tr><td><span class="cmd-code">docker volume ls</span></td><td>List all storage volumes.</td></tr>
+                        <tr><td><span class="cmd-code">docker system prune</span></td><td>Delete all unused data (Clean up junk).</td></tr>
+                        <tr><td><span class="cmd-code">docker inspect [id]</span></td><td>View detailed technical info about a container.</td></tr>
+                        <tr><td><span class="cmd-code">docker stats</span></td><td>Live view of CPU/RAM usage of containers.</td></tr>
+                        <tr><td><span class="cmd-code">docker-compose up -d</span></td><td>Start multiple containers defined in a compose file.</td></tr>
+                        <tr><td><span class="cmd-code">docker-compose down</span></td><td>Stop and delete all containers from compose.</td></tr>
+                        <tr><td><span class="cmd-code">docker cp file [id]:/path</span></td><td>Copy a file from your PC into a container.</td></tr>
+                        <tr><td><span class="cmd-code">docker history [image]</span></td><td>See how an image was built layer by layer.</td></tr>
+                        <tr><td><span class="cmd-code">docker tag old:v1 new:v2</span></td><td>Rename or re-tag an image.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="section-header">
+                    <i class="fas fa-cubes icon-k8s"></i>
+                    <h2>4. Kubernetes (kubectl)</h2>
+                </div>
+                <p>Kubernetes manages Docker containers at a massive scale.</p>
+
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Command</th>
+                            <th>Use Case (Simple English)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="cmd-code">kubectl get nodes</span></td><td>Check the health of the servers (cluster nodes).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl get pods</span></td><td>List all running pods (containers).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl get svc</span></td><td>List Services (Network endpoints).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl get deploy</span></td><td>List Deployments (App managers).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl describe pod [name]</span></td><td>Detailed info about why a pod crashed.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl logs [pod_name]</span></td><td>Read the logs of a specific pod.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl apply -f file.yaml</span></td><td>Create or update resources from a file.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl delete -f file.yaml</span></td><td>Delete everything defined in that file.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl delete pod [name]</span></td><td>Delete a specific pod (It usually restarts).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl exec -it [pod] -- bash</span></td><td>Log inside a pod to run commands.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl scale deploy app --replicas=5</span></td><td>Increase the number of app copies to 5.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl get all</span></td><td>Show pods, services, deployments all at once.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl get pods -o wide</span></td><td>Show pods with extra info like IP Address.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl get namespaces</span></td><td>List all virtual clusters (namespaces).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl config current-context</span></td><td>Check which cluster you are connected to.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl port-forward pod 8080:80</span></td><td>Access a pod on your local computer port 8080.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl rollout status deploy/app</span></td><td>Check if an update finished successfully.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl rollout undo deploy/app</span></td><td>Rollback to the previous version (Emergency).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl top nodes</span></td><td>Check CPU/Memory usage of servers.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl top pods</span></td><td>Check CPU/Memory usage of apps.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl create ns [name]</span></td><td>Create a new namespace.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl edit svc [name]</span></td><td>Edit the configuration live in a text editor.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl cluster-info</span></td><td>Show IP addresses of master and services.</td></tr>
+                        <tr><td><span class="cmd-code">kubectl events</span></td><td>Show recent cluster events (Warnings/Errors).</td></tr>
+                        <tr><td><span class="cmd-code">kubectl explain pod</span></td><td>Documentation about what a "Pod" is.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="section-header">
+                    <i class="fas fa-layer-group icon-tf"></i>
+                    <h2>5. Terraform (IaC)</h2>
+                </div>
+                <p>Terraform allows you to build cloud infrastructure using code.</p>
+
+                <table class="cmd-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Command</th>
+                            <th>Use Case (Simple English)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="cmd-code">terraform init</span></td><td>Download plugins and prepare the folder.</td></tr>
+                        <tr><td><span class="cmd-code">terraform plan</span></td><td>Show what will happen (Dry Run).</td></tr>
+                        <tr><td><span class="cmd-code">terraform apply</span></td><td>Actually create the infrastructure.</td></tr>
+                        <tr><td><span class="cmd-code">terraform apply --auto-approve</span></td><td>Create it without asking "Are you sure?".</td></tr>
+                        <tr><td><span class="cmd-code">terraform destroy</span></td><td>Delete EVERYTHING.</td></tr>
+                        <tr><td><span class="cmd-code">terraform validate</span></td><td>Check if your code has syntax errors.</td></tr>
+                        <tr><td><span class="cmd-code">terraform fmt</span></td><td>Make your code look pretty (Fix indentation).</td></tr>
+                        <tr><td><span class="cmd-code">terraform show</span></td><td>Show the current state of infrastructure.</td></tr>
+                        <tr><td><span class="cmd-code">terraform output</span></td><td>Show values like IP addresses after creation.</td></tr>
+                        <tr><td><span class="cmd-code">terraform state list</span></td><td>List all resources Terraform is managing.</td></tr>
+                        <tr><td><span class="cmd-code">terraform refresh</span></td><td>Check if the cloud changed outside of Terraform.</td></tr>
+                        <tr><td><span class="cmd-code">terraform graph</span></td><td>Generate a visual graph of your infrastructure.</td></tr>
+                        <tr><td><span class="cmd-code">terraform workspace list</span></td><td>List different environments (dev, prod).</td></tr>
+                        <tr><td><span class="cmd-code">terraform workspace new dev</span></td><td>Create a new environment named 'dev'.</td></tr>
+                        <tr><td><span class="cmd-code">terraform workspace select dev</span></td><td>Switch to the 'dev' environment.</td></tr>
+                        <tr><td><span class="cmd-code">terraform taint [resource]</span></td><td>Mark a resource as broken to force recreation.</td></tr>
+                        <tr><td><span class="cmd-code">terraform untaint [resource]</span></td><td>Unmark the resource.</td></tr>
+                        <tr><td><span class="cmd-code">terraform import [id]</span></td><td>Bring an existing cloud resource into Terraform.</td></tr>
+                        <tr><td><span class="cmd-code">terraform console</span></td><td>Open an interactive shell to test logic.</td></tr>
+                        <tr><td><span class="cmd-code">terraform version</span></td><td>Check installed version.</td></tr>
+                        <tr><td><span class="cmd-code">terraform providers</span></td><td>List plugins (AWS, Azure) being used.</td></tr>
+                        <tr><td><span class="cmd-code">terraform login</span></td><td>Login to Terraform Cloud.</td></tr>
+                        <tr><td><span class="cmd-code">terraform get</span></td><td>Download modules.</td></tr>
+                        <tr><td><span class="cmd-code">terraform plan -out=tfplan</span></td><td>Save the plan to a file.</td></tr>
+                        <tr><td><span class="cmd-code">terraform force-unlock [id]</span></td><td>Unlock the state if it got stuck.</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

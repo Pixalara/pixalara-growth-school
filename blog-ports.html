@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Port Numbers | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+    
+    <style>
+        /* --- FIXED TABLE STYLES --- */
+        
+        /* Wrapper to make table scrollable on mobile */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Critical for smooth mobile scrolling */
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 20px 0 40px 0;
+            border: 1px solid #f0f0f0;
+            background: #fff; /* Ensures no transparent gaps */
+        }
+
+        .port-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            background: #fff;
+            min-width: 700px; /* Forces layout to be wide enough, triggering scroll */
+        }
+
+        .port-table thead {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .port-table th, .port-table td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+        }
+
+        .port-table tr:hover {
+            background-color: #f9f9ff;
+        }
+
+        /* Port Number Badge */
+        .port-number {
+            font-family: 'Courier New', monospace;
+            background: #eef2ff;
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 800;
+            display: inline-block;
+            white-space: nowrap; /* Prevents breaking into two lines */
+        }
+
+        .protocol-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #f4f4f4;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        /* --- FIXED ICON ALIGNMENT --- */
+        .section-header {
+            margin-top: 50px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center; /* Perfectly centers icon vertically */
+            gap: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .section-header i { 
+            font-size: 1.8rem; 
+            color: var(--primary);
+            flex-shrink: 0; /* Prevents icon from getting squashed */
+        }
+
+        .section-header h2 {
+            margin: 0; /* Removes default margin to fix alignment issues */
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">Networking Guide</span>
+                <h1 class="blog-main-title">Port Numbers Every DevOps Engineer Must Know</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2024</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="fas fa-bookmark"></i> Save for Interviews</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>In networking, a <strong>"Port"</strong> is like a door number for a specific service on a server. If you send a letter to a building but forget the apartment number, it never reaches the right person. Similarly, if you don't open the correct port in your Firewall (AWS Security Group), your application won't work.</p>
+                
+                <p>Here is the ultimate cheat sheet of the <strong>Top 30 Ports</strong> used in real-world DevOps environments.</p>
+
+                <div class="section-header">
+                    <i class="fas fa-globe"></i>
+                    <h2>1. Web Access & Remote Control</h2>
+                </div>
+                <p>These are the ports you will interact with almost every single day.</p>
+                
+                <div class="table-wrapper">
+                    <table class="port-table">
+                        <thead>
+                            <tr>
+                                <th width="20%">Port</th>
+                                <th width="20%">Service</th>
+                                <th>Use Case (Simple English)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="port-number">20 / 21</span></td>
+                                <td><span class="protocol-tag">FTP</span></td>
+                                <td>File Transfer Protocol. Used to upload files (Old school).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">22</span></td>
+                                <td><span class="protocol-tag">SSH</span></td>
+                                <td><strong>Most Important!</strong> Secure Shell. Used to log into Linux servers.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">53</span></td>
+                                <td><span class="protocol-tag">DNS</span></td>
+                                <td>Converts "google.com" into an IP address (like 8.8.8.8).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">80</span></td>
+                                <td><span class="protocol-tag">HTTP</span></td>
+                                <td>Standard Web Traffic (Unsecured websites).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">443</span></td>
+                                <td><span class="protocol-tag">HTTPS</span></td>
+                                <td>Secure Web Traffic (Websites with the Lock icon 🔒).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">3389</span></td>
+                                <td><span class="protocol-tag">RDP</span></td>
+                                <td>Remote Desktop. Used to log into Windows Servers.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-database"></i>
+                    <h2>2. Databases & Storage</h2>
+                </div>
+                <p>When connecting your backend application to a database, you must allow traffic on these ports.</p>
+                
+                <div class="table-wrapper">
+                    <table class="port-table">
+                        <thead>
+                            <tr>
+                                <th width="20%">Port</th>
+                                <th width="20%">Database</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="port-number">1433</span></td>
+                                <td><span class="protocol-tag">SQL Server</span></td>
+                                <td>Default port for Microsoft SQL Server.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">3306</span></td>
+                                <td><span class="protocol-tag">MySQL</span></td>
+                                <td>Most popular open-source DB (WordPress, Facebook).</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">5432</span></td>
+                                <td><span class="protocol-tag">Postgres</span></td>
+                                <td>Advanced open-source DB for enterprise apps.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">6379</span></td>
+                                <td><span class="protocol-tag">Redis</span></td>
+                                <td>In-memory caching database for speed.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">27017</span></td>
+                                <td><span class="protocol-tag">MongoDB</span></td>
+                                <td>NoSQL document database.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-tools"></i>
+                    <h2>3. DevOps & Monitoring Tools</h2>
+                </div>
+                <p>Specific ports for tools you will configure in CI/CD pipelines.</p>
+                
+                <div class="table-wrapper">
+                    <table class="port-table">
+                        <thead>
+                            <tr>
+                                <th width="20%">Port</th>
+                                <th width="20%">Tool</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="port-number">8080</span></td>
+                                <td><span class="protocol-tag">Jenkins</span></td>
+                                <td>Default port for Jenkins Dashboard / Tomcat.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">9000</span></td>
+                                <td><span class="protocol-tag">SonarQube</span></td>
+                                <td>Code quality scanning dashboard.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">9090</span></td>
+                                <td><span class="protocol-tag">Prometheus</span></td>
+                                <td>Metrics monitoring tool.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">9100</span></td>
+                                <td><span class="protocol-tag">Node Exp</span></td>
+                                <td>Sends Linux server metrics to Prometheus.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">3000</span></td>
+                                <td><span class="protocol-tag">Grafana</span></td>
+                                <td>Visual dashboard for metrics.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">5000</span></td>
+                                <td><span class="protocol-tag">Docker</span></td>
+                                <td>Private Docker Registry / Flask Apps.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">5601</span></td>
+                                <td><span class="protocol-tag">Kibana</span></td>
+                                <td>Visual dashboard for ElasticSearch logs.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">9200</span></td>
+                                <td><span class="protocol-tag">Elastic</span></td>
+                                <td>ElasticSearch Database port.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="port-number">8081</span></td>
+                                <td><span class="protocol-tag">Nexus</span></td>
+                                <td>Artifact repository manager.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Pro Tip:</strong> When setting up an AWS Security Group (Firewall), strictly limit access to <strong>Port 22 (SSH)</strong> and <strong>3389 (RDP)</strong> to "My IP Only". Never open them to "0.0.0.0/0" (The World) or you will be hacked!
+                </div>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+                <a href="blog-python.html" class="nav-link-blog">Next: Python for DevOps &rarr;</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

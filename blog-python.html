@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python for DevOps | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">Coding & Scripting</span>
+                <h1 class="blog-main-title">Python for DevOps: Real-World Use Cases & Scripts</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2024</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="fas fa-code"></i> 5 Practical Scripts</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>Do you need to be a software developer to work in DevOps? <strong>No.</strong> But do you need to know how to write scripts to automate boring tasks? <strong>Absolutely Yes.</strong></p>
+                
+                <p>Python is the most popular language for DevOps because it is easy to read (like English) and has powerful libraries to talk to AWS, Docker, and Linux.</p>
+                
+                <p>Here are <strong>5 Real-World Scenarios</strong> where a DevOps engineer uses Python, along with the actual code.</p>
+
+                <hr style="margin: 40px 0; border:0; border-top:1px solid #eee;">
+
+                <h2>Use Case 1: The "Cleanup" Script</h2>
+                <p><strong>Scenario:</strong> Your server runs out of space every week because application logs keep piling up. You are tired of deleting them manually.</p>
+                <p><strong>Solution:</strong> A Python script that finds files older than 30 days and deletes them automatically.</p>
+
+                <div class="code-block">
+import os
+import time
+
+# Folder to clean
+folder_path = "/var/log/my-app"
+days = 30
+seconds = time.time() - (days * 24 * 60 * 60)
+
+# Check every file in the folder
+for file in os.listdir(folder_path):
+    file_path = os.path.join(folder_path, file)
+    
+    # If file is older than 30 days
+    if os.stat(file_path).st_mtime < seconds:
+        os.remove(file_path)
+        print(f"Deleted old file: {file}")
+                </div>
+
+                <h2>Use Case 2: AWS Cost Saver (Boto3)</h2>
+                <p><strong>Scenario:</strong> Developers forget to turn off their testing servers (EC2 instances) on Friday evening. The company pays for the weekend usage for no reason.</p>
+                <p><strong>Solution:</strong> A script using the <strong>Boto3</strong> library to stop all "Dev" servers every Friday night.</p>
+
+                <div class="code-block">
+import boto3
+
+ec2 = boto3.resource('ec2', region_name='us-east-1')
+
+# Find all running instances with tag 'Environment: Dev'
+instances = ec2.instances.filter(
+    Filters=[
+        {'Name': 'instance-state-name', 'Values': ['running']},
+        {'Name': 'tag:Environment', 'Values': ['Dev']}
+    ]
+)
+
+# Stop them
+for instance in instances:
+    instance.stop()
+    print(f"Stopped instance: {instance.id}")
+                </div>
+
+                <h2>Use Case 3: Website Health Monitor</h2>
+                <p><strong>Scenario:</strong> You want to know immediately if your company website goes down (returns a 500 error or 404).</p>
+                <p><strong>Solution:</strong> A script that checks the website status code. If it's not 200 (OK), it sends you an email or prints an alert.</p>
+
+                <div class="code-block">
+import requests
+
+url = "https://pixalara.com"
+
+try:
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        print("✅ Website is UP and running!")
+    else:
+        print(f"❌ Alert! Website returned {response.status_code}")
+        # Add code here to send an email or Slack message
+        
+except:
+    print("❌ Website is completely unreachable!")
+                </div>
+
+                <h2>Use Case 4: Slack Notification Bot</h2>
+                <p><strong>Scenario:</strong> When a deployment finishes or a server crashes, you want the team to get a notification in your Slack channel.</p>
+                <p><strong>Solution:</strong> Use a simple "Webhook" to send a message to Slack.</p>
+
+                <div class="code-block">
+import requests
+import json
+
+webhook_url = "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+message = {"text": "🚨 Alert: The Database Server CPU is at 99%!"}
+
+response = requests.post(
+    webhook_url, 
+    data=json.dumps(message),
+    headers={'Content-Type': 'application/json'}
+)
+
+print("Message sent to Slack!")
+                </div>
+
+                <h2>Use Case 5: System Health Check</h2>
+                <p><strong>Scenario:</strong> Before installing a heavy application (like Kubernetes), you need to verify if the server has enough RAM and CPU.</p>
+                <p><strong>Solution:</strong> A script using the <strong>psutil</strong> library to check system health.</p>
+
+                <div class="code-block">
+import psutil
+
+# Check CPU
+cpu_usage = psutil.cpu_percent(interval=1)
+print(f"Current CPU Usage: {cpu_usage}%")
+
+# Check Memory (RAM)
+memory = psutil.virtual_memory()
+print(f"Total RAM: {memory.total / (1024**3):.2f} GB")
+print(f"Available RAM: {memory.available / (1024**3):.2f} GB")
+
+if memory.percent > 80:
+    print("⚠️ Warning: Memory usage is dangerously high!")
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Advice for Beginners:</strong> Don't try to memorize syntax. DevOps engineers Google things all the time. Focus on the <strong>logic</strong>: "I need to open a file, read lines, find the error, and print it."
+                </div>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+                <a href="blog-linux.html" class="nav-link-blog">Next: Linux Commands &rarr;</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

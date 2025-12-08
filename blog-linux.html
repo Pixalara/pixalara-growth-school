@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100+ Linux Commands | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+
+    <style>
+        /* --- CHEAT SHEET TABLE STYLES --- */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 20px 0 40px 0;
+            border: 1px solid #f0f0f0;
+            background: #fff;
+        }
+
+        .cmd-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 600px; /* Forces scroll on mobile */
+        }
+
+        .cmd-table thead {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .cmd-table th, .cmd-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+        }
+
+        .cmd-table tr:hover {
+            background-color: #f9f9ff;
+        }
+
+        /* Command Code Style */
+        .cmd-code {
+            font-family: 'Courier New', monospace;
+            background: #eef2ff;
+            color: #d63384;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .section-header {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .section-header i { font-size: 1.8rem; color: var(--primary); }
+        .section-header h2 { margin: 0; font-size: 1.6rem; color: var(--text-dark); }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">OS Fundamentals</span>
+                <h1 class="blog-main-title">Mastering Linux: 100+ Essential Commands for DevOps</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2024</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="fas fa-bookmark"></i> Bookmark this Cheat Sheet</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>Linux is the operating system of the Cloud. 90% of the world's servers run on Linux. Whether you are a Developer, DevOps Engineer, or SRE, you cannot survive without the terminal.</p>
+                <p>We have compiled the <strong>Ultimate 100+ Command List</strong> used by professionals daily, explained in very simple English.</p>
+
+                <div class="section-header">
+                    <i class="fas fa-folder-open"></i>
+                    <h2>1. File & Directory Operations</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">ls</span></td><td>List files in the current folder.</td></tr>
+                            <tr><td><span class="cmd-code">ls -la</span></td><td>List all files (including hidden ones) with details.</td></tr>
+                            <tr><td><span class="cmd-code">cd foldername</span></td><td>Go inside a folder (Change Directory).</td></tr>
+                            <tr><td><span class="cmd-code">cd ..</span></td><td>Go back one step.</td></tr>
+                            <tr><td><span class="cmd-code">cd ~</span></td><td>Go to your home folder.</td></tr>
+                            <tr><td><span class="cmd-code">pwd</span></td><td>Show me "Where am I?" (Print Working Directory).</td></tr>
+                            <tr><td><span class="cmd-code">mkdir newfolder</span></td><td>Create a new folder.</td></tr>
+                            <tr><td><span class="cmd-code">mkdir -p a/b/c</span></td><td>Create nested folders (folder inside a folder).</td></tr>
+                            <tr><td><span class="cmd-code">rmdir folder</span></td><td>Delete an empty folder.</td></tr>
+                            <tr><td><span class="cmd-code">rm -r folder</span></td><td>Delete a folder and everything inside it.</td></tr>
+                            <tr><td><span class="cmd-code">touch file.txt</span></td><td>Create an empty file.</td></tr>
+                            <tr><td><span class="cmd-code">cp file1 file2</span></td><td>Copy file1 to file2.</td></tr>
+                            <tr><td><span class="cmd-code">cp -r folder1 folder2</span></td><td>Copy an entire folder.</td></tr>
+                            <tr><td><span class="cmd-code">mv file1 newloc</span></td><td>Move a file (or Rename it).</td></tr>
+                            <tr><td><span class="cmd-code">rm file.txt</span></td><td>Delete a file.</td></tr>
+                            <tr><td><span class="cmd-code">cat file.txt</span></td><td>Show file content on screen.</td></tr>
+                            <tr><td><span class="cmd-code">less file.txt</span></td><td>Read a large file page by page.</td></tr>
+                            <tr><td><span class="cmd-code">head file.txt</span></td><td>Show only the first 10 lines.</td></tr>
+                            <tr><td><span class="cmd-code">tail file.txt</span></td><td>Show only the last 10 lines.</td></tr>
+                            <tr><td><span class="cmd-code">tail -f log.txt</span></td><td>Watch a file grow in real-time (Great for logs).</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-user-lock"></i>
+                    <h2>2. Permissions & User Management</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">chmod 777 file</span></td><td>Give Read/Write/Execute permission to everyone.</td></tr>
+                            <tr><td><span class="cmd-code">chmod +x script.sh</span></td><td>Make a file executable (so you can run it).</td></tr>
+                            <tr><td><span class="cmd-code">chown user:group file</span></td><td>Change the owner of a file.</td></tr>
+                            <tr><td><span class="cmd-code">useradd newuser</span></td><td>Create a new user account.</td></tr>
+                            <tr><td><span class="cmd-code">passwd newuser</span></td><td>Set a password for the user.</td></tr>
+                            <tr><td><span class="cmd-code">userdel newuser</span></td><td>Delete a user account.</td></tr>
+                            <tr><td><span class="cmd-code">groupadd devops</span></td><td>Create a new group.</td></tr>
+                            <tr><td><span class="cmd-code">usermod -aG group user</span></td><td>Add a user to a group.</td></tr>
+                            <tr><td><span class="cmd-code">whoami</span></td><td>Show which user I am logged in as.</td></tr>
+                            <tr><td><span class="cmd-code">id</span></td><td>Show my user ID and group IDs.</td></tr>
+                            <tr><td><span class="cmd-code">sudo command</span></td><td>Run a command as Administrator (Root).</td></tr>
+                            <tr><td><span class="cmd-code">su - user</span></td><td>Switch to another user account.</td></tr>
+                            <tr><td><span class="cmd-code">last</span></td><td>Show who logged in recently.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-microchip"></i>
+                    <h2>3. System Info & Hardware</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">top</span></td><td>Task manager (Show CPU/RAM usage live).</td></tr>
+                            <tr><td><span class="cmd-code">htop</span></td><td>A colorful, easier-to-read version of top.</td></tr>
+                            <tr><td><span class="cmd-code">df -h</span></td><td>Check disk space (Is hard drive full?).</td></tr>
+                            <tr><td><span class="cmd-code">du -sh folder</span></td><td>Check the size of a specific folder.</td></tr>
+                            <tr><td><span class="cmd-code">free -m</span></td><td>Check how much RAM is free.</td></tr>
+                            <tr><td><span class="cmd-code">uname -a</span></td><td>Show OS and Kernel version.</td></tr>
+                            <tr><td><span class="cmd-code">hostname</span></td><td>Show the name of this computer.</td></tr>
+                            <tr><td><span class="cmd-code">lscpu</span></td><td>Show CPU details (Cores, Speed).</td></tr>
+                            <tr><td><span class="cmd-code">lsblk</span></td><td>List all storage devices attached.</td></tr>
+                            <tr><td><span class="cmd-code">uptime</span></td><td>How long has the server been running?</td></tr>
+                            <tr><td><span class="cmd-code">date</span></td><td>Show current date and time.</td></tr>
+                            <tr><td><span class="cmd-code">cal</span></td><td>Show a calendar.</td></tr>
+                            <tr><td><span class="cmd-code">who</span></td><td>See who else is logged in right now.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-network-wired"></i>
+                    <h2>4. Networking</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">ping google.com</span></td><td>Check if internet is working.</td></tr>
+                            <tr><td><span class="cmd-code">ifconfig</span></td><td>Show my IP address (Old way).</td></tr>
+                            <tr><td><span class="cmd-code">ip addr</span></td><td>Show my IP address (Modern way).</td></tr>
+                            <tr><td><span class="cmd-code">curl url</span></td><td>Get data from a website in the terminal.</td></tr>
+                            <tr><td><span class="cmd-code">wget url</span></td><td>Download a file from the internet.</td></tr>
+                            <tr><td><span class="cmd-code">netstat -tulpn</span></td><td>Show which ports are open and listening.</td></tr>
+                            <tr><td><span class="cmd-code">ss -tulpn</span></td><td>Faster version of netstat.</td></tr>
+                            <tr><td><span class="cmd-code">nslookup domain</span></td><td>Check the IP address of a domain.</td></tr>
+                            <tr><td><span class="cmd-code">dig domain</span></td><td>Detailed DNS lookup.</td></tr>
+                            <tr><td><span class="cmd-code">ssh user@ip</span></td><td>Log into a remote server securely.</td></tr>
+                            <tr><td><span class="cmd-code">scp file user@ip:/path</span></td><td>Copy a file to a remote server securely.</td></tr>
+                            <tr><td><span class="cmd-code">telnet ip port</span></td><td>Test if a specific port is open on a server.</td></tr>
+                            <tr><td><span class="cmd-code">traceroute google.com</span></td><td>Trace the path packets take to reach a site.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-search"></i>
+                    <h2>5. Search & Text Processing</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">grep "text" file</span></td><td>Find a word inside a file.</td></tr>
+                            <tr><td><span class="cmd-code">grep -r "text" .</span></td><td>Find a word inside ALL files in a folder.</td></tr>
+                            <tr><td><span class="cmd-code">find / -name file</span></td><td>Find where a file is located on the drive.</td></tr>
+                            <tr><td><span class="cmd-code">locate file</span></td><td>Quickly find a file (using a database).</td></tr>
+                            <tr><td><span class="cmd-code">sort file.txt</span></td><td>Sort the lines of a file alphabetically.</td></tr>
+                            <tr><td><span class="cmd-code">uniq file.txt</span></td><td>Remove duplicate lines (needs sorted file).</td></tr>
+                            <tr><td><span class="cmd-code">wc file.txt</span></td><td>Count lines, words, and characters in a file.</td></tr>
+                            <tr><td><span class="cmd-code">diff file1 file2</span></td><td>Show differences between two files.</td></tr>
+                            <tr><td><span class="cmd-code">sed 's/old/new/g' file</span></td><td>Replace word 'old' with 'new' in a file.</td></tr>
+                            <tr><td><span class="cmd-code">awk '{print $1}' file</span></td><td>Print only the first column of text.</td></tr>
+                            <tr><td><span class="cmd-code">head -n 5 file</span></td><td>Show first 5 lines.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-tasks"></i>
+                    <h2>6. Services & Processes</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">ps</span></td><td>List your current processes.</td></tr>
+                            <tr><td><span class="cmd-code">ps aux</span></td><td>List EVERY process running on the system.</td></tr>
+                            <tr><td><span class="cmd-code">kill 1234</span></td><td>Kill process with PID 1234.</td></tr>
+                            <tr><td><span class="cmd-code">killall nginx</span></td><td>Kill all processes named "nginx".</td></tr>
+                            <tr><td><span class="cmd-code">systemctl start nginx</span></td><td>Start a service (e.g., Web Server).</td></tr>
+                            <tr><td><span class="cmd-code">systemctl stop nginx</span></td><td>Stop a service.</td></tr>
+                            <tr><td><span class="cmd-code">systemctl restart nginx</span></td><td>Restart a service.</td></tr>
+                            <tr><td><span class="cmd-code">systemctl status nginx</span></td><td>Check if a service is running or failed.</td></tr>
+                            <tr><td><span class="cmd-code">systemctl enable nginx</span></td><td>Make service start automatically on reboot.</td></tr>
+                            <tr><td><span class="cmd-code">bg</span></td><td>Send a process to the background.</td></tr>
+                            <tr><td><span class="cmd-code">fg</span></td><td>Bring a background process to the foreground.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-file-archive"></i>
+                    <h2>7. Zip, Tar & Archives</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">tar -cvf data.tar folder</span></td><td>Create a tar archive (Combine files).</td></tr>
+                            <tr><td><span class="cmd-code">tar -xvf data.tar</span></td><td>Extract a tar archive.</td></tr>
+                            <tr><td><span class="cmd-code">tar -czvf data.tar.gz</span></td><td>Create a compressed archive (Zip it).</td></tr>
+                            <tr><td><span class="cmd-code">tar -xzvf data.tar.gz</span></td><td>Extract a compressed archive.</td></tr>
+                            <tr><td><span class="cmd-code">zip data.zip folder</span></td><td>Create a standard .zip file.</td></tr>
+                            <tr><td><span class="cmd-code">unzip data.zip</span></td><td>Extract a .zip file.</td></tr>
+                            <tr><td><span class="cmd-code">gzip file</span></td><td>Compress a single file.</td></tr>
+                            <tr><td><span class="cmd-code">gunzip file.gz</span></td><td>Decompress a .gz file.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-keyboard"></i>
+                    <h2>8. Shortcuts & Misc</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="cmd-table">
+                        <thead><tr><th width="30%">Command</th><th>Use Case</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="cmd-code">history</span></td><td>Show last commands used.</td></tr>
+                            <tr><td><span class="cmd-code">!100</span></td><td>Run command number 100 from history again.</td></tr>
+                            <tr><td><span class="cmd-code">clear</span></td><td>Clean the terminal screen (Shortcut: Ctrl+L).</td></tr>
+                            <tr><td><span class="cmd-code">exit</span></td><td>Log out or close terminal.</td></tr>
+                            <tr><td><span class="cmd-code">man ls</span></td><td>Show the manual (help) for "ls".</td></tr>
+                            <tr><td><span class="cmd-code">echo "Hello"</span></td><td>Print "Hello" to the screen.</td></tr>
+                            <tr><td><span class="cmd-code">alias cls='clear'</span></td><td>Create a custom shortcut command.</td></tr>
+                            <tr><td><span class="cmd-code">reboot</span></td><td>Restart the computer.</td></tr>
+                            <tr><td><span class="cmd-code">shutdown now</span></td><td>Turn off the computer immediately.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+                <a href="blog-cloud-comparison.html" class="nav-link-blog">Next: Cloud Comparison &rarr;</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS vs Azure vs GCP | Pixalara Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+
+    <style>
+        /* --- TABLE STYLES FOR COMPARISON --- */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 30px 0 40px 0;
+            border: 1px solid #f0f0f0;
+            background: #fff;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 800px; /* Forces scroll on mobile */
+        }
+
+        .compare-table thead {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+        }
+
+        .compare-table tr:hover {
+            background-color: #f9f9ff;
+        }
+
+        /* Column Highlights */
+        .col-aws { color: #FF9900; font-weight: 700; }
+        .col-azure { color: #007FFF; font-weight: 700; }
+        .col-gcp { color: #34A853; font-weight: 700; }
+        
+        .feature-name {
+            font-weight: 800;
+            color: var(--text-dark);
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            
+            <div class="blog-header-section">
+                <span class="blog-category">Cloud Computing</span>
+                <h1 class="blog-main-title">AWS vs Azure vs Google Cloud: The Ultimate Comparison</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2024</span>
+                    <span style="margin: 0 10px;">|</span>
+                    <span><i class="fas fa-clock"></i> 10 Min Read</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>If you are starting your cloud journey, the biggest confusion is: <strong>"Which cloud should I learn first?"</strong></p>
+                <p>There are three giants in the market: <strong>Amazon Web Services (AWS)</strong>, <strong>Microsoft Azure</strong>, and <strong>Google Cloud Platform (GCP)</strong>. Together, they control almost 70% of the world's cloud market. But which one is right for you?</p>
+
+                <h2>Comparison Table: Top 20 Differences</h2>
+                <p>We have compared the three clouds across 20 major categories to help you decide.</p>
+
+                <div class="table-wrapper">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>Feature / Category</th>
+                                <th>AWS (Amazon)</th>
+                                <th>Azure (Microsoft)</th>
+                                <th>GCP (Google)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="feature-name">1. Market Share</td>
+                                <td class="col-aws">#1 (Leader ~32%)</td>
+                                <td class="col-azure">#2 (Strong Growth ~23%)</td>
+                                <td class="col-gcp">#3 (Niche Favorite ~10%)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">2. Launch Year</td>
+                                <td>2006 (Most Mature)</td>
+                                <td>2010</td>
+                                <td>2011</td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="feature-name">3. Virtual Servers</td>
+                                <td>EC2 Instances</td>
+                                <td>Virtual Machines (VM)</td>
+                                <td>Compute Engine</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">4. Object Storage</td>
+                                <td>S3 (Simple Storage Service)</td>
+                                <td>Blob Storage</td>
+                                <td>Cloud Storage</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">5. Block Storage</td>
+                                <td>EBS (Elastic Block Store)</td>
+                                <td>Managed Disks</td>
+                                <td>Persistent Disk</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">6. Relational Database</td>
+                                <td>RDS</td>
+                                <td>SQL Database</td>
+                                <td>Cloud SQL</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">7. NoSQL Database</td>
+                                <td>DynamoDB</td>
+                                <td>CosmosDB</td>
+                                <td>Firestore / BigTable</td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="feature-name">8. Serverless Functions</td>
+                                <td>AWS Lambda</td>
+                                <td>Azure Functions</td>
+                                <td>Cloud Functions</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">9. Kubernetes (K8s)</td>
+                                <td>EKS (Elastic Kubernetes)</td>
+                                <td>AKS (Azure Kubernetes)</td>
+                                <td>GKE (Google Kubernetes)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">10. Docker Registry</td>
+                                <td>ECR</td>
+                                <td>ACR</td>
+                                <td>Artifact Registry</td>
+                            </tr>
+
+                            <tr>
+                                <td class="feature-name">11. Machine Learning</td>
+                                <td>SageMaker</td>
+                                <td>Azure Machine Learning</td>
+                                <td>Vertex AI (Strongest AI)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">12. Monitoring Tool</td>
+                                <td>CloudWatch</td>
+                                <td>Azure Monitor</td>
+                                <td>Cloud Monitoring</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">13. Infrastructure as Code</td>
+                                <td>CloudFormation</td>
+                                <td>ARM Templates</td>
+                                <td>Deployment Manager</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">14. Content Delivery (CDN)</td>
+                                <td>CloudFront</td>
+                                <td>Azure CDN</td>
+                                <td>Cloud CDN</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">15. Virtual Network</td>
+                                <td>VPC (Virtual Private Cloud)</td>
+                                <td>VNet (Virtual Network)</td>
+                                <td>VPC</td>
+                            </tr>
+
+                            <tr>
+                                <td class="feature-name">16. Pricing Model</td>
+                                <td>Per Second</td>
+                                <td>Per Minute</td>
+                                <td>Per Second (Cheapest)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">17. Free Tier</td>
+                                <td>12 Months Free</td>
+                                <td>12 Months Free</td>
+                                <td>$300 Credit (90 Days)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">18. Hybrid Cloud</td>
+                                <td>AWS Outposts</td>
+                                <td>Azure Stack</td>
+                                <td>Google Anthos</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">19. Open Source Love</td>
+                                <td>Low (Proprietary Focus)</td>
+                                <td>Medium</td>
+                                <td>High (Created K8s, TensorFlow)</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name">20. Key Strength</td>
+                                <td>Service Depth & Stability</td>
+                                <td>Windows Enterprise Integration</td>
+                                <td>Big Data & AI/ML</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Detailed Breakdown</h2>
+
+                <h3>1. AWS (Amazon Web Services)</h3>
+                <p><strong>The King of Cloud.</strong> AWS was the first to start the cloud revolution. Because it has been around the longest, it has the most services and the biggest community.</p>
+                <ul>
+                    <li><strong>Who uses it?</strong> Netflix, Facebook, LinkedIn, Twitch.</li>
+                    <li><strong>Why learn it?</strong> It has the most job openings. If you are a beginner, AWS is the safest bet to get hired quickly.</li>
+                </ul>
+
+                <h3>2. Microsoft Azure</h3>
+                <p><strong>The Enterprise Choice.</strong> Azure is built by Microsoft. Most big companies (banks, hospitals) already use Windows and Outlook. Moving to Azure is very easy for them.</p>
+                <ul>
+                    <li><strong>Who uses it?</strong> Samsung, eBay, BMW, Boeing.</li>
+                    <li><strong>Why learn it?</strong> If you want to work in large MNCs or if you come from a .NET/C# background.</li>
+                </ul>
+
+                <h3>3. Google Cloud (GCP)</h3>
+                <p><strong>The Innovator.</strong> Google isn't trying to beat AWS at everything. Instead, they focus on what they are best at: <strong>Data and AI</strong>. They also invented Kubernetes.</p>
+                <ul>
+                    <li><strong>Who uses it?</strong> Spotify, Twitter, PayPal, The New York Times.</li>
+                    <li><strong>Why learn it?</strong> If you are interested in Data Science, Machine Learning, or working at "cool" tech startups.</li>
+                </ul>
+
+                <h2>Conclusion: Which one should I pick?</h2>
+                <div class="highlight-box">
+                    <strong>Our Advice:</strong> Start with <span class="col-aws">AWS</span>. The concepts you learn in AWS (like EC2, S3, VPC) are 90% the same in Azure and Google Cloud. Once you master one, learning the others takes just a few weeks!
+                </div>
+
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blogs.html" class="nav-link-blog">&larr; Back to All Blogs</a>
+                <a href="blog-devops-sre.html" class="nav-link-blog">Next: DevOps vs SRE &rarr;</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
