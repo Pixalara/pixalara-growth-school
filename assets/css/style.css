@@ -438,3 +438,30 @@ img { max-width: 100%; height: auto; }
     }
     .course-sidebar { position: static; } /* Unstick on mobile */
 }
+
+/* --- FIXED SIZE COURSE CARDS (600x400) --- */
+
+/* 1. Force the layout to 2 columns (approx 600px wide each) */
+/* Apply this strictly to the courses page grid */
+#courses .grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+/* 2. Set the Card Height to 400px */
+.course-card-detailed {
+    height: 550px;      /* Fixed Height */
+    display: flex;      /* Ensures content stretches properly */
+    flex-direction: column;
+}
+
+/* 3. Adjust the image height so it fits the new 400px card */
+.course-thumb {
+    height: 280px;      /* Increased from 180px to fill space */
+    flex-shrink: 0;     /* Prevents image from shrinking */
+}
+
+/* 4. Ensure the text body fills the remaining space */
+.course-body {
+    flex-grow: 1;
+    justify-content: space-between; /* Pushes button to bottom */
+}
