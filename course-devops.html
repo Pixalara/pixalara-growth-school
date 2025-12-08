@@ -37,91 +37,158 @@
         <section class="section">
             <div class="container course-detail-layout">
                 
-                <div class="course-content">
-                    <h2 style="margin-bottom: 20px;">Course Overview</h2>
-                    <p style="margin-bottom: 30px;">This program is designed to make you a job-ready DevOps Engineer. You will learn how to automate infrastructure, deploy applications using Docker & Kubernetes, and manage cloud resources using Terraform.</p>
+               <div class="course-content" style="grid-column: 1 / -1;"> <div class="curriculum-section">
+                        
+                        <div class="curriculum-text">
+                            <h2>What you will learn in this Masterclass</h2>
+                            <p>This program is designed to take you from a beginner to a job-ready DevOps Engineer. We cover the entire lifecycle of software development, from coding to deployment and monitoring.</p>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--primary)"></i> 100% Hands-on Labs</h4>
+                                <p style="font-size:0.9rem;">No boring theory. You will provision real servers on AWS.</p>
+                            </div>
 
-                    <h3 style="margin-bottom: 20px;">Detailed Syllabus</h3>
-                    
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 1: Linux & Networking Fundamentals</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>Linux File System & Commands</li>
-                                <li>User Management & Permissions</li>
-                                <li>SSH, HTTP/HTTPS, DNS Basics</li>
-                                <li>Shell Scripting for Automation</li>
-                            </ul>
+                            <div>
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-briefcase" style="color:var(--primary)"></i> Real World Projects</h4>
+                                <p style="font-size:0.9rem;">Build a CI/CD pipeline for a Netflix Clone and a Banking App.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 2: Version Control with Git</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>Git Basics (Add, Commit, Push, Pull)</li>
-                                <li>Branching Strategies & Merging</li>
-                                <li>GitHub/GitLab Workflows</li>
-                            </ul>
-                        </div>
-                    </div>
+                        <div class="module-stack">
+                            
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 1: Linux & Fundamentals</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Linux File System & Basic Commands</li>
+                                            <li>User Management & Permissions (chmod/chown)</li>
+                                            <li>Networking Basics (SSH, HTTP, DNS)</li>
+                                            <li>Shell Scripting for Automation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 3: Containerization (Docker)</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>Docker Architecture</li>
-                                <li>Writing Dockerfiles</li>
-                                <li>Docker Compose & Networking</li>
-                            </ul>
-                        </div>
-                    </div>
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 2: Git & Version Control</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Git Architecture & Workflow</li>
+                                            <li>Branching, Merging & Pull Requests</li>
+                                            <li>Resolving Merge Conflicts</li>
+                                            <li>GitHub Actions Basics</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 4: Container Orchestration (Kubernetes)</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>K8s Architecture (Master/Worker Nodes)</li>
-                                <li>Pods, Services, Deployments</li>
-                                <li>Helm Charts & Ingress Controllers</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 5: IaC & CI/CD (Terraform & Jenkins)</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>Infrastructure as Code with Terraform</li>
-                                <li>Jenkins Pipelines (Groovy Scripting)</li>
-                                <li>Integrating GitHub with Jenkins</li>
-                            </ul>
-                        </div>
-                    </div>
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 3: Docker & Containers</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Writing Dockerfiles</li>
+                                            <li>Building & Optimizing Images</li>
+                                            <li>Docker Networking & Volumes</li>
+                                            <li>Docker Compose</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 4: Kubernetes Orchestration</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>K8s Architecture (Master/Slave)</li>
+                                            <li>Pods, Deployments, and Services</li>
+                                            <li>Auto-scaling & Load Balancing</li>
+                                            <li>Helm Charts</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 5: Terraform (IaC)</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Infrastructure as Code concepts</li>
+                                            <li>Terraform State & Modules</li>
+                                            <li>Provisioning AWS Resources</li>
+                                            <li>Terraform Cloud</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        </div>
+                </div>
+                   
                 </div>
 
-                <aside class="course-sidebar">
-                    <span class="sidebar-label">Course Fee</span>
-                    <span class="price-tag">₹10,000</span>
+  <aside class="course-highlights-box">
+    <h3 class="highlights-title">Course Highlights</h3>
+    
+    <div class="highlights-grid">
+        <div class="highlight-item">
+            <i class="far fa-clock highlight-icon"></i>
+            <span class="highlight-label">Duration</span>
+            <span class="highlight-value">3 Months</span>
+        </div>
+        
+        <div class="highlight-item">
+            <i class="fas fa-video highlight-icon"></i>
+            <span class="highlight-label">Mode</span>
+            <span class="highlight-value">Live Online</span>
+        </div>
 
-                    <div class="sidebar-info-item">
-                        <span class="sidebar-label">Duration</span>
-                        <span class="sidebar-value">2 Months</span>
-                    </div>
+        <div class="highlight-item">
+            <i class="fas fa-signal highlight-icon"></i>
+            <span class="highlight-label">Level</span>
+            <span class="highlight-value">Beginner</span>
+        </div>
 
-                    <div class="sidebar-info-item">
-                        <span class="sidebar-label">Mode</span>
-                        <span class="sidebar-value">Online / Weekend</span>
-                    </div>
+        <div class="highlight-item">
+            <i class="fas fa-briefcase highlight-icon"></i>
+            <span class="highlight-label">Projects</span>
+            <span class="highlight-value">5+ Real-time</span>
+        </div>
+    </div>
 
-                    <div class="sidebar-info-item">
-                        <span class="sidebar-label">Level</span>
-                        <span class="sidebar-value">Beginner to Advanced</span>
-                    </div>
+    <div class="price-section">
+        <span class="price-label">Limited Time Offer</span>
+        <div>
+            <span class="old-price">₹25,000</span>
+            <span class="discount-badge">60% OFF</span>
+        </div>
+        <span class="current-price">₹10,000</span>
+    </div>
 
-                    <a href="https://wa.me/919988688654?text=Hi%2C%20I%20am%20interested%20in%20joining%20the%20DevOps%20Masterclass.%20Please%20share%20batch%20timings." class="btn-primary" style="width: 100%; text-align: center; display: block;">Enquire Now</a>
-                </aside>
+    <a href="https://wa.me/919988688654?text=Hi%2C%20I%20am%20interested%20in%20DevOps%20Masterclass%20offer." class="btn-enquire">
+        <i class="fab fa-whatsapp"></i> Enquire Now
+    </a>
+</aside>   
 
             </div>
         </section>

@@ -37,69 +37,156 @@
         <section class="section">
             <div class="container course-detail-layout">
                 
-                <div class="course-content">
-                    <h2 style="margin-bottom: 20px;">Course Overview</h2>
-                    <p style="margin-bottom: 30px;">This course covers the full spectrum of AWS services. You will learn to design scalable, reliable, and secure cloud applications.</p>
+                <div class="course-content" style="grid-column: 1 / -1;">
+                    <div class="curriculum-section">
+                        
+                        <div class="curriculum-text">
+                            <h2>Master the AWS Cloud</h2>
+                            <p>This course covers the full spectrum of AWS services. You will learn to design scalable, reliable, and secure cloud applications directly from industry experts.</p>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-certificate" style="color:var(--primary)"></i> Certification Ready</h4>
+                                <p style="font-size:0.9rem;">Prepares you for the AWS Solutions Architect Associate exam.</p>
+                            </div>
 
-                    <h3 style="margin-bottom: 20px;">Detailed Syllabus</h3>
-                    
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 1: IAM & Security</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>Users, Groups, and Roles</li>
-                                <li>Policies and JSON</li>
-                                <li>MFA and Security Best Practices</li>
-                            </ul>
+                            <div>
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-server" style="color:var(--primary)"></i> Real Infrastructure</h4>
+                                <p style="font-size:0.9rem;">Build Multi-Tier Architectures, VPCs, and Serverless apps.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 2: Compute Services (EC2)</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>Launching EC2 Instances</li>
-                                <li>Security Groups & Key Pairs</li>
-                                <li>Elastic Load Balancers (ELB) & Auto Scaling</li>
-                            </ul>
-                        </div>
-                    </div>
+                        <div class="module-stack">
+                            
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 1: IAM & Security</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Users, Groups, and Roles</li>
+                                            <li>IAM Policies (JSON structure)</li>
+                                            <li>Multi-Factor Authentication (MFA)</li>
+                                            <li>AWS Organizations & Best Practices</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 3: Storage (S3 & EBS)</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>S3 Buckets, Versioning, Lifecycle Rules</li>
-                                <li>EBS Volumes & Snapshots</li>
-                                <li>EFS (Elastic File System)</li>
-                            </ul>
-                        </div>
-                    </div>
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 2: Compute (EC2)</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Launching & Connecting to Instances</li>
+                                            <li>Security Groups & Key Pairs</li>
+                                            <li>Elastic Load Balancers (ELB)</li>
+                                            <li>Auto Scaling Groups (ASG)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 4: Networking (VPC)</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>VPC, Subnets, Internet Gateways</li>
-                                <li>Route Tables & NAT Gateways</li>
-                                <li>VPC Peering</li>
-                            </ul>
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 3: Storage (S3 & EBS)</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>S3 Buckets, Versioning, Lifecycle policies</li>
+                                            <li>EBS Volumes & Snapshots</li>
+                                            <li>EFS (Elastic File System)</li>
+                                            <li>Glacier & Storage Gateway</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 4: Networking (VPC)</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>VPC, Subnets (Public vs Private)</li>
+                                            <li>Route Tables & Internet Gateways</li>
+                                            <li>NAT Gateways & Bastion Hosts</li>
+                                            <li>VPC Peering & VPN</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 5: Serverless & DBs</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>AWS Lambda & API Gateway</li>
+                                            <li>RDS (Relational Database Service)</li>
+                                            <li>DynamoDB (NoSQL)</li>
+                                            <li>CloudWatch Monitoring</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <aside class="course-sidebar">
-                    <span class="sidebar-label">Course Fee</span>
-                    <span class="price-tag">₹7,000</span>
-                    <div class="sidebar-info-item">
-                        <span class="sidebar-label">Duration</span>
-                        <span class="sidebar-value">1.5 Months</span>
+                <aside class="course-highlights-box">
+                    <h3 class="highlights-title">Course Highlights</h3>
+                    
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <i class="far fa-clock highlight-icon"></i>
+                            <span class="highlight-label">Duration</span>
+                            <span class="highlight-value">2.5 Months</span>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <i class="fas fa-video highlight-icon"></i>
+                            <span class="highlight-label">Mode</span>
+                            <span class="highlight-value">Live Online</span>
+                        </div>
+
+                        <div class="highlight-item">
+                            <i class="fas fa-signal highlight-icon"></i>
+                            <span class="highlight-label">Level</span>
+                            <span class="highlight-value">Intermediate</span>
+                        </div>
+
+                        <div class="highlight-item">
+                            <i class="fas fa-briefcase highlight-icon"></i>
+                            <span class="highlight-label">Projects</span>
+                            <span class="highlight-value">3+ Real-time</span>
+                        </div>
                     </div>
-                    <div class="sidebar-info-item">
-                        <span class="sidebar-label">Mode</span>
-                        <span class="sidebar-value">Online / Live</span>
+
+                    <div class="price-section">
+                        <span class="price-label">Special Offer</span>
+                        <div>
+                            <span class="old-price">₹22,000</span>
+                            <span class="discount-badge">55% OFF</span>
+                        </div>
+                        <span class="current-price">₹10,000</span>
                     </div>
-                    <a href="https://wa.me/919988688654?text=Hi%2C%20I%20am%20interested%20in%20joining%20the%20AWS%20Cloud%20Architect%20Course." class="btn-primary" style="width: 100%; text-align: center; display: block;">Enquire Now</a>
+
+                    <a href="https://wa.me/919988688654?text=Hi%2C%20I%20am%20interested%20in%20AWS%20Course%20offer." class="btn-enquire">
+                        <i class="fab fa-whatsapp"></i> Enquire Now
+                    </a>
                 </aside>
 
             </div>
@@ -117,6 +204,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>

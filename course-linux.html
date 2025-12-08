@@ -37,58 +37,156 @@
         <section class="section">
             <div class="container course-detail-layout">
                 
-                <div class="course-content">
-                    <h2 style="margin-bottom: 20px;">Course Overview</h2>
-                    <p style="margin-bottom: 30px;">This course takes you from a beginner to a proficient Linux System Administrator. It is the perfect starting point for a career in DevOps, Cyber Security, or Cloud Computing.</p>
+                <div class="course-content" style="grid-column: 1 / -1;">
+                    <div class="curriculum-section">
+                        
+                        <div class="curriculum-text">
+                            <h2>The Foundation of DevOps</h2>
+                            <p>This course takes you from a beginner to a proficient Linux System Administrator. It is the perfect starting point for a career in DevOps, Cyber Security, or Cloud Computing.</p>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-terminal" style="color:var(--primary)"></i> Command Line Mastery</h4>
+                                <p style="font-size:0.9rem;">Learn to control servers without a GUI.</p>
+                            </div>
 
-                    <h3 style="margin-bottom: 20px;">Detailed Syllabus</h3>
-                    
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 1: Introduction to Linux</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>History of Linux & Distributions</li>
-                                <li>Installation (VirtualBox & Cloud)</li>
-                                <li>File System Hierarchy</li>
-                            </ul>
+                            <div>
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-lock" style="color:var(--primary)"></i> Security & Permissions</h4>
+                                <p style="font-size:0.9rem;">Manage users, groups, and file permissions securely.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 2: Essential Commands</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>File Management (ls, cp, mv, rm)</li>
-                                <li>Text Editors (Vim, Nano)</li>
-                                <li>Grep, Sed, Awk basics</li>
-                            </ul>
-                        </div>
-                    </div>
+                        <div class="module-stack">
+                            
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 1: Introduction to Linux</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>History of Unix/Linux & Distributions</li>
+                                            <li>Kernel vs Shell</li>
+                                            <li>Installation (VirtualBox & Cloud Setup)</li>
+                                            <li>Connecting via Putty/Terminal</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="syllabus-module">
-                        <div class="module-header">Module 3: User & Group Management</div>
-                        <div class="module-content">
-                            <ul>
-                                <li>Creating Users & Groups</li>
-                                <li>File Permissions (Chmod, Chown)</li>
-                                <li>Sudo Access</li>
-                            </ul>
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 2: Essential Commands</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>File System Hierarchy (/)</li>
+                                            <li>File Mgmt: ls, cp, mv, rm, mkdir, touch</li>
+                                            <li>Viewing Files: cat, less, tail, head</li>
+                                            <li>Text Editors: Vim & Nano</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 3: User & Group Management</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Creating Users & Groups (useradd, groupadd)</li>
+                                            <li>Modifying accounts (usermod)</li>
+                                            <li>Password management (passwd)</li>
+                                            <li>Sudo Access & /etc/sudoers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 4: Permissions & Ownership</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Understanding r-w-x permissions</li>
+                                            <li>Changing Mode (chmod) - Symbolic & Octal</li>
+                                            <li>Changing Ownership (chown, chgrp)</li>
+                                            <li>Special Permissions (SUID, SGID)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 5: Process & Networking</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Process Management (top, ps, kill)</li>
+                                            <li>Systemctl (Starting/Stopping Services)</li>
+                                            <li>Networking commands (ip addr, ping, netstat)</li>
+                                            <li>Cron Jobs for automation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <aside class="course-sidebar">
-                    <span class="sidebar-label">Course Fee</span>
-                    <span class="price-tag">₹4,000</span>
-                    <div class="sidebar-info-item">
-                        <span class="sidebar-label">Duration</span>
-                        <span class="sidebar-value">1 Month</span>
+                <aside class="course-highlights-box">
+                    <h3 class="highlights-title">Course Highlights</h3>
+                    
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <i class="far fa-clock highlight-icon"></i>
+                            <span class="highlight-label">Duration</span>
+                            <span class="highlight-value">1.5 Months</span>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <i class="fas fa-video highlight-icon"></i>
+                            <span class="highlight-label">Mode</span>
+                            <span class="highlight-value">Live Online</span>
+                        </div>
+
+                        <div class="highlight-item">
+                            <i class="fas fa-signal highlight-icon"></i>
+                            <span class="highlight-label">Level</span>
+                            <span class="highlight-value">Beginner</span>
+                        </div>
+
+                        <div class="highlight-item">
+                            <i class="fas fa-briefcase highlight-icon"></i>
+                            <span class="highlight-label">Projects</span>
+                            <span class="highlight-value">10+ Labs</span>
+                        </div>
                     </div>
-                    <div class="sidebar-info-item">
-                        <span class="sidebar-label">Mode</span>
-                        <span class="sidebar-value">Online</span>
+
+                    <div class="price-section">
+                        <span class="price-label">Early Bird Offer</span>
+                        <div>
+                            <span class="old-price">₹15,000</span>
+                            <span class="discount-badge">45% OFF</span>
+                        </div>
+                        <span class="current-price">₹8,000</span>
                     </div>
-                    <a href="https://wa.me/919988688654?text=Hi%2C%20I%20am%20interested%20in%20joining%20the%20Linux%20Administration%20Course." class="btn-primary" style="width: 100%; text-align: center; display: block;">Enquire Now</a>
+
+                    <a href="https://wa.me/919988688654?text=Hi%2C%20I%20am%20interested%20in%20Linux%20Course%20offer." class="btn-enquire">
+                        <i class="fab fa-whatsapp"></i> Enquire Now
+                    </a>
                 </aside>
 
             </div>
@@ -106,6 +204,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
