@@ -141,3 +141,23 @@ document.addEventListener('keydown', function(event) {
         });
     }
 });
+
+/* --- SCROLL REVEAL ANIMATION --- */
+window.addEventListener('scroll', reveal);
+
+function reveal() {
+    var reveals = document.querySelectorAll('.reveal');
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 100; // Trigger point
+
+        if (revealtop < windowheight - revealpoint) {
+            reveals[i].classList.add('active');
+        }
+    }
+}
+
+// Trigger once on load
+reveal();
