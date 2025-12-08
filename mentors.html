@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mentors | Pixalara Growth School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html" class="active">MENTORS</a></li>
+                    <li><a href="blogs.html">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="animate-hero">Meet Your Mentors</h1>
+                
+                <p class="hero-lead animate-hero delay-1">
+                    Learn from industry experts shaping modern technology in top MNCs.
+                </p>
+
+                <div class="hero-description-box animate-hero delay-2">
+                    <p>Learn directly from industry leaders powering top global companies.                    </p>
+                    <p>
+                        Our mentors have designed scalable cloud systems, built mission-critical applications, automated complex DevOps pipelines, and delivered solutions used by millions of users worldwide.
+                    </p>
+                    <p>
+                    <p style="margin-top: 20px; font-style: italic; color: #fff;">
+Real Experts. Real Experience. Real Results.                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section">
+            <div class="container">
+                <div class="grid-3">
+                    
+                    <div class="feature-card mentor-card">
+                        <img src="assets/images/mentor-1.png" alt="Dileep" class="mentor-photo">
+                        <h3>Dileep</h3>
+                        <p class="designation">Cloud Consultant & DevOps Architect</p>
+                        <p class="company">Expert in AWS & GCP</p>
+                        <button class="btn-profile" onclick="openModal('modal-dileep')">
+                            View Profile <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card mentor-card">
+                        <img src="assets/images/mentor-2.png" alt="Nethaji" class="mentor-photo">
+                        <h3>Nethaji Rao</h3>
+                        <p class="designation">DevOps Lead & Cloud-Native Architect</p>
+                        <p class="company">Kubernetes Specialist</p>
+                        <button class="btn-profile" onclick="openModal('modal-nethaji')">
+                            View Profile <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card mentor-card">
+                        <img src="assets/images/mentor-3.png" alt="Mohan" class="mentor-photo">
+                        <h3>Mohan</h3>
+                        <p class="designation">Senior Java Developer | Programming Specialist</p>
+                        <p class="company">Full Stack Expert</p>
+                        <button class="btn-profile" onclick="openModal('modal-mohan')">
+                            View Profile <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-dileep" class="modal-overlay" onclick="closeModal('modal-dileep')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header-section">
+                <img src="assets/images/mentor-1.png" alt="Dileep">
+                <div>
+                    <h2>Dileep</h2>
+                    <p class="modal-subtitle">Cloud Consultant | AWS, GCP & DevOps Expert</p>
+                </div>
+            </div>
+            <div class="modal-body-content">
+                <p>Dileep is a Cloud Consultant with deep expertise in <strong>AWS, GCP, and modern DevOps practices</strong>, bringing years of real-world experience working with both startups and enterprise-level organizations. He has successfully designed and implemented high-availability, secure, and scalable cloud infrastructures.</p>
+                <p>He has played a key role in scaling applications for fast-growing startups, ensuring reliability and resilience through strong <strong>SRE principles</strong>.</p>
+                
+                <div class="modal-highlights">
+                    <h4>What you’ll learn under Dileep:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Real-world AWS & GCP implementation strategies</li>
+                        <li><i class="fas fa-check-circle"></i> Designing secure, scalable & highly available architectures</li>
+                        <li><i class="fas fa-check-circle"></i> DevOps pipelines with CI/CD automation</li>
+                        <li><i class="fas fa-check-circle"></i> SRE practices for production-grade reliability</li>
+                        <li><i class="fas fa-check-circle"></i> Cloud security fundamentals & DDoS protection</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 15px; font-style: italic; color: #555;">Dileep is dedicated to shaping future cloud engineers with practical, industry-backed learning.</p>
+            
+                <div class="modal-footer" style="text-align: right; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <button class="btn-close-modal" onclick="closeModal('modal-dileep')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-nethaji" class="modal-overlay" onclick="closeModal('modal-nethaji')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header-section">
+                <img src="assets/images/mentor-2.png" alt="Nethaji Rao">
+                <div>
+                    <h2>Nethaji Rao</h2>
+                    <p class="modal-subtitle">DevOps Lead | CKA Certified | Linux Expert</p>
+                </div>
+            </div>
+            <div class="modal-body-content">
+                <p>Nethaji Rao has <strong>10+ years of real industry experience</strong>, helping some of the world’s top product companies build fast, reliable, and modern technology systems. He is an expert in the tools that every DevOps engineer needs today — Kubernetes, Docker, CI/CD pipelines, and Terraform.</p>
+                <p>He holds respected certifications like <strong>CKA (Certified Kubernetes Administrator)</strong> and is also a Linux Foundation Certified Sysadmin.</p>
+                
+                <p><strong>⭐ Why beginners love learning from Nethaji:</strong><br>
+                He explains complex DevOps topics in a simple and practical way, making it easy even for complete beginners. You’ll learn how real companies deploy apps using containers, automation, and cloud-native tools.</p>
+
+                <div class="modal-highlights">
+                    <h4>🌱 What you’ll learn under his guidance:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> How modern applications run using Docker & Kubernetes</li>
+                        <li><i class="fas fa-check-circle"></i> How companies automate software delivery using CI/CD pipelines</li>
+                        <li><i class="fas fa-check-circle"></i> How to manage cloud resources using Terraform</li>
+                        <li><i class="fas fa-check-circle"></i> Core concepts of DevOps, cloud, and Linux needed for your first job</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 15px; font-style: italic; color: #555;">Nethaji is passionate about helping students kickstart their careers in DevOps with deep real-world experience.</p>
+            
+                <div class="modal-footer" style="text-align: right; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <button class="btn-close-modal" onclick="closeModal('modal-nethaji')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-mohan" class="modal-overlay" onclick="closeModal('modal-mohan')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header-section">
+                <img src="assets/images/mentor-3.png" alt="Mohan">
+                <div>
+                    <h2>Mohan</h2>
+                    <p class="modal-subtitle">Senior Software Engineer | Java & Python Expert</p>
+                </div>
+            </div>
+            <div class="modal-body-content">
+                <p>Mohan is a highly experienced software engineer with <strong>10+ years of hands-on experience</strong> in building and designing real-world applications. He has worked with top-tier product companies across financial and medical domains, giving him deep insight into how professional, high-quality software is built.</p>
+                
+                <p>He specializes in <strong>Core Java, Advanced Java, Python</strong>, and multiple scripting languages — making him the perfect mentor for students who want to become strong programmers. Mohan is known for writing clean, efficient code and teaching students how to think like real software engineers.</p>
+                
+                <p><strong>⭐ Why beginners enjoy learning from Mohan:</strong><br>
+                He explains programming concepts in a simple, easy-to-understand style, perfect for students with little or no background. He focuses on real examples and hands-on practice, so students build confidence quickly.</p>
+
+                <div class="modal-highlights">
+                    <h4>🌱 What you’ll learn from Mohan:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Core & Advanced Java programming</li>
+                        <li><i class="fas fa-check-circle"></i> Python basics and how it’s used in modern applications</li>
+                        <li><i class="fas fa-check-circle"></i> How to write clean, structured, and efficient code</li>
+                        <li><i class="fas fa-check-circle"></i> Basics of full stack development and end-to-end flows</li>
+                        <li><i class="fas fa-check-circle"></i> Practical skills in scripting, debugging, and problem-solving</li>
+                        <li><i class="fas fa-check-circle"></i> How software is built in domains like finance and healthcare</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 15px; font-style: italic; color: #555;">Mohan is passionate about helping beginners grow from zero experience to confident programmers. His friendly teaching approach and strong industry background make him an excellent mentor for anyone starting their journey in coding and full-stack development.</p>
+            
+                <div class="modal-footer" style="text-align: right; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                    <button class="btn-close-modal" onclick="closeModal('modal-mohan')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School.</p></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

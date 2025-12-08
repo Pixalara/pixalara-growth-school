@@ -85,3 +85,59 @@ function toggleModule(element) {
         body.style.maxHeight = body.scrollHeight + "px"; // Open to full height
     }
 }
+
+/* --- MODAL LOGIC --- */
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Stop background scrolling
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+}
+
+// Close modal if Esc key is pressed
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        const openModals = document.querySelectorAll('.modal-overlay.open');
+        openModals.forEach(modal => {
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+    }
+});
+
+/* --- MODAL LOGIC --- */
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Stop background scrolling
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+}
+
+// Close modal if Esc key is pressed
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        const openModals = document.querySelectorAll('.modal-overlay.open');
+        openModals.forEach(modal => {
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+    }
+});
