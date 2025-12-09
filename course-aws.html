@@ -37,7 +37,7 @@
         <section class="section">
             <div class="container course-detail-layout">
                 
-                <div class="course-content" style="grid-column: 1 / -1;">
+                <div class="course-content">
                     <div class="curriculum-section">
                         
                         <div class="curriculum-text">
@@ -46,7 +46,7 @@
                             
                             <div style="margin-bottom: 20px;">
                                 <h4 style="margin-bottom:10px;"><i class="fas fa-certificate" style="color:var(--primary)"></i> Certification Ready</h4>
-                                <p style="font-size:0.9rem;">Prepares you for the AWS Solutions Architect Associate exam.</p>
+                                <p style="font-size:0.9rem;">Prepares you for the AWS Solutions Architect Associate exam (SAA-C03).</p>
                             </div>
 
                             <div>
@@ -59,16 +59,17 @@
                             
                             <div class="module-card" onclick="toggleModule(this)">
                                 <div class="module-header">
-                                    <span class="module-title">Module 1: IAM & Security</span>
+                                    <span class="module-title">Module 1: Identity & Access Management (IAM)</span>
                                     <i class="fas fa-chevron-down module-icon"></i>
                                 </div>
                                 <div class="module-body">
                                     <div class="module-body-content">
                                         <ul>
-                                            <li>Users, Groups, and Roles</li>
-                                            <li>IAM Policies (JSON structure)</li>
-                                            <li>Multi-Factor Authentication (MFA)</li>
-                                            <li>AWS Organizations & Best Practices</li>
+                                            <li>IAM Users, Groups, and Roles fundamentals</li>
+                                            <li>Creating and managing IAM Policies (JSON)</li>
+                                            <li>Enforcing Multi-Factor Authentication (MFA)</li>
+                                            <li>Designing secure access for applications and teams</li>
+                                            <li>Permission Boundaries and Best Practices</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -76,16 +77,17 @@
 
                             <div class="module-card" onclick="toggleModule(this)">
                                 <div class="module-header">
-                                    <span class="module-title">Module 2: Compute (EC2)</span>
+                                    <span class="module-title">Module 2: Compute (EC2 & Auto Scaling)</span>
                                     <i class="fas fa-chevron-down module-icon"></i>
                                 </div>
                                 <div class="module-body">
                                     <div class="module-body-content">
                                         <ul>
-                                            <li>Launching & Connecting to Instances</li>
-                                            <li>Security Groups & Key Pairs</li>
-                                            <li>Elastic Load Balancers (ELB)</li>
-                                            <li>Auto Scaling Groups (ASG)</li>
+                                            <li>EC2 Instance Types & Pricing Models</li>
+                                            <li>Creating custom Amazon Machine Images (AMIs)</li>
+                                            <li>Configuring Security Groups and Elastic IPs</li>
+                                            <li>Setting up Auto Scaling Groups (ASG)</li>
+                                            <li>Load Balancing (ALB, NLB, GWLB)</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -93,16 +95,17 @@
 
                             <div class="module-card" onclick="toggleModule(this)">
                                 <div class="module-header">
-                                    <span class="module-title">Module 3: Storage (S3 & EBS)</span>
+                                    <span class="module-title">Module 3: Storage (S3, EBS, EFS)</span>
                                     <i class="fas fa-chevron-down module-icon"></i>
                                 </div>
                                 <div class="module-body">
                                     <div class="module-body-content">
                                         <ul>
-                                            <li>S3 Buckets, Versioning, Lifecycle policies</li>
-                                            <li>EBS Volumes & Snapshots</li>
-                                            <li>EFS (Elastic File System)</li>
-                                            <li>Glacier & Storage Gateway</li>
+                                            <li>S3 Object Storage: Versioning, Encryption, Security</li>
+                                            <li>S3 Lifecycle Rules & Glacier Archival</li>
+                                            <li>EBS Volume types (GP3, IO2) & Snapshots</li>
+                                            <li>EFS: Shared File Storage for Linux</li>
+                                            <li>Storage Gateway & Snow Family overview</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -110,16 +113,17 @@
 
                             <div class="module-card" onclick="toggleModule(this)">
                                 <div class="module-header">
-                                    <span class="module-title">Module 4: Networking (VPC)</span>
+                                    <span class="module-title">Module 4: Networking (VPC & Route 53)</span>
                                     <i class="fas fa-chevron-down module-icon"></i>
                                 </div>
                                 <div class="module-body">
                                     <div class="module-body-content">
                                         <ul>
-                                            <li>VPC, Subnets (Public vs Private)</li>
-                                            <li>Route Tables & Internet Gateways</li>
-                                            <li>NAT Gateways & Bastion Hosts</li>
-                                            <li>VPC Peering & VPN</li>
+                                            <li>Designing custom VPCs & Subnets (Public/Private)</li>
+                                            <li>NAT Gateways & Internet Gateways</li>
+                                            <li>Network ACLs (NACL) vs Security Groups</li>
+                                            <li>VPC Peering & Transit Gateway</li>
+                                            <li>DNS Management with Route 53</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -127,16 +131,136 @@
 
                             <div class="module-card" onclick="toggleModule(this)">
                                 <div class="module-header">
-                                    <span class="module-title">Module 5: Serverless & DBs</span>
+                                    <span class="module-title">Module 5: Serverless & Databases</span>
                                     <i class="fas fa-chevron-down module-icon"></i>
                                 </div>
                                 <div class="module-body">
                                     <div class="module-body-content">
                                         <ul>
-                                            <li>AWS Lambda & API Gateway</li>
-                                            <li>RDS (Relational Database Service)</li>
-                                            <li>DynamoDB (NoSQL)</li>
-                                            <li>CloudWatch Monitoring</li>
+                                            <li>Event-driven architecture with AWS Lambda</li>
+                                            <li>API Gateway & Step Functions</li>
+                                            <li>NoSQL design with DynamoDB</li>
+                                            <li>Relational DBs: RDS, Aurora & Multi-AZ</li>
+                                            <li>ElastiCache (Redis/Memcached)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 6: Containers (ECS & EKS)</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Amazon ECS (Elastic Container Service)</li>
+                                            <li>AWS Fargate (Serverless Containers)</li>
+                                            <li>Amazon EKS (Managed Kubernetes)</li>
+                                            <li>Container Registry (ECR)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 7: Monitoring & Logging</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>CloudWatch: Metrics, Alarms, and Dashboards</li>
+                                            <li>CloudWatch Logs & Events</li>
+                                            <li>Auditing API activity with CloudTrail</li>
+                                            <li>Tracing distributed apps with AWS X-Ray</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 8: Security & Encryption</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>KMS: Key Management & Encryption</li>
+                                            <li>Secrets Manager & Parameter Store</li>
+                                            <li>WAF (Web Application Firewall) & Shield</li>
+                                            <li>GuardDuty & Inspector</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 9: Architecture Design</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Designing Highly Available & Fault-Tolerant systems</li>
+                                            <li>Disaster Recovery (Backup, Pilot Light, Multi-Region)</li>
+                                            <li>Microservices & Event-Driven Patterns</li>
+                                            <li>Cost-Optimized Architecture</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 10: Deployment & Automation</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Infrastructure as Code (IaC) with CloudFormation</li>
+                                            <li>Introduction to AWS CDK</li>
+                                            <li>CI/CD with CodePipeline & CodeBuild</li>
+                                            <li>GitHub Actions Integration</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 11: Cost Optimization</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>AWS Cost Explorer & Budgets</li>
+                                            <li>Savings Plans vs Reserved Instances</li>
+                                            <li>Cost Allocation Tags</li>
+                                            <li>Trusted Advisor recommendations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 12: Exam Prep & Practice</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>SAA-C03 Exam Strategy & Tips</li>
+                                            <li>Solving Scenario-based Questions</li>
+                                            <li>Architecture Case Studies review</li>
+                                            <li>4 Full-Length Practice Mock Tests</li>
                                         </ul>
                                     </div>
                                 </div>
