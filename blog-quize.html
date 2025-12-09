@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test your skills with Quiz | Pixalara Growth School</title>
+    <meta name="description" content="Test your DevOps knowledge with 200 multiple-choice questions covering Linux, Git, AWS, Docker, Kubernetes, GitHub CI/CD, and Terraform.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
+
+    
+    <!-- Primary Favicon for Browsers & Google -->
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- Apple & Mobile Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+<!-- Android / Chrome -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+    <style>
+        /* Quiz Specific Styles */
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .quiz-header {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column; /* Stack stats and progress */
+            gap: 15px;
+        }
+
+        .quiz-stats {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            min-height: 200px; /* Prevent collapse if content delays */
+        }
+
+        .question-meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .option-label:hover {
+            border-color: #dcd6f7;
+            background: #f9f9ff;
+        }
+
+        /* Selected State */
+        .option-label.selected {
+            border-color: var(--primary);
+            background-color: #eef2ff;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 15px;
+            accent-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Feedback States (Post-Submit) */
+        .option-label.correct {
+            border-color: #28a745 !important;
+            background-color: #d4edda !important;
+            color: #155724 !important;
+        }
+
+        .option-label.incorrect {
+            border-color: #dc3545 !important;
+            background-color: #f8d7da !important;
+            color: #721c24 !important;
+        }
+
+        .option-label.disabled {
+            pointer-events: none;
+        }
+
+        .explanation-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+            display: none; 
+            animation: fadeIn 0.5s ease;
+        }
+
+        .explanation-box.show {
+            display: block;
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Fixed Button CSS */
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-outline-danger {
+            border: 2px solid #dc3545;
+            color: #dc3545;
+            background: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn-outline-danger:hover {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* Results Modal */
+        .results-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .results-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .score-circle {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .quiz-controls {
+                flex-direction: column-reverse;
+            }
+            .nav-group {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .btn-primary, .btn-outline {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/pixalara-logo.png" alt="Pixalara Growth School"></a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Test your skills with Quiz</h1>
+                <p>Challenge yourself with 200 hands-on questions covering Linux, Git, AWS, Docker, Kubernetes, GitHub CI/CD, and Terraform.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                
+                <div class="quiz-container">
+                    <div id="quiz-intro" style="margin-bottom: 30px; background: #f9f9ff; padding: 20px; border-radius: 10px; border-left: 5px solid var(--primary);">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">How to take this quiz:</h3>
+                        <ul style="padding-left: 20px; line-height: 1.6; color: #555;">
+                            <li>Select the best answer for each question.</li>
+                            <li><strong>Note:</strong> You will NOT see if the answer is correct until you finish the quiz.</li>
+                            <li>Use the <strong>Next/Previous</strong> buttons to navigate.</li>
+                            <li>Your progress is saved automatically.</li>
+                            <li>Click <strong>"Submit Quiz"</strong> at the end to see your score and explanations.</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-header">
+                        <div class="quiz-stats">
+                            <span id="question-counter">Question: 1 / 200</span>
+                            <span id="score-counter" style="display:none;">Score: 0</span> 
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div id="question-container">
+                        <div style="padding: 20px; text-align: center; color: #666;">Loading Questions...</div>
+                    </div>
+
+                    <div class="quiz-controls">
+                        <button class="btn-outline-danger" onclick="resetQuiz()">Reset Progress</button>
+                        
+                        <div class="nav-group">
+                            <button class="btn-outline" id="prev-btn" onclick="prevQuestion()">&larr; Prev</button>
+                            <button class="btn-primary" id="next-btn" onclick="nextQuestion()">Next &rarr;</button>
+                        </div>
+                        
+                        <button id="submit-btn" class="btn-primary" onclick="finishQuiz()" style="background: #28a745; border-color: #28a745;">Submit Quiz</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="results-modal" class="results-overlay">
+        <div class="results-card">
+            <h2 style="margin-bottom: 20px; color: var(--text-dark);">Quiz Complete!</h2>
+            <div class="score-circle" id="final-score-circle">0%</div>
+            <h3 id="performance-label" style="color: var(--primary); margin-bottom: 10px;">Beginner</h3>
+            <p id="final-stats" style="margin-bottom: 30px; color: #666;">You answered 0 out of 200 questions correctly.</p>
+            
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button class="btn-outline" onclick="closeResults()">Review Answers</button>
+                <button class="btn-primary" onclick="window.location.href='index.html'">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock your potential with every step</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 99886 88654</p>
+                <p>growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Pixalara Growth School. All rights reserved.</p></div>
+    </footer>
+
+    <noscript>
+        <div style="position: fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999; display:flex; justify-content:center; align-items:center; text-align:center;">
+            <h1>JavaScript is required to take this quiz. Please enable it in your browser settings.</h1>
+        </div>
+    </noscript>
+
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        // --- 1. DATA: 200 QUESTIONS (Truncated for file size, but starts with 1) ---
+        // Ensure this array is populated in your final file.
+        const questionData = [
+            // --- LINUX (35 Questions) ---
+            {id: 1, topic: 'Linux', q: 'Which command is used to list all files, including hidden ones?', options: {A: 'ls -l', B: 'ls -a', C: 'ls -h', D: 'ls -x'}, correct: 'B', exp: 'The -a flag stands for "all" and includes hidden files starting with a dot.'},
+            {id: 2, topic: 'Linux', q: 'How do you change the owner of a file?', options: {A: 'chmod', B: 'chown', C: 'chgrp', D: 'umask'}, correct: 'B', exp: 'chown (change owner) is used to change the file owner and group.'},
+            {id: 3, topic: 'Linux', q: 'Which directory typically contains configuration files?', options: {A: '/bin', B: '/dev', C: '/etc', D: '/lib'}, correct: 'C', exp: '/etc contains system-wide configuration files.'},
+            {id: 4, topic: 'Linux', q: 'Which command shows disk usage of files and directories?', options: {A: 'df', B: 'du', C: 'ps', D: 'top'}, correct: 'B', exp: 'du (disk usage) estimates file space usage; df shows file system disk space usage.'},
+            {id: 5, topic: 'Linux', q: 'What is the PID of the init/systemd process?', options: {A: '0', B: '1', C: '100', D: '999'}, correct: 'B', exp: 'The init or systemd process is the first process started and always has PID 1.'},
+            {id: 6, topic: 'Linux', q: 'Which command displays the current working directory?', options: {A: 'pwd', B: 'cwd', C: 'dir', D: 'ls'}, correct: 'A', exp: 'pwd stands for Print Working Directory.'},
+            {id: 7, topic: 'Linux', q: 'How do you create a new directory including parent directories if they don’t exist?', options: {A: 'mkdir -p', B: 'mkdir -r', C: 'mkdir -s', D: 'mkdir -f'}, correct: 'A', exp: 'mkdir -p creates parent directories as needed.'},
+            {id: 8, topic: 'Linux', q: 'Which command is used to find text patterns within a file?', options: {A: 'find', B: 'locate', C: 'grep', D: 'sed'}, correct: 'C', exp: 'grep is a powerful utility for searching plain-text data sets for lines that match a regular expression.'},
+            {id: 9, topic: 'Linux', q: 'Which permission code represents read, write, and execute for the owner?', options: {A: '4', B: '5', C: '6', D: '7'}, correct: 'D', exp: '7 (4+2+1) represents Read(4) + Write(2) + Execute(1).'},
+            {id: 10, topic: 'Linux', q: 'How do you check the kernel version?', options: {A: 'uname -r', B: 'linux -v', C: 'ver', D: 'kernel -s'}, correct: 'A', exp: 'uname -r prints the kernel release version.'},
+            // ... (Insert remaining 189 questions here) ...
+                        {id: 11, topic: 'Linux', q: 'Which command displays real-time system processes?', options: {A: 'ps', B: 'top', C: 'jobs', D: 'proc'}, correct: 'B', exp: 'top provides a dynamic real-time view of a running system.'},
+            {id: 12, topic: 'Linux', q: 'How do you force kill a process with PID 1234?', options: {A: 'kill 1234', B: 'kill -9 1234', C: 'stop 1234', D: 'end 1234'}, correct: 'B', exp: 'kill -9 sends the SIGKILL signal which forces the process to terminate immediately.'},
+            {id: 13, topic: 'Linux', q: 'What does the command "touch file.txt" do?', options: {A: 'Opens the file', B: 'Deletes the file', C: 'Updates timestamp or creates empty file', D: 'Changes file permissions'}, correct: 'C', exp: 'touch updates the access and modification times, or creates an empty file if it does not exist.'},
+            {id: 14, topic: 'Linux', q: 'Which file contains user password information (encrypted)?', options: {A: '/etc/passwd', B: '/etc/shadow', C: '/etc/group', D: '/etc/secure'}, correct: 'B', exp: '/etc/shadow contains encrypted user passwords.'},
+            {id: 15, topic: 'Linux', q: 'Which symbol redirects output to a file, overwriting it?', options: {A: '>>', B: '>', C: '<', D: '|'}, correct: 'B', exp: '> redirects output and overwrites; >> appends.'},
+            {id: 16, topic: 'Linux', q: 'What is the default port for SSH?', options: {A: '21', B: '22', C: '23', D: '80'}, correct: 'B', exp: 'Port 22 is the standard port for Secure Shell (SSH).'},
+            {id: 17, topic: 'Linux', q: 'Which command is used to view the last few lines of a file?', options: {A: 'head', B: 'tail', C: 'less', D: 'cat'}, correct: 'B', exp: 'tail outputs the last part of files.'},
+            {id: 18, topic: 'Linux', q: 'Which command compresses files into a .tar.gz archive?', options: {A: 'tar -cvf', B: 'tar -xvf', C: 'tar -czvf', D: 'tar -uzvf'}, correct: 'C', exp: '-c (create), -z (gzip), -v (verbose), -f (file).'},
+            {id: 19, topic: 'Linux', q: 'How do you check free memory space?', options: {A: 'df', B: 'free', C: 'mem', D: 'du'}, correct: 'B', exp: 'free displays the amount of free and used memory in the system.'},
+            {id: 20, topic: 'Linux', q: 'Which command shows network interface configuration?', options: {A: 'ifconfig', B: 'netstat', C: 'ping', D: 'route'}, correct: 'A', exp: 'ifconfig (or ip addr) is used to configure/view network interfaces.'},
+            {id: 21, topic: 'Linux', q: 'What does "chmod 755" mean?', options: {A: 'Owner: rwx, Group: rwx, Others: rwx', B: 'Owner: rwx, Group: rx, Others: rx', C: 'Owner: rw, Group: r, Others: r', D: 'Owner: rwx, Group: -, Others: -'}, correct: 'B', exp: '7 (rwx) for owner, 5 (rx) for group, 5 (rx) for others.'},
+            {id: 22, topic: 'Linux', q: 'Which command creates a symbolic link?', options: {A: 'ln -s', B: 'ln -h', C: 'link -s', D: 'sl -n'}, correct: 'A', exp: 'ln -s creates a symbolic (soft) link.'},
+            {id: 23, topic: 'Linux', q: 'What is /dev/null?', options: {A: 'The root directory', B: 'A temporary folder', C: 'A device file that discards all data written to it', D: 'The boot loader'}, correct: 'C', exp: '/dev/null is the null device, discarding all data written to it (black hole).'},
+            {id: 24, topic: 'Linux', q: 'Which command removes a directory and its contents recursively?', options: {A: 'rm -r', B: 'rmdir', C: 'del /s', D: 'erase -r'}, correct: 'A', exp: 'rm -r (recursive) removes directories and their contents.'},
+            {id: 25, topic: 'Linux', q: 'Which command displays the manual page of a command?', options: {A: 'help', B: 'man', C: 'info', D: 'doc'}, correct: 'B', exp: 'man formats and displays the on-line manual pages.'},
+            {id: 26, topic: 'Linux', q: 'How do you run a command in the background?', options: {A: 'Append &', B: 'Append *', C: 'Prepend nohup', D: 'Prepend bg'}, correct: 'A', exp: 'Adding & at the end of a command line runs the command in the background.'},
+            {id: 27, topic: 'Linux', q: 'Which command shows the history of previous commands?', options: {A: 'past', B: 'log', C: 'history', D: 'recall'}, correct: 'C', exp: 'history outputs the commands executed previously.'},
+            {id: 28, topic: 'Linux', q: 'What does the grep flag "-i" do?', options: {A: 'Invert match', B: 'Ignore case', C: 'Include directories', D: 'Interactive mode'}, correct: 'B', exp: '-i enables case-insensitive search.'},
+            {id: 29, topic: 'Linux', q: 'Which command is used to download files from the web?', options: {A: 'dl', B: 'fetch', C: 'wget', D: 'get'}, correct: 'C', exp: 'wget is a non-interactive network downloader.'},
+            {id: 30, topic: 'Linux', q: 'Which file stores hostname to IP address mappings locally?', options: {A: '/etc/hostname', B: '/etc/resolv.conf', C: '/etc/hosts', D: '/etc/network'}, correct: 'C', exp: '/etc/hosts is used for local static IP-to-hostname mappings.'},
+            {id: 31, topic: 'Linux', q: 'Which command checks for open ports on the system?', options: {A: 'netstat', B: 'ping', C: 'traceroute', D: 'dig'}, correct: 'A', exp: 'netstat (or ss) prints network connections and listening ports.'},
+            {id: 32, topic: 'Linux', q: 'How do you search for a file by name starting from root?', options: {A: 'locate / name', B: 'find / -name "filename"', C: 'search / "filename"', D: 'whereis "filename"'}, correct: 'B', exp: 'find / -name searches the entire filesystem.'},
+            {id: 33, topic: 'Linux', q: 'Which command streams a file and updates as new lines are added?', options: {A: 'cat -f', B: 'tail -f', C: 'watch', D: 'less +F'}, correct: 'B', exp: 'tail -f follows the file and outputs appended data.'},
+            {id: 34, topic: 'Linux', q: 'What is the "shebang" line in a shell script?', options: {A: '#!/bin/bash', B: '//bin/bash', C: '/* bin/bash */', D: 'REM bin/bash'}, correct: 'A', exp: '#! (shebang) tells the system which interpreter to use.'},
+            {id: 35, topic: 'Linux', q: 'How do you exit the Vim editor saving changes?', options: {A: ':q!', B: ':wq', C: ':save', D: ':exit'}, correct: 'B', exp: ':wq writes (saves) and quits.'},
+
+            // --- GIT (30 Questions) ---
+            {id: 36, topic: 'Git', q: 'Which command initializes a new Git repository?', options: {A: 'git start', B: 'git init', C: 'git create', D: 'git new'}, correct: 'B', exp: 'git init creates a new .git directory.'},
+            {id: 37, topic: 'Git', q: 'How do you check the status of files in the working directory?', options: {A: 'git info', B: 'git log', C: 'git status', D: 'git check'}, correct: 'C', exp: 'git status shows working tree status.'},
+            {id: 38, topic: 'Git', q: 'Which command stages changes?', options: {A: 'git add', B: 'git stage', C: 'git commit', D: 'git push'}, correct: 'A', exp: 'git add moves changes to the staging area.'},
+            {id: 39, topic: 'Git', q: 'How do you commit staged changes?', options: {A: 'git save', B: 'git commit', C: 'git push', D: 'git store'}, correct: 'B', exp: 'git commit records changes to the repository.'},
+            {id: 40, topic: 'Git', q: 'Which command lists the commit history?', options: {A: 'git history', B: 'git log', C: 'git past', D: 'git list'}, correct: 'B', exp: 'git log shows the commit logs.'},
+            {id: 41, topic: 'Git', q: 'How do you create a new branch?', options: {A: 'git checkout -b name', B: 'git branch -n name', C: 'git new name', D: 'git create name'}, correct: 'A', exp: 'git checkout -b creates and switches to a new branch.'},
+            {id: 42, topic: 'Git', q: 'Which command merges a branch into the current branch?', options: {A: 'git join', B: 'git merge', C: 'git combine', D: 'git fuse'}, correct: 'B', exp: 'git merge joins two or more development histories.'},
+            {id: 43, topic: 'Git', q: 'What is the command to clone a remote repository?', options: {A: 'git copy', B: 'git clone', C: 'git download', D: 'git pull'}, correct: 'B', exp: 'git clone copies a repository into a new directory.'},
+            {id: 44, topic: 'Git', q: 'How do you fetch and merge changes from the remote?', options: {A: 'git fetch', B: 'git pull', C: 'git push', D: 'git sync'}, correct: 'B', exp: 'git pull performs a fetch followed by a merge.'},
+            {id: 45, topic: 'Git', q: 'What is "HEAD" in Git?', options: {A: 'The first commit', B: 'The main branch', C: 'A pointer to the current commit', D: 'The remote repository'}, correct: 'C', exp: 'HEAD is a pointer to the current snapshot you are working on.'},
+            {id: 46, topic: 'Git', q: 'Which command temporarily saves dirty work without committing?', options: {A: 'git stash', B: 'git hide', C: 'git store', D: 'git pause'}, correct: 'A', exp: 'git stash saves uncommitted changes for later use.'},
+            {id: 47, topic: 'Git', q: 'How do you unstage a file?', options: {A: 'git remove', B: 'git reset', C: 'git delete', D: 'git undo'}, correct: 'B', exp: 'git reset HEAD <file> unstages a file.'},
+            {id: 48, topic: 'Git', q: 'Which command shows the difference between working dir and staging?', options: {A: 'git show', B: 'git diff', C: 'git compare', D: 'git status'}, correct: 'B', exp: 'git diff shows changes between commits, commit and working tree, etc.'},
+            {id: 49, topic: 'Git', q: 'How do you discard local changes to a specific file?', options: {A: 'git checkout -- file', B: 'git remove file', C: 'git drop file', D: 'git clean file'}, correct: 'A', exp: 'git checkout -- <file> restores the file from the last commit/staging.'},
+            {id: 50, topic: 'Git', q: 'What command handles remote URLs?', options: {A: 'git url', B: 'git remote', C: 'git origin', D: 'git connect'}, correct: 'B', exp: 'git remote manage set of tracked repositories.'},
+            {id: 51, topic: 'Git', q: 'What is a "fork"?', options: {A: 'A new branch', B: 'A copy of a repo in your own account', C: 'A git error', D: 'A merge conflict'}, correct: 'B', exp: 'A fork is a personal copy of another users repository.'},
+            {id: 52, topic: 'Git', q: 'Which file tells Git to ignore specific files?', options: {A: '.gitconfig', B: '.gitignore', C: '.gitkeep', D: '.githide'}, correct: 'B', exp: '.gitignore specifies intentionally untracked files to ignore.'},
+            {id: 53, topic: 'Git', q: 'How do you view the details of a specific commit?', options: {A: 'git show <hash>', B: 'git view <hash>', C: 'git log <hash>', D: 'git inspect <hash>'}, correct: 'A', exp: 'git show displays details of a commit object.'},
+            {id: 54, topic: 'Git', q: 'What does "git rebase" do?', options: {A: 'Merges two branches', B: 'Deletes a branch', C: 'Moves the base of a branch to another commit', D: 'Creates a backup'}, correct: 'C', exp: 'Rebase reapplies commits on top of another base tip.'},
+            {id: 55, topic: 'Git', q: 'How do you delete a local branch?', options: {A: 'git branch -d', B: 'git remove -b', C: 'git delete', D: 'git erase'}, correct: 'A', exp: 'git branch -d <branchname> deletes a branch.'},
+            {id: 56, topic: 'Git', q: 'Which command tags a specific commit?', options: {A: 'git label', B: 'git tag', C: 'git mark', D: 'git sign'}, correct: 'B', exp: 'git tag creates a tag object.'},
+            {id: 57, topic: 'Git', q: 'How do you push tags to remote?', options: {A: 'git push --tags', B: 'git send tags', C: 'git upload --tags', D: 'git sync tags'}, correct: 'A', exp: 'git push --tags sends all local tags to the remote.'},
+            {id: 58, topic: 'Git', q: 'What is "git blame" used for?', options: {A: 'Finding errors', B: 'Showing who last modified each line', C: 'Deleting bad code', D: 'Merging conflicts'}, correct: 'B', exp: 'git blame shows what revision and author last modified each line of a file.'},
+            {id: 59, topic: 'Git', q: 'What is "origin" in Git?', options: {A: 'The master branch', B: 'The local folder', C: 'The default alias for the remote repository', D: 'The first commit'}, correct: 'C', exp: 'Origin is the default shorthand name for the remote repository.'},
+            {id: 60, topic: 'Git', q: 'How do you revert a commit that has been pushed?', options: {A: 'git undo', B: 'git revert', C: 'git remove', D: 'git back'}, correct: 'B', exp: 'git revert creates a new commit that undoes the changes of a previous commit.'},
+            {id: 61, topic: 'Git', q: 'What command removes untracked files?', options: {A: 'git clean', B: 'git purge', C: 'git sweep', D: 'git clear'}, correct: 'A', exp: 'git clean removes untracked files from the working tree.'},
+            {id: 62, topic: 'Git', q: 'How do you change the last commit message?', options: {A: 'git commit --amend', B: 'git edit', C: 'git change', D: 'git message'}, correct: 'A', exp: 'git commit --amend allows you to modify the most recent commit.'},
+            {id: 63, topic: 'Git', q: 'Which command creates a zip archive of the repository?', options: {A: 'git zip', B: 'git archive', C: 'git compress', D: 'git pack'}, correct: 'B', exp: 'git archive creates an archive of files from a named tree.'},
+            {id: 64, topic: 'Git', q: 'How do you list remote branches?', options: {A: 'git branch -r', B: 'git remote show', C: 'git list remote', D: 'git view remote'}, correct: 'A', exp: 'git branch -r lists remote-tracking branches.'},
+            {id: 65, topic: 'Git', q: 'What is a "bare" repository?', options: {A: 'An empty repo', B: 'A repo with no working directory', C: 'A public repo', D: 'A read-only repo'}, correct: 'B', exp: 'A bare repository contains git data but no working tree; used for servers.'},
+
+            // --- AWS (30 Questions) ---
+            {id: 66, topic: 'AWS', q: 'Which AWS service is used for compute power?', options: {A: 'S3', B: 'EC2', C: 'RDS', D: 'VPC'}, correct: 'B', exp: 'EC2 (Elastic Compute Cloud) provides scalable computing capacity.'},
+            {id: 67, topic: 'AWS', q: 'What does S3 stand for?', options: {A: 'Simple Storage Service', B: 'Scalable Storage System', C: 'Super Speed Storage', D: 'Secure Storage Service'}, correct: 'A', exp: 'S3 stands for Simple Storage Service.'},
+            {id: 68, topic: 'AWS', q: 'Which service is a managed relational database?', options: {A: 'DynamoDB', B: 'RDS', C: 'Redshift', D: 'ElastiCache'}, correct: 'B', exp: 'RDS (Relational Database Service) manages SQL databases like MySQL, PostgreSQL.'},
+            {id: 69, topic: 'AWS', q: 'Which service is used for Identity and Access Management?', options: {A: 'IAM', B: 'KMS', C: 'WAF', D: 'Cognito'}, correct: 'A', exp: 'IAM manages access to AWS services and resources securely.'},
+            {id: 70, topic: 'AWS', q: 'What is a VPC?', options: {A: 'Virtual Private Cloud', B: 'Very Private Connection', C: 'Virtual Public Cloud', D: 'Verified Private Cloud'}, correct: 'A', exp: 'VPC lets you provision a logically isolated section of the AWS Cloud.'},
+            {id: 71, topic: 'AWS', q: 'Which service allows running code without provisioning servers?', options: {A: 'EC2', B: 'Lambda', C: 'Fargate', D: 'Beanstalk'}, correct: 'B', exp: 'AWS Lambda is a serverless compute service.'},
+            {id: 72, topic: 'AWS', q: 'Which storage class is best for archival data?', options: {A: 'S3 Standard', B: 'S3 Intelligent-Tiering', C: 'S3 Glacier', D: 'S3 One Zone'}, correct: 'C', exp: 'S3 Glacier is designed for low-cost data archiving.'},
+            {id: 73, topic: 'AWS', q: 'What is CloudWatch used for?', options: {A: 'Billing', B: 'Monitoring and Logging', C: 'Content Delivery', D: 'Database Management'}, correct: 'B', exp: 'CloudWatch collects monitoring and operational data (logs, metrics, events).'},
+            {id: 74, topic: 'AWS', q: 'Which service is a CDN?', options: {A: 'Route 53', B: 'CloudFront', C: 'Direct Connect', D: 'Global Accelerator'}, correct: 'B', exp: 'CloudFront is a global Content Delivery Network.'},
+            {id: 75, topic: 'AWS', q: 'What defines the firewall rules for an EC2 instance?', options: {A: 'NACL', B: 'Security Group', C: 'IAM Policy', D: 'Route Table'}, correct: 'B', exp: 'Security Groups act as a virtual firewall for your instance.'},
+            {id: 76, topic: 'AWS', q: 'Which service is a NoSQL database?', options: {A: 'RDS', B: 'Aurora', C: 'DynamoDB', D: 'Redshift'}, correct: 'C', exp: 'DynamoDB is a key-value and document NoSQL database.'},
+            {id: 77, topic: 'AWS', q: 'What is Auto Scaling?', options: {A: 'Automatic backups', B: 'Adjusting capacity to maintain performance', C: 'Automatic updates', D: 'Automatic routing'}, correct: 'B', exp: 'Auto Scaling ensures you have the correct number of EC2 instances to handle load.'},
+            {id: 78, topic: 'AWS', q: 'What is Route 53?', options: {A: 'A Load Balancer', B: 'A DNS Web Service', C: 'A monitoring tool', D: 'A routing table'}, correct: 'B', exp: 'Route 53 is a scalable Domain Name System (DNS) web service.'},
+            {id: 79, topic: 'AWS', q: 'Which tool allows Infrastructure as Code on AWS?', options: {A: 'CloudFormation', B: 'CloudTrail', C: 'Config', D: 'OpsWorks'}, correct: 'A', exp: 'CloudFormation allows you to model and provision resources using code.'},
+            {id: 80, topic: 'AWS', q: 'What is an AMI?', options: {A: 'Amazon Managed Instance', B: 'Amazon Machine Image', C: 'Amazon Main Interface', D: 'Amazon Memory Instance'}, correct: 'B', exp: 'AMI provides the information required to launch an instance.'},
+            {id: 81, topic: 'AWS', q: 'Which service records API calls?', options: {A: 'CloudWatch', B: 'CloudTrail', C: 'Config', D: 'Inspector'}, correct: 'B', exp: 'CloudTrail tracks user activity and API usage.'},
+            {id: 82, topic: 'AWS', q: 'Which block storage service attaches to EC2?', options: {A: 'S3', B: 'EFS', C: 'EBS', D: 'Glacier'}, correct: 'C', exp: 'EBS (Elastic Block Store) provides block level storage for use with EC2.'},
+            {id: 83, topic: 'AWS', q: 'What is an Availability Zone?', options: {A: 'A separate geographic area', B: 'One or more data centers within a Region', C: 'A backup facility', D: 'An edge location'}, correct: 'B', exp: 'AZs are isolated locations within data center regions.'},
+            {id: 84, topic: 'AWS', q: 'Which service distributes incoming traffic?', options: {A: 'Auto Scaling', B: 'ELB (Elastic Load Balancing)', C: 'Route 53', D: 'CloudFront'}, correct: 'B', exp: 'ELB automatically distributes incoming application traffic.'},
+            {id: 85, topic: 'AWS', q: 'What is the purpose of SNS?', options: {A: 'Email Service', B: 'Queue Service', C: 'Pub/Sub Messaging Service', D: 'Monitoring Service'}, correct: 'C', exp: 'SNS (Simple Notification Service) is a fully managed messaging service.'},
+            {id: 86, topic: 'AWS', q: 'Which service is used for message queuing?', options: {A: 'SNS', B: 'SQS', C: 'SES', D: 'MQ'}, correct: 'B', exp: 'SQS (Simple Queue Service) provides message queues.'},
+            {id: 87, topic: 'AWS', q: 'What allows private subnets to access the internet?', options: {A: 'Internet Gateway', B: 'NAT Gateway', C: 'VPN Gateway', D: 'VPC Peering'}, correct: 'B', exp: 'NAT Gateway allows instances in a private subnet to connect to the internet.'},
+            {id: 88, topic: 'AWS', q: 'What is EKS?', options: {A: 'Elastic Kubernetes Service', B: 'Elastic Key Service', C: 'Enterprise Kernel System', D: 'Elastic Kinesis System'}, correct: 'A', exp: 'EKS is a managed service to run Kubernetes on AWS.'},
+            {id: 89, topic: 'AWS', q: 'Which service manages encryption keys?', options: {A: 'IAM', B: 'KMS', C: 'Secrets Manager', D: 'Certificate Manager'}, correct: 'B', exp: 'KMS (Key Management Service) creates and manages cryptographic keys.'},
+            {id: 90, topic: 'AWS', q: 'What is Elastic Beanstalk?', options: {A: 'A storage service', B: 'A PaaS for deploying web apps', C: 'A monitoring tool', D: 'A container service'}, correct: 'B', exp: 'Elastic Beanstalk is a service for deploying and scaling web applications.'},
+            {id: 91, topic: 'AWS', q: 'Which pricing model allows you to bid on spare capacity?', options: {A: 'On-Demand', B: 'Reserved', C: 'Spot Instances', D: 'Savings Plans'}, correct: 'C', exp: 'Spot Instances let you take advantage of unused EC2 capacity at a discount.'},
+            {id: 92, topic: 'AWS', q: 'Which service stores Docker images?', options: {A: 'S3', B: 'EBS', C: 'ECR', D: 'ECS'}, correct: 'C', exp: 'ECR (Elastic Container Registry) is a Docker container registry.'},
+            {id: 93, topic: 'AWS', q: 'What is the main benefit of Edge Locations?', options: {A: 'Cheaper storage', B: 'Reduced latency for end users', C: 'Higher compute power', D: 'Better security'}, correct: 'B', exp: 'Edge locations cache content closer to users via CloudFront to reduce latency.'},
+            {id: 94, topic: 'AWS', q: 'Which service aids in auditing configuration changes?', options: {A: 'CloudWatch', B: 'AWS Config', C: 'Trusted Advisor', D: 'Inspector'}, correct: 'B', exp: 'AWS Config records and evaluates configurations of your AWS resources.'},
+            {id: 95, topic: 'AWS', q: 'What is the default limit of S3 buckets per account?', options: {A: '10', B: '50', C: '100', D: 'Unlimited'}, correct: 'C', exp: 'By default, you can create up to 100 buckets (can be increased).'},
+
+            // --- DOCKER (25 Questions) ---
+            {id: 96, topic: 'Docker', q: 'Which command builds an image from a Dockerfile?', options: {A: 'docker create', B: 'docker build', C: 'docker run', D: 'docker make'}, correct: 'B', exp: 'docker build creates an image from a Dockerfile.'},
+            {id: 97, topic: 'Docker', q: 'Which command lists running containers?', options: {A: 'docker list', B: 'docker ps', C: 'docker run', D: 'docker show'}, correct: 'B', exp: 'docker ps lists running containers.'},
+            {id: 98, topic: 'Docker', q: 'How do you stop a container?', options: {A: 'docker end', B: 'docker stop', C: 'docker halt', D: 'docker kill'}, correct: 'B', exp: 'docker stop gracefully stops a container.'},
+            {id: 99, topic: 'Docker', q: 'What file is used to define a multi-container application?', options: {A: 'Dockerfile', B: 'docker-compose.yml', C: 'config.json', D: 'package.json'}, correct: 'B', exp: 'Docker Compose uses a YAML file to define multi-container apps.'},
+            {id: 100, topic: 'Docker', q: 'Which command removes all stopped containers?', options: {A: 'docker clean', B: 'docker rm', C: 'docker container prune', D: 'docker delete'}, correct: 'C', exp: 'docker container prune removes all stopped containers.'},
+            {id: 101, topic: 'Docker', q: 'What does -d flag do in "docker run"?', options: {A: 'Debug mode', B: 'Detached mode', C: 'Delete on exit', D: 'Direct mode'}, correct: 'B', exp: '-d runs the container in the background (detached).'},
+            {id: 102, topic: 'Docker', q: 'Which command downloads an image from a registry?', options: {A: 'docker get', B: 'docker pull', C: 'docker fetch', D: 'docker load'}, correct: 'B', exp: 'docker pull downloads an image from a registry like Docker Hub.'},
+            {id: 103, topic: 'Docker', q: 'How do you view logs of a container?', options: {A: 'docker logs', B: 'docker view', C: 'docker history', D: 'docker show'}, correct: 'A', exp: 'docker logs [container_id] fetches the logs.'},
+            {id: 104, topic: 'Docker', q: 'What is a Docker Volume?', options: {A: 'Network config', B: 'Persistent data storage', C: 'CPU limit', D: 'Memory limit'}, correct: 'B', exp: 'Volumes are the preferred mechanism for persisting data.'},
+            {id: 105, topic: 'Docker', q: 'Which command executes a command inside a running container?', options: {A: 'docker run', B: 'docker enter', C: 'docker exec', D: 'docker attach'}, correct: 'C', exp: 'docker exec runs a new command in a running container.'},
+            {id: 106, topic: 'Docker', q: 'What is "FROM" in a Dockerfile?', options: {A: 'The maintainer', B: 'The base image', C: 'The source code', D: 'The destination'}, correct: 'B', exp: 'FROM initializes a new build stage and sets the Base Image.'},
+            {id: 107, topic: 'Docker', q: 'Which command lists all images locally?', options: {A: 'docker images', B: 'docker list-images', C: 'docker show', D: 'docker ps'}, correct: 'A', exp: 'docker images (or docker image ls) lists top-level images.'},
+            {id: 108, topic: 'Docker', q: 'How do you map a port in docker run?', options: {A: '-p host:container', B: '-port host:container', C: '-m host:container', D: '-map host:container'}, correct: 'A', exp: '-p (or --publish) maps a container port to a host port.'},
+            {id: 109, topic: 'Docker', q: 'What is a .dockerignore file?', options: {A: 'Lists errors to ignore', B: 'Lists files to exclude from the build context', C: 'Lists ignored containers', D: 'Lists ignored networks'}, correct: 'B', exp: 'It excludes files and directories from the build context.'},
+            {id: 110, topic: 'Docker', q: 'Which command removes an image?', options: {A: 'docker rm', B: 'docker rmi', C: 'docker del', D: 'docker remove'}, correct: 'B', exp: 'docker rmi removes one or more images.'},
+            {id: 111, topic: 'Docker', q: 'What is Docker Swarm?', options: {A: 'A virus', B: 'A container orchestration tool', C: 'A networking driver', D: 'A storage driver'}, correct: 'B', exp: 'Docker Swarm is a container orchestration tool native to Docker.'},
+            {id: 112, topic: 'Docker', q: 'Which network driver is default for containers?', options: {A: 'host', B: 'bridge', C: 'overlay', D: 'none'}, correct: 'B', exp: 'The default network driver for containers is bridge.'},
+            {id: 113, topic: 'Docker', q: 'What does "docker inspect" do?', options: {A: 'Checks container health', B: 'Returns low-level information', C: 'Debugs code', D: 'Inspects file system'}, correct: 'B', exp: 'It returns detailed information on Docker objects.'},
+            {id: 114, topic: 'Docker', q: 'How to tag an image?', options: {A: 'docker label', B: 'docker tag', C: 'docker name', D: 'docker mark'}, correct: 'B', exp: 'docker tag creates a tag TARGET_IMAGE that refers to SOURCE_IMAGE.'},
+            {id: 115, topic: 'Docker', q: 'What is "COPY" in Dockerfile?', options: {A: 'Copies from one container to another', B: 'Copies local files to the image', C: 'Duplicates the image', D: 'Copies files from URL'}, correct: 'B', exp: 'COPY copies new files/directories from <src> to the filesystem of the container.'},
+            {id: 116, topic: 'Docker', q: 'Which command pushes an image to a registry?', options: {A: 'docker upload', B: 'docker send', C: 'docker push', D: 'docker commit'}, correct: 'C', exp: 'docker push uploads an image to a registry.'},
+            {id: 117, topic: 'Docker', q: 'What does "docker login" do?', options: {A: 'Starts the daemon', B: 'Authenticates with a registry', C: 'Connects to a container', D: 'Logs container output'}, correct: 'B', exp: 'It logs in to a Docker registry.'},
+            {id: 118, topic: 'Docker', q: 'What is an "overlay" network?', options: {A: 'Default network', B: 'Connects multiple Docker daemons', C: 'Local network only', D: 'Testing network'}, correct: 'B', exp: 'Overlay networks connect multiple Docker daemons (Swarm/K8s).'},
+            {id: 119, topic: 'Docker', q: 'Which instruction executes a command during the build process?', options: {A: 'CMD', B: 'RUN', C: 'ENTRYPOINT', D: 'EXEC'}, correct: 'B', exp: 'RUN executes commands in a new layer and commits the results.'},
+            {id: 120, topic: 'Docker', q: 'How to restart a container?', options: {A: 'docker reload', B: 'docker restart', C: 'docker boot', D: 'docker reset'}, correct: 'B', exp: 'docker restart stops and then starts the container.'},
+
+            // --- KUBERNETES (25 Questions) ---
+            {id: 121, topic: 'Kubernetes', q: 'What is a Pod?', options: {A: 'A virtual machine', B: 'The smallest deployable unit', C: 'A node', D: 'A cluster'}, correct: 'B', exp: 'A Pod is the smallest and simplest Kubernetes object.'},
+            {id: 122, topic: 'Kubernetes', q: 'Which tool is the CLI for Kubernetes?', options: {A: 'kubecmd', B: 'kubectl', C: 'k8s-cli', D: 'kubeadm'}, correct: 'B', exp: 'kubectl is the command line tool for communicating with the cluster.'},
+            {id: 123, topic: 'Kubernetes', q: 'What manages the state of the cluster?', options: {A: 'etcd', B: 'scheduler', C: 'controller-manager', D: 'kubelet'}, correct: 'A', exp: 'etcd is a consistent and highly-available key value store for cluster data.'},
+            {id: 124, topic: 'Kubernetes', q: 'What component runs on every node and starts pods?', options: {A: 'kube-proxy', B: 'kubelet', C: 'api-server', D: 'etcd'}, correct: 'B', exp: 'The kubelet ensures that containers are running in a Pod.'},
+            {id: 125, topic: 'Kubernetes', q: 'What resource ensures a specified number of pod replicas are running?', options: {A: 'Pod', B: 'Service', C: 'ReplicaSet (or Deployment)', D: 'Ingress'}, correct: 'C', exp: 'A ReplicaSet ensures that a specified number of pod replicas are running.'},
+            {id: 126, topic: 'Kubernetes', q: 'Which service type exposes the service on each Node’s IP?', options: {A: 'ClusterIP', B: 'NodePort', C: 'LoadBalancer', D: 'ExternalName'}, correct: 'B', exp: 'NodePort exposes the Service on the same port of each selected Node.'},
+            {id: 127, topic: 'Kubernetes', q: 'What is a Namespace?', options: {A: 'A physical server', B: 'A virtual cluster', C: 'A network rule', D: 'A storage type'}, correct: 'B', exp: 'Namespaces provide a mechanism for isolating groups of resources.'},
+            {id: 128, topic: 'Kubernetes', q: 'What is used to define Kubernetes objects?', options: {A: 'JSON/YAML', B: 'HTML', C: 'XML', D: 'Java'}, correct: 'A', exp: 'K8s resources are typically defined in YAML or JSON files.'},
+            {id: 129, topic: 'Kubernetes', q: 'How do you list all pods?', options: {A: 'kubectl list pods', B: 'kubectl get pods', C: 'kubectl show pods', D: 'kubectl view pods'}, correct: 'B', exp: 'kubectl get pods lists all pods in the namespace.'},
+            {id: 130, topic: 'Kubernetes', q: 'What is a ConfigMap?', options: {A: 'A map of the network', B: 'Object to store non-confidential data', C: 'A secret storage', D: 'A mapping of ports'}, correct: 'B', exp: 'ConfigMaps store non-confidential data in key-value pairs.'},
+            {id: 131, topic: 'Kubernetes', q: 'What is a Secret?', options: {A: 'Hidden pod', B: 'Object to store sensitive data', C: 'Private network', D: 'Hidden log'}, correct: 'B', exp: 'Secrets are used to store sensitive information like passwords or keys.'},
+            {id: 132, topic: 'Kubernetes', q: 'What is a DaemonSet?', options: {A: 'Runs a copy of a pod on all nodes', B: 'Runs a background process', C: 'Manages database', D: 'Manages networking'}, correct: 'A', exp: 'A DaemonSet ensures that all (or some) Nodes run a copy of a Pod.'},
+            {id: 133, topic: 'Kubernetes', q: 'What does "kubectl apply -f" do?', options: {A: 'Deletes resources', B: 'Creates/Updates resources from a file', C: 'Formats a file', D: 'Filters output'}, correct: 'B', exp: 'It applies a configuration change to a resource from a file.'},
+            {id: 134, topic: 'Kubernetes', q: 'What is an Ingress?', options: {A: 'A firewall', B: 'Internal load balancer', C: 'Manages external access to services (HTTP/S)', D: 'A database connector'}, correct: 'C', exp: 'Ingress exposes HTTP and HTTPS routes from outside the cluster to services.'},
+            {id: 135, topic: 'Kubernetes', q: 'What is a StatefulSet used for?', options: {A: 'Stateless apps', B: 'Stateful apps (like databases)', C: 'Batch jobs', D: 'One-time tasks'}, correct: 'B', exp: 'StatefulSet manages stateful applications with stable identities.'},
+            {id: 136, topic: 'Kubernetes', q: 'What is a PersistentVolume?', options: {A: 'RAM storage', B: 'Storage that survives pod restart', C: 'Temporary cache', D: 'Network bandwidth'}, correct: 'B', exp: 'PV is a piece of storage in the cluster that has a lifecycle independent of any Pod.'},
+            {id: 137, topic: 'Kubernetes', q: 'How do you check logs of a pod?', options: {A: 'kubectl logs <pod>', B: 'kubectl read <pod>', C: 'kubectl cat <pod>', D: 'kubectl monitor <pod>'}, correct: 'A', exp: 'kubectl logs prints the logs for a container in a pod.'},
+            {id: 138, topic: 'Kubernetes', q: 'What is a Liveness Probe?', options: {A: 'Checks if pod is ready to accept traffic', B: 'Checks if container is running', C: 'Checks if node is alive', D: 'Checks network speed'}, correct: 'B', exp: 'It checks if the container is running; if it fails, K8s restarts the container.'},
+            {id: 139, topic: 'Kubernetes', q: 'What is a Readiness Probe?', options: {A: 'Checks if pod is ready to accept traffic', B: 'Checks if container is alive', C: 'Checks disk space', D: 'Checks CPU'}, correct: 'A', exp: 'It determines if a container is ready to accept service requests.'},
+            {id: 140, topic: 'Kubernetes', q: 'What is "Minikube"?', options: {A: 'A small pod', B: 'A tool to run K8s locally', C: 'A minimal container', D: 'A reduced kubectl'}, correct: 'B', exp: 'Minikube implements a local Kubernetes cluster.'},
+            {id: 141, topic: 'Kubernetes', q: 'What is a Job in K8s?', options: {A: 'A background service', B: 'A scheduled task that runs to completion', C: 'A recruitment post', D: 'A network task'}, correct: 'B', exp: 'A Job creates one or more Pods and ensures that a specified number of them successfully terminate.'},
+            {id: 142, topic: 'Kubernetes', q: 'What is a CronJob?', options: {A: 'A time-based job scheduler', B: 'A continuous service', C: 'A database backup', D: 'A monitoring tool'}, correct: 'A', exp: 'A CronJob creates Jobs on a repeating schedule.'},
+            {id: 143, topic: 'Kubernetes', q: 'How do you enter a shell inside a pod?', options: {A: 'kubectl ssh', B: 'kubectl exec -it', C: 'kubectl enter', D: 'kubectl shell'}, correct: 'B', exp: 'kubectl exec -it <pod> -- /bin/bash allows interactive shell access.'},
+            {id: 144, topic: 'Kubernetes', q: 'What is Helm?', options: {A: 'A dashboard', B: 'A package manager for Kubernetes', C: 'A monitoring tool', D: 'A network plugin'}, correct: 'B', exp: 'Helm helps you manage Kubernetes applications.'},
+            {id: 145, topic: 'Kubernetes', q: 'What component schedules pods to nodes?', options: {A: 'kube-scheduler', B: 'kube-controller', C: 'etcd', D: 'api-server'}, correct: 'A', exp: 'kube-scheduler watches for newly created Pods and selects a node for them.'},
+
+            // --- GITHUB CICD (25 Questions) - REPLACES GRAFANA ---
+            {id: 146, topic: 'GitHub CI/CD', q: 'What file defines a GitHub Actions workflow?', options: {A: 'Dockerfile', B: '.gitlab-ci.yml', C: '.github/workflows/main.yml', D: 'package.json'}, correct: 'C', exp: 'GitHub Actions workflows are defined in YAML files in the .github/workflows directory.'},
+            {id: 147, topic: 'GitHub CI/CD', q: 'What triggers a workflow?', options: {A: 'A listener', B: 'An event (e.g., push, pull_request)', C: 'A compiler', D: 'A server restart'}, correct: 'B', exp: 'Workflows are triggered by events such as push, pull_request, or schedule.'},
+            {id: 148, topic: 'GitHub CI/CD', q: 'What is a "Runner"?', options: {A: 'A test script', B: 'A server that runs your workflow jobs', C: 'A deployment target', D: 'A user'}, correct: 'B', exp: 'A runner is a server that runs your workflows when they are triggered.'},
+            {id: 149, topic: 'GitHub CI/CD', q: 'How do you define a job in a workflow?', options: {A: 'tasks:', B: 'jobs:', C: 'steps:', D: 'run:'}, correct: 'B', exp: 'Jobs are defined under the "jobs" key in the workflow YAML file.'},
+            {id: 150, topic: 'GitHub CI/CD', q: 'What keyword runs commands in a step?', options: {A: 'execute', B: 'cmd', C: 'run', D: 'do'}, correct: 'C', exp: 'The "run" keyword executes command-line programs.'},
+            {id: 151, topic: 'GitHub CI/CD', q: 'How do you use an action from the marketplace?', options: {A: 'import', B: 'uses', C: 'include', D: 'require'}, correct: 'B', exp: 'The "uses" keyword specifies an action to run as part of a step.'},
+            {id: 152, topic: 'GitHub CI/CD', q: 'Where do you store sensitive data like keys?', options: {A: 'In code', B: 'GitHub Secrets', C: 'README.md', D: 'Commit messages'}, correct: 'B', exp: 'GitHub Secrets are encrypted environment variables for sensitive data.'},
+            {id: 153, topic: 'GitHub CI/CD', q: 'How do you access a secret in a workflow?', options: {A: '$SECRET', B: '${{ secrets.NAME }}', C: '%SECRET%', D: 'env.SECRET'}, correct: 'B', exp: 'Secrets are accessed using the ${{ secrets.NAME }} syntax.'},
+            {id: 154, topic: 'GitHub CI/CD', q: 'What allows sharing data between jobs?', options: {A: 'Artifacts', B: 'Variables', C: 'Cookies', D: 'Emails'}, correct: 'A', exp: 'Artifacts allow you to persist data after a job completes and share it.'},
+            {id: 155, topic: 'GitHub CI/CD', q: 'Can you run workflows on a schedule?', options: {A: 'No', B: 'Yes, using cron syntax', C: 'Only manually', D: 'Only on push'}, correct: 'B', exp: 'You can use the "schedule" event with cron syntax.'},
+            {id: 156, topic: 'GitHub CI/CD', q: 'What is a "Self-hosted runner"?', options: {A: 'A GitHub server', B: 'A machine you manage to run jobs', C: 'A cloud instance', D: 'A local script'}, correct: 'B', exp: 'Self-hosted runners are machines that you manage and maintain.'},
+            {id: 157, topic: 'GitHub CI/CD', q: 'How do you define dependencies between jobs?', options: {A: 'depends_on', B: 'needs', C: 'requires', D: 'after'}, correct: 'B', exp: 'The "needs" keyword identifies any jobs that must complete successfully before this job will run.'},
+            {id: 158, topic: 'GitHub CI/CD', q: 'What creates a matrix of different configurations?', options: {A: 'strategy: matrix', B: 'loop: array', C: 'config: multiple', D: 'build: list'}, correct: 'A', exp: 'A build matrix allows you to run jobs across multiple OS/versions simultaneously.'},
+            {id: 159, topic: 'GitHub CI/CD', q: 'What is "GITHUB_TOKEN"?', options: {A: 'A user password', B: 'An automatically generated secret for authentication', C: 'A public key', D: 'A license key'}, correct: 'B', exp: 'GITHUB_TOKEN is an auto-generated secret used to authenticate in a workflow run.'},
+            {id: 160, topic: 'GitHub CI/CD', q: 'How do you filter a workflow to specific branches?', options: {A: 'only:', B: 'branches:', C: 'filter:', D: 'limit:'}, correct: 'B', exp: 'You use "branches" under "push" or "pull_request" events.'},
+            {id: 161, topic: 'GitHub CI/CD', q: 'What is the default shell on Linux runners?', options: {A: 'zsh', B: 'bash', C: 'sh', D: 'fish'}, correct: 'B', exp: 'Bash is the default shell on Linux runners.'},
+            {id: 162, topic: 'GitHub CI/CD', q: 'How do you set an environment variable for a step?', options: {A: 'set:', B: 'var:', C: 'env:', D: 'export:'}, correct: 'C', exp: 'The "env" map sets environment variables for the entire workflow, a job, or a step.'},
+            {id: 163, topic: 'GitHub CI/CD', q: 'Which action checks out your repository code?', options: {A: 'actions/download', B: 'actions/checkout', C: 'git/clone', D: 'actions/pull'}, correct: 'B', exp: 'actions/checkout checks out your repository so your workflow can access it.'},
+            {id: 164, topic: 'GitHub CI/CD', q: 'What status check makes a job fail?', options: {A: 'exit 0', B: 'exit 1 (non-zero)', C: 'return true', D: 'echo error'}, correct: 'B', exp: 'A non-zero exit code indicates failure.'},
+            {id: 165, topic: 'GitHub CI/CD', q: 'Can you manually trigger a workflow?', options: {A: 'No', B: 'Yes, using workflow_dispatch', C: 'Yes, using manual_trigger', D: 'Only via API'}, correct: 'B', exp: 'The "workflow_dispatch" event allows manual triggering.'},
+            {id: 166, topic: 'GitHub CI/CD', q: 'How do you cache dependencies?', options: {A: 'actions/save', B: 'actions/cache', C: 'actions/store', D: 'npm cache'}, correct: 'B', exp: 'The actions/cache action allows caching dependencies to speed up workflows.'},
+            {id: 167, topic: 'GitHub CI/CD', q: 'What is a composite action?', options: {A: 'An action combining multiple steps', B: 'A binary action', C: 'A docker action', D: 'A java action'}, correct: 'A', exp: 'Composite actions allow you to combine multiple workflow steps into one action.'},
+            {id: 168, topic: 'GitHub CI/CD', q: 'Where can you view workflow logs?', options: {A: 'In the console', B: 'In the Actions tab on GitHub', C: 'Via email', D: 'In the README'}, correct: 'B', exp: 'Logs are visible in the Actions tab of the repository.'},
+            {id: 169, topic: 'GitHub CI/CD', q: 'How to conditionally run a step?', options: {A: 'when:', B: 'if:', C: 'case:', D: 'switch:'}, correct: 'B', exp: 'The "if" conditional prevents a job or step from running unless a condition is met.'},
+            {id: 170, topic: 'GitHub CI/CD', q: 'What limits the free tier of GitHub Actions?', options: {A: 'Number of workflows', B: 'Storage and Minutes', C: 'Number of users', D: 'Lines of code'}, correct: 'B', exp: 'Free tier is limited by storage (artifacts) and execution minutes per month.'},
+
+            // --- TERRAFORM (30 Questions) ---
+            {id: 171, topic: 'Terraform', q: 'What is Terraform?', options: {A: 'A game', B: 'Infrastructure as Code tool', C: 'A database', D: 'A monitoring tool'}, correct: 'B', exp: 'Terraform is an IaC tool for building, changing, and versioning infrastructure.'},
+            {id: 172, topic: 'Terraform', q: 'What file tracks the state of infrastructure?', options: {A: 'main.tf', B: 'terraform.tfstate', C: 'vars.tf', D: 'output.tf'}, correct: 'B', exp: 'terraform.tfstate tracks the IDs of created resources.'},
+            {id: 173, topic: 'Terraform', q: 'Which command initializes a directory?', options: {A: 'terraform start', B: 'terraform init', C: 'terraform begin', D: 'terraform create'}, correct: 'B', exp: 'terraform init prepares the working directory.'},
+            {id: 174, topic: 'Terraform', q: 'Which command creates an execution plan?', options: {A: 'terraform plan', B: 'terraform map', C: 'terraform preview', D: 'terraform test'}, correct: 'A', exp: 'terraform plan shows what actions will be taken.'},
+            {id: 175, topic: 'Terraform', q: 'Which command applies the changes?', options: {A: 'terraform go', B: 'terraform apply', C: 'terraform run', D: 'terraform exec'}, correct: 'B', exp: 'terraform apply executes the changes defined in the plan.'},
+            {id: 176, topic: 'Terraform', q: 'Which command destroys the infrastructure?', options: {A: 'terraform delete', B: 'terraform destroy', C: 'terraform remove', D: 'terraform kill'}, correct: 'B', exp: 'terraform destroy removes all managed infrastructure.'},
+            {id: 177, topic: 'Terraform', q: 'What is a "Provider"?', options: {A: 'The user', B: 'A plugin to interact with APIs (e.g., AWS)', C: 'The source code', D: 'The output'}, correct: 'B', exp: 'Providers interact with cloud providers, SaaS providers, etc.'},
+            {id: 178, topic: 'Terraform', q: 'What allows code reuse in Terraform?', options: {A: 'Functions', B: 'Modules', C: 'Scripts', D: 'Classes'}, correct: 'B', exp: 'Modules are containers for multiple resources that are used together.'},
+            {id: 179, topic: 'Terraform', q: 'What file usually contains the main configuration?', options: {A: 'config.tf', B: 'main.tf', C: 'index.tf', D: 'root.tf'}, correct: 'B', exp: 'main.tf is the convention for the primary entry point.'},
+            {id: 180, topic: 'Terraform', q: 'How do you define input variables?', options: {A: 'output block', B: 'variable block', C: 'input block', D: 'const block'}, correct: 'B', exp: 'Variables are defined using the variable block.'},
+            {id: 181, topic: 'Terraform', q: 'What command formats code to a canonical style?', options: {A: 'terraform style', B: 'terraform fmt', C: 'terraform lint', D: 'terraform clean'}, correct: 'B', exp: 'terraform fmt rewrites config files to a canonical format.'},
+            {id: 182, topic: 'Terraform', q: 'What is "HCL"?', options: {A: 'High Code Language', B: 'HashiCorp Configuration Language', C: 'Hyper Config Language', D: 'Hardware Control Language'}, correct: 'B', exp: 'HCL is the language used by Terraform.'},
+            {id: 183, topic: 'Terraform', q: 'Which command checks for syntax errors?', options: {A: 'terraform check', B: 'terraform validate', C: 'terraform verify', D: 'terraform test'}, correct: 'B', exp: 'terraform validate checks whether the configuration is syntactically valid.'},
+            {id: 184, topic: 'Terraform', q: 'How do you output values after apply?', options: {A: 'print', B: 'output block', C: 'echo', D: 'return'}, correct: 'B', exp: 'Output values are defined using the output block.'},
+            {id: 185, topic: 'Terraform', q: 'What is "terraform refresh"?', options: {A: 'Reloads page', B: 'Updates state to match real-world resources', C: 'Restarts server', D: 'Clears cache'}, correct: 'B', exp: 'It updates the state file with the current status of the infrastructure.'},
+            {id: 186, topic: 'Terraform', q: 'What is a "Backend"?', options: {A: 'The database', B: 'Where state is stored (e.g., S3)', C: 'The code logic', D: 'The user interface'}, correct: 'B', exp: 'The backend defines where Terraform stores its state data files.'},
+            {id: 187, topic: 'Terraform', q: 'What is "State Locking"?', options: {A: 'Encrypting state', B: 'Preventing concurrent operations', C: 'Hiding state', D: 'Deleting state'}, correct: 'B', exp: 'Locking prevents others from acquiring the lock while an operation is running.'},
+            {id: 188, topic: 'Terraform', q: 'What is "Terraform Cloud"?', options: {A: 'A weather app', B: 'Managed service for Terraform', C: 'A new language', D: 'A database'}, correct: 'B', exp: 'It is a platform that manages Terraform runs in a consistent environment.'},
+            {id: 189, topic: 'Terraform', q: 'How do you mark a resource for recreation?', options: {A: 'terraform recreate', B: 'terraform taint', C: 'terraform mark', D: 'terraform redo'}, correct: 'B', exp: 'terraform taint marks a resource to be destroyed and recreated.'},
+            {id: 190, topic: 'Terraform', q: 'What is a "Data Source"?', options: {A: 'Input variable', B: 'Read-only information from provider', C: 'A database', D: 'A module'}, correct: 'B', exp: 'Data sources allow data to be fetched or computed for use elsewhere.'},
+            {id: 191, topic: 'Terraform', q: 'What file extension does Terraform use?', options: {A: '.xml', B: '.json', C: '.tf', D: '.yaml'}, correct: 'C', exp: 'Terraform configuration files end in .tf.'},
+            {id: 192, topic: 'Terraform', q: 'Can Terraform manage existing resources?', options: {A: 'No', B: 'Yes, using terraform import', C: 'Only AWS', D: 'Only Azure'}, correct: 'B', exp: 'terraform import can import existing infrastructure into your state.'},
+            {id: 193, topic: 'Terraform', q: 'What is a "Resource"?', options: {A: 'A variable', B: 'An infrastructure object (e.g., EC2)', C: 'A plugin', D: 'A function'}, correct: 'B', exp: 'Resources describe one or more infrastructure objects.'},
+            {id: 194, topic: 'Terraform', q: 'What is a "Provisioner"?', options: {A: 'A tool to execute scripts on local/remote machine', B: 'A provider', C: 'A variable', D: 'A module'}, correct: 'A', exp: 'Provisioners execute scripts during resource creation/destruction.'},
+            {id: 195, topic: 'Terraform', q: 'How do you upgrade provider versions?', options: {A: 'terraform update', B: 'terraform init -upgrade', C: 'terraform upgrade', D: 'terraform get'}, correct: 'B', exp: 'terraform init -upgrade upgrades modules and plugins.'},
+            {id: 196, topic: 'Terraform', q: 'What is a "Workspace"?', options: {A: 'A folder', B: 'Isolated state for same config', C: 'A desk', D: 'A user account'}, correct: 'B', exp: 'Workspaces allow multiple state files for the same configuration.'},
+            {id: 197, topic: 'Terraform', q: 'What does "terraform graph" do?', options: {A: 'Draws a picture', B: 'Generates visual dependency graph', C: 'Shows costs', D: 'Shows errors'}, correct: 'B', exp: 'It generates a visual representation of the configuration dependency graph.'},
+            {id: 198, topic: 'Terraform', q: 'What is the "local" backend?', options: {A: 'Stores state on local disk', B: 'Stores state in S3', C: 'Stores state in memory', D: 'No state'}, correct: 'A', exp: 'The local backend stores state on the local filesystem.'},
+            {id: 199, topic: 'Terraform', q: 'What is "locals" block?', options: {A: 'Local variables', B: 'Local providers', C: 'Local resources', D: 'Local outputs'}, correct: 'A', exp: 'Locals allows you to define local values (variables) for reuse.'},
+
+            {id: 200, topic: 'Terraform', q: 'Is Terraform imperative or declarative?', options: {A: 'Imperative', B: 'Declarative', C: 'Both', D: 'Neither'}, correct: 'B', exp: 'Terraform is declarative; you define the desired state, not the steps.'}
+        ];
+
+        // IMPORTANT: Ensure you paste the FULL list of 200 questions here from the previous version.
+        
+        // --- 2. STATE MANAGEMENT ---
+        let currentQuestionIndex = 0;
+        let userAnswers = {}; // { questionId: 'A' }
+        let quizSubmitted = false;
+
+        // --- 3. INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFromLocalStorage();
+            renderQuestion(currentQuestionIndex);
+            updateStats();
+        });
+
+        // --- 4. RENDER LOGIC ---
+        function renderQuestion(index) {
+            // Safety check for empty data
+            if (!questionData || questionData.length === 0) {
+                document.getElementById('question-container').innerHTML = "<h3>Error loading questions. Please try again.</h3>";
+                return;
+            }
+
+            const q = questionData[index];
+            const container = document.getElementById('question-container');
+            
+            // Sync UI controls
+            currentQuestionIndex = index;
+            document.getElementById('question-counter').innerText = `Question: ${index + 1} / ${questionData.length}`;
+            
+            // Determine state
+            const savedAnswer = userAnswers[q.id];
+            const isAnswered = savedAnswer !== undefined;
+            // Show correctness ONLY if quiz is submitted
+            const showFeedback = quizSubmitted; 
+
+            // HTML Construction
+            let html = `
+                <div class="question-card">
+                    <div class="question-meta"><i class="fas fa-tag"></i> ${q.topic}</div>
+                    <div class="question-text">${q.q}</div>
+                    
+                    <div class="options-grid">
+                        ${Object.entries(q.options).map(([key, val]) => {
+                            let className = 'option-label';
+                            let iconHtml = '';
+
+                            if (key === savedAnswer) {
+                                className += ' selected'; // Highlight selected choice
+                            }
+
+                            if (showFeedback) {
+                                className += ' disabled'; // Disable interaction
+                                if (key === q.correct) {
+                                    className += ' correct';
+                                    iconHtml = '<i class="fas fa-check" style="margin-left:auto; color:#155724;"></i>';
+                                } else if (key === savedAnswer) {
+                                    className += ' incorrect';
+                                    iconHtml = '<i class="fas fa-times" style="margin-left:auto; color:#721c24;"></i>';
+                                }
+                            }
+
+                            return `
+                                <label class="${className}" onclick="${(!quizSubmitted) ? `checkAnswer('${key}')` : ''}">
+                                    <input type="radio" name="opt" ${key === savedAnswer ? 'checked' : ''} ${quizSubmitted ? 'disabled' : ''}>
+                                    <span style="font-weight:700; margin-right:10px;">${key}.</span> ${val}
+                                    ${iconHtml}
+                                </label>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <div class="explanation-box ${showFeedback ? 'show' : ''}">
+                        <strong><i class="fas fa-info-circle"></i> Explanation:</strong><br>
+                        ${q.exp}
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML = html;
+            updateProgressBar();
+        }
+
+        function checkAnswer(selectedOption) {
+            if (quizSubmitted) return; // Prevent changing answers after submit
+            const q = questionData[currentQuestionIndex];
+            userAnswers[q.id] = selectedOption;
+            saveToLocalStorage();
+            renderQuestion(currentQuestionIndex); // Re-render to show selection state
+            updateStats();
+        }
+
+        // --- 5. NAVIGATION ---
+        function nextQuestion() {
+            if (currentQuestionIndex < questionData.length - 1) {
+                renderQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                renderQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        // --- 6. UTILS & STORAGE ---
+        function updateStats() {
+            // Only show detailed score after submission
+            if(quizSubmitted) {
+                 let score = 0;
+                questionData.forEach(q => {
+                    if (userAnswers[q.id] === q.correct) score++;
+                });
+                document.getElementById('score-counter').style.display = 'inline';
+                document.getElementById('score-counter').innerText = `Score: ${score}`;
+            }
+        }
+
+        function updateProgressBar() {
+            const pct = ((currentQuestionIndex + 1) / questionData.length) * 100;
+            document.getElementById('progress-fill').style.width = pct + '%';
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('quizAnswers', JSON.stringify(userAnswers));
+            localStorage.setItem('quizCurrentIndex', currentQuestionIndex);
+            localStorage.setItem('quizSubmitted', quizSubmitted);
+        }
+
+        function loadFromLocalStorage() {
+            const savedAns = localStorage.getItem('quizAnswers');
+            if (savedAns) userAnswers = JSON.parse(savedAns);
+            
+            const savedIdx = localStorage.getItem('quizCurrentIndex');
+            if (savedIdx) currentQuestionIndex = parseInt(savedIdx);
+
+            const savedSub = localStorage.getItem('quizSubmitted');
+            if (savedSub === 'true') {
+                quizSubmitted = true;
+                document.getElementById('submit-btn').style.display = 'none'; // Hide submit button if already done
+                document.getElementById('score-counter').style.display = 'inline';
+            }
+        }
+
+        function resetQuiz() {
+            if(confirm("Are you sure you want to reset your progress?")) {
+                localStorage.removeItem('quizAnswers');
+                localStorage.removeItem('quizCurrentIndex');
+                localStorage.removeItem('quizSubmitted');
+                userAnswers = {};
+                currentQuestionIndex = 0;
+                quizSubmitted = false;
+                location.reload(); 
+            }
+        }
+
+        // --- 7. FINISH & EXPORT ---
+        function finishQuiz() {
+            if (Object.keys(userAnswers).length < questionData.length) {
+                if(!confirm(`You have answered ${Object.keys(userAnswers).length} out of ${questionData.length} questions. Submit anyway?`)) {
+                    return;
+                }
+            }
+
+            quizSubmitted = true;
+            saveToLocalStorage();
+
+            let score = 0;
+            questionData.forEach(q => {
+                if (userAnswers[q.id] === q.correct) score++;
+            });
+            const pct = Math.round((score / questionData.length) * 100);
+            
+            let label = "Beginner";
+            if (pct >= 90) label = "Expert";
+            else if (pct >= 75) label = "Advanced";
+            else if (pct >= 50) label = "Intermediate";
+
+            document.getElementById('final-score-circle').innerText = pct + "%";
+            document.getElementById('performance-label').innerText = label;
+            document.getElementById('final-stats').innerText = `You answered ${score} out of ${questionData.length} questions correctly.`;
+            
+            document.getElementById('results-modal').style.display = 'flex';
+            document.getElementById('submit-btn').style.display = 'none';
+            
+            updateStats();
+            renderQuestion(currentQuestionIndex); // Re-render current to show answers immediately behind modal
+        }
+
+        function closeResults() {
+            document.getElementById('results-modal').style.display = 'none';
+            // User can now browse through questions and see answers
+        }
+
+        // Keyboard Nav
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "ArrowRight") nextQuestion();
+            if (event.key === "ArrowLeft") prevQuestion();
+        });
+
+    </script>
+</body>
+</html>
