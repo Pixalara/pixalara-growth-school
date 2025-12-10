@@ -1124,6 +1124,15 @@ img { max-width: 100%; height: auto; }
     /* Animation: Slide Up & Zoom */
     transform: translateY(50px) scale(0.9);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* --- NEW: Hide Scrollbar (Firefox, IE, Edge) --- */
+    scrollbar-width: none;  
+    -ms-overflow-style: none;  
+}
+
+/* --- NEW: Hide Scrollbar (Chrome, Safari, Opera) --- */
+.modal-card::-webkit-scrollbar {
+    display: none;
 }
 
 .modal-overlay.open .modal-card {
