@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Pixalara Growth School</title>
-    <meta name="description" content="Master DevOps, Cloud Computing, and Linux with hands-on training at Pixalara Growth School. Job-ready courses in AWS, Kubernetes, and Terraform.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/pixalara-logo.png">
-
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-
 </head>
 <body>
 
@@ -88,7 +78,7 @@
                                 <div class="info-text">
                                     <h4>Book a Demo with us</h4>
                                     <p>
-                                        <a href="#contactForm" style="color: var(--primary); font-weight: 700; text-decoration: none;">
+                                        <a href="#" onclick="openBookingModal(); return false;" style="color: var(--primary); font-weight: 700; text-decoration: none;">
                                             Schedule a Free Session &rarr;
                                         </a>
                                     </p>
@@ -105,6 +95,7 @@
                         
                         <form id="contactForm">
                             <input type="hidden" name="access_key" value="42a9bf20-fc50-4974-ab93-c9fe73f5a9b2">
+                            <input type="hidden" name="form_type" value="General Inquiry">
                             <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                             <div class="form-group">
@@ -151,13 +142,65 @@
         </section>
     </main>
 
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-card">
+            <span class="close-booking" onclick="closeBookingModal()">&times;</span>
+            
+            <div class="booking-header">
+                <h2>Book a Free Demo</h2>
+                <p>Select a date and time for your 1:1 Career Guidance session.</p>
+            </div>
+
+            <div class="booking-body">
+                <form id="bookingForm">
+                    <input type="hidden" name="access_key" value="42a9bf20-fc50-4974-ab93-c9fe73f5a9b2">
+                    <input type="hidden" name="subject" value="NEW DEMO BOOKING REQUEST">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="date-time-grid">
+                        <div class="form-group">
+                            <label>Preferred Date</label>
+                            <input type="date" name="Date" class="form-control" required id="bookingDate">
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time</label>
+                            <input type="time" name="Time" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="Name" class="form-control" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="date-time-grid">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="Email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="Phone" class="form-control" placeholder="+91 99999 99999" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">
+                        <span id="bookBtnText">Confirm Booking</span>
+                        <span id="bookBtnLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
+                    </button>
+                    <p id="bookingStatus" style="margin-top: 10px; text-align: center; color: red; display: none;"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div id="successModal" class="success-overlay">
         <div class="success-box">
             <div class="success-icon-anim">
                 <i class="fas fa-check"></i>
             </div>
-            <h3>Thank You!</h3>
-            <p>Your message has been received. Our team will contact you shortly.</p>
+            <h3 id="successTitle">Thank You!</h3>
+            <p id="successMessage">Your message has been received. Our team will contact you shortly.</p>
             <button class="btn-close-success" onclick="closeSuccessModal()">Close</button>
         </div>
     </div>
@@ -178,7 +221,7 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
+           <div class="footer-col">
                 <h4>Contact</h4>
                 <p><i class="fas fa-phone-alt"></i> +91 99886 88654</p>
                 <p><i class="fas fa-phone-alt"></i> +91 94945 16887</p>
@@ -190,28 +233,58 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/919988688654?text=Hello%2C%20I%20have%20a%20query." class="float-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp my-float"></i>
-    </a>
-
     <script src="assets/js/main.js"></script>
 
     <script>
-        const form = document.getElementById('contactForm');
-        const btnText = document.getElementById('btnText');
-        const btnLoading = document.getElementById('btnLoading');
-        const modal = document.getElementById('successModal');
-        const statusMsg = document.getElementById('formStatus');
+        // --- 1. SET MINIMUM DATE TO TODAY ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('bookingDate');
+            if(dateInput) {
+                dateInput.min = new Date().toISOString().split("T")[0];
+            }
+        });
 
-        form.addEventListener('submit', function(e) {
+        // --- 2. MODAL FUNCTIONS ---
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.add('open');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('open');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        // --- 3. HANDLE GENERAL CONTACT FORM ---
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            handleFormSubmit(contactForm, 'btnText', 'btnLoading', 'formStatus', 
+                'Thank You!', 'Your message has been sent. We will get back to you shortly.');
+        });
+
+        // --- 4. HANDLE BOOKING FORM ---
+        const bookingForm = document.getElementById('bookingForm');
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmit(bookingForm, 'bookBtnText', 'bookBtnLoading', 'bookingStatus', 
+                'Booking Request Sent!', 'We have received your demo request. We will confirm your slot via email shortly.');
+        });
+
+        // --- 5. GENERIC FORM HANDLER ---
+        function handleFormSubmit(formObj, btnTextId, btnLoadingId, statusId, successTitle, successMsg) {
+            const btnText = document.getElementById(btnTextId);
+            const btnLoading = document.getElementById(btnLoadingId);
+            const statusBox = document.getElementById(statusId);
             
-            // Show Loading State
+            // UI Loading State
             btnText.style.display = 'none';
             btnLoading.style.display = 'inline-block';
-            statusMsg.style.display = 'none';
+            statusBox.style.display = 'none';
 
-            const formData = new FormData(form);
+            const formData = new FormData(formObj);
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
@@ -226,28 +299,29 @@
             .then(async (response) => {
                 let json = await response.json();
                 if (response.status == 200) {
-                    // Success! Show Popup
-                    modal.classList.add('active');
-                    form.reset();
+                    // Close Booking Modal if open
+                    closeBookingModal();
+                    
+                    // Show Success Modal
+                    document.getElementById('successTitle').innerText = successTitle;
+                    document.getElementById('successMessage').innerText = successMsg;
+                    document.getElementById('successModal').classList.add('active');
+                    
+                    formObj.reset();
                 } else {
-                    statusMsg.innerText = json.message;
-                    statusMsg.style.display = 'block';
+                    statusBox.innerText = json.message;
+                    statusBox.style.display = 'block';
                 }
             })
             .catch(error => {
                 console.log(error);
-                statusMsg.innerText = "Something went wrong!";
-                statusMsg.style.display = 'block';
+                statusBox.innerText = "Something went wrong!";
+                statusBox.style.display = 'block';
             })
             .finally(() => {
-                // Reset Button
                 btnText.style.display = 'inline-block';
                 btnLoading.style.display = 'none';
             });
-        });
-
-        function closeSuccessModal() {
-            modal.classList.remove('active');
         }
     </script>
 

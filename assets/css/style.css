@@ -1961,3 +1961,109 @@ img { max-width: 100%; height: auto; }
     80% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
+
+/* --- BOOKING MODAL STYLES --- */
+.booking-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #8e44ad 100%);
+    padding: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.booking-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.booking-header p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 5px;
+    font-size: 0.95rem;
+}
+
+.booking-body {
+    padding: 30px;
+}
+
+.date-time-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Customizing Date/Time Inputs */
+input[type="date"], input[type="time"] {
+    font-family: inherit;
+    color: #555;
+}
+
+/* Close button for booking modal specific */
+.close-booking {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close-booking:hover { transform: scale(1.1); }
+
+@media (max-width: 600px) {
+    .date-time-grid { grid-template-columns: 1fr; }
+}
+
+/* --- PREMIUM DATE & TIME INPUTS (Animated) --- */
+
+/* 1. Base Styling for the Input Box */
+input[type="date"], input[type="time"] {
+    cursor: pointer;
+    background: #f9f9ff; /* Very light purple tint */
+    border: 2px solid #eee;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    padding-right: 10px;
+    
+    /* Smooth transition for hover/focus effects */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 2. Hover Effect: Subtle border change */
+input[type="date"]:hover, input[type="time"]:hover {
+    background: #fff;
+    border-color: #dcd6f7; /* Light purple border */
+}
+
+/* 3. Focus Animation: Lifts up and Glows */
+input[type="date"]:focus, input[type="time"]:focus {
+    background: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 10px 25px rgba(101, 40, 247, 0.15); /* Purple shadow */
+    transform: translateY(-3px); /* Moves up slightly */
+    outline: none;
+}
+
+/* 4. Styling the Calendar/Clock Icon (Chrome/Edge/Safari) */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    
+    /* This filter turns the black icon into your Brand Purple (#6528F7) */
+    filter: invert(18%) sepia(66%) saturate(4649%) hue-rotate(256deg) brightness(96%) contrast(96%);
+    
+    /* Icon animation transition */
+    transition: transform 0.4s ease, background-color 0.3s;
+}
+
+/* 5. Icon Hover Animation: Spin & Zoom */
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    background-color: rgba(101, 40, 247, 0.1); /* Light purple circle bg */
+    transform: scale(1.3) rotate(15deg); /* Zooms in and tilts */
+}
