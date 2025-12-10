@@ -1777,23 +1777,52 @@ img { max-width: 100%; height: auto; }
 }
 
 /* Right: Form Container */
+/* --- UPDATE THIS RULE IN style.css --- */
+
+/* --- UPDATE THESE RULES IN style.css --- */
+
 .creative-form-box {
     background: #fff;
-    padding: 50px;
+    padding: 30px 40px; /* Reduced vertical padding (was 50px) */
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.08);
     border: 1px solid #f0f0f0;
+    /* Optional: Ensure it doesn't stretch unnecessarily */
+    height: fit-content; 
 }
 
 .creative-form-box h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.8rem; /* Slightly smaller title */
+    margin-bottom: 5px;
     color: var(--text-dark);
 }
 
 .creative-form-box p {
     color: #888;
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Reduced margin (was 30px) */
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 12px; /* Reduced space between inputs (was 20px) */
+}
+
+/* Adjust label spacing */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px; /* Slightly tighter input padding */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
 }
 
 .form-grid-2 {
