@@ -280,22 +280,26 @@ img { max-width: 100%; height: auto; }
 
 /* Photo Styling */
 .mentor-photo {
-    width: 120px; 
-    height: 120px; 
-    border-radius: 50%; 
+    width: 210px; 
+    height: 210px; 
+    border-radius: 50%; /* 50% ensures a perfect circle */
+    
+    /* KEY FIX: Centers the image on the face (top-center) */
     object-fit: cover;
-    margin: 0 auto 20px auto; 
+    object-position: center top; 
+    
+    margin: 0 auto 30px auto; 
     display: block; 
-    border: 4px solid #f0f0f0;
+    border: 6px solid #f0f0f0;
     
     /* Smooth Transition for the image */
     transition: transform 0.5s ease, border-color 0.3s ease;
 }
 
-/* Hover Effect: Photo Zooms & Tilts */
+/* Hover Effect: Reduced Zoom & Tilt */
 .mentor-card:hover .mentor-photo {
-    transform: scale(1.1) rotate(5deg); /* Zoom in and slight tilt */
-    border-color: var(--primary); /* Ring turns purple */
+    transform: scale(1.30) rotate(3deg); /* Changed from 1.1 to 1.05 for less zoom */
+    border-color: var(--primary); 
 }
 
 .mentor-card h3 { 
