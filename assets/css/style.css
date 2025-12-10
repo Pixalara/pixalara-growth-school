@@ -129,11 +129,11 @@ img { max-width: 100%; height: auto; }
 /* Style for the Real Icons */
 .skill-card {
     background: #fff;
-    border: 1px solid #f0f0f0;
+    border: 0px solid #f0f0f0;
     padding: 15px 30px;
     margin: 0 15px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 35px 45px rgba(0,0,0,0.05);
     display: flex;
     align-items: center;
     gap: 15px;
@@ -144,11 +144,11 @@ img { max-width: 100%; height: auto; }
 .skill-card:hover {
     transform: translateY(-5px);
     border-color: var(--primary);
-    box-shadow: 0 10px 25px rgba(101, 40, 247, 0.15);
+    box-shadow: 0 20px 35px rgba(101, 40, 247, 0.15);
 }
 
 .skill-card img {
-    height: 40px; /* Adjust icon size here */
+    height: 50px; /* Adjust icon size here */
     width: auto;
 }
 
@@ -171,7 +171,7 @@ img { max-width: 100%; height: auto; }
 
 /* Mobile Tweak */
 @media (max-width: 768px) {
-    .skill-card img { height: 30px; }
+    .skill-card img { height: 40px; }
     .skill-card { padding: 10px 20px; margin: 0 10px; }
 }
 /* --- WHY CHOOSE US --- */
