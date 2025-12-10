@@ -2076,3 +2076,15 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     background-color: rgba(101, 40, 247, 0.1); /* Light purple circle bg */
     transform: scale(1.3) rotate(15deg); /* Zooms in and tilts */
 }
+
+/* --- FIX FOR MENTOR 3 IMAGE --- */
+/* This targets the 3rd mentor card specifically */
+.mentor-card:nth-of-type(3) .mentor-photo {
+    object-position: center center !important; /* Moves focus to the middle instead of top */
+}
+
+/* Specific fix for images that need centering */
+.mentor-photo.fix-center {
+    object-position: center center !important;
+}
+
