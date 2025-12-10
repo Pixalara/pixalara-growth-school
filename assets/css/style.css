@@ -180,24 +180,40 @@ img { max-width: 100%; height: auto; }
 .choose-text .section-title { text-align: left; font-size: 2.4rem; }
 .choose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
+/* --- UPDATE THESE RULES IN style.css --- */
+
 .choose-card {
-    background: #fff; padding: 30px; border-radius: 12px; text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
+    background: #fff; 
+    padding: 20px;       /* Reduced padding from 30px to 20px */
+    border-radius: 12px; 
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); 
+    border: 1px solid #f0f0f0;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.choose-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: var(--primary); }
 
-/* UPDATED RULE FOR ICON SIZE */
+.choose-card:hover { 
+    transform: translateY(-5px); /* Reduced movement slightly */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+    border-color: var(--primary); 
+}
+
+/* REDUCED ICON SIZE */
 .choose-card img { 
-    height: 180px;       /* Increased from 80px to 140px */
-    width: auto;         /* Keeps the aspect ratio */
-    margin-bottom: 25px; /* Slightly more space below image */
+    height: 90px;        /* Reduced from 180px to 90px */
+    width: auto;         
+    margin-bottom: 15px; /* Reduced margin */
     display: block; 
     margin-left: auto; 
     margin-right: auto; 
 }
 
-.choose-card h3 { font-size: 1.1rem; font-weight: 700; }
+.choose-card h3 { 
+    font-size: 1rem;     /* Slightly smaller font for better proportion */
+    font-weight: 700; 
+}
+
+
 /* --- GENERAL CARDS & HOME GRID --- */
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .feature-card { 
