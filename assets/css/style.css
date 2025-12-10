@@ -118,12 +118,12 @@ img { max-width: 100%; height: auto; }
 
 /* Row 1: Moves Left */
 .scroll-left .marquee-content {
-    animation: scrollLeft 20s linear infinite;
+    animation: scrollLeft 10s linear infinite;
 }
 
 /* Row 2: Moves Right */
 .scroll-right .marquee-content {
-    animation: scrollRight 20s linear infinite;
+    animation: scrollRight 15s linear infinite;
 }
 
 /* Style for the Real Icons */
@@ -144,7 +144,7 @@ img { max-width: 100%; height: auto; }
 .skill-card:hover {
     transform: translateY(-5px);
     border-color: var(--primary);
-    box-shadow: 0 20px 35px rgba(101, 40, 247, 0.15);
+    box-shadow: 0 25px 35px rgba(101, 40, 247, 0.15);
 }
 
 .skill-card img {
@@ -426,14 +426,46 @@ img { max-width: 100%; height: auto; }
 .footer { background: #fff; color: #333; padding: 60px 0 20px; border-top: 1px solid #eee; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
 .footer-col:nth-child(2) { text-align: center; }
+
 .footer-brand { font-size: 1.8rem; margin-bottom: 10px; line-height: 1.2; }
 .brand-blue { color: #000080; }
 .brand-green { color: #28a745; margin-left: 5px; }
 .footer-tagline { color: #000000 !important; font-weight: 500; margin-top: 5px; font-size: 1rem; }
-.footer h4 { color: var(--secondary); margin-bottom: 20px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem;}
-.footer ul li a { color: #333; transition: 0.3s; }
+
+/* UPDATED: Headings (Quick Links, Contact) - Increased Size */
+.footer h4 { 
+    color: var(--secondary); 
+    margin-bottom: 20px; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    font-size: 1.3rem;  /* Increased from 0.9rem to 1.3rem */
+}
+
+/* UPDATED: Links - Increased Size */
+.footer ul li a { 
+    color: #333; 
+    transition: 0.3s; 
+    font-size: 1.1rem; /* Increased size for links */
+    display: block;    /* Ensures spacing works better */
+    margin-bottom: 8px; 
+}
 .footer ul li a:hover { color: var(--primary); padding-left: 5px; }
+
+/* UPDATED: Contact Info Text - Increased Size */
+.footer-col p {
+    font-size: 1.1rem; /* Increased size for phone/email */
+    margin-bottom: 10px;
+}
+
 .footer-bottom { text-align: center; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.9rem; color: #777; }
+
+/* --- FOOTER ICONS --- */
+.footer-col i {
+    color: var(--primary); /* Makes icons purple */
+    margin-right: 10px;    /* Adds space between icon and text */
+    width: 20px;           /* Ensures icons align perfectly vertically */
+    text-align: center;
+}
 
 /* --- FLOATING WHATSAPP --- */
 .float-whatsapp {
