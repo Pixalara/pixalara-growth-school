@@ -2152,8 +2152,43 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 .brand-green { color: #28a745; }
 
 /* Mobile Adjustment: Make it slightly smaller on phones if needed */
+/* --- MOBILE HEADER FIXES --- */
+
+/* --- MOBILE HEADER FIXES (CENTERED LOGO) --- */
 @media (max-width: 768px) {
+    /* 1. Make the container a reference point for positioning */
+    .nav-container {
+        position: relative; /* Essential for centering the logo */
+        display: flex;
+        justify-content: flex-end; /* Pushes hamburger to the right */
+        align-items: center;
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    /* 2. Force the Logo to the Absolute Center */
+    .navbar .logo.text-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Moves it back by half its width to center perfectly */
+        
+        white-space: nowrap; /* Keeps text on one line */
+        text-align: center;
+        z-index: 10;
+        
+        /* Adjust font size to ensure it doesn't hit the hamburger */
+        font-size: 1rem !important; 
+        gap: 5px;
+    }
+    
+    /* Ensure the text inside spans matches the size */
     .navbar .logo.text-logo span {
-        font-size: 1.4rem;
+        font-size: 1rem; 
+    }
+
+    /* 3. Keep Hamburger on the Right */
+    .hamburger {
+        z-index: 20; /* Ensure it's clickable above everything */
+        margin-left: 0; /* No auto margin needed since we used justify-content: flex-end */
     }
 }
