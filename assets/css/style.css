@@ -2094,6 +2094,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     display: flex;
     gap: 15px;
     margin-top: 25px;
+    justify-content: center; /* This moves the icons to the MIDDLE of the column */
 }
 
 .social-links a {
