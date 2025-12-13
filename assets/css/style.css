@@ -2088,3 +2088,45 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     object-position: center center !important;
 }
 
+
+/* --- FOOTER SOCIAL ICONS (FIXED ALIGNMENT) --- */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-links a {
+    width: 70px;
+    height: 70px;
+    background-color: #f0f0f0;
+    color: var(--text-dark);
+    border-radius: 50%;
+    
+    /* Centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 2.2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    line-height: 1; 
+}
+
+/* KEY FIX: Reset the global footer icon styles */
+.social-links a i {
+    margin-right: 0 !important; /* Removes the side spacing */
+    width: auto !important;     /* Let the icon fit naturally */
+    display: inline-block;
+}
+
+/* HOVER EFFECTS */
+.social-links a:hover .fa-instagram { color: #E1306C; }
+.social-links a:hover .fa-linkedin-in { color: #0077b5; }
+.social-links a:hover .fa-x { color: #000000; }
+.social-links a:hover {
+    background-color: #fff;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
