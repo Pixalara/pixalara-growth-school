@@ -2177,13 +2177,13 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
         z-index: 10;
         
         /* Adjust font size to ensure it doesn't hit the hamburger */
-        font-size: 1rem !important; 
+        font-size: 2rem !important; 
         gap: 5px;
     }
     
     /* Ensure the text inside spans matches the size */
     .navbar .logo.text-logo span {
-        font-size: 1rem; 
+        font-size: 1.25rem; 
     }
 
     /* 3. Keep Hamburger on the Right */
