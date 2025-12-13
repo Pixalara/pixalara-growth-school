@@ -2131,3 +2131,29 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     box-shadow: 0 25px 45px rgba(0,0,0,0.15);
     transform: translateY(-4px);
 }
+
+/* --- HEADER TEXT LOGO STYLES --- */
+.navbar .logo.text-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Space between Pixalara and Growth School */
+    text-decoration: none;
+}
+
+.navbar .logo.text-logo span {
+    font-family: 'Poppins', sans-serif; /* Uses your heading font */
+    font-weight: 800;    /* Extra Bold */
+    font-size: 1.7rem;   /* Adjusts size to fit navbar */
+    line-height: 1;      /* Keeps alignment tight */
+}
+
+/* Ensure colors match the footer brands */
+.brand-blue { color: #000080; }
+.brand-green { color: #28a745; }
+
+/* Mobile Adjustment: Make it slightly smaller on phones if needed */
+@media (max-width: 768px) {
+    .navbar .logo.text-logo span {
+        font-size: 1.4rem;
+    }
+}
