@@ -2177,7 +2177,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
         z-index: 10;
         
         /* Adjust font size to ensure it doesn't hit the hamburger */
-        font-size: 2rem !important; 
+        font-size: 1.25rem !important; 
         gap: 5px;
     }
     
