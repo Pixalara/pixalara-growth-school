@@ -4,37 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Mentors | Pixalara Growth School</title>
-    <meta name="description" content="Master DevOps, Cloud Computing, and Linux with hands-on training at Pixalara Growth School. Job-ready courses in AWS, Kubernetes, and Terraform.">
+    <meta name="description" content="Master DevOps, Cloud Computing, and Linux with hands-on training at Pixalara Growth School. Learn from industry experts.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Primary Favicon for Browsers & Google -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-<!-- Apple & Mobile Icons -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-
-<!-- Android / Chrome -->
-<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 </head>
 <body>
 
     <header class="navbar">
         <div class="container nav-container">
-
-<a href="index.html" class="logo text-logo">
-    <span class="brand-blue">Pixalara</span> 
-    <span class="brand-green">Growth School</span>
-</a>
+            <a href="index.html" class="logo text-logo">
+                <span class="brand-blue">Pixalara</span> 
+                <span class="brand-green">Growth School</span>
+            </a>
+            
             <nav class="nav-menu" id="navMenu">
                 <ul class="nav-links">
                     <li><a href="index.html">HOME</a></li>
@@ -52,34 +45,28 @@
         <section class="page-hero">
             <div class="container">
                 <h1 class="animate-hero">Meet Your Mentors</h1>
-                
                 <p class="hero-lead animate-hero delay-1">
                     Learn from industry experts shaping modern technology in top MNCs.
                 </p>
-
                 <div class="hero-description-box animate-hero delay-2">
-                    <p>Learn directly from industry leaders powering top global companies.                    </p>
-                    <p>
-                        Our mentors have designed scalable cloud systems, built mission-critical applications, automated complex DevOps pipelines, and delivered solutions used by millions of users worldwide.
-                    </p>
-                    <p>
+                    <p>Learn directly from industry leaders powering top global companies.</p>
+                    <p>Our mentors have designed scalable cloud systems, built mission-critical applications, automated complex DevOps pipelines, and delivered solutions used by millions of users worldwide.</p>
                     <p style="margin-top: 20px; font-style: italic; color: #fff;">
-Real Experts. Real Experience. Real Results.                    </p>
+                        Real Experts. Real Experience. Real Results.
+                    </p>
                 </div>
             </div>
         </section>
 
-
-
         <section class="section">
             <div class="container">
-                <div class="grid-3">
+                <div class="grid-4">
                     
                     <div class="feature-card mentor-card">
                         <img src="assets/images/mentor-1.png" alt="Dileep" class="mentor-photo">
                         <h3>Dileep</h3>
-                        <p class="designation">Cloud Consultant & SRE Specialist</p>
-                        <p class="company">Expert in AWS & GCP</p>
+                        <p class="designation">Cloud DevOps Specialist & SRE Practitioner</p>
+                        <p class="company">AWS & GCP Expert</p>
                         <button class="btn-profile" onclick="openModal('modal-dileep')">
                             View Profile <i class="fas fa-arrow-right"></i>
                         </button>
@@ -96,13 +83,21 @@ Real Experts. Real Experience. Real Results.                    </p>
                     </div>
 
                     <div class="feature-card mentor-card">
-                        <img src="assets/images/mentor-3.png" alt="Varsha" class="mentor-photo">
+                        <img src="assets/images/mentor-3.png" alt="Varsha" class="mentor-photo fix-center">
                         <h3>Varsha</h3>
-                        <p class="designation">Senior Java Developer & Python Expert
-
-</p>
+                        <p class="designation">Senior Java Developer & Python Expert</p>
                         <p class="company">Full Stack Coding Mentor</p>
                         <button class="btn-profile" onclick="openModal('modal-varsha')">
+                            View Profile <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card mentor-card">
+                        <img src="assets/images/mentor-7.png" alt="Rahul" class="mentor-photo">
+                        <h3>Rahul</h3>
+                        <p class="designation">Cyber Security Specialist & PAM Mentor</p>
+                        <p class="company">Endpoint Security Expert</p>
+                        <button class="btn-profile" onclick="openModal('modal-rahul')">
                             View Profile <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -114,30 +109,30 @@ Real Experts. Real Experience. Real Results.                    </p>
 
     <div id="modal-dileep" class="modal-overlay" onclick="closeModal('modal-dileep')">
         <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="close-icon" onclick="closeModal('modal-dileep')">&times;</span>
             <div class="modal-header-section">
                 <img src="assets/images/mentor-1.png" alt="Dileep">
                 <div>
                     <h2>Dileep</h2>
-                    <p class="modal-subtitle">Cloud Consultant | AWS, GCP & DevOps Expert</p>
+                    <p class="modal-subtitle">Cloud & DevOps Specialist | AWS & GCP | SRE Practitioner</p>
                 </div>
             </div>
             <div class="modal-body-content">
-                <p>Dileep is a Cloud Consultant with deep expertise in <strong>AWS, GCP, and modern DevOps practices</strong>, bringing years of real-world experience working with both startups and enterprise-level organizations. He has successfully designed and implemented high-availability, secure, and scalable cloud infrastructures.</p>
-                <p>He has played a key role in scaling applications for fast-growing startups, ensuring reliability and resilience through strong <strong>SRE principles</strong>.</p>
+                <p>Dileep has <strong>7+ years of industry experience</strong> in Cloud, DevOps, and SRE, with strong expertise in hosting applications, scaling systems, and securing cloud environments. He has hands-on experience with AWS and GCP, domain and DNS configurations, CDN setup, and web application security.</p>
+                <p>He has helped startups and growing teams build highly available, scalable, and secure applications, enabling global content delivery and protecting systems from security threats and DDoS attacks.</p>
+                <p>Dileep focuses on practical learning, helping students understand how real applications are deployed, scaled, and secured in production environments.</p>
                 
                 <div class="modal-highlights">
-                    <h4>What you’ll learn under Dileep:</h4>
+                    <h4>☁️ What you’ll learn under Dileep:</h4>
                     <ul>
-                        <li><i class="fas fa-check-circle"></i> Real-world AWS & GCP implementation strategies</li>
-                        <li><i class="fas fa-check-circle"></i> Designing secure, scalable & highly available architectures</li>
-                        <li><i class="fas fa-check-circle"></i> DevOps pipelines with CI/CD automation</li>
-                        <li><i class="fas fa-check-circle"></i> SRE practices for production-grade reliability</li>
-                        <li><i class="fas fa-check-circle"></i> Cloud security fundamentals & DDoS protection</li>
+                        <li><i class="fas fa-cloud-upload-alt"></i> Application hosting on cloud</li>
+                        <li><i class="fas fa-chart-line"></i> Scalability & high availability concepts</li>
+                        <li><i class="fas fa-globe"></i> Domain, DNS & CDN configuration</li>
+                        <li><i class="fas fa-shield-alt"></i> Securing web applications</li>
+                        <li><i class="fas fa-tools"></i> Real-world DevOps practices</li>
                     </ul>
                 </div>
-                <p style="margin-top: 15px; font-style: italic; color: #555;">Dileep is dedicated to shaping future cloud engineers with practical, industry-backed learning.</p>
-            
-                <div class="modal-footer" style="text-align: right; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                <div class="modal-footer" style="text-align: right; margin-top: 20px;">
                     <button class="btn-close-modal" onclick="closeModal('modal-dileep')">Close</button>
                 </div>
             </div>
@@ -146,6 +141,7 @@ Real Experts. Real Experience. Real Results.                    </p>
 
     <div id="modal-nethaji" class="modal-overlay" onclick="closeModal('modal-nethaji')">
         <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="close-icon" onclick="closeModal('modal-nethaji')">&times;</span>
             <div class="modal-header-section">
                 <img src="assets/images/mentor-5.png" alt="Nethaji Rao">
                 <div>
@@ -170,8 +166,8 @@ Real Experts. Real Experience. Real Results.                    </p>
                     </ul>
                 </div>
                 <p style="margin-top: 15px; font-style: italic; color: #555;">Nethaji is passionate about helping students kickstart their careers in DevOps with deep real-world experience.</p>
-            
-                <div class="modal-footer" style="text-align: right; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+
+                <div class="modal-footer" style="text-align: right; margin-top: 20px;">
                     <button class="btn-close-modal" onclick="closeModal('modal-nethaji')">Close</button>
                 </div>
             </div>
@@ -180,6 +176,7 @@ Real Experts. Real Experience. Real Results.                    </p>
 
     <div id="modal-varsha" class="modal-overlay" onclick="closeModal('modal-varsha')">
         <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="close-icon" onclick="closeModal('modal-varsha')">&times;</span>
             <div class="modal-header-section">
                 <img src="assets/images/mentor-3.png" alt="Varsha">
                 <div>
@@ -206,11 +203,46 @@ Real Experts. Real Experience. Real Results.                    </p>
                         <li><i class="fas fa-check-circle"></i> How software is built in domains like finance and healthcare</li>
                     </ul>
                 </div>
-
                 <p style="margin-top: 15px; font-style: italic; color: #555;">Varsha is passionate about helping beginners grow from zero experience to confident programmers. Her friendly teaching approach and strong industry background make her an excellent mentor for anyone starting their journey in coding and full-stack development.</p>
-            
-                <div class="modal-footer" style="text-align: right; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+
+                <div class="modal-footer" style="text-align: right; margin-top: 20px;">
                     <button class="btn-close-modal" onclick="closeModal('modal-varsha')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-rahul" class="modal-overlay" onclick="closeModal('modal-rahul')">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="close-icon" onclick="closeModal('modal-rahul')">&times;</span>
+            <div class="modal-header-section">
+                <img src="assets/images/mentor-7.png" alt="Rahul">
+                <div>
+                    <h2>Rahul</h2>
+                    <p class="modal-subtitle">Cyber Security Specialist | PAM & Endpoint Security Mentor</p>
+                </div>
+            </div>
+            <div class="modal-body-content">
+                <p>Rahul is a Cyber Security professional with <strong>10+ years of industry experience</strong>, specializing in Privileged Access Management (PAM) and Endpoint Security. He has worked on real enterprise systems, securing servers, admin accounts, and sensitive data used by thousands of users.</p>
+                <p>He simplifies complex security concepts and teaches how companies protect systems using <strong>CyberArk</strong>, security best practices, and real-world workflows. Rahul focuses on practical learning, helping beginners build strong cybersecurity foundations and confidence.</p>
+                <p>Rahul is also industry certified in cybersecurity and ethical hacking, and he is passionate about helping beginners understand security concepts in a clear and practical way — without unnecessary complexity.</p>
+                
+                <div class="modal-highlights">
+                    <h4>🔐 What you’ll learn from Rahul:</h4>
+                    <ul>
+                        <li><i class="fas fa-shield-alt"></i> Cyber Security fundamentals for beginners</li>
+                        <li><i class="fas fa-building"></i> How real companies protect their systems and data</li>
+                        <li><i class="fas fa-user-lock"></i> Privileged Access Management (PAM) explained simply</li>
+                        <li><i class="fas fa-server"></i> Basics of CyberArk and enterprise security tools</li>
+                        <li><i class="fas fa-virus-slash"></i> Endpoint security, threat detection & incident handling</li>
+                        <li><i class="fas fa-file-contract"></i> Security best practices, compliance & audits</li>
+                        <li><i class="fas fa-briefcase"></i> Career guidance for entering the Cyber Security field</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 15px; font-style: italic; color: #555;">Rahul focuses on practical learning and real-life examples, helping students confidently step into cybersecurity roles with a strong foundation and real-world understanding.</p>
+
+                <div class="modal-footer" style="text-align: right; margin-top: 20px;">
+                    <button class="btn-close-modal" onclick="closeModal('modal-rahul')">Close</button>
                 </div>
             </div>
         </div>
@@ -218,28 +250,26 @@ Real Experts. Real Experience. Real Results.                    </p>
 
     <footer class="footer">
         <div class="container footer-grid">
-<div class="footer-col" style="text-align: center;">                <h3 class="footer-brand">
-                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+            <div class="footer-col" style="text-align: center;">
+                <h3 class="footer-brand">
+                    <span class="brand-blue">Pixalara</span> 
+                    <span class="brand-green">Growth School</span>
+                </h3>
                 <p class="footer-tagline">Unlock Your Potential With Every Step</p>
-            
             
                 <div class="social-links" style="margin-top: 20px;">
                     <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank" aria-label="Follow us on Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-
-                    
                     <a href="https://www.linkedin.com/company/pixalara" target="_blank" aria-label="Follow us on LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-
                     <a href="https://x.com/pixalara" target="_blank" aria-label="Follow us on X">
-                        <i class="fas fa-x"></i> 
+                        <i class="fab fa-x"></i> 
                     </a>
-
                 </div>
-        
             </div>
+            
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
@@ -250,6 +280,7 @@ Real Experts. Real Experience. Real Results.                    </p>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+            
             <div class="footer-col">
                 <h4>Contact</h4>
                 <p><i class="fas fa-phone-alt"></i> +91 99886 88654</p>
@@ -257,13 +288,30 @@ Real Experts. Real Experience. Real Results.                    </p>
                 <p><i class="fas fa-envelope"></i> growthschool@pixalara.com</p>
             </div>
         </div>
-<div class="footer-bottom">
+        
+        <div class="footer-bottom">
             <p>
                 &copy; 2024 Pixalara Growth School. All rights reserved. | 
                 Powered by <a href="https://pixalara.com" target="_blank" style="color: inherit; text-decoration: none; font-weight: 600;">pixalara.com</a>
             </p>
         </div>
-    </footer>    </footer>
+    </footer>
+
     <script src="assets/js/main.js"></script>
+    <script>
+        // Simple Modal Logic
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('open');
+            }
+        }
+    </script>
 </body>
 </html>

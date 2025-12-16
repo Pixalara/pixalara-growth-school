@@ -11,31 +11,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Primary Favicon for Browsers & Google -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-<!-- Apple & Mobile Icons -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-
-<!-- Android / Chrome -->
-<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 </head>
 <body>
 
     <header class="navbar">
         <div class="container nav-container">
-            
             <a href="index.html" class="logo text-logo">
-    <span class="brand-blue">Pixalara</span> 
-    <span class="brand-green">Growth School</span>
-</a>
-
+                <span class="brand-blue">Pixalara</span> 
+                <span class="brand-green">Growth School</span>
+            </a>
             
             <nav class="nav-menu" id="navMenu">
                 <ul class="nav-links">
@@ -62,10 +53,13 @@
                         <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 30px;">
                             Upgrade your skills with real-world projects. Join the top-rated community for tech professionals and get job-ready in 3 months.
                         </p>
+                        
                         <div class="hero-cta">
-                            <a href="courses.html" class="btn-primary" style="box-shadow: 0 10px 20px rgba(0,0,0,0.2);">Explore Courses</a>
-                            <a href="contact.html" class="btn-outline" style="margin-left: 10px; color: white; border-color: white;">Book Demo</a>
+                            <a href="#" onclick="openBookingModal(); return false;" class="btn-glow">
+                                Book A Demo <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
+
                     </div>
                     
                     <div class="hero-image reveal delay-200">
@@ -104,7 +98,6 @@
                 <p style="text-align: center; color: #666; margin-bottom: 40px;">Master the tools used by top Fortune 500 companies.</p>
                 
                 <div class="skills-wrapper">
-                    
                     <div class="marquee scroll-left">
                         <div class="marquee-content">
                             <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> <span>AWS Cloud</span></div>
@@ -118,7 +111,6 @@
                             <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"> <span>Docker</span></div>
                             <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="K8s"> <span>Kubernetes</span></div>
                             <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"> <span>Terraform</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Ansible"> <span>Ansible</span></div>
                         </div>
                     </div>
 
@@ -132,12 +124,8 @@
                             <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"> <span>Linux</span></div>
                             <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP"> <span>Google Cloud</span></div>
                             <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> <span>Python</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> <span>GitHub</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" alt="Grafana"> <span>Grafana</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="Prometheus"> <span>Prometheus</span></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -211,33 +199,35 @@
         <section id="mentors" class="section">
             <div class="container">
                 <h2 class="section-title reveal">Meet Your Mentors</h2>
-                <div class="grid-3">
+                
+                <div class="grid-4">
                     
                     <div class="feature-card mentor-card reveal delay-100">
                         <img src="assets/images/mentor-1.png" alt="Dileep" class="mentor-photo">
                         <h3>Dileep</h3>
-                        <p class="designation">Cloud Consultant & SRE Specialist
-
-</p>
+                        <p class="designation">Cloud DevOps Specialist & SRE Practitioner</p>
                     </div>
 
                     <div class="feature-card mentor-card reveal delay-200">
                         <img src="assets/images/mentor-5.png" alt="Nethaji" class="mentor-photo">
                         <h3>Nethaji Rao</h3>
-                        <p class="designation">DevOps Lead & Cloud-Native Architect
-
-</p>
+                        <p class="designation">DevOps Lead & Cloud-Native Architect</p>
                     </div>
 
                     <div class="feature-card mentor-card reveal delay-300">
                         <img src="assets/images/mentor-3.png" alt="Varsha" class="mentor-photo fix-center">
                         <h3>Varsha</h3>
-                        <p class="designation">Java Developer & Full-Stack Instructor
+                        <p class="designation">Java Developer & Full-Stack Instructor</p>
+                    </div>
 
-</p>
+                    <div class="feature-card mentor-card reveal delay-400">
+                        <img src="assets/images/mentor-7.png" alt="Rahul" class="mentor-photo">
+                        <h3>Rahul</h3>
+                        <p class="designation">Cyber Security Specialist & PAM Mentor</p>
                     </div>
 
                 </div>
+
                 <div style="text-align: center; margin-top: 30px;" class="reveal">
                     <a href="mentors.html" class="btn-text">Read Full Profiles &rarr;</a>
                 </div>
@@ -259,9 +249,122 @@
 
     </main>
 
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-card">
+            <span class="close-booking" onclick="closeBookingModal()">&times;</span>
+            
+            <div class="booking-header">
+                <h2>Book a Free Demo</h2>
+                <p>Select a date and time for your 1:1 Career Guidance session.</p>
+            </div>
+
+            <div class="booking-body">
+                <form id="bookingForm">
+                    <input type="hidden" name="access_key" value="42a9bf20-fc50-4974-ab93-c9fe73f5a9b2">
+                    <input type="hidden" name="subject" value="NEW DEMO BOOKING REQUEST">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="date-time-grid">
+                        <div class="form-group">
+                            <label>Preferred Date</label>
+                            <div class="date-input-container">
+                                <input type="date" name="Date" class="form-control" required id="bookingDate" placeholder="dd-mm-yyyy">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Preferred Time Slot</label>
+                            <input type="hidden" name="Time" id="selectedTime" required>
+                            
+                            <div class="custom-dropdown" id="timeDropdown">
+                                <div class="dropdown-trigger" onclick="toggleTimeDropdown()">
+                                    <span id="timeTriggerText">Select a Time</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <ul class="dropdown-options" style="z-index: 200;">
+                                    <li onclick="selectTime('Morning (9 AM - 12 PM)', '🌅 Morning (9 AM - 12 PM)')">
+                                        <span class="opt-icon">🌅</span> Morning (9 AM - 12 PM)
+                                    </li>
+                                    <li onclick="selectTime('Afternoon (12 PM - 4 PM)', '☀️ Afternoon (12 PM - 4 PM)')">
+                                        <span class="opt-icon">☀️</span> Afternoon (12 PM - 4 PM)
+                                    </li>
+                                    <li onclick="selectTime('Evening (4 PM - 8 PM)', '🌙 Evening (4 PM - 8 PM)')">
+                                        <span class="opt-icon">🌙</span> Evening (4 PM - 8 PM)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="Name" class="form-control" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Course Interested In</label>
+                        <input type="hidden" name="Course" id="selectedCourse" required>
+                        <div class="custom-dropdown" id="courseDropdown">
+                            <div class="dropdown-trigger" onclick="toggleCourseDropdown()">
+                                <span id="courseTriggerText">Select a Course</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <ul class="dropdown-options" style="z-index: 100;">
+                                <li onclick="selectCourse('DevOps Masterclass', 'DevOps Masterclass')">
+                                    <span class="opt-icon">🚀</span> DevOps Masterclass
+                                </li>
+                                <li onclick="selectCourse('AWS Cloud Architect', 'AWS Cloud Architect')">
+                                    <span class="opt-icon">☁️</span> AWS Cloud Architect
+                                </li>
+                                <li onclick="selectCourse('Linux Administration', 'Linux Administration')">
+                                    <span class="opt-icon">🐧</span> Linux Administration
+                                </li>
+                                <li onclick="selectCourse('Cyber Security', 'Cyber Security')">
+                                    <span class="opt-icon">🔒</span> Cyber Security
+                                </li>
+                                <li onclick="selectCourse('Other', 'Other / Not Sure')">
+                                    <span class="opt-icon">❓</span> Other / Not Sure
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="date-time-grid">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="Email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="Phone" class="form-control" placeholder="+91 99999 99999" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">
+                        <span id="bookBtnText">Confirm Booking</span>
+                        <span id="bookBtnLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
+                    </button>
+                    <p id="bookingStatus" style="margin-top: 10px; text-align: center; color: red; display: none;"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="success-overlay">
+        <div class="success-box">
+            <div class="success-icon-anim">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 id="successTitle">Thank You!</h3>
+            <p id="successMessage">Your message has been received. Our team will contact you shortly.</p>
+            <button class="btn-close-success" onclick="closeSuccessModal()">Close</button>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container footer-grid">
-<div class="footer-col" style="text-align: center;">                <h3 class="footer-brand">
+            <div class="footer-col" style="text-align: center;">
+                <h3 class="footer-brand">
                     <span class="brand-blue">Pixalara</span> 
                     <span class="brand-green">Growth School</span>
                 </h3>
@@ -271,19 +374,14 @@
                     <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank" aria-label="Follow us on Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-
-                    
                     <a href="https://www.linkedin.com/company/pixalara" target="_blank" aria-label="Follow us on LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-
                     <a href="https://x.com/pixalara" target="_blank" aria-label="Follow us on X">
                         <i class="fas fa-x"></i> 
                     </a>
-
                 </div>
             </div>
-
             
             <div class="footer-col">
                 <h4>Quick Links</h4>
@@ -295,7 +393,8 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-           <div class="footer-col">
+            
+            <div class="footer-col">
                 <h4>Contact</h4>
                 <p><i class="fas fa-phone-alt"></i> +91 99886 88654</p>
                 <p><i class="fas fa-phone-alt"></i> +91 94945 16887</p>
@@ -303,7 +402,6 @@
             </div>
         </div>
 
-        
         <div class="footer-bottom">
             <p>
                 &copy; 2024 Pixalara Growth School. All rights reserved. | 
@@ -311,12 +409,158 @@
             </p>
         </div>
     </footer>
-    </footer>
 
     <a href="https://wa.me/919988688654?text=Hello%20Pixalara%20Team%2C%20I%20am%20interested%20in%20your%20courses." class="float-whatsapp" target="_blank">
         <i class="fab fa-whatsapp my-float"></i>
     </a>
 
     <script src="assets/js/main.js"></script>
+
+    <script>
+        // 1. SET MINIMUM DATE TO TODAY
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('bookingDate');
+            if(dateInput) {
+                dateInput.min = new Date().toISOString().split("T")[0];
+            }
+        });
+
+        // 2. MODAL FUNCTIONS
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.add('open');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('open');
+            // Reset dropdowns
+            document.getElementById('courseDropdown').classList.remove('active');
+            document.getElementById('timeDropdown').classList.remove('active');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        // 3. DROPDOWN LOGIC (COURSE)
+        const courseDropdown = document.getElementById('courseDropdown');
+        const courseHiddenInput = document.getElementById('selectedCourse');
+        const courseTriggerText = document.getElementById('courseTriggerText');
+
+        function toggleCourseDropdown() {
+            // Close time dropdown if open
+            timeDropdown.classList.remove('active');
+            courseDropdown.classList.toggle('active');
+        }
+
+        function selectCourse(value, text) {
+            courseHiddenInput.value = value;
+            courseTriggerText.innerText = text;
+            courseTriggerText.style.color = '#333';
+            courseDropdown.classList.remove('active');
+        }
+
+        // 4. DROPDOWN LOGIC (TIME)
+        const timeDropdown = document.getElementById('timeDropdown');
+        const timeHiddenInput = document.getElementById('selectedTime');
+        const timeTriggerText = document.getElementById('timeTriggerText');
+
+        function toggleTimeDropdown() {
+            // Close course dropdown if open
+            courseDropdown.classList.remove('active');
+            timeDropdown.classList.toggle('active');
+        }
+
+        function selectTime(value, text) {
+            timeHiddenInput.value = value;
+            timeTriggerText.innerText = text;
+            timeTriggerText.style.color = '#333';
+            timeDropdown.classList.remove('active');
+        }
+
+        // Close dropdowns when clicking outside
+        window.addEventListener('click', function(e) {
+            if (courseDropdown && !courseDropdown.contains(e.target)) {
+                courseDropdown.classList.remove('active');
+            }
+            if (timeDropdown && !timeDropdown.contains(e.target)) {
+                timeDropdown.classList.remove('active');
+            }
+        });
+
+        // 5. HANDLE BOOKING FORM SUBMISSION
+        const bookingForm = document.getElementById('bookingForm');
+        if(bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if(!courseHiddenInput.value) {
+                    alert("Please select a course from the list.");
+                    return;
+                }
+                if(!timeHiddenInput.value) {
+                    alert("Please select a time slot.");
+                    return;
+                }
+
+                handleFormSubmit(bookingForm, 'bookBtnText', 'bookBtnLoading', 'bookingStatus', 
+                    'Booking Request Sent!', 'We have received your demo request. We will confirm your slot via email shortly.');
+            });
+        }
+
+        // 6. GENERIC FORM HANDLER
+        function handleFormSubmit(formObj, btnTextId, btnLoadingId, statusId, successTitle, successMsg) {
+            const btnText = document.getElementById(btnTextId);
+            const btnLoading = document.getElementById(btnLoadingId);
+            const statusBox = document.getElementById(statusId);
+            
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline-block';
+            statusBox.style.display = 'none';
+
+            const formData = new FormData(formObj);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    closeBookingModal();
+                    document.getElementById('successTitle').innerText = successTitle;
+                    document.getElementById('successMessage').innerText = successMsg;
+                    document.getElementById('successModal').classList.add('active');
+                    
+                    formObj.reset();
+                    // Reset dropdown texts
+                    courseTriggerText.innerText = 'Select a Course';
+                    courseTriggerText.style.color = '#555';
+                    courseHiddenInput.value = '';
+                    
+                    timeTriggerText.innerText = 'Select a Time';
+                    timeTriggerText.style.color = '#555';
+                    timeHiddenInput.value = '';
+                } else {
+                    statusBox.innerText = json.message;
+                    statusBox.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                statusBox.innerText = "Something went wrong!";
+                statusBox.style.display = 'block';
+            })
+            .finally(() => {
+                btnText.style.display = 'inline-block';
+                btnLoading.style.display = 'none';
+            });
+        }
+    </script>
 </body>
 </html>

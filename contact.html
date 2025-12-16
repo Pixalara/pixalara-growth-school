@@ -17,12 +17,11 @@
 
     <header class="navbar">
         <div class="container nav-container">
-
-<a href="index.html" class="logo text-logo">
-    <span class="brand-blue">Pixalara</span> 
-    <span class="brand-green">Growth School</span>
-</a>
-
+            <a href="index.html" class="logo text-logo">
+                <span class="brand-blue">Pixalara</span> 
+                <span class="brand-green">Growth School</span>
+            </a>
+            
             <nav class="nav-menu" id="navMenu">
                 <ul class="nav-links">
                     <li><a href="index.html">HOME</a></li>
@@ -121,13 +120,29 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Subject (Optional)</label>
-                                <select name="subject" class="form-control">
-                                    <option value="Course Inquiry">Course Inquiry</option>
-                                    <option value="Fees & Payment">Fees & Payment</option>
-                                    <option value="Technical Support">Technical Support</option>
-                                    <option value="Other">Other</option>
-                                </select>
+                                <label>Subject</label>
+                                <input type="hidden" name="subject" id="selectedSubject" value="Course Inquiry">
+                                
+                                <div class="custom-dropdown" id="subjectDropdown">
+                                    <div class="dropdown-trigger" onclick="toggleSubjectDropdown()">
+                                        <span id="subjectTriggerText">Course Inquiry</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <ul class="dropdown-options" style="z-index: 50;">
+                                        <li onclick="selectSubject('Course Inquiry', '📚 Course Inquiry')">
+                                            <span class="opt-icon">📚</span> Course Inquiry
+                                        </li>
+                                        <li onclick="selectSubject('Fees & Payment', '💳 Fees & Payment')">
+                                            <span class="opt-icon">💳</span> Fees & Payment
+                                        </li>
+                                        <li onclick="selectSubject('Technical Support', '🛠️ Technical Support')">
+                                            <span class="opt-icon">🛠️</span> Technical Support
+                                        </li>
+                                        <li onclick="selectSubject('Other', '✨ Other')">
+                                            <span class="opt-icon">✨</span> Other
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -166,17 +181,64 @@
                     <div class="date-time-grid">
                         <div class="form-group">
                             <label>Preferred Date</label>
-                            <input type="date" name="Date" class="form-control" required id="bookingDate">
+                            <div class="date-input-container">
+                                <input type="date" name="Date" class="form-control" required id="bookingDate" placeholder="dd-mm-yyyy">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Preferred Time</label>
-                            <input type="time" name="Time" class="form-control" required>
+                            <label>Preferred Time Slot</label>
+                            <input type="hidden" name="Time" id="selectedTime" required>
+                            <div class="custom-dropdown" id="timeDropdown">
+                                <div class="dropdown-trigger" onclick="toggleTimeDropdown()">
+                                    <span id="timeTriggerText">Select a Time</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <ul class="dropdown-options" style="z-index: 200;">
+                                    <li onclick="selectTime('Morning (9 AM - 12 PM)', '🌅 Morning (9 AM - 12 PM)')">
+                                        <span class="opt-icon">🌅</span> Morning (9 AM - 12 PM)
+                                    </li>
+                                    <li onclick="selectTime('Afternoon (12 PM - 4 PM)', '☀️ Afternoon (12 PM - 4 PM)')">
+                                        <span class="opt-icon">☀️</span> Afternoon (12 PM - 4 PM)
+                                    </li>
+                                    <li onclick="selectTime('Evening (4 PM - 8 PM)', '🌙 Evening (4 PM - 8 PM)')">
+                                        <span class="opt-icon">🌙</span> Evening (4 PM - 8 PM)
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" name="Name" class="form-control" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Course Interested In</label>
+                        <input type="hidden" name="Course" id="selectedCourse" required>
+                        <div class="custom-dropdown" id="courseDropdown">
+                            <div class="dropdown-trigger" onclick="toggleCourseDropdown()">
+                                <span id="courseTriggerText">Select a Course</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <ul class="dropdown-options" style="z-index: 100;">
+                                <li onclick="selectCourse('DevOps Masterclass', 'DevOps Masterclass')">
+                                    <span class="opt-icon">🚀</span> DevOps Masterclass
+                                </li>
+                                <li onclick="selectCourse('AWS Cloud Architect', 'AWS Cloud Architect')">
+                                    <span class="opt-icon">☁️</span> AWS Cloud Architect
+                                </li>
+                                <li onclick="selectCourse('Linux Administration', 'Linux Administration')">
+                                    <span class="opt-icon">🐧</span> Linux Administration
+                                </li>
+                                <li onclick="selectCourse('Cyber Security', 'Cyber Security')">
+                                    <span class="opt-icon">🔒</span> Cyber Security
+                                </li>
+                                <li onclick="selectCourse('Other', 'Other / Not Sure')">
+                                    <span class="opt-icon">❓</span> Other / Not Sure
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="date-time-grid">
@@ -213,28 +275,26 @@
 
     <footer class="footer">
         <div class="container footer-grid">
-<div class="footer-col" style="text-align: center;">                <h3 class="footer-brand">
-                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+            <div class="footer-col" style="text-align: center;">
+                <h3 class="footer-brand">
+                    <span class="brand-blue">Pixalara</span> 
+                    <span class="brand-green">Growth School</span>
+                </h3>
                 <p class="footer-tagline">Unlock Your Potential With Every Step</p>
-            
             
                 <div class="social-links" style="margin-top: 20px;">
                     <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank" aria-label="Follow us on Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-
-                    
                     <a href="https://www.linkedin.com/company/pixalara" target="_blank" aria-label="Follow us on LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-
                     <a href="https://x.com/pixalara" target="_blank" aria-label="Follow us on X">
                         <i class="fas fa-x"></i> 
                     </a>
-
                 </div>
-            
             </div>
+            
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
@@ -245,22 +305,27 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-           <div class="footer-col">
+            
+            <div class="footer-col">
                 <h4>Contact</h4>
                 <p><i class="fas fa-phone-alt"></i> +91 99886 88654</p>
                 <p><i class="fas fa-phone-alt"></i> +91 94945 16887</p>
                 <p><i class="fas fa-envelope"></i> growthschool@pixalara.com</p>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2024 Pixalara Growth School. All rights reserved. | Powered by <a href="https://pixalara.com" target="_blank" style="color: inherit; text-decoration: none; font-weight: 600;">pixalara.com</a></p>
+            <p>
+                &copy; 2024 Pixalara Growth School. All rights reserved. | 
+                Powered by <a href="https://pixalara.com" target="_blank" style="color: inherit; text-decoration: none; font-weight: 600;">pixalara.com</a>
+            </p>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
 
     <script>
-        // --- 1. SET MINIMUM DATE TO TODAY ---
+        // --- 1. SET MINIMUM DATE ---
         document.addEventListener('DOMContentLoaded', function() {
             const dateInput = document.getElementById('bookingDate');
             if(dateInput) {
@@ -275,35 +340,116 @@
 
         function closeBookingModal() {
             document.getElementById('bookingModal').classList.remove('open');
+            // Reset dropdowns inside modal
+            const cDropdown = document.getElementById('courseDropdown');
+            const tDropdown = document.getElementById('timeDropdown');
+            if(cDropdown) cDropdown.classList.remove('active');
+            if(tDropdown) tDropdown.classList.remove('active');
         }
 
         function closeSuccessModal() {
             document.getElementById('successModal').classList.remove('active');
         }
 
-        // --- 3. HANDLE GENERAL CONTACT FORM ---
+        // --- 3. CUSTOM DROPDOWN LOGIC (GENERAL PAGE - SUBJECT) ---
+        const subjectDropdown = document.getElementById('subjectDropdown');
+        const subjectHiddenInput = document.getElementById('selectedSubject');
+        const subjectTriggerText = document.getElementById('subjectTriggerText');
+
+        function toggleSubjectDropdown() {
+            if(subjectDropdown) subjectDropdown.classList.toggle('active');
+        }
+
+        function selectSubject(value, text) {
+            subjectHiddenInput.value = value;
+            subjectTriggerText.innerHTML = text; // InnerHTML to allow icon
+            subjectTriggerText.style.color = '#333';
+            subjectDropdown.classList.remove('active');
+        }
+
+        // --- 4. CUSTOM DROPDOWN LOGIC (MODAL - COURSE & TIME) ---
+        const courseDropdown = document.getElementById('courseDropdown');
+        const courseHiddenInput = document.getElementById('selectedCourse');
+        const courseTriggerText = document.getElementById('courseTriggerText');
+
+        const timeDropdown = document.getElementById('timeDropdown');
+        const timeHiddenInput = document.getElementById('selectedTime');
+        const timeTriggerText = document.getElementById('timeTriggerText');
+
+        function toggleCourseDropdown() {
+            if(timeDropdown) timeDropdown.classList.remove('active');
+            if(courseDropdown) courseDropdown.classList.toggle('active');
+        }
+
+        function selectCourse(value, text) {
+            courseHiddenInput.value = value;
+            courseTriggerText.innerText = text;
+            courseTriggerText.style.color = '#333';
+            courseDropdown.classList.remove('active');
+        }
+
+        function toggleTimeDropdown() {
+            if(courseDropdown) courseDropdown.classList.remove('active');
+            if(timeDropdown) timeDropdown.classList.toggle('active');
+        }
+
+        function selectTime(value, text) {
+            timeHiddenInput.value = value;
+            timeTriggerText.innerText = text;
+            timeTriggerText.style.color = '#333';
+            timeDropdown.classList.remove('active');
+        }
+
+        // CLOSE ALL DROPDOWNS ON OUTSIDE CLICK
+        window.addEventListener('click', function(e) {
+            if (subjectDropdown && !subjectDropdown.contains(e.target)) {
+                subjectDropdown.classList.remove('active');
+            }
+            if (courseDropdown && !courseDropdown.contains(e.target)) {
+                courseDropdown.classList.remove('active');
+            }
+            if (timeDropdown && !timeDropdown.contains(e.target)) {
+                timeDropdown.classList.remove('active');
+            }
+        });
+
+        // --- 5. HANDLE GENERAL CONTACT FORM ---
         const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleFormSubmit(contactForm, 'btnText', 'btnLoading', 'formStatus', 
-                'Thank You!', 'Your message has been sent. We will get back to you shortly.');
-        });
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleFormSubmit(contactForm, 'btnText', 'btnLoading', 'formStatus', 
+                    'Thank You!', 'Your message has been sent. We will get back to you shortly.');
+            });
+        }
 
-        // --- 4. HANDLE BOOKING FORM ---
+        // --- 6. HANDLE BOOKING FORM ---
         const bookingForm = document.getElementById('bookingForm');
-        bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleFormSubmit(bookingForm, 'bookBtnText', 'bookBtnLoading', 'bookingStatus', 
-                'Booking Request Sent!', 'We have received your demo request. We will confirm your slot via email shortly.');
-        });
+        if(bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
 
-        // --- 5. GENERIC FORM HANDLER ---
+                // Validate Custom Dropdowns
+                if(!courseHiddenInput.value) {
+                    alert("Please select a course from the list.");
+                    return;
+                }
+                if(!timeHiddenInput.value) {
+                    alert("Please select a time slot.");
+                    return;
+                }
+
+                handleFormSubmit(bookingForm, 'bookBtnText', 'bookBtnLoading', 'bookingStatus', 
+                    'Booking Request Sent!', 'We have received your demo request. We will confirm your slot via email shortly.');
+            });
+        }
+
+        // --- 7. GENERIC FORM HANDLER ---
         function handleFormSubmit(formObj, btnTextId, btnLoadingId, statusId, successTitle, successMsg) {
             const btnText = document.getElementById(btnTextId);
             const btnLoading = document.getElementById(btnLoadingId);
             const statusBox = document.getElementById(statusId);
             
-            // UI Loading State
             btnText.style.display = 'none';
             btnLoading.style.display = 'inline-block';
             statusBox.style.display = 'none';
@@ -332,6 +478,24 @@
                     document.getElementById('successModal').classList.add('active');
                     
                     formObj.reset();
+                    
+                    // Reset ALL custom dropdowns visually
+                    if(subjectTriggerText) {
+                        subjectTriggerText.innerText = 'Course Inquiry';
+                        subjectTriggerText.style.color = '#555';
+                        subjectHiddenInput.value = 'Course Inquiry';
+                    }
+                    if(courseTriggerText) {
+                        courseTriggerText.innerText = 'Select a Course';
+                        courseTriggerText.style.color = '#555';
+                        courseHiddenInput.value = '';
+                    }
+                    if(timeTriggerText) {
+                        timeTriggerText.innerText = 'Select a Time';
+                        timeTriggerText.style.color = '#555';
+                        timeHiddenInput.value = '';
+                    }
+
                 } else {
                     statusBox.innerText = json.message;
                     statusBox.style.display = 'block';
