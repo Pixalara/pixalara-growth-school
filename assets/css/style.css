@@ -2434,9 +2434,20 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 }
 
 /* --- 🧊 NEW: GLASS/3D CARD HOVER EFFECT --- */
-.feature-card, .choose-card {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+/* Glass Card Effect for Features */
+.choose-card, .feature-card {
     border: 1px solid rgba(0,0,0,0.05);
+    background: #fff;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    
+    /* ADDED: Centers text and buttons inside the card */
+    text-align: center; 
+    
+    /* Optional: Ensure content is vertically balanced */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature-card:hover, .choose-card:hover {
