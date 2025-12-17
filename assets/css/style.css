@@ -60,18 +60,120 @@ img { max-width: 100%; height: auto; }
 .hamburger { display: none; background: none; border: none; cursor: pointer; }
 
 /* --- HERO SECTION --- */
-.hero { 
-    padding: 60px 0 40px 0; 
-    background-color: var(--hero-bg); 
-    color: var(--white);
+/* =========================================
+   HERO IMAGE UPDATE (Larger & Floating)
+========================================= */
+/* =========================================
+   HERO IMAGE FIX (Perfect Fit & Alignment)
+========================================= */
+/* =========================================
+   HERO SECTION LAYOUT (FIXED)
+========================================= */
+
+.hero {
+    padding: 80px 0 60px 0;
     position: relative;
+    overflow: hidden;
+    /* Ensure the background stays dark/gradient as defined in .hero rules */
 }
-.hero-grid { 
-    display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; 
-    margin-bottom: 20px; 
+
+/* 1. Define the Grid to hold Text (Left) and Image (Right) */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Split screen 50/50 */
+    gap: 50px;
+    align-items: center; /* Vertically center both text and image */
+    min-height: 60vh;    /* Ensure enough height for the banner */
+    position: relative;
+    z-index: 2;
 }
-.hero h1 { font-size: 3.5rem; line-height: 1.2; color: var(--white); font-weight: 800; }
-.hero-image img { max-width: 85%; margin-left: auto; display: block; }
+
+/* 2. Lock the Left Side (Text) Position */
+.hero-content {
+    text-align: left; /* Forces text to stay left */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Ensure text sizes stay consistent */
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 90%; /* Prevents text from stretching too wide */
+    margin-bottom: 30px;
+}
+
+/* 3. Fix the Right Side (Image) Sizing */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    
+    /* Constraint: Image won't get wider than 600px */
+    max-width: 600px; 
+    
+    /* Ensure it scales nicely */
+    object-fit: contain; 
+    
+    /* Animation: Only float up/down, NO zooming/scaling */
+    transform: translateY(0); 
+    animation: floating3D 4s ease-in-out infinite;
+    
+    /* Shadow for depth */
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
+}
+
+/* Floating Animation (Gentle Bounce) */
+@keyframes floating3D {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* --- MOBILE RESPONSIVENESS (Stacking) --- */
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        text-align: center; /* Center aligned on phone */
+        gap: 40px;
+        min-height: auto;
+        padding-bottom: 40px;
+    }
+
+    .hero-content {
+        text-align: center; /* Center text on mobile */
+        align-items: center;
+        order: 1; /* Text First */
+    }
+    
+    .hero h1 { font-size: 2.2rem; } /* Smaller font on mobile */
+    .hero p { margin: 0 auto 30px auto; } /* Center paragraph */
+
+    .hero-image {
+        order: 2; /* Image Second */
+        margin-top: 0;
+    }
+    
+    .hero-image img {
+        max-width: 85%; /* Make image slightly smaller on mobile to fit screen */
+    }
+}
 
 /* --- PROCESS ROW --- */
 .process-row {
@@ -501,7 +603,17 @@ img { max-width: 100%; height: auto; }
     /* 2. HERO SECTION */
     .hero { padding: 40px 0 20px 0; text-align: center; }
     .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-    .hero h1 { font-size: 1.8rem !important; line-height: 1.3; } 
+    
+    /* --- HERO TEXT COLOR FIX --- */
+.hero h1 {
+    color: #ffffff !important; /* Forces text to be WHITE on all screens */
+    
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
     .hero-image img { margin: 0 auto; max-width: 90%; }
 
     /* 3. PROCESS ICONS (Force 2 per row) */

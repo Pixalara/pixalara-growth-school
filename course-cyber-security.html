@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixalara Growth School | DevOps & Cloud Training</title>
-    <meta name="description" content="Master DevOps, Cloud Computing, and Linux with hands-on training at Pixalara Growth School. Job-ready courses in AWS, Kubernetes, and Terraform.">
+    <title>Pixalara Growth School | Cyber Security Training</title>
+    <meta name="description" content="Master Cyber Security from scratch. Learn Ethical Hacking, Network Security, Web App Security, and SOC operations with hands-on training.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,236 +30,264 @@
             
             <nav class="nav-menu" id="navMenu">
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">HOME</a></li>
-                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html" class="active">COURSES</a></li>
                     <li><a href="mentors.html">MENTORS</a></li>
                     <li><a href="blogs.html">BLOGS</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
             </nav>
-
-            <button class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </button>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
         </div>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            
-            <ul class="hero-shapes">
-                <li><i class="fab fa-aws"></i></li>
-                <li><i class="fab fa-docker"></i></li>
-                <li><i class="fab fa-google"></i></li>          <li><i class="fab fa-linux"></i></li>
-                <li><i class="fas fa-dharmachakra"></i></li>    <li><i class="fab fa-jenkins"></i></li>
-                <li><i class="fab fa-python"></i></li>
-                <li><i class="fas fa-layer-group"></i></li>     <li><i class="fab fa-git-alt"></i></li>
-                <li><i class="fas fa-terminal"></i></li>
-            </ul>
-
+        <section class="page-hero">
             <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content reveal">
-<h1 style="color: #ffffff !important;">Hands-on DevOps & Cloud <br> <span class="text-gradient-anim">Corporate Training</span></h1>                        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 30px;">
-                            Upgrade your skills with real-world projects. Join the top-rated community for tech professionals and get job-ready in 3 months.
-                        </p>
+                <h1>Cyber Security Masterclass</h1>
+                <p>Become a Certified Cyber Security Practitioner. Learn to defend systems from real-world threats.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container course-detail-layout">
+                
+                <div class="course-content">
+                    <div class="curriculum-section">
                         
-                        <div class="hero-cta">
-                            <a href="#" onclick="openBookingModal(); return false;" class="btn-glow">
-                                Book A Demo <i class="fas fa-arrow-right"></i>
-                            </a>
+                        <div class="curriculum-text">
+                            <h2>Defend the Digital World</h2>
+                            <p>This course is designed for absolute beginners to intermediate learners. You will learn how hackers think, how to identify vulnerabilities, and how to secure networks and applications against cyber attacks.</p>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-user-secret" style="color:var(--primary)"></i> Ethical Hacking</h4>
+                                <p style="font-size:0.9rem;">Learn penetration testing, vulnerability assessment, and security auditing.</p>
+                            </div>
+
+                            <div>
+                                <h4 style="margin-bottom:10px;"><i class="fas fa-shield-alt" style="color:var(--primary)"></i> Blue Team Skills</h4>
+                                <p style="font-size:0.9rem;">Master defensive strategies, firewalls, and incident response.</p>
+                            </div>
+                        </div>
+
+                        <div class="module-stack">
+                            
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 1: Introduction to Cyber Security</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>CIA Triad (Confidentiality, Integrity, Availability)</li>
+                                            <li>Types of Hackers & Cyber Threats</li>
+                                            <li>Networking Basics (IPs, Ports, Protocols like TCP/UDP)</li>
+                                            <li>OSI Model & TCP/IP Model</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 2: Linux & Python for Security</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Setting up Kali Linux Virtual Lab</li>
+                                            <li>Essential Linux Commands for Hackers</li>
+                                            <li>File Permissions & User Management</li>
+                                            <li>Basic Python Scripting for Automation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 3: Information Gathering (Reconnaissance)</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Active vs Passive Footprinting</li>
+                                            <li>Using OSINT Tools (Maltego, Shodan, Whois)</li>
+                                            <li>Google Hacking Database (Dorks)</li>
+                                            <li>Social Media Intelligence</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 4: Scanning & Enumeration</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Network Scanning with Nmap</li>
+                                            <li>Identifying Open Ports & Services</li>
+                                            <li>Vulnerability Scanning with Nessus</li>
+                                            <li>Enumerating Users & Shares</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 5: System Hacking</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Password Cracking (Brute-force, Dictionary Attacks)</li>
+                                            <li>Using Metasploit Framework</li>
+                                            <li>Privilege Escalation Techniques</li>
+                                            <li>Hiding Files (Steganography)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 6: Web Application Security</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Understanding OWASP Top 10 Vulnerabilities</li>
+                                            <li>SQL Injection (SQLi) attacks & defense</li>
+                                            <li>Cross-Site Scripting (XSS)</li>
+                                            <li>Burp Suite for Web Testing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 7: Network Security & Firewalls</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Intrusion Detection Systems (IDS) vs IPS</li>
+                                            <li>Configuring Firewalls (UFW/Iptables)</li>
+                                            <li>Wireless Network Security (Wi-Fi Hacking basics)</li>
+                                            <li>Sniffing Traffic with Wireshark</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 8: Cryptography & Encryption</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Symmetric vs Asymmetric Encryption</li>
+                                            <li>Hashing Algorithms (MD5, SHA)</li>
+                                            <li>PKI (Public Key Infrastructure) & SSL/TLS</li>
+                                            <li>Securing Data at Rest and in Transit</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 9: Malware Threats & Social Engineering</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Types of Malware (Viruses, Trojans, Ransomware)</li>
+                                            <li>Phishing Attacks & Prevention</li>
+                                            <li>Malware Analysis Basics</li>
+                                            <li>Human-based vulnerabilities</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card" onclick="toggleModule(this)">
+                                <div class="module-header">
+                                    <span class="module-title">Module 10: Real-time Projects & Career</span>
+                                    <i class="fas fa-chevron-down module-icon"></i>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-body-content">
+                                        <ul>
+                                            <li>Project 1: Perform a Full Vulnerability Assessment</li>
+                                            <li>Project 2: Secure a Web Application</li>
+                                            <li>Project 3: Analyze Network Traffic Logs</li>
+                                            <li>Resume Building & Interview Prep</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+                </div>
+
+                <aside class="course-highlights-box">
+                    <h3 class="highlights-title">Course Highlights</h3>
                     
-                    <div class="hero-image reveal delay-200">
-                        <img src="assets/images/hero-illustration.png" alt="DevOps Training">
-                    </div>
-                </div>
-
-                <div class="process-row reveal delay-300">
-                    <div class="process-item">
-                        <div class="icon-circle"><i class="fas fa-search"></i></div>
-                        <p>Join Demo Class</p>
-                    </div>
-                    <div class="process-item">
-                        <div class="icon-circle"><i class="fas fa-th-large"></i></div>
-                        <p>Enroll In Course</p>
-                    </div>
-                    <div class="process-item">
-                        <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
-                        <p>Do Real Projects</p>
-                    </div>
-                    <div class="process-item">
-                        <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
-                        <p>Get Internship</p>
-                    </div>
-                    <div class="process-item">
-                        <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
-                        <p>Get Placed</p>
-                    </div>
-                </div>
-            </div>
-
-            <a href="#courses" class="scroll-indicator">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </section>
-
-       <section id="courses" class="section skills-section">
-            <div class="container-fluid">
-                <h2 class="section-title reveal" style="margin-bottom: 10px;">Top Emerging Tech Skills You’ll Gain</h2>
-                <p style="text-align: center; color: #666; margin-bottom: 40px;">Master the tools used by top Fortune 500 companies.</p>
-                
-                <div class="skills-wrapper">
-                    <div class="marquee scroll-left">
-                        <div class="marquee-content">
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> <span>AWS Cloud</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP"> <span>Google Cloud</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"> <span>Docker</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="K8s"> <span>Kubernetes</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"> <span>Terraform</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins"> <span>Jenkins</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Ansible"> <span>Ansible</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> <span>AWS Cloud</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"> <span>Docker</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="K8s"> <span>Kubernetes</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"> <span>Terraform</span></div>
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <i class="far fa-clock highlight-icon"></i>
+                            <span class="highlight-label">Duration</span>
+                            <span class="highlight-value">2 Months</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-video highlight-icon"></i>
+                            <span class="highlight-label">Mode</span>
+                            <span class="highlight-value">Live Online</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-signal highlight-icon"></i>
+                            <span class="highlight-label">Level</span>
+                            <span class="highlight-value">Beginner to Inter</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-briefcase highlight-icon"></i>
+                            <span class="highlight-label">Projects</span>
+                            <span class="highlight-value">3+ Real-time</span>
                         </div>
                     </div>
 
-                    <div class="marquee scroll-right">
-                        <div class="marquee-content">
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"> <span>Linux</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> <span>Python</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> <span>GitHub</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" alt="Grafana"> <span>Grafana</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="Prometheus"> <span>Prometheus</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"> <span>Linux</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP"> <span>Google Cloud</span></div>
-                            <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> <span>Python</span></div>
+                    <div class="price-section">
+                        <span class="price-label">Limited Time Offer</span>
+                        <div>
+                            <span class="old-price">₹32,000</span>
+                            <span class="discount-badge">41% OFF</span>
                         </div>
+                        <span class="current-price">₹19,000</span>
                     </div>
-                </div>
+
+                    <a href="#" onclick="openBookingModal(); return false;" class="btn-glow" style="width: 100%;">
+                        Book A Demo <i class="fas fa-arrow-right"></i>
+                    </a>
+                </aside>   
+
             </div>
         </section>
-
-        <section class="section why-choose-section">
-            <div class="container">
-                <div class="choose-layout">
-                    <div class="choose-text reveal">
-                        <h2 class="section-title text-left">Why Choose Us?</h2>
-                        <p>We don't just teach—we transform. Our training is built for impact, ensuring your team gains skills that stick and scale with your business.</p>
-                        <a href="contact.html" class="btn-text" style="font-size: 1.1rem; margin-top: 20px; display: inline-block;">Talk to an Expert &rarr;</a>
-                    </div>
-                    <div class="choose-grid">
-                        <div class="choose-card reveal delay-100">
-                            <img src="assets/images/curriculum.png" alt="Curriculum">
-                            <h3>Customized Curriculum</h3>
-                        </div>
-                        <div class="choose-card reveal delay-200">
-                            <img src="assets/images/learning.png" alt="Learning">
-                            <h3>Hands-On Learning</h3>
-                        </div>
-                        <div class="choose-card reveal delay-100">
-                            <img src="assets/images/placement.png" alt="Placement">
-                            <h3>Placement Assistance</h3>
-                        </div>
-                        <div class="choose-card reveal delay-200">
-                            <img src="assets/images/mentor.png" alt="Support">
-                            <h3>Mentor Support</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="courses-list" class="section bg-light">
-            <div class="container">
-                <h2 class="section-title reveal">Our Top Courses</h2>
-                <div class="grid-3">
-                    
-                    <div class="feature-card reveal delay-100">
-                        <h3>DevOps Masterclass</h3>
-                        <p>Master the complete CI/CD pipeline. Learn Docker, Kubernetes, Github Actions, Terraform, Ansible, Grafana and Prometheus from scratch.</p>
-                        <div style="margin-top: 20px;">
-                            <a href="course-devops.html" class="btn-glow" style="padding: 12px 30px; font-size: 0.9rem;">View Details</a>
-                        </div>
-                    </div>
-
-                    <div class="feature-card reveal delay-200">
-                        <h3>AWS Cloud Architect</h3>
-                        <p>Become a certified AWS Solutions Architect. Deep dive into EC2, VPC, S3, Lambda, and complete cloud infrastructure.</p>
-                        <div style="margin-top: 20px;">
-                            <a href="course-aws.html" class="btn-glow" style="padding: 12px 30px; font-size: 0.9rem;">View Details</a>
-                        </div>
-                    </div>
-
-                    <div class="feature-card reveal delay-300">
-                        <h3>Linux Administration</h3>
-                        <p>The foundation of all DevOps roles. Master Shell Scripting, User Management, Networking, and Security.</p>
-                        <div style="margin-top: 20px;">
-                            <a href="course-linux.html" class="btn-glow" style="padding: 12px 30px; font-size: 0.9rem;">View Details</a>
-                        </div>
-                    </div>
-
-                </div>
-                <div style="text-align: center; margin-top: 40px;" class="reveal">
-                    <a href="courses.html" class="btn-text">View All Courses &rarr;</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="mentors" class="section">
-            <div class="container">
-                <h2 class="section-title reveal">Meet Your Mentors</h2>
-                
-                <div class="grid-4">
-                    
-                    <div class="feature-card mentor-card reveal delay-100">
-                        <img src="assets/images/mentor-1.png" alt="Dileep" class="mentor-photo">
-                        <h3>Dileep</h3>
-                        <p class="designation">Cloud DevOps Specialist & SRE Practitioner</p>
-                    </div>
-
-                    <div class="feature-card mentor-card reveal delay-200">
-                        <img src="assets/images/mentor-5.png" alt="Nethaji" class="mentor-photo">
-                        <h3>Nethaji Rao</h3>
-                        <p class="designation">DevOps Lead & Cloud-Native Architect</p>
-                    </div>
-
-                    <div class="feature-card mentor-card reveal delay-300">
-                        <img src="assets/images/mentor-3.png" alt="Varsha" class="mentor-photo fix-center">
-                        <h3>Varsha</h3>
-                        <p class="designation">Java Developer & Full-Stack Instructor</p>
-                    </div>
-
-                    <div class="feature-card mentor-card reveal delay-400">
-                        <img src="assets/images/mentor-7.png" alt="Rahul" class="mentor-photo">
-                        <h3>Rahul</h3>
-                        <p class="designation">Cyber Security Specialist & PAM Mentor</p>
-                    </div>
-
-                </div>
-
-                <div style="text-align: center; margin-top: 30px;" class="reveal">
-                    <a href="mentors.html" class="btn-text">Read Full Profiles &rarr;</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section bg-light">
-            <div class="container">
-                <div class="connect-box reveal" style="text-align: center;">
-                    <h2 class="section-title" style="margin-bottom: 20px;">Start Your Journey Today</h2>
-                    <p>Ready to accelerate your career? Contact us directly or visit our center.</p>
-                    
-                    <div style="margin-top: 30px;">
-                        <a href="contact.html" class="btn-glow">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <div id="bookingModal" class="modal-overlay">
@@ -357,7 +385,6 @@
                         <span id="bookBtnText">Confirm Booking</span>
                         <span id="bookBtnLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
                     </button>
-                    
                     <p id="bookingStatus" style="margin-top: 10px; text-align: center; color: red; display: none;"></p>
                 </form>
             </div>
@@ -383,7 +410,7 @@
                     <span class="brand-green">Growth School</span>
                 </h3>
                 <p class="footer-tagline">Unlock Your Potential With Every Step</p>
-            
+                
                 <div class="social-links" style="margin-top: 20px;">
                     <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank" aria-label="Follow us on Instagram">
                         <i class="fab fa-instagram"></i>
@@ -424,14 +451,10 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/919988688654?text=Hello%20Pixalara%20Team%2C%20I%20am%20interested%20in%20your%20courses." class="float-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp my-float"></i>
-    </a>
-
     <script src="assets/js/main.js"></script>
 
     <script>
-        // 1. SET MINIMUM DATE TO TODAY
+        // --- 1. SET MINIMUM DATE ---
         document.addEventListener('DOMContentLoaded', function() {
             const dateInput = document.getElementById('bookingDate');
             if(dateInput) {
@@ -439,7 +462,7 @@
             }
         });
 
-        // 2. MODAL FUNCTIONS
+        // --- 2. MODAL FUNCTIONS ---
         function openBookingModal() {
             document.getElementById('bookingModal').classList.add('open');
         }
@@ -455,13 +478,16 @@
             document.getElementById('successModal').classList.remove('active');
         }
 
-        // 3. DROPDOWN LOGIC (COURSE)
+        // --- 3. CUSTOM DROPDOWN LOGIC ---
         const courseDropdown = document.getElementById('courseDropdown');
         const courseHiddenInput = document.getElementById('selectedCourse');
         const courseTriggerText = document.getElementById('courseTriggerText');
 
+        const timeDropdown = document.getElementById('timeDropdown');
+        const timeHiddenInput = document.getElementById('selectedTime');
+        const timeTriggerText = document.getElementById('timeTriggerText');
+
         function toggleCourseDropdown() {
-            // Close time dropdown if open
             timeDropdown.classList.remove('active');
             courseDropdown.classList.toggle('active');
         }
@@ -473,13 +499,7 @@
             courseDropdown.classList.remove('active');
         }
 
-        // 4. DROPDOWN LOGIC (TIME)
-        const timeDropdown = document.getElementById('timeDropdown');
-        const timeHiddenInput = document.getElementById('selectedTime');
-        const timeTriggerText = document.getElementById('timeTriggerText');
-
         function toggleTimeDropdown() {
-            // Close course dropdown if open
             courseDropdown.classList.remove('active');
             timeDropdown.classList.toggle('active');
         }
@@ -491,7 +511,6 @@
             timeDropdown.classList.remove('active');
         }
 
-        // Close dropdowns when clicking outside
         window.addEventListener('click', function(e) {
             if (courseDropdown && !courseDropdown.contains(e.target)) {
                 courseDropdown.classList.remove('active');
@@ -501,7 +520,18 @@
             }
         });
 
-        // 5. HANDLE BOOKING FORM SUBMISSION
+        // --- 4. ACCORDION LOGIC FOR MODULES ---
+        function toggleModule(card) {
+            card.classList.toggle('active');
+            let body = card.querySelector('.module-body');
+            if (card.classList.contains('active')) {
+                body.style.maxHeight = body.scrollHeight + "px";
+            } else {
+                body.style.maxHeight = 0;
+            }
+        }
+
+        // --- 5. HANDLE BOOKING FORM SUBMISSION ---
         const bookingForm = document.getElementById('bookingForm');
         if(bookingForm) {
             bookingForm.addEventListener('submit', function(e) {
@@ -521,7 +551,7 @@
             });
         }
 
-        // 6. GENERIC FORM HANDLER
+        // --- 6. GENERIC FORM HANDLER ---
         function handleFormSubmit(formObj, btnTextId, btnLoadingId, statusId, successTitle, successMsg) {
             const btnText = document.getElementById(btnTextId);
             const btnLoading = document.getElementById(btnLoadingId);
@@ -552,11 +582,10 @@
                     document.getElementById('successModal').classList.add('active');
                     
                     formObj.reset();
-                    // Reset dropdown texts
+                    // Reset dropdowns
                     courseTriggerText.innerText = 'Select a Course';
                     courseTriggerText.style.color = '#555';
                     courseHiddenInput.value = '';
-                    
                     timeTriggerText.innerText = 'Select a Time';
                     timeTriggerText.style.color = '#555';
                     timeHiddenInput.value = '';
