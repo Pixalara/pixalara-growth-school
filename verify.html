@@ -6,21 +6,9 @@
     
     <title>Verify Certificate | Pixalara Growth School</title>
     <meta name="description" content="Verify the authenticity of certificates issued by Pixalara Growth School. Enter your Certificate ID to validate your credentials.">
-    <meta name="keywords" content="Pixalara Certificate Verification, DevOps Certification, AWS Certification, Pixalara Growth School">
-    <meta name="author" content="Pixalara Growth School">
-
-    <meta property="og:title" content="Verify Certificate | Pixalara Growth School">
-    <meta property="og:description" content="Validate professional certificates issued by Pixalara Growth School.">
-    <meta property="og:image" content="https://growthschool.pixalara.com/assets/images/hero-illustration.png">
-    <meta property="og:url" content="https://growthschool.pixalara.com/verify.html">
-    <meta property="og:type" content="website">
-
+    
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -131,55 +119,58 @@
         /* --- BUTTONS --- */
         .action-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
+            flex-direction: column; /* Stack vertically */
+            gap: 12px;
+            margin-top: 25px;
         }
 
-        .btn-linkedin {
-            background: #0077b5;
+        /* 1. Download Button (Green) */
+        .btn-download-pdf {
+            background: #28a745; 
             color: white;
-            padding: 12px 25px;
+            padding: 14px 25px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-size: 0.95rem;
             transition: 0.3s;
             border: none;
             cursor: pointer;
+            width: 100%;
+        }
+        .btn-download-pdf:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        /* 2. LinkedIn Button (Blue) */
+        .btn-linkedin {
+            background: #0077b5;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
         }
         .btn-linkedin:hover {
             background: #005582;
             transform: translateY(-2px);
             color: white;
             box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
-        }
-
-        .btn-download-pdf {
-            background: #28a745;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-download-pdf:hover {
-            background: #218838;
-            transform: translateY(-2px);
-            color: white;
-            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
         }
 
         @keyframes slideUp {
@@ -220,7 +211,7 @@
                 <p style="color: #666;">Enter the unique Certificate ID printed on the document to validate its authenticity.</p>
 
                 <div class="input-group-verify">
-                    <input type="text" id="certInput" placeholder="Enter ID (e.g. PX-DEV-101)" onkeypress="handleEnter(event)">
+                    <input type="text" id="certInput" placeholder="Enter ID (e.g. PX-DEV-201)" onkeypress="handleEnter(event)">
                 </div>
 
                 <button class="btn-glow" onclick="verifyCertificate()" style="width: 100%; border-radius: 12px; margin-top: 10px;">
@@ -245,7 +236,6 @@
                     <span class="brand-green">Growth School</span>
                 </h3>
                 <p class="footer-tagline">Unlock Your Potential With Every Step</p>
-                
                 <div class="social-links" style="margin-top: 20px;">
                     <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/company/pixalara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -277,10 +267,10 @@
     <script>
         // --- 1. MOCK DATABASE ---
         const certificateDatabase = {
-            "PX-DEV-101": { name: "Rahul Sharma", course: "DevOps Masterclass", date: "15th Aug 2023" },
-            "PX-AWS-205": { name: "Priya Verma", course: "AWS Cloud Architect", date: "10th Sept 2023" },
-            "PX-LNX-309": { name: "Gandavaram Tejaswini", course: "Linux Administration", date: "1st Oct 2023" },
-            "PX-CYB-404": { name: "C S Nethaji Rao", course: "Cyber Security Masterclass", date: "20th Nov 2023" }
+            "PX-DEV-101": { name: "Rahul Sharma", course: "DevOps Masterclass", date: "15th Aug 2025" },
+            "PX-AWS-205": { name: "Priya Verma", course: "AWS Cloud Architect", date: "10th Sept 2025" },
+            "PX-LNX-309": { name: "G Tejaswini", course: "Linux Administration", date: "1st Oct 2025" },
+            "PX-CYB-404": { name: "CS Nethaji Rao", course: "Cyber Security Masterclass", date: "20th Nov 2025" }
         };
 
         // --- 2. VERIFICATION LOGIC ---
@@ -305,7 +295,7 @@
                 resultBox.className = "cert-result-box valid";
                 statusBadge.innerText = "Verified ✔";
                 
-                // USE PUBLIC DOMAIN FOR SHARING
+                // --- SHARE LINK GENERATION ---
                 const baseUrl = "https://growthschool.pixalara.com/verify.html";
                 const verifyUrl = `${baseUrl}?id=${input}`;
 
@@ -313,6 +303,7 @@
                 
                 const linkedInUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${certText}`;
 
+                // --- INJECT HTML WITH TWO SEPARATE BUTTONS ---
                 resultContent.innerHTML = `
                     <p>Certificate Found for:</p>
                     <h3>${data.name}</h3>
@@ -321,13 +312,19 @@
                     <p style="color: green; margin-top: 10px; font-size: 0.8rem;">
                         <i class="fas fa-shield-alt"></i> This is a valid credential.
                     </p>
+                    
                     <div class="action-buttons">
-                        <button onclick="downloadAndShare('${input}', '${linkedInUrl}')" class="btn-download-pdf">
-                            <i class="fas fa-file-pdf"></i> Download & Share
+                        <button onclick="generatePDF('${input}')" class="btn-download-pdf">
+                            <i class="fas fa-file-pdf"></i> Download Certificate
                         </button>
+
+                        <a href="${linkedInUrl}" target="_blank" class="btn-linkedin">
+                            <i class="fab fa-linkedin"></i> Share on LinkedIn
+                        </a>
                     </div>
-                    <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
-                        * To attach the certificate image, please download it first and then upload it to the LinkedIn post manually.
+
+                    <p style="font-size: 0.75rem; color: #888; margin-top: 15px; font-style: italic;">
+                        * Note: Download the certificate first if you wish to attach the image to your LinkedIn post manually.
                     </p>
                 `;
             } else {
@@ -341,15 +338,7 @@
             }
         }
 
-        // --- 3. DOWNLOAD & SHARE HANDLER ---
-        function downloadAndShare(certId, linkedInUrl) {
-            generatePDF(certId);
-            setTimeout(() => {
-                window.open(linkedInUrl, '_blank');
-            }, 2000);
-        }
-
-        // --- 4. PDF GENERATION ---
+        // --- 3. PDF GENERATION (With Correct Navy Blue Logo) ---
         async function generatePDF(certId) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
@@ -357,7 +346,7 @@
             const width = doc.internal.pageSize.getWidth();
             const height = doc.internal.pageSize.getHeight();
 
-            // Background & Border
+            // Background & Border (Primary Purple)
             doc.setLineWidth(2); doc.setDrawColor(101, 40, 247); doc.rect(10, 10, width - 20, height - 20);
             doc.setLineWidth(1); doc.setDrawColor(200, 200, 200); doc.rect(15, 15, width - 30, height - 30);
 
@@ -365,15 +354,27 @@
             doc.setFont("helvetica", "bold"); doc.setFontSize(30); doc.setTextColor(50, 50, 50);
             doc.text("CERTIFICATE OF COMPLETION", width / 2, 40, { align: "center" });
 
-            // Branding (Centered)
+            // --- BRANDING ---
             doc.setFontSize(24);
-            const text1 = "Pixalara"; const text2 = "Growth School"; const spacing = 4;
-            const w1 = doc.getTextWidth(text1); const w2 = doc.getTextWidth(text2);
+            const text1 = "Pixalara"; 
+            const text2 = "Growth School"; 
+            const spacing = 4;
+            
+            const w1 = doc.getTextWidth(text1); 
+            const w2 = doc.getTextWidth(text2);
             const startX = (width - (w1 + spacing + w2)) / 2;
             
-            doc.setTextColor(101, 40, 247); doc.text(text1, startX, 60);
-            doc.setTextColor(40, 167, 69); doc.text(text2, startX + w1 + spacing, 60);
-            doc.setLineWidth(0.5); doc.setDrawColor(150, 150, 150); doc.line(startX, 65, startX + w1 + spacing + w2, 65);
+            // 1. Pixalara in NAVY BLUE (#000080)
+            doc.setTextColor(0, 0, 128); 
+            doc.text(text1, startX, 60);
+            
+            // 2. Growth School in GREEN (#28a745)
+            doc.setTextColor(40, 167, 69); 
+            doc.text(text2, startX + w1 + spacing, 60);
+
+            // Decorative Line
+            doc.setLineWidth(0.5); doc.setDrawColor(150, 150, 150); 
+            doc.line(startX, 65, startX + w1 + spacing + w2, 65);
 
             // Student Content
             doc.setFont("helvetica", "normal"); doc.setFontSize(14); doc.setTextColor(100, 100, 100);
@@ -386,6 +387,7 @@
             doc.setFont("helvetica", "normal"); doc.setFontSize(14); doc.setTextColor(100, 100, 100);
             doc.text("Has successfully completed the course", width / 2, 125, { align: "center" });
 
+            // Course Name
             doc.setFont("helvetica", "bold"); doc.setFontSize(22); doc.setTextColor(101, 40, 247);
             doc.text(data.course, width / 2, 140, { align: "center" });
 
@@ -400,7 +402,7 @@
             doc.save(`Certificate_${certId}.pdf`);
         }
 
-        // --- 5. URL AUTO-LOAD ---
+        // --- 4. URL AUTO-LOAD ---
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const certId = urlParams.get('id');
