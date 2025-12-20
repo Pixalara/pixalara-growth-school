@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Verify Certificate | Pixalara Growth School</title>
+    <meta name="description" content="Verify the authenticity of certificates issued by Pixalara Growth School. Enter your Certificate ID to validate your credentials.">
+    <meta name="keywords" content="Pixalara Certificate Verification, DevOps Certification, AWS Certification, Pixalara Growth School">
+    <meta name="author" content="Pixalara Growth School">
+
+    <meta property="og:title" content="Verify Certificate | Pixalara Growth School">
+    <meta property="og:description" content="Validate professional certificates issued by Pixalara Growth School.">
+    <meta property="og:image" content="https://growthschool.pixalara.com/assets/images/hero-illustration.png">
+    <meta property="og:url" content="https://growthschool.pixalara.com/verify.html">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        /* --- PAGE SPECIFIC STYLES --- */
+        body { background-color: #f9f9ff; }
+
+        .verify-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f9f9ff 0%, #eef2ff 100%);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .verify-container {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .verify-icon {
+            font-size: 3rem;
+            color: #6528F7;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: #f0f0ff;
+            width: 80px; height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+
+        .input-group-verify {
+            position: relative;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .input-group-verify input {
+            width: 100%;
+            padding: 18px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            outline: none;
+            transition: 0.3s;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .input-group-verify input:focus {
+            border-color: #6528F7;
+            box-shadow: 0 0 0 4px rgba(101, 40, 247, 0.1);
+        }
+
+        /* --- CERTIFICATE RESULT CARD --- */
+        .cert-result-box {
+            display: none;
+            margin-top: 30px;
+            border: 2px dashed #ddd;
+            padding: 30px;
+            border-radius: 12px;
+            background: #fff;
+            animation: slideUp 0.5s ease;
+        }
+
+        .cert-result-box.valid {
+            border-style: solid;
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+
+        .cert-result-box.invalid {
+            border-style: solid;
+            border-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .valid .status-badge { background: #d4edda; color: #155724; }
+        .invalid .status-badge { background: #f8d7da; color: #721c24; }
+
+        .cert-details h3 { color: #150E1F; margin: 10px 0 5px; font-size: 1.4rem; }
+        .cert-details p { color: #666; margin-bottom: 5px; font-size: 0.95rem; }
+        .cert-course { font-weight: 700; color: #6528F7; font-size: 1.1rem; margin-top: 10px; display: block; }
+
+        /* --- BUTTONS --- */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-linkedin {
+            background: #0077b5;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-linkedin:hover {
+            background: #005582;
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+        }
+
+        .btn-download-pdf {
+            background: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-download-pdf:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo text-logo">
+                <span class="brand-blue">Pixalara</span> 
+                <span class="brand-green">Growth School</span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="verify-section">
+            <div class="verify-container">
+                <div class="verify-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h2>Verify Certificate</h2>
+                <p style="color: #666;">Enter the unique Certificate ID printed on the document to validate its authenticity.</p>
+
+                <div class="input-group-verify">
+                    <input type="text" id="certInput" placeholder="Enter ID (e.g. PX-DEV-101)" onkeypress="handleEnter(event)">
+                </div>
+
+                <button class="btn-glow" onclick="verifyCertificate()" style="width: 100%; border-radius: 12px; margin-top: 10px;">
+                    Validate Now
+                </button>
+
+                <div id="resultBox" class="cert-result-box">
+                    <span id="statusBadge" class="status-badge"></span>
+                    <div id="resultContent" class="cert-details">
+                        </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col" style="text-align: center;">
+                <h3 class="footer-brand">
+                    <span class="brand-blue">Pixalara</span> 
+                    <span class="brand-green">Growth School</span>
+                </h3>
+                <p class="footer-tagline">Unlock Your Potential With Every Step</p>
+                
+                <div class="social-links" style="margin-top: 20px;">
+                    <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/pixalara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/pixalara" target="_blank"><i class="fas fa-x"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone-alt"></i> +91 99886 88654</p>
+                <p><i class="fas fa-envelope"></i> growthschool@pixalara.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pixalara Growth School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // --- 1. MOCK DATABASE ---
+        const certificateDatabase = {
+            "PX-DEV-101": { name: "Rahul Sharma", course: "DevOps Masterclass", date: "15th Aug 2023" },
+            "PX-AWS-205": { name: "Priya Verma", course: "AWS Cloud Architect", date: "10th Sept 2023" },
+            "PX-LNX-309": { name: "Gandavaram Tejaswini", course: "Linux Administration", date: "1st Oct 2023" },
+            "PX-CYB-404": { name: "C S Nethaji Rao", course: "Cyber Security Masterclass", date: "20th Nov 2023" }
+        };
+
+        // --- 2. VERIFICATION LOGIC ---
+        function verifyCertificate() {
+            const inputField = document.getElementById('certInput');
+            const input = inputField.value.trim().toUpperCase();
+            const resultBox = document.getElementById('resultBox');
+            const statusBadge = document.getElementById('statusBadge');
+            const resultContent = document.getElementById('resultContent');
+
+            if (!input) {
+                alert("Please enter a Certificate ID.");
+                return;
+            }
+
+            resultBox.style.display = 'none';
+            void resultBox.offsetWidth;
+            resultBox.style.display = 'block';
+
+            if (certificateDatabase[input]) {
+                const data = certificateDatabase[input];
+                resultBox.className = "cert-result-box valid";
+                statusBadge.innerText = "Verified ✔";
+                
+                // USE PUBLIC DOMAIN FOR SHARING
+                const baseUrl = "https://growthschool.pixalara.com/verify.html";
+                const verifyUrl = `${baseUrl}?id=${input}`;
+
+                const certText = `I am excited to share that I have successfully completed the ${data.course} at Pixalara Growth School! 🎓%0A%0ACertificate ID: ${input}%0A%0AVerify my credential here: ${verifyUrl}%0A%0A#Pixalara #GrowthSchool #DevOps #TechCareers`;
+                
+                const linkedInUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${certText}`;
+
+                resultContent.innerHTML = `
+                    <p>Certificate Found for:</p>
+                    <h3>${data.name}</h3>
+                    <span class="cert-course">${data.course}</span>
+                    <p style="margin-top:10px; font-size:0.9rem;">Issued: ${data.date}</p>
+                    <p style="color: green; margin-top: 10px; font-size: 0.8rem;">
+                        <i class="fas fa-shield-alt"></i> This is a valid credential.
+                    </p>
+                    <div class="action-buttons">
+                        <button onclick="downloadAndShare('${input}', '${linkedInUrl}')" class="btn-download-pdf">
+                            <i class="fas fa-file-pdf"></i> Download & Share
+                        </button>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
+                        * To attach the certificate image, please download it first and then upload it to the LinkedIn post manually.
+                    </p>
+                `;
+            } else {
+                resultBox.className = "cert-result-box invalid";
+                statusBadge.innerText = "Invalid ✖";
+                resultContent.innerHTML = `
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: #dc3545; margin-bottom: 10px;"></i>
+                    <h3 style="color:#dc3545">Certificate Not Found</h3>
+                    <p>The ID <strong>${input}</strong> does not exist in our records.</p>
+                `;
+            }
+        }
+
+        // --- 3. DOWNLOAD & SHARE HANDLER ---
+        function downloadAndShare(certId, linkedInUrl) {
+            generatePDF(certId);
+            setTimeout(() => {
+                window.open(linkedInUrl, '_blank');
+            }, 2000);
+        }
+
+        // --- 4. PDF GENERATION ---
+        async function generatePDF(certId) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+            const data = certificateDatabase[certId];
+            const width = doc.internal.pageSize.getWidth();
+            const height = doc.internal.pageSize.getHeight();
+
+            // Background & Border
+            doc.setLineWidth(2); doc.setDrawColor(101, 40, 247); doc.rect(10, 10, width - 20, height - 20);
+            doc.setLineWidth(1); doc.setDrawColor(200, 200, 200); doc.rect(15, 15, width - 30, height - 30);
+
+            // Title
+            doc.setFont("helvetica", "bold"); doc.setFontSize(30); doc.setTextColor(50, 50, 50);
+            doc.text("CERTIFICATE OF COMPLETION", width / 2, 40, { align: "center" });
+
+            // Branding (Centered)
+            doc.setFontSize(24);
+            const text1 = "Pixalara"; const text2 = "Growth School"; const spacing = 4;
+            const w1 = doc.getTextWidth(text1); const w2 = doc.getTextWidth(text2);
+            const startX = (width - (w1 + spacing + w2)) / 2;
+            
+            doc.setTextColor(101, 40, 247); doc.text(text1, startX, 60);
+            doc.setTextColor(40, 167, 69); doc.text(text2, startX + w1 + spacing, 60);
+            doc.setLineWidth(0.5); doc.setDrawColor(150, 150, 150); doc.line(startX, 65, startX + w1 + spacing + w2, 65);
+
+            // Student Content
+            doc.setFont("helvetica", "normal"); doc.setFontSize(14); doc.setTextColor(100, 100, 100);
+            doc.text("This is to certify that", width / 2, 85, { align: "center" });
+
+            doc.setFont("times", "italic"); doc.setFontSize(36); doc.setTextColor(0, 0, 0);
+            doc.text(data.name, width / 2, 105, { align: "center" });
+            doc.setLineWidth(0.5); doc.setDrawColor(100, 100, 100); doc.line((width/2)-60, 110, (width/2)+60, 110);
+
+            doc.setFont("helvetica", "normal"); doc.setFontSize(14); doc.setTextColor(100, 100, 100);
+            doc.text("Has successfully completed the course", width / 2, 125, { align: "center" });
+
+            doc.setFont("helvetica", "bold"); doc.setFontSize(22); doc.setTextColor(101, 40, 247);
+            doc.text(data.course, width / 2, 140, { align: "center" });
+
+            // Footer
+            doc.setFontSize(12); doc.setTextColor(50, 50, 50);
+            doc.text(`Date Issued: ${data.date}`, 40, 170);
+            doc.text(`Certificate ID: ${certId}`, width - 40, 170, { align: "right" });
+            
+            doc.setFontSize(10); doc.setTextColor(150, 150, 150);
+            doc.text("Verify at: growthschool.pixalara.com/verify.html", width / 2, 190, { align: "center" });
+
+            doc.save(`Certificate_${certId}.pdf`);
+        }
+
+        // --- 5. URL AUTO-LOAD ---
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const certId = urlParams.get('id');
+            if(certId) {
+                document.getElementById('certInput').value = certId;
+                verifyCertificate();
+            }
+        }
+        function handleEnter(e) { if(e.key === 'Enter') verifyCertificate(); }
+    </script>
+</body>
+</html>
