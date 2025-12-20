@@ -2299,18 +2299,23 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 }
 
 /* --- HEADER TEXT LOGO STYLES --- */
+
+/* --- HEADER TEXT LOGO STYLES (Fixed Alignment) --- */
 .navbar .logo.text-logo {
     display: flex;
-    align-items: center;
-    gap: 6px; /* Space between Pixalara and Growth School */
+    
+    /* CHANGED from 'center' to 'baseline' to fix the uneven look */
+    align-items: baseline; 
+    
+    gap: 6px; 
     text-decoration: none;
 }
 
 .navbar .logo.text-logo span {
-    font-family: 'Poppins', sans-serif; /* Uses your heading font */
-    font-weight: 800;    /* Extra Bold */
-    font-size: 1.7rem;   /* Adjusts size to fit navbar */
-    line-height: 1;      /* Keeps alignment tight */
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 800;    
+    font-size: 1.7rem;   
+    line-height: 1;      
 }
 
 /* Ensure colors match the footer brands */
