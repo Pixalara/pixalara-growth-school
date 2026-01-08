@@ -273,7 +273,7 @@
                     </div>
 
                     <a href="#" onclick="openBookingModal(); return false;" class="btn-glow" style="width: 100%;">
-                        Book A Demo <i class="fas fa-arrow-right"></i>
+                        Enroll Now <i class="fas fa-arrow-right"></i>
                     </a>
                 </aside>
 
@@ -286,47 +286,15 @@
             <span class="close-booking" onclick="closeBookingModal()">&times;</span>
             
             <div class="booking-header">
-                <h2>Book a Free Demo</h2>
-                <p>Select a date and time for your 1:1 Career Guidance session.</p>
+                <h2>Enroll in a Course</h2>
+                <p>Enter your details to join our next batch.</p>
             </div>
 
             <div class="booking-body">
                 <form id="bookingForm">
                     <input type="hidden" name="access_key" value="42a9bf20-fc50-4974-ab93-c9fe73f5a9b2">
-                    <input type="hidden" name="subject" value="NEW DEMO BOOKING REQUEST">
+                    <input type="hidden" name="subject" value="NEW ENROLLMENT REQUEST">
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <div class="date-time-grid">
-                        <div class="form-group">
-                            <label>Preferred Date</label>
-                            <div class="date-input-container">
-                                <input type="date" name="Date" class="form-control" required id="bookingDate" placeholder="dd-mm-yyyy">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Preferred Time Slot</label>
-                            <input type="hidden" name="Time" id="selectedTime" required>
-                            
-                            <div class="custom-dropdown" id="timeDropdown">
-                                <div class="dropdown-trigger" onclick="toggleTimeDropdown()">
-                                    <span id="timeTriggerText">Select a Time</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <ul class="dropdown-options" style="z-index: 200;">
-                                    <li onclick="selectTime('Morning (9 AM - 12 PM)', '🌅 Morning (9 AM - 12 PM)')">
-                                        <span class="opt-icon">🌅</span> Morning (9 AM - 12 PM)
-                                    </li>
-                                    <li onclick="selectTime('Afternoon (12 PM - 4 PM)', '☀️ Afternoon (12 PM - 4 PM)')">
-                                        <span class="opt-icon">☀️</span> Afternoon (12 PM - 4 PM)
-                                    </li>
-                                    <li onclick="selectTime('Evening (4 PM - 8 PM)', '🌙 Evening (4 PM - 8 PM)')">
-                                        <span class="opt-icon">🌙</span> Evening (4 PM - 8 PM)
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label>Full Name</label>
@@ -373,7 +341,7 @@
                     </div>
 
                     <button type="submit" class="btn-glow" style="width: 100%; margin: 10px 0;">
-                        <span id="bookBtnText">Confirm Booking</span>
+                        <span id="bookBtnText">Confirm Enrollment</span>
                         <span id="bookBtnLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
                     </button>
                     <p id="bookingStatus" style="margin-top: 10px; text-align: center; color: red; display: none;"></p>
@@ -446,15 +414,7 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        // --- 1. SET MINIMUM DATE ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const dateInput = document.getElementById('bookingDate');
-            if(dateInput) {
-                dateInput.min = new Date().toISOString().split("T")[0];
-            }
-        });
-
-        // --- 2. MODAL FUNCTIONS ---
+        // --- 1. MODAL FUNCTIONS ---
         function openBookingModal() {
             document.getElementById('bookingModal').classList.add('open');
         }
@@ -463,24 +423,18 @@
             document.getElementById('bookingModal').classList.remove('open');
             // Reset dropdowns
             document.getElementById('courseDropdown').classList.remove('active');
-            document.getElementById('timeDropdown').classList.remove('active');
         }
 
         function closeSuccessModal() {
             document.getElementById('successModal').classList.remove('active');
         }
 
-        // --- 3. CUSTOM DROPDOWN LOGIC ---
+        // --- 2. CUSTOM DROPDOWN LOGIC (COURSE ONLY) ---
         const courseDropdown = document.getElementById('courseDropdown');
         const courseHiddenInput = document.getElementById('selectedCourse');
         const courseTriggerText = document.getElementById('courseTriggerText');
 
-        const timeDropdown = document.getElementById('timeDropdown');
-        const timeHiddenInput = document.getElementById('selectedTime');
-        const timeTriggerText = document.getElementById('timeTriggerText');
-
         function toggleCourseDropdown() {
-            timeDropdown.classList.remove('active');
             courseDropdown.classList.toggle('active');
         }
 
@@ -491,28 +445,13 @@
             courseDropdown.classList.remove('active');
         }
 
-        function toggleTimeDropdown() {
-            courseDropdown.classList.remove('active');
-            timeDropdown.classList.toggle('active');
-        }
-
-        function selectTime(value, text) {
-            timeHiddenInput.value = value;
-            timeTriggerText.innerText = text;
-            timeTriggerText.style.color = '#333';
-            timeDropdown.classList.remove('active');
-        }
-
         window.addEventListener('click', function(e) {
             if (courseDropdown && !courseDropdown.contains(e.target)) {
                 courseDropdown.classList.remove('active');
             }
-            if (timeDropdown && !timeDropdown.contains(e.target)) {
-                timeDropdown.classList.remove('active');
-            }
         });
 
-        // --- 4. ACCORDION LOGIC FOR MODULES ---
+        // --- 3. ACCORDION LOGIC FOR MODULES ---
         function toggleModule(card) {
             card.classList.toggle('active');
             let body = card.querySelector('.module-body');
@@ -523,7 +462,7 @@
             }
         }
 
-        // --- 5. HANDLE BOOKING FORM SUBMISSION ---
+        // --- 4. HANDLE BOOKING FORM SUBMISSION ---
         const bookingForm = document.getElementById('bookingForm');
         if(bookingForm) {
             bookingForm.addEventListener('submit', function(e) {
@@ -533,17 +472,13 @@
                     alert("Please select a course from the list.");
                     return;
                 }
-                if(!timeHiddenInput.value) {
-                    alert("Please select a time slot.");
-                    return;
-                }
 
                 handleFormSubmit(bookingForm, 'bookBtnText', 'bookBtnLoading', 'bookingStatus', 
-                    'Booking Request Sent!', 'We have received your demo request. We will confirm your slot via email shortly.');
+                    'Enrollment Request Sent!', 'We have received your enrollment request. We will confirm your slot via email shortly.');
             });
         }
 
-        // --- 6. GENERIC FORM HANDLER ---
+        // --- 5. GENERIC FORM HANDLER ---
         function handleFormSubmit(formObj, btnTextId, btnLoadingId, statusId, successTitle, successMsg) {
             const btnText = document.getElementById(btnTextId);
             const btnLoading = document.getElementById(btnLoadingId);
@@ -578,9 +513,6 @@
                     courseTriggerText.innerText = 'Select a Course';
                     courseTriggerText.style.color = '#555';
                     courseHiddenInput.value = '';
-                    timeTriggerText.innerText = 'Select a Time';
-                    timeTriggerText.style.color = '#555';
-                    timeHiddenInput.value = '';
                 } else {
                     statusBox.innerText = json.message;
                     statusBox.style.display = 'block';

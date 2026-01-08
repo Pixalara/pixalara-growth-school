@@ -7,7 +7,6 @@
     <meta name="description" content="Master DevOps, Cloud Computing, and Linux with hands-on training at Pixalara Growth School. Job-ready courses in AWS, Kubernetes, and Terraform.">
     <link rel="canonical" href="https://growthschool.pixalara.com/" />
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
@@ -20,6 +19,53 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    
+    <style>
+        /* --- NEW NAVBAR BUTTONS --- */
+        .nav-btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-career {
+            border: 2px solid #6528F7;
+            color: #6528F7 !important;
+            background: transparent;
+        }
+        
+        .btn-career:hover {
+            background: #6528F7;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .btn-login {
+            background: #6528F7;
+            color: white !important;
+            border: 2px solid #6528F7;
+            box-shadow: 0 4px 12px rgba(101, 40, 247, 0.2);
+        }
+        
+        .btn-login:hover {
+            background: #531ed6;
+            border-color: #531ed6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(101, 40, 247, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-btn {
+                display: inline-block;
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -31,13 +77,13 @@
             </a>
             
             <nav class="nav-menu" id="navMenu">
-                <ul class="nav-links">
+                <ul class="nav-links" style="align-items: center;">
                     <li><a href="index.html" class="active">HOME</a></li>
                     <li><a href="courses.html">COURSES</a></li>
                     <li><a href="mentors.html">MENTORS</a></li>
                     <li><a href="blogs.html">BLOGS</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
-
+                    
                     <li style="margin-left: 10px;">
                         <a href="https://careerhub.pixalara.in/" target="_blank" class="nav-btn btn-career">
                             Career Hub
@@ -48,7 +94,6 @@
                             Login
                         </a>
                     </li>
-                    
                 </ul>
             </nav>
 
@@ -60,7 +105,6 @@
 
     <main>
         <section id="home" class="hero">
-            
             <ul class="hero-shapes">
                 <li><i class="fab fa-aws"></i></li>
                 <li><i class="fab fa-docker"></i></li>
@@ -74,13 +118,14 @@
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-content reveal">
-<h1 style="color: #ffffff !important;">Hands-on DevOps & Cloud <br> <span class="text-gradient-anim">Corporate Training</span></h1>                        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 30px;">
+                        <h1 style="color: #ffffff !important;">Hands-on DevOps & Cloud <br> <span class="text-gradient-anim">Corporate Training</span></h1>                        
+                        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 30px;">
                             Upgrade your skills with real-world projects. Join the top-rated community for tech professionals and get job-ready in 3 months.
                         </p>
                         
                         <div class="hero-cta">
                             <a href="#" onclick="openBookingModal(); return false;" class="btn-glow">
-                                Book A Demo <i class="fas fa-arrow-right"></i>
+                                Enroll Now <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -281,47 +326,15 @@
             <span class="close-booking" onclick="closeBookingModal()">&times;</span>
             
             <div class="booking-header">
-                <h2>Book a Free Demo</h2>
-                <p>Select a date and time for your 1:1 Career Guidance session.</p>
+                <h2>Enroll in a Course</h2>
+                <p>Enter your details to join our next batch.</p>
             </div>
 
             <div class="booking-body">
                 <form id="bookingForm">
                     <input type="hidden" name="access_key" value="42a9bf20-fc50-4974-ab93-c9fe73f5a9b2">
-                    <input type="hidden" name="subject" value="NEW DEMO BOOKING REQUEST">
+                    <input type="hidden" name="subject" value="NEW ENROLLMENT REQUEST">
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <div class="date-time-grid">
-                        <div class="form-group">
-                            <label>Preferred Date</label>
-                            <div class="date-input-container">
-                                <input type="date" name="Date" class="form-control" required id="bookingDate" placeholder="dd-mm-yyyy">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Preferred Time Slot</label>
-                            <input type="hidden" name="Time" id="selectedTime" required>
-                            
-                            <div class="custom-dropdown" id="timeDropdown">
-                                <div class="dropdown-trigger" onclick="toggleTimeDropdown()">
-                                    <span id="timeTriggerText">Select a Time</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                                <ul class="dropdown-options" style="z-index: 200;">
-                                    <li onclick="selectTime('Morning (9 AM - 12 PM)', '🌅 Morning (9 AM - 12 PM)')">
-                                        <span class="opt-icon">🌅</span> Morning (9 AM - 12 PM)
-                                    </li>
-                                    <li onclick="selectTime('Afternoon (12 PM - 4 PM)', '☀️ Afternoon (12 PM - 4 PM)')">
-                                        <span class="opt-icon">☀️</span> Afternoon (12 PM - 4 PM)
-                                    </li>
-                                    <li onclick="selectTime('Evening (4 PM - 8 PM)', '🌙 Evening (4 PM - 8 PM)')">
-                                        <span class="opt-icon">🌙</span> Evening (4 PM - 8 PM)
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <label>Full Name</label>
@@ -368,7 +381,7 @@
                     </div>
 
                     <button type="submit" class="btn-glow" style="width: 100%; margin: 10px 0;">
-                        <span id="bookBtnText">Confirm Booking</span>
+                        <span id="bookBtnText">Confirm Enrollment</span>
                         <span id="bookBtnLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
                     </button>
                     
@@ -391,26 +404,21 @@
 
     <footer class="footer">
         <div class="container footer-grid">
+            
             <div class="footer-col" style="text-align: center;">
                 <h3 class="footer-brand">
                     <span class="brand-blue">Pixalara</span> 
                     <span class="brand-green">Growth School</span>
                 </h3>
                 <p class="footer-tagline">Unlock Your Potential With Every Step</p>
-            
+                
                 <div class="social-links" style="margin-top: 20px;">
-                    <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank" aria-label="Follow us on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/pixalara" target="_blank" aria-label="Follow us on LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://x.com/pixalara" target="_blank" aria-label="Follow us on X">
-                        <i class="fas fa-x"></i> 
-                    </a>
+                    <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/pixalara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/pixalara" target="_blank"><i class="fas fa-x"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
@@ -419,8 +427,9 @@
                     <li><a href="mentors.html">Mentors</a></li>
                     <li><a href="blogs.html">Blogs</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="verify.html" style="color: #4cd137;">Verify Certificate</a></li>
                     
-                <li style="margin-top: 10px;">
+                    <li style="margin-top: 10px;">
                         <a href="https://careerhub.pixalara.in/" target="_blank" style="color: var(--primary); font-weight: 700;">
                             Career Hub
                         </a>
@@ -430,25 +439,20 @@
                             Student Login
                         </a>
                     </li>
-
-                <li><a href="verify.html" style="color: #4cd137;">Verify Certificate</a></li>
-                
                 </ul>
             </div>
-            
+
             <div class="footer-col">
                 <h4>Contact</h4>
                 <p><i class="fas fa-phone-alt"></i> +91 99886 88654</p>
                 <p><i class="fas fa-phone-alt"></i> +91 94945 16887</p>
-                <p><i class="fas fa-envelope"></i> growthschool@pixalara.in</p>
+                <p><i class="fas fa-envelope"></i> growthschool@pixalara.com</p>
             </div>
+
         </div>
 
         <div class="footer-bottom">
-            <p>
-                &copy; 2025 Pixalara Growth School. All rights reserved. | 
-                Powered by <a href="https://pixalara.com" target="_blank" style="color: inherit; text-decoration: none; font-weight: 600;">pixalara.com</a>
-            </p>
+            <p>&copy; 2025 Pixalara Growth School. All rights reserved. | Powered by <a href="https://pixalara.com" target="_blank" style="color: inherit; text-decoration: none; font-weight: 600;">pixalara.com</a></p>
         </div>
     </footer>
 
@@ -459,15 +463,7 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        // 1. SET MINIMUM DATE TO TODAY
-        document.addEventListener('DOMContentLoaded', function() {
-            const dateInput = document.getElementById('bookingDate');
-            if(dateInput) {
-                dateInput.min = new Date().toISOString().split("T")[0];
-            }
-        });
-
-        // 2. MODAL FUNCTIONS
+        // 1. MODAL FUNCTIONS
         function openBookingModal() {
             document.getElementById('bookingModal').classList.add('open');
         }
@@ -476,21 +472,18 @@
             document.getElementById('bookingModal').classList.remove('open');
             // Reset dropdowns
             document.getElementById('courseDropdown').classList.remove('active');
-            document.getElementById('timeDropdown').classList.remove('active');
         }
 
         function closeSuccessModal() {
             document.getElementById('successModal').classList.remove('active');
         }
 
-        // 3. DROPDOWN LOGIC (COURSE)
+        // 2. DROPDOWN LOGIC (COURSE ONLY)
         const courseDropdown = document.getElementById('courseDropdown');
         const courseHiddenInput = document.getElementById('selectedCourse');
         const courseTriggerText = document.getElementById('courseTriggerText');
 
         function toggleCourseDropdown() {
-            // Close time dropdown if open
-            timeDropdown.classList.remove('active');
             courseDropdown.classList.toggle('active');
         }
 
@@ -501,35 +494,14 @@
             courseDropdown.classList.remove('active');
         }
 
-        // 4. DROPDOWN LOGIC (TIME)
-        const timeDropdown = document.getElementById('timeDropdown');
-        const timeHiddenInput = document.getElementById('selectedTime');
-        const timeTriggerText = document.getElementById('timeTriggerText');
-
-        function toggleTimeDropdown() {
-            // Close course dropdown if open
-            courseDropdown.classList.remove('active');
-            timeDropdown.classList.toggle('active');
-        }
-
-        function selectTime(value, text) {
-            timeHiddenInput.value = value;
-            timeTriggerText.innerText = text;
-            timeTriggerText.style.color = '#333';
-            timeDropdown.classList.remove('active');
-        }
-
-        // Close dropdowns when clicking outside
+        // Close dropdown when clicking outside
         window.addEventListener('click', function(e) {
             if (courseDropdown && !courseDropdown.contains(e.target)) {
                 courseDropdown.classList.remove('active');
             }
-            if (timeDropdown && !timeDropdown.contains(e.target)) {
-                timeDropdown.classList.remove('active');
-            }
         });
 
-        // 5. HANDLE BOOKING FORM SUBMISSION
+        // 3. HANDLE BOOKING FORM SUBMISSION
         const bookingForm = document.getElementById('bookingForm');
         if(bookingForm) {
             bookingForm.addEventListener('submit', function(e) {
@@ -539,17 +511,13 @@
                     alert("Please select a course from the list.");
                     return;
                 }
-                if(!timeHiddenInput.value) {
-                    alert("Please select a time slot.");
-                    return;
-                }
 
                 handleFormSubmit(bookingForm, 'bookBtnText', 'bookBtnLoading', 'bookingStatus', 
-                    'Booking Request Sent!', 'We have received your demo request. We will confirm your slot via email shortly.');
+                    'Enrollment Request Sent!', 'We have received your enrollment request. We will confirm your slot via email shortly.');
             });
         }
 
-        // 6. GENERIC FORM HANDLER
+        // 4. GENERIC FORM HANDLER
         function handleFormSubmit(formObj, btnTextId, btnLoadingId, statusId, successTitle, successMsg) {
             const btnText = document.getElementById(btnTextId);
             const btnLoading = document.getElementById(btnLoadingId);
@@ -580,14 +548,10 @@
                     document.getElementById('successModal').classList.add('active');
                     
                     formObj.reset();
-                    // Reset dropdown texts
+                    // Reset dropdown text
                     courseTriggerText.innerText = 'Select a Course';
                     courseTriggerText.style.color = '#555';
                     courseHiddenInput.value = '';
-                    
-                    timeTriggerText.innerText = 'Select a Time';
-                    timeTriggerText.style.color = '#555';
-                    timeHiddenInput.value = '';
                 } else {
                     statusBox.innerText = json.message;
                     statusBox.style.display = 'block';
