@@ -2643,3 +2643,99 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     40% { transform: translate(-50%, -10px); }
     60% { transform: translate(-50%, -5px); }
 }
+
+
+/* --- NEW NAVBAR BUTTONS --- */
+        .nav-btn {
+            padding: 8px 20px;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Prevents text breaking */
+        }
+        
+        /* Career Hub - Outlined Style */
+        .btn-career {
+            border: 2px solid #6528F7; /* Brand Primary */
+            color: #6528F7 !important;
+            background: transparent;
+        }
+        
+        .btn-career:hover {
+            background: #6528F7;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Login - Solid Style */
+        .btn-login {
+            background: #6528F7;
+            color: white !important;
+            border: 2px solid #6528F7;
+            box-shadow: 0 4px 12px rgba(101, 40, 247, 0.2);
+        }
+        
+        .btn-login:hover {
+            background: #531ed6;
+            border-color: #531ed6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(101, 40, 247, 0.3);
+        }
+
+        /* Mobile Adjustment */
+        @media (max-width: 768px) {
+            .nav-btn {
+                display: inline-block;
+                margin: 5px 0;
+                width: 100%; /* Full width on mobile menu */
+                text-align: center;
+            }
+        }
+
+
+        /* --- NAVBAR BUTTONS (Career Hub & Login) --- */
+.nav-btn {
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Career Hub - Outlined */
+.btn-career {
+    border: 2px solid #6528F7;
+    color: #6528F7 !important;
+    background: transparent;
+}
+.btn-career:hover {
+    background: #6528F7;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Login - Solid */
+.btn-login {
+    background: #6528F7;
+    color: white !important;
+    border: 2px solid #6528F7;
+    box-shadow: 0 4px 12px rgba(101, 40, 247, 0.2);
+}
+.btn-login:hover {
+    background: #531ed6;
+    border-color: #531ed6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(101, 40, 247, 0.3);
+}
+
+/* Mobile Stack */
+@media (max-width: 768px) {
+    .nav-btn {
+        display: inline-block;
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
