@@ -374,6 +374,7 @@ img { max-width: 100%; height: auto; }
     /* Subtle Text Gradient */
     background: linear-gradient(to right, #ffffff, #dcdcdc);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Drop shadow for pop */
 }
@@ -2303,19 +2304,18 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 /* --- HEADER TEXT LOGO STYLES (Fixed Alignment) --- */
 .navbar .logo.text-logo {
     display: flex;
-    
-    /* CHANGED from 'center' to 'baseline' to fix the uneven look */
-    align-items: baseline; 
-    
-    gap: 6px; 
+    align-items: center; 
+    gap: 4px; 
     text-decoration: none;
+    white-space: nowrap;
+    margin-right: 40px; /* NEW: Space between logo and Home link */
 }
 
 .navbar .logo.text-logo span {
     font-family: 'Poppins', sans-serif; 
     font-weight: 800;    
-    font-size: 1.7rem;   
-    line-height: 1;      
+    font-size: 1.15rem;   
+    line-height: 1.2;      
 }
 
 /* Ensure colors match the footer brands */
@@ -2591,6 +2591,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     background: linear-gradient(to right, #a29bfe, #fff, #6528F7, #fff);
     background-size: 300%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: textShine 5s ease-in-out infinite;
     font-weight: 800;
@@ -2729,6 +2730,19 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(101, 40, 247, 0.3);
 }
+
+/* ResumeAI - Outlined */
+.btn-resume {
+    border: 2px solid #1e88e5; /* Blue accent for ResumeAI */
+    color: #1e88e5 !important;
+    background: transparent;
+}
+.btn-resume:hover {
+    background: #1e88e5;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
 
 /* Mobile Stack */
 @media (max-width: 768px) {
