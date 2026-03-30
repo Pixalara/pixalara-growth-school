@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Fundamentals: A Beginner's Kickstart | Pixalara Growth School</title>
+    <meta name="description" content="Learn the base Linux operating system and basic CLI commands to prepare yourself for real-world DevOps.">
+    <link rel="canonical" href="https://growthschool.pixalara.com/blog-linux-basics.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <style>
+        .section-header { margin-top: 50px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .section-header i { font-size: 1.8rem; color: var(--primary); }
+        .section-header h2 { margin: 0; font-size: 1.6rem; color: var(--text-dark); }
+        .cmd-code { font-family: 'Courier New', monospace; background: #eef2ff; color: #d63384; padding: 4px 8px; border-radius: 4px; font-weight: 700; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo text-logo">
+                <span class="brand-blue">Pixalara</span> 
+                <span class="brand-green">Growth School</span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html" class="active">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li style="margin-left: 10px;"><a href="https://careerhub.pixalara.in/" target="_blank" class="nav-btn btn-career">Career Hub</a></li>
+                    <li><a href="https://resumeai.pixalara.io/" target="_blank" class="nav-btn btn-resume">ResumeAI</a></li>
+                    <li><a href="https://dashboard.pixalara.in/" target="_blank" class="nav-btn btn-login">Login</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            <div class="blog-header-section">
+                <span class="blog-category">Beginner Guide</span>
+                <h1 class="blog-main-title">Linux Fundamentals: A Beginner's Kickstart</h1>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Updated March 2026</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>Once you understand where your servers live (the cloud), you need to learn how to communicate with them. This is where Linux comes into play. Most cloud servers running on AWS or Google Cloud are powered by Linux distributions like Ubuntu, CentOS, or Alpine. If you want to succeed in DevOps, you must be comfortable using Linux.</p>
+
+                <div class="section-header">
+                    <i class="fas fa-terminal"></i>
+                    <h2>Why learn Linux for DevOps?</h2>
+                </div>
+                <p>If you use Windows or macOS daily, you use a Graphical User Interface (GUI) — you point and click with a mouse. However, cloud servers in data centers do not have monitors or mice plugged into them. To control a server halfway across the world, you must use a Command Line Interface (CLI).</p>
+                <p>While the CLI seems intimidating at first, it allows for incredibly fast automation. You cannot easily automate a Windows mouse-click, but you can automate a Linux text command instantly using simple scripts.</p>
+
+                <div class="real-world-example" style="background: #f9fbfd; border-left: 4px solid #1e88e5; padding: 20px; margin: 20px 0; border-radius: 4px;">
+                    <h3><i class="fas fa-lightbulb" style="color:#f39c12;"></i> Real-World Example: Recovering a Crashed Server</h3>
+                    <p>It’s 2 AM on Black Friday, and your company's e-commerce application goes offline. The server is located in an AWS data center in Virginia. You cannot physically go there and plug in a USB mouse.</p>
+                    <p>Instead, as a DevOps engineer, you open a terminal on your laptop and securely access the server remotely. But there are tens of thousands of lines of log files to read to find the issue! Clicking through text files manually would take hours. Instead, you use the Linux command <code>grep "ERROR" /var/log/application.log</code>. Instantly, the terminal filters out millions of lines and shows you exactly the 3 error lines causing the crash, allowing you to fix the database connection immediately.</p>
+                </div>
+
+                <div class="section-header">
+                    <i class="fas fa-keyboard"></i>
+                    <h2>Basic Navigation to Start</h2>
+                </div>
+                <p>Your journey begins with learning how to move around files purely through typing. Start with these three fundamental commands:</p>
+                <ul>
+                    <li><span class="cmd-code">ls</span> - Lists all the files and folders in your current directory. It's the equivalent of opening a folder on your desktop to see what's inside.</li>
+                    <li><span class="cmd-code">cd &lt;folder_name&gt;</span> - "Change Directory". This is how you move into a new folder.</li>
+                    <li><span class="cmd-code">pwd</span> - "Print Working Directory", essentially telling you where you currently are in the filesystem.</li>
+                </ul>
+                <p>Mastering the file system, file permissions (<span class="cmd-code">chmod</span>), network inspection, and text manipulation is mandatory before moving into advanced containerization logic.</p>
+            </div>
+
+            <div class="blog-navigation">
+                <a href="blog-cloud-beginner.html" class="nav-link-blog">&larr; Previous: Cloud Concepts</a>
+                <a href="blog-docker-beginner.html" class="nav-link-blog">Next: Docker &rarr;</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col" style="text-align: center;">                
+                <h3 class="footer-brand"><span class="brand-blue">Pixalara</span> <span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock Your Potential With Every Step</p>
+                <div class="social-links" style="margin-top: 20px;">
+                    <a href="https://www.instagram.com/pixalaragrowthschool/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/pixalara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/pixalara" target="_blank"><i class="fas fa-x"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li style="margin-top: 10px;"><a href="https://careerhub.pixalara.in/" target="_blank" style="color: var(--primary); font-weight: 700;">Career Hub</a></li>
+                    <li><a href="https://resumeai.pixalara.io/" target="_blank" style="color: #1e88e5; font-weight: 700;">ResumeAI</a></li>
+                    <li><a href="https://dashboard.pixalara.in/" target="_blank" style="font-weight: 700;">Student Login</a></li>
+                    <li><a href="verify.html" style="color: #4cd137;">Verify Certificate</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone-alt"></i> +91 85004 52248</p>
+                <p><i class="fas fa-envelope"></i> growthschool@pixalara.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pixalara Growth School. All rights reserved. | Powered by <a href="https://pixalara.com" target="_blank" style="color: inherit; text-decoration: none; font-weight: 600;">pixalara.com</a></p>
+        </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
