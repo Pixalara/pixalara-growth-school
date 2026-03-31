@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://growthschool.pixalara.com/sitemap.xml
+Sitemap: https://growthschool.cc/sitemap.xml
