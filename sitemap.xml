@@ -9,117 +9,142 @@
 
 <url>
   <loc>https://growthschool.cc/</loc>
-  <lastmod>2026-01-07T01:47:25+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:01+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/index.html</loc>
-  <lastmod>2026-01-07T01:47:25+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/courses.html</loc>
-  <lastmod>2026-01-07T01:47:25+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/mentors.html</loc>
-  <lastmod>2026-01-07T01:47:26+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blogs.html</loc>
-  <lastmod>2026-01-07T01:47:26+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/contact.html</loc>
-  <lastmod>2026-01-07T01:47:26+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/course-devops.html</loc>
-  <lastmod>2026-01-07T01:47:26+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/course-aws.html</loc>
-  <lastmod>2026-01-07T01:47:27+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/course-linux.html</loc>
-  <lastmod>2026-01-07T01:47:27+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/verify.html</loc>
-  <lastmod>2026-01-07T01:47:27+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/course-cyber-security.html</loc>
-  <lastmod>2026-01-07T01:47:27+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://growthschool.cc/blog-devops-roadmap.html</loc>
+  <lastmod>2026-04-02T15:17:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://growthschool.cc/blog-cloud-beginner.html</loc>
+  <lastmod>2026-04-02T15:17:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://growthschool.cc/blog-linux-basics.html</loc>
+  <lastmod>2026-04-02T15:17:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://growthschool.cc/blog-docker-beginner.html</loc>
+  <lastmod>2026-04-02T15:17:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://growthschool.cc/blog-kubernetes-intro.html</loc>
+  <lastmod>2026-04-02T15:17:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-future-devops.html</loc>
-  <lastmod>2026-01-07T01:47:27+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-cloud-comparison.html</loc>
-  <lastmod>2026-01-07T01:47:27+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-devops-sre.html</loc>
-  <lastmod>2026-01-07T01:47:28+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-kubernetes.html</loc>
-  <lastmod>2026-01-07T01:47:28+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-playbook.html</loc>
-  <lastmod>2026-01-07T01:47:28+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-ai-devops.html</loc>
-  <lastmod>2026-01-07T01:47:29+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-architecture.html</loc>
-  <lastmod>2026-01-07T01:47:29+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-ports.html</loc>
-  <lastmod>2026-01-07T01:47:29+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-python.html</loc>
-  <lastmod>2026-01-07T01:47:29+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:06+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-linux.html</loc>
-  <lastmod>2026-01-07T01:47:29+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:07+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-realtime-interview.html</loc>
-  <lastmod>2026-01-07T01:47:29+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:07+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://growthschool.cc/blog-quize.html</loc>
-  <lastmod>2026-01-07T01:47:30+00:00</lastmod>
+  <lastmod>2026-04-02T15:17:07+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
