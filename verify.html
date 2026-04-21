@@ -367,13 +367,13 @@
             },
 
             "GS-DEV-104": {
-                name: "DHANUMJAY",
+                name: "JORIGE DHANUMJAY",
                 course: "DevOps Masterclass",
                 date: "21st April 2026",
                 duration: "2 Months"
             },
 
-            "GS-DEV-105": {
+            "GS-DEV-111": {
                 name: "PANDLURI PRASAD",
                 course: "DevOps Masterclass",
                 date: "21st April 2026",
@@ -426,9 +426,9 @@
                 const baseUrl = "https://growthschool.cc/verify.html";
                 const verifyUrl = `${baseUrl}?id=${input}`;
 
-                const certText = `I am excited to share that I have successfully completed the ${data.course} (${data.duration}) at Growth School! 🎓%0A%0ACertificate ID: ${input}%0A%0AVerify my credential here: ${verifyUrl}%0A%0A#Pixalara #GrowthSchool #DevOps #TechCareers`;
+                const certTextRaw = `I am excited to share that I have successfully completed the ${data.course} (${data.duration}) at Growth School! 🎓\n\nCertificate ID: ${input}\n\nVerify my credential here: ${verifyUrl}\n\n#Pixalara #GrowthSchool #DevOps #TechCareers`;
 
-                const linkedInUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${certText}`;
+                const linkedInUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(certTextRaw)}`;
 
                 // --- INJECT HTML ---
                 resultContent.innerHTML = `
@@ -490,11 +490,11 @@
             // --- 2. BACKGROUND WATERMARK LOGO ---
             try {
                 if (window.jspdf.GState) {
-                    doc.setGState(new window.jspdf.GState({ opacity: 0.05 }));
+                    doc.setGState(new window.jspdf.GState({ opacity: 0.08 }));
                 }
-                const markW = 160;
+                const markW = 120;
                 // Assuming roughly 1:1 aspect ratio for the watermark scaled image
-                const markH = 160;
+                const markH = 120;
                 doc.addImage(base64Logo, 'PNG', (width - markW) / 2, (height - markH) / 2 - 10, markW, markH);
 
                 if (window.jspdf.GState) {
@@ -505,26 +505,26 @@
             }
 
             // --- 3. HEADER: OFFICIAL LOGO BRANDING ---
-            const topLogoH = 24;
-            const topLogoW = 24;
-            doc.addImage(base64Logo, 'PNG', (width - topLogoW) / 2, 22, topLogoW, topLogoH);
+            const topLogoH = 38;
+            const topLogoW = 38;
+            doc.addImage(base64Logo, 'PNG', (width - topLogoW) / 2, 16, topLogoW, topLogoH);
 
             // Subtitle
             doc.setFontSize(10);
             doc.setTextColor(100, 100, 100);
             doc.setFont("helvetica", "normal");
-            doc.text("Excellence in DevOps & Cloud Training", width / 2, 54, { align: "center" });
+            doc.text("Excellence in DevOps & Cloud Training", width / 2, 58, { align: "center" });
 
             // --- 3. TITLE ---
             doc.setFont("times", "bold");
             doc.setFontSize(40);
             doc.setTextColor(60, 60, 60);
-            doc.text("CERTIFICATE OF COMPLETION", width / 2, 75, { align: "center" });
+            doc.text("CERTIFICATE OF COMPLETION", width / 2, 78, { align: "center" });
 
             // Decorative line
             doc.setLineWidth(0.5);
             doc.setDrawColor(200, 200, 200);
-            doc.line((width / 2) - 80, 82, (width / 2) + 80, 82);
+            doc.line((width / 2) - 80, 85, (width / 2) + 80, 85);
 
             // --- 4. STUDENT DETAILS ---
             doc.setFont("helvetica", "normal");
