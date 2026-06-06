@@ -25,6 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Auto-open enrollment popup
+    setTimeout(() => {
+        const bookingModal = document.getElementById('bookingModal');
+        if (bookingModal && !sessionStorage.getItem('enrollmentPopupShown')) {
+            bookingModal.classList.add('open');
+            sessionStorage.setItem('enrollmentPopupShown', 'true');
+        }
+    }, 3000);
 });
 
 /* --- TAB SWITCHING LOGIC --- */
