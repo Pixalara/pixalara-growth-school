@@ -31,6 +31,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-radius: 8px;
             overflow: hidden;
+            min-width: 600px;
         }
         .cmd-table thead {
             background-color: var(--primary);
@@ -142,6 +143,7 @@
                 </div>
                 <p>Linux is the operating system of the cloud. You cannot survive in DevOps without mastering the terminal.</p>
                 
+                <div class="table-wrapper">
                 <table class="cmd-table">
                     <thead>
                         <tr>
@@ -177,6 +179,7 @@
                         <tr><td><span class="cmd-code">systemctl restart nginx</span></td><td>Restart a service (like a web server).</td></tr>
                     </tbody>
                 </table>
+            </div>
 
                 <div class="section-header">
                     <i class="fab fa-git-alt icon-git"></i>
@@ -184,6 +187,7 @@
                 </div>
                 <p>Git helps teams collaborate on code. It is the "Save Game" button for developers.</p>
 
+                <div class="table-wrapper">
                 <table class="cmd-table">
                     <thead>
                         <tr>
@@ -219,6 +223,7 @@
                         <tr><td><span class="cmd-code">git clean -fd</span></td><td>Remove untracked files from the folder.</td></tr>
                     </tbody>
                 </table>
+            </div>
 
                 <div class="section-header">
                     <i class="fab fa-docker icon-docker"></i>
@@ -226,6 +231,7 @@
                 </div>
                 <p>Docker packages applications into containers so they run anywhere.</p>
 
+                <div class="table-wrapper">
                 <table class="cmd-table">
                     <thead>
                         <tr>
@@ -261,6 +267,7 @@
                         <tr><td><span class="cmd-code">docker tag old:v1 new:v2</span></td><td>Rename or re-tag an image.</td></tr>
                     </tbody>
                 </table>
+            </div>
 
                 <div class="section-header">
                     <i class="fas fa-cubes icon-k8s"></i>
@@ -268,6 +275,7 @@
                 </div>
                 <p>Kubernetes manages Docker containers at a massive scale.</p>
 
+                <div class="table-wrapper">
                 <table class="cmd-table">
                     <thead>
                         <tr>
@@ -303,6 +311,7 @@
                         <tr><td><span class="cmd-code">kubectl explain pod</span></td><td>Documentation about what a "Pod" is.</td></tr>
                     </tbody>
                 </table>
+            </div>
 
                 <div class="section-header">
                     <i class="fas fa-layer-group icon-tf"></i>
@@ -310,6 +319,7 @@
                 </div>
                 <p>Terraform allows you to build cloud infrastructure using code.</p>
 
+                <div class="table-wrapper">
                 <table class="cmd-table">
                     <thead>
                         <tr>
@@ -345,6 +355,7 @@
                         <tr><td><span class="cmd-code">terraform force-unlock [id]</span></td><td>Unlock the state if it got stuck.</td></tr>
                     </tbody>
                 </table>
+            </div>
 
             </div>
 

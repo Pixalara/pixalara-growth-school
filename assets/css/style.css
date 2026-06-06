@@ -2910,3 +2910,253 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 #bookingModal .close-booking:hover {
     color: #fff;
 }
+
+/* =========================================
+   RESPONSIVE DESIGN FOR BLOGS (TABLET & MOBILE)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Containers and Headers */
+    .blog-article-container {
+        padding: 40px 20px !important;
+    }
+    
+    .blog-main-title {
+        font-size: 2rem !important;
+    }
+
+    .article-content h2 {
+        font-size: 1.5rem !important;
+        margin-top: 30px !important;
+    }
+
+    .article-content h3 {
+        font-size: 1.25rem !important;
+        margin-top: 25px !important;
+    }
+
+    .section-header {
+        margin-top: 35px !important;
+        margin-bottom: 15px !important;
+        padding-bottom: 8px !important;
+        gap: 8px !important;
+    }
+
+    .section-header i {
+        font-size: 1.5rem !important;
+    }
+
+    .section-header h2 {
+        font-size: 1.3rem !important;
+    }
+
+    /* 2. Visual Story Banners */
+    .story-img-wrapper {
+        margin: 20px 0 !important;
+    }
+
+    .story-img-wrapper img {
+        height: 260px !important;
+    }
+
+    /* 3. Interactive storytelling boxes */
+    .analog-box, .pro-tip, .analogy-box, .example-box, .real-world-example {
+        padding: 20px !important;
+        margin: 20px 0 !important;
+    }
+
+    .analog-box h3, .pro-tip h4, .analogy-box h3, .real-world-example h3 {
+        font-size: 1.15rem !important;
+        gap: 8px !important;
+    }
+
+    /* 4. Grids and Cards */
+    .stat-card, .highlight-card {
+        padding: 18px !important;
+    }
+
+    .client-list {
+        gap: 8px !important;
+        margin: 15px 0 !important;
+    }
+
+    .client-badge {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 5. Code blocks and Tables */
+    .code-block {
+        padding: 15px !important;
+        font-size: 0.9rem !important;
+    }
+
+    .table-wrapper {
+        margin: 20px 0 !important;
+        border-radius: 8px !important;
+    }
+
+    .compare-table th, .compare-table td, 
+    .cmd-table th, .cmd-table td, 
+    .port-table th, .port-table td {
+        padding: 12px 15px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* 6. Navigation */
+    .blog-navigation {
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-top: 20px !important;
+        margin-top: 35px !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    .nav-link-blog {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px 0 !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* 7. Blogs Home & Page Hero */
+    .page-hero {
+        padding: 50px 0 !important;
+    }
+
+    /* 8. Quiz Page */
+    .quiz-container {
+        padding: 20px 10px !important;
+    }
+
+    .question-card {
+        padding: 30px !important;
+        border-radius: 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 1. Containers and Headers */
+    .blog-article-container {
+        padding: 25px 15px !important;
+    }
+
+    .blog-main-title {
+        font-size: 1.6rem !important;
+        line-height: 1.35 !important;
+    }
+
+    .article-content h2 {
+        font-size: 1.35rem !important;
+        margin-top: 25px !important;
+    }
+
+    .article-content h3 {
+        font-size: 1.15rem !important;
+        margin-top: 20px !important;
+    }
+
+    .section-header {
+        margin-top: 25px !important;
+        gap: 6px !important;
+    }
+
+    .section-header i {
+        font-size: 1.3rem !important;
+    }
+
+    .section-header h2 {
+        font-size: 1.15rem !important;
+    }
+
+    /* 2. Visual Story Banners */
+    .story-img-wrapper {
+        margin: 15px 0 !important;
+    }
+    
+    .story-img-wrapper img {
+        height: 170px !important;
+    }
+
+    .story-img-caption {
+        font-size: 0.8rem !important;
+        padding: 8px 12px !important;
+    }
+
+    /* 3. Interactive storytelling boxes */
+    .analog-box, .pro-tip, .analogy-box, .example-box, .real-world-example {
+        padding: 15px !important;
+        margin: 15px 0 !important;
+        border-radius: 8px !important;
+    }
+
+    .analog-box h3, .pro-tip h4, .analogy-box h3, .real-world-example h3 {
+        font-size: 1.05rem !important;
+    }
+
+    /* 4. Grids and Cards */
+    .stats-grid, .highlight-grid {
+        gap: 15px !important;
+        margin: 20px 0 !important;
+    }
+
+    .stat-card, .highlight-card {
+        padding: 15px !important;
+    }
+
+    .stat-card h3 {
+        font-size: 1.8rem !important;
+    }
+
+    .client-list {
+        justify-content: center !important;
+    }
+
+    /* 5. Code blocks and Tables */
+    .article-content {
+        font-size: 1rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .code-block {
+        padding: 12px !important;
+        font-size: 0.82rem !important;
+        margin: 15px 0 !important;
+    }
+
+    .compare-table th, .compare-table td, 
+    .cmd-table th, .cmd-table td, 
+    .port-table th, .port-table td {
+        padding: 10px 12px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 6. Blogs Home & Page Hero */
+    .page-hero h1 {
+        font-size: 2rem !important;
+    }
+
+    .page-hero p {
+        font-size: 1rem !important;
+    }
+
+    .blog-content {
+        padding: 20px !important;
+    }
+
+    /* 7. Quiz Page */
+    .question-card {
+        padding: 20px !important;
+    }
+
+    .question-text {
+        font-size: 1.15rem !important;
+        margin-bottom: 20px !important;
+    }
+
+    .option-label {
+        padding: 12px 15px !important;
+        font-size: 0.95rem !important;
+    }
+}
