@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linux Fundamentals: The Story of the OS That Runs the World | Growth School</title>
-    <meta name="description" content="Discover the history of Linux, who created it, why the whole world runs on it, and master 30+ basic Linux commands with easy Windows comparisons.">
+    <meta name="description" content="Discover the history of Linux, who created it, why the whole world runs on it, and master 30+ basic Linux commands with examples.">
     <link rel="canonical" href="https://growthschool.cc/blog-linux-basics.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,7 +137,7 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.95rem;
-            min-width: 800px;
+            min-width: 650px;
             background: #fff;
         }
         
@@ -173,17 +173,6 @@
         .tag-linux {
             background: #ffe8d6;
             color: #d35400;
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            display: inline-block;
-        }
-        
-        .tag-win {
-            background: #e3f2fd;
-            color: #0d47a1;
             font-family: 'Courier New', monospace;
             font-weight: 700;
             padding: 4px 8px;
@@ -228,19 +217,7 @@
         
         /* Terminal Showcase */
         .terminal-compare {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
             margin: 30px 0;
-        }
-        
-        @media (max-width: 768px) {
-            .terminal-compare {
-                grid-template-columns: 1fr;
-            }
-            .story-img-wrapper img {
-                height: 250px;
-            }
         }
         
         .terminal-box {
@@ -250,6 +227,8 @@
             overflow: hidden;
             font-family: 'Courier New', monospace;
             font-size: 0.85rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .terminal-header {
@@ -286,7 +265,6 @@
         }
         
         .prompt-linux { color: #50fa7b; font-weight: bold; }
-        .prompt-win { color: #8be9fd; font-weight: bold; }
         .cmd-input { color: #f8f8f2; }
     </style>
 
@@ -363,7 +341,7 @@
                     <h2>The Story of Linus Torvalds and a "Hobby" Project</h2>
                 </div>
                 
-                <p>Once upon a time in 1991, in Helsinki, Finland, there was a 21-year-old university student named <strong>Linus Torvalds</strong>. Like many college kids, Linus had a computer, but he was frustrated. The standard operating systems of that time were either extremely expensive (like UNIX) or simple and unstable.</p>
+                <p>Once upon a time in 1991, in Helsinki, Finland, there was a 21-year-old university student named <strong>Linus Torvalds</strong>. Like many college kids, Linus had a computer, but he was frustrated. The operating systems of that time were either closed, extremely expensive (like UNIX), or simple and unstable.</p>
 
                 <p>Linus wanted to tinker with the inner workings of his computer, but closed-source software wouldn't let him see how it worked. So, he decided to write his own operating system core (called a kernel) from scratch.</p>
 
@@ -415,7 +393,7 @@
                 <div class="real-world-example" style="background: #f9fbfd; border-left: 4px solid #1e88e5; padding: 25px; margin: 30px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
                     <h3 style="margin-bottom:12px; color:#1e88e5;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i> Real-World Scenario: Flipkart Big Billion Days Sale</h3>
                     <p>It’s 12:00 midnight. The blockbuster <strong>Flipkart Big Billion Days</strong> sale goes live! Millions of shoppers across India load the homepage at the exact same split-second. The servers supporting this massive traffic are hosted in the **AWS Mumbai Data Centre (ap-south-1)**. Suddenly, an application error causes a server slowdown. The developers can't fly a physical engineer to the data centre to attach a monitor or plug in a USB mouse.</p>
-                    <p>Instead, as a DevOps engineer, you open a terminal console from your laptop in Bangalore and securely log into the remote server. But how do you find the problem when there are millions of lines of active user log logs? Scrolling through text files manually would take days. Instead, you type a single Linux command: <code>grep "CRITICAL_ERROR" /var/log/flipkart-app.log</code>. Instantly, the terminal filters out all noise and shows you the exact 2 error lines pointing to a database connection bottleneck. You adjust the config, restart the service, and the sale goes on smoothly. That is the power of the Linux CLI!</p>
+                    <p>Instead, as a DevOps engineer, you open a terminal console from your laptop in Bangalore and securely log into the remote server. But how do you find the problem when there are millions of lines of active user logs? Scrolling through text files manually would take days. Instead, you type a single Linux command: <code>grep "CRITICAL_ERROR" /var/log/flipkart-app.log</code>. Instantly, the terminal filters out all noise and shows you the exact 2 error lines pointing to a database connection bottleneck. You adjust the config, restart the service, and the sale goes on smoothly. That is the power of the Linux CLI!</p>
                 </div>
 
                 <div class="section-header">
@@ -439,10 +417,10 @@
 
                 <div class="section-header">
                     <i class="fas fa-terminal"></i>
-                    <h2>Linux vs. Windows Command Line</h2>
+                    <h2>The Linux Command Line Terminal</h2>
                 </div>
 
-                <p>To help you understand the Command Line easily, let's see how simple tasks are performed. Below are side-by-side examples showing how a folder's contents are listed in Linux (using standard Bash terminal) versus Windows (using Command Prompt).</p>
+                <p>To help you understand the Command Line easily, let's see what a terminal looks like. Below is an example showing how directory navigation and paths are checked inside a standard Linux Bash terminal window.</p>
 
                 <div class="terminal-compare">
                     <div class="terminal-box">
@@ -461,39 +439,23 @@
                             /home/student
                         </div>
                     </div>
-
-                    <div class="terminal-box">
-                        <div class="terminal-header">
-                            <span></span>
-                            <span>Windows CMD Prompt</span>
-                        </div>
-                        <div class="terminal-body" style="color: #c0c0c0;">
-                            C:\Users\Student&gt; <span class="cmd-input" style="color:#fff;">dir</span><br>
-                            &lt;DIR&gt;      Desktop<br>
-                            &lt;DIR&gt;      Documents<br>
-                            06/06/2026  05:30 PM      24 notes.txt<br>
-                            C:\Users\Student&gt; <span class="cmd-input" style="color:#fff;">cd</span><br>
-                            C:\Users\Student
-                        </div>
-                    </div>
                 </div>
 
                 <div class="section-header">
                     <i class="fas fa-list-check"></i>
-                    <h2>30+ Everyday Linux Commands Compared with Windows</h2>
+                    <h2>30+ Everyday Linux Commands</h2>
                 </div>
 
-                <p>Here is your translation guide! We have compared 30 essential, everyday Linux commands with their Windows equivalents, including simple examples and analogies even a school student can understand.</p>
+                <p>Here is your essential cheat sheet! We have compiled 30 of the most important, everyday Linux commands, including simple examples and analogies even a school student can understand.</p>
 
                 <div class="table-wrapper">
                     <table class="compare-table">
                         <thead>
                             <tr>
                                 <th width="5%">#</th>
-                                <th width="15%">Purpose</th>
-                                <th width="20%">Linux Command</th>
-                                <th width="20%">Windows Equivalent</th>
-                                <th width="40%">Real-World Analogy & Example</th>
+                                <th width="20%">Purpose</th>
+                                <th width="25%">Linux Command</th>
+                                <th width="50%">Real-World Analogy & Example</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -502,9 +464,8 @@
                                 <td>1</td>
                                 <td><strong>Where am I?</strong></td>
                                 <td><span class="tag-linux">pwd</span></td>
-                                <td><span class="tag-win">cd</span></td>
                                 <td>
-                                    <strong>Analogy:</strong> Checking your GPS map to see your exact location.<br>
+                                    <strong>Analogy:</strong> Checking your GPS map to see your exact location coordinates.<br>
                                     <div class="example-box">Example: <code>pwd</code> prints <code>/home/student/projects</code></div>
                                 </td>
                             </tr>
@@ -513,7 +474,6 @@
                                 <td>2</td>
                                 <td><strong>What's inside?</strong></td>
                                 <td><span class="tag-linux">ls</span></td>
-                                <td><span class="tag-win">dir</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Opening a drawer to see all papers and items inside.<br>
                                     <div class="example-box">Example: <code>ls -l</code> lists files with details.</div>
@@ -524,7 +484,6 @@
                                 <td>3</td>
                                 <td><strong>Move around</strong></td>
                                 <td><span class="tag-linux">cd [folder]</span></td>
-                                <td><span class="tag-win">cd [folder]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Stepping through a door to enter another room.<br>
                                     <div class="example-box">Example: <code>cd devops</code> to enter; <code>cd ..</code> to exit.</div>
@@ -535,7 +494,6 @@
                                 <td>4</td>
                                 <td><strong>Create folder</strong></td>
                                 <td><span class="tag-linux">mkdir [name]</span></td>
-                                <td><span class="tag-win">mkdir [name]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Placing a new empty box on the shelf with a label.<br>
                                     <div class="example-box">Example: <code>mkdir my_code</code> creates a new folder.</div>
@@ -546,7 +504,6 @@
                                 <td>5</td>
                                 <td><strong>Create empty file</strong></td>
                                 <td><span class="tag-linux">touch [file]</span></td>
-                                <td><span class="tag-win">type nul > [file]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Placing a clean, blank sheet of paper on your desk.<br>
                                     <div class="example-box">Example: <code>touch notes.txt</code> creates a blank notes file.</div>
@@ -557,7 +514,6 @@
                                 <td>6</td>
                                 <td><strong>Read file content</strong></td>
                                 <td><span class="tag-linux">cat [file]</span></td>
-                                <td><span class="tag-win">type [file]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Opening a book page to read the text written on it.<br>
                                     <div class="example-box">Example: <code>cat config.json</code> displays the file on screen.</div>
@@ -568,7 +524,6 @@
                                 <td>7</td>
                                 <td><strong>Copy file</strong></td>
                                 <td><span class="tag-linux">cp [src] [dst]</span></td>
-                                <td><span class="tag-win">copy [src] [dst]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Making a photocopy of a document so you have a duplicate.<br>
                                     <div class="example-box">Example: <code>cp notes.txt backup.txt</code></div>
@@ -579,7 +534,6 @@
                                 <td>8</td>
                                 <td><strong>Move or Rename</strong></td>
                                 <td><span class="tag-linux">mv [old] [new]</span></td>
-                                <td><span class="tag-win">move</span> / <span class="tag-win">ren</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Moving a box to a new room, or changing its label.<br>
                                     <div class="example-box">Example: <code>mv test.txt prod.txt</code> renames the file.</div>
@@ -590,7 +544,6 @@
                                 <td>9</td>
                                 <td><strong>Delete file</strong></td>
                                 <td><span class="tag-linux">rm [file]</span></td>
-                                <td><span class="tag-win">del [file]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Running a document through a paper shredder permanently.<br>
                                     <div class="example-box">Example: <code>rm temp.log</code> deletes the temporary log.</div>
@@ -601,7 +554,6 @@
                                 <td>10</td>
                                 <td><strong>Delete empty folder</strong></td>
                                 <td><span class="tag-linux">rmdir [folder]</span></td>
-                                <td><span class="tag-win">rmdir [folder]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Throwing away a cardboard box that is completely empty.<br>
                                     <div class="example-box">Example: <code>rmdir old_backup/</code></div>
@@ -612,7 +564,6 @@
                                 <td>11</td>
                                 <td><strong>Force delete folder</strong></td>
                                 <td><span class="tag-linux">rm -rf [folder]</span></td>
-                                <td><span class="tag-win">rmdir /s /q [folder]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Throwing a chest and everything inside it directly into a furnace.<br>
                                     <div class="example-box">Example: <code>rm -rf build/</code> deletes everything recursively.</div>
@@ -623,7 +574,6 @@
                                 <td>12</td>
                                 <td><strong>Search inside text</strong></td>
                                 <td><span class="tag-linux">grep "[text]" [file]</span></td>
-                                <td><span class="tag-win">findstr "[text]" [file]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Using a yellow highlighter to find a key term in a book.<br>
                                     <div class="example-box">Example: <code>grep "Success" system.log</code></div>
@@ -634,7 +584,6 @@
                                 <td>13</td>
                                 <td><strong>Network Info / IP</strong></td>
                                 <td><span class="tag-linux">ip addr</span></td>
-                                <td><span class="tag-win">ipconfig</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Finding your home's mailing address so packages can be delivered.<br>
                                     <div class="example-box">Example: <code>ip addr show</code> displays your IP details.</div>
@@ -645,7 +594,6 @@
                                 <td>14</td>
                                 <td><strong>Ping connectivity</strong></td>
                                 <td><span class="tag-linux">ping [host]</span></td>
-                                <td><span class="tag-win">ping [host]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Tapping a microphone and saying "Is this working?" to test response.<br>
                                     <div class="example-box">Example: <code>ping google.com</code> checks internet status.</div>
@@ -656,7 +604,6 @@
                                 <td>15</td>
                                 <td><strong>Who am I?</strong></td>
                                 <td><span class="tag-linux">whoami</span></td>
-                                <td><span class="tag-win">whoami</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Checking the name card pinned to your shirt badge.<br>
                                     <div class="example-box">Example: <code>whoami</code> output: <code>ubuntu</code></div>
@@ -667,7 +614,6 @@
                                 <td>16</td>
                                 <td><strong>Clear terminal screen</strong></td>
                                 <td><span class="tag-linux">clear</span></td>
-                                <td><span class="tag-win">cls</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Erasing a chalkboard completely clean to start writing fresh.<br>
                                     <div class="example-box">Example: <code>clear</code> wipes the screen output history.</div>
@@ -678,7 +624,6 @@
                                 <td>17</td>
                                 <td><strong>Command History</strong></td>
                                 <td><span class="tag-linux">history</span></td>
-                                <td><span class="tag-win">doskey /history</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Flipping through a diary of everything you did yesterday.<br>
                                     <div class="example-box">Example: <code>history</code> displays past commands you ran.</div>
@@ -689,7 +634,6 @@
                                 <td>18</td>
                                 <td><strong>Command Help / Manual</strong></td>
                                 <td><span class="tag-linux">man [command]</span></td>
-                                <td><span class="tag-win">help [command]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Opening the instruction booklet that came with your toy puzzle.<br>
                                     <div class="example-box">Example: <code>man ls</code> shows options and manual for ls.</div>
@@ -700,7 +644,6 @@
                                 <td>19</td>
                                 <td><strong>OS Details</strong></td>
                                 <td><span class="tag-linux">uname -a</span></td>
-                                <td><span class="tag-win">systeminfo</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Reading the sticker on the back of a TV showing model and build.<br>
                                     <div class="example-box">Example: <code>uname -a</code> displays kernel details.</div>
@@ -711,7 +654,6 @@
                                 <td>20</td>
                                 <td><strong>Check Disk Space</strong></td>
                                 <td><span class="tag-linux">df -h</span></td>
-                                <td><span class="tag-win">wmic logicaldisk...</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Checking how many pages are left in your notebook before it's full.<br>
                                     <div class="example-box">Example: <code>df -h</code> shows human-readable disk details.</div>
@@ -722,7 +664,6 @@
                                 <td>21</td>
                                 <td><strong>Check Free RAM</strong></td>
                                 <td><span class="tag-linux">free -m</span></td>
-                                <td><span class="tag-win">systeminfo | find "Memory"</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Checking how much space is left on your kitchen table while cooking.<br>
                                     <div class="example-box">Example: <code>free -m</code> displays memory in Megabytes.</div>
@@ -733,7 +674,6 @@
                                 <td>22</td>
                                 <td><strong>Task Manager</strong></td>
                                 <td><span class="tag-linux">top</span> / <span class="tag-linux">htop</span></td>
-                                <td><span class="tag-win">tasklist</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Watching the cook's panel showing who is preparing what in real-time.<br>
                                     <div class="example-box">Example: <code>top</code> shows live CPU and RAM consumption.</div>
@@ -744,7 +684,6 @@
                                 <td>23</td>
                                 <td><strong>Stop active task</strong></td>
                                 <td><span class="tag-linux">kill [PID]</span></td>
-                                <td><span class="tag-win">taskkill /pid [PID]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Tapping someone's shoulder and telling them to stop working immediately.<br>
                                     <div class="example-box">Example: <code>kill 1289</code> kills the process with PID 1289.</div>
@@ -755,7 +694,6 @@
                                 <td>24</td>
                                 <td><strong>File Permissions</strong></td>
                                 <td><span class="tag-linux">chmod [perms] [file]</span></td>
-                                <td><span class="tag-win">icacls [file] /grant...</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Putting a lock on a diary and choosing who gets the key (Read/Write/Run).<br>
                                     <div class="example-box">Example: <code>chmod +x run.sh</code> makes a script runnable.</div>
@@ -766,7 +704,6 @@
                                 <td>25</td>
                                 <td><strong>File Owner</strong></td>
                                 <td><span class="tag-linux">chown [owner] [file]</span></td>
-                                <td><span class="tag-win">takeown /f [file]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Selling your cycle to a friend and writing their name on it as owner.<br>
                                     <div class="example-box">Example: <code>chown admin notes.txt</code> changes owner to admin.</div>
@@ -777,7 +714,6 @@
                                 <td>26</td>
                                 <td><strong>Download file</strong></td>
                                 <td><span class="tag-linux">wget [url]</span> / <span class="tag-linux">curl</span></td>
-                                <td><span class="tag-win">curl -O [url]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Calling a courier service to fetch a package from another city.<br>
                                     <div class="example-box">Example: <code>wget http://example.com/logo.png</code></div>
@@ -788,7 +724,6 @@
                                 <td>27</td>
                                 <td><strong>Read top lines</strong></td>
                                 <td><span class="tag-linux">head [file]</span></td>
-                                <td><span class="tag-win">powershell "gc [file] -head 10"</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Scanning the title and introductory paragraph of a news article.<br>
                                     <div class="example-box">Example: <code>head -n 5 log.txt</code> shows first 5 lines.</div>
@@ -799,7 +734,6 @@
                                 <td>28</td>
                                 <td><strong>Read bottom lines</strong></td>
                                 <td><span class="tag-linux">tail [file]</span></td>
-                                <td><span class="tag-win">powershell "gc [file] -tail 10"</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Reading the summary page at the very end of a book report.<br>
                                     <div class="example-box">Example: <code>tail -f logs.txt</code> follows logs in real-time.</div>
@@ -810,7 +744,6 @@
                                 <td>29</td>
                                 <td><strong>Current Date/Time</strong></td>
                                 <td><span class="tag-linux">date</span></td>
-                                <td><span class="tag-win">date</span> / <span class="tag-win">time</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Looking at your wristwatch to check the date and time.<br>
                                     <div class="example-box">Example: <code>date</code> prints the current date on screen.</div>
@@ -821,7 +754,6 @@
                                 <td>30</td>
                                 <td><strong>Compare Files</strong></td>
                                 <td><span class="tag-linux">diff [f1] [f2]</span></td>
-                                <td><span class="tag-win">fc [f1] [f2]</span></td>
                                 <td>
                                     <strong>Analogy:</strong> Holding two drawings side-by-side to spot the differences.<br>
                                     <div class="example-box">Example: <code>diff index.html backup.html</code> shows line changes.</div>
@@ -832,9 +764,8 @@
                                 <td>31</td>
                                 <td><strong>Remote Connection</strong></td>
                                 <td><span class="tag-linux">ssh [user]@[ip]</span></td>
-                                <td><span class="tag-win">ssh [user]@[ip]</span></td>
                                 <td>
-                                    <strong>Analogy:</strong> Making a phone call to talk to someone in another city.<br>
+                                    <strong>Analogy:</strong> Making a secure phone call to log in and talk to a machine in another city.<br>
                                     <div class="example-box">Example: <code>ssh ubuntu@13.233.1.100</code> connects to AWS Mumbai.</div>
                                 </td>
                             </tr>
@@ -843,8 +774,8 @@
                 </div>
 
                 <div class="pro-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Pro-Tip for Windows Users</h4>
-                    <p>Want to practice Linux commands directly on your Windows PC? You don't need a separate computer! You can install **WSL2 (Windows Subsystem for Linux)**, which lets you run a fully-featured Ubuntu terminal inside Windows. Alternatively, downloading **Git Bash** gives you a simple terminal shell to practice these core commands instantly.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Pro-Tip for Practice</h4>
+                    <p>Want to practice Linux commands directly on your computer? If you are on Windows, you can install **WSL2 (Windows Subsystem for Linux)**, which lets you run a fully-featured Ubuntu terminal inside Windows. Alternatively, downloading **Git Bash** or launching a free virtual machine on **AWS (Mumbai Region)** gives you a terminal shell to practice these core commands instantly.</p>
                 </div>
 
                 <div class="section-header">
