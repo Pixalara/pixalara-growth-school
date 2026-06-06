@@ -2857,7 +2857,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 }
 
 #bookingModal .booking-body {
-    padding: 25px;
+    padding: 25px 25px 15px 25px; /* Reduced bottom padding */
 }
 
 #bookingModal .form-group label {
@@ -2890,7 +2890,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     font-size: 1rem;
     border-radius: 8px;
     width: 100%;
-    margin: 15px 0 0 0;
+    margin: 15px 0 0 0 !important; /* Force override inline margin to eliminate bottom gap */
     background-image: linear-gradient(to right, #2a1b75 0%, #6528F7 51%, #2a1b75 100%);
     box-shadow: 0 10px 20px rgba(101, 40, 247, 0.2);
 }
