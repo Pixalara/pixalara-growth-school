@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kubernetes Orchestration: The Captain of the Container Ship | Growth School</title>
-    <meta name="description" content="Master Kubernetes orchestration simply. Understand clusters, nodes, pods, and scaling through kid-friendly analogies and everyday kubectl commands.">
-    <link rel="canonical" href="https://growthschool.cc/blog-kubernetes-intro.html" />
+    <title>Git & Version Control: The Time Machine for Code | Growth School</title>
+    <meta name="description" content="Learn Git and Version Control through simple storytelling, interactive game metaphors, and real-world collaboration examples. Master key Git commands easily.">
+    <link rel="canonical" href="https://growthschool.cc/blog-git-basics.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
@@ -155,9 +155,9 @@
             border-bottom: none;
         }
         
-        .tag-k8s {
-            background: #eefdf3;
-            color: #2ecc71;
+        .tag-git {
+            background: #fdf2e9;
+            color: #e67e22;
             font-family: 'Courier New', monospace;
             font-weight: 700;
             padding: 4px 8px;
@@ -243,161 +243,207 @@
     <main>
         <article class="blog-article-container">
             <div class="blog-header-section">
-                <span class="blog-category">Orchestration</span>
-                <h1 class="blog-main-title">Kubernetes Orchestration: The Captain of the Container Ship</h1>
+                <span class="blog-category">Version Control</span>
+                <h1 class="blog-main-title">Git & Version Control: The Time Machine for Code</h1>
                 <div class="blog-meta">
                     <span><i class="far fa-calendar"></i> Updated June 2026</span>
                 </div>
                 
                 <!-- Splash Image -->
                 <div class="story-img-wrapper" style="margin-top: 30px;">
-                    <img src="https://images.unsplash.com/photo-1601597111158-2fceff270190?auto=format&fit=crop&w=1200&q=80" alt="Server Cluster Racks Networking Setup">
-                    <div class="story-img-caption">Kubernetes coordinates, manages, and scales thousands of Docker containers across a server cluster automatically.</div>
+                    <img src="https://images.unsplash.com/photo-1618401471353-b98aedd07871?auto=format&fit=crop&w=1200&q=80" alt="Git and GitHub Development Concept">
+                    <div class="story-img-caption">Git is the standard software developers use to save and share project code checkpoints worldwide.</div>
                 </div>
             </div>
 
             <div class="article-content">
-                <p>Docker is a fantastic tool for creating and running containerized boxes on your computer. But what happens when tech giants like Spotify, Netflix, or BookMyShow need to run <strong>thousands of containers</strong> simultaneously across hundreds of cloud servers? Managing them manually, checking if they crash, and connecting them to the network becomes a logistical nightmare.</p>
+                <p>Hello, future software creators! Today we are learning about a developer superpower: <strong>Git</strong>. Without Git, writing code with a team of developers would feel like trying to write a single essay together by emailing draft files back and forth. It would be absolute chaos!</p>
                 
-                <p>This is why we use <strong>Kubernetes</strong> (often called <strong>K8s</strong>). It acts as the ultimate automated supervisor for all your containers.</p>
+                <p>Let's discover what Git is, why everyone uses it, and how it acts as a magical time machine for your code.</p>
 
                 <div class="section-header">
-                    <i class="fas fa-dharmachakra"></i>
-                    <h2>The Cargo Ship Captain Metaphor</h2>
+                    <i class="fas fa-history"></i>
+                    <h2>The Checkpoint Analogy: Saving Your Code Game</h2>
                 </div>
                 
-                <p>If a single Docker container is a standardized metal shipping box, then a large web application is a massive cargo ship loaded with 10,000 boxes. If boxes are loaded incorrectly, the ship will tip over. If a box starts leaking or falls off, the cargo is lost. You need a captain to supervise everything.</p>
+                <p>Imagine you are playing a difficult adventure video game. Before entering a dark castle to fight a giant monster, what do you do? You walk up to a save-point and save your game progress! If the monster beats you, you don't start the entire game from level 1. You just restart from your last saved checkpoint.</p>
 
-                <p><strong>Kubernetes is the Cargo Ship Captain.</strong> K8s coordinates where to stack containers based on server capacity (RAM and CPU), monitors if containers crash and restarts them, and acts as a harbor master directing network traffic so everything moves smoothly.</p>
+                <p>Writing code is exactly like that. When you write a new feature—for example, adding a dark-mode switch to a website—you might accidentally write a bug that crashes the entire homepage. If you didn't save your progress, you'd have to press undo 500 times or rewrite the whole site.</p>
 
-                <div class="real-world-example" style="background: #f9fbfd; border-left: 4px solid #1e88e5; padding: 25px; margin: 30px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
-                    <h3 style="margin-bottom:12px; color:#1e88e5;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i> Real-World Example: Hotstar During an IPL Cricket Match</h3>
-                    <p>Imagine Hotstar is streaming an IPL cricket final. On a normal weekday morning, only 1,000 users are active, so Hotstar runs its application on just <strong>5 container instances</strong> to save cloud hosting costs.</p>
-                    <p>Suddenly, the match starts and <strong>1 crore (10 million) fans</strong> log in simultaneously to stream the game. The 5 containers immediately get overloaded and will crash. Hotstar engineers don't have time to manually buy new servers or start containers one by one.</p>
-                    <p><strong>The Kubernetes Solution:</strong> Kubernetes detects that container CPU usage is spiking past 80%. It automatically spins up <strong>5,000 new streaming container replicas</strong> across dozens of cloud servers in seconds. Once the match finishes and fans log off, Kubernetes automatically scales down and deletes the extra containers to save money. That is K8s automation!</p>
+                <p><strong>Git is the ultimate checkpoint system.</strong> It monitors your project folder and lets you freeze the code at any point in time. We call these checkpoints <strong>Commits</strong>. If you break the website, you can tell Git to instantly rewind the folder back to yesterday's commit, and everything is fixed!</p>
+
+                <div class="analog-box">
+                    <h3><i class="fas fa-users"></i> The Google Docs Metaphor: Working Together</h3>
+                    <p>If you and your classmates write a school report together in a Google Doc, you can both type at the same time. But what if two developers are editing a complex server script? If they work in the same file, they could overwrite each other's code and cause crashes.</p>
+                    <p>Git solves this by giving every developer their own private playground branch. You duplicate the code into a separate <strong>Branch</strong>, make your changes, and once you test it, you merge it back into the main branch. If two changes clash, Git points it out (a <strong>Merge Conflict</strong>) and asks you to choose which line is the correct one.</p>
                 </div>
 
                 <div class="section-header">
-                    <i class="fas fa-sitemap"></i>
-                    <h2>The Core Vocabulary of Kubernetes</h2>
+                    <i class="fas fa-book"></i>
+                    <h2>Core Git Terms Explained Simply</h2>
                 </div>
-                <p>Kubernetes uses specific names for its parts. Let's break down the core hierarchy from the smallest unit to the largest system:</p>
 
                 <div class="highlight-grid">
                     <div class="highlight-card">
-                        <i class="fas fa-capsules"></i>
-                        <h4>Pod</h4>
-                        <p>The smallest deployable unit in K8s. A Pod is a wrapper (like a peanut shell) that holds your running Docker container (the peanut).</p>
+                        <i class="fas fa-folder-open"></i>
+                        <h4>Repository (Repo)</h4>
+                        <p>This is just a project folder on your computer that has Git enabled inside it. It holds all your code and the history logs.</p>
                     </div>
                     <div class="highlight-card">
-                        <i class="fas fa-laptop"></i>
-                        <h4>Node</h4>
-                        <p>A single worker computer or virtual machine (like an AWS EC2 instance) that physically hosts and runs the Pods.</p>
+                        <i class="fas fa-camera"></i>
+                        <h4>Commit</h4>
+                        <p>A saved snapshot of your code at a specific moment. Each commit gets a unique ID and a short message describing the changes.</p>
                     </div>
                     <div class="highlight-card">
-                        <i class="fas fa-network-wired"></i>
-                        <h4>Cluster</h4>
-                        <p>The brain. A collection of multiple Nodes controlled by a master control plane working together as a single supercomputer.</p>
+                        <i class="fas fa-code-branch"></i>
+                        <h4>Branch</h4>
+                        <p>A parallel version of your repository. The default main branch is where the live code lives; custom branches are for safe testing.</p>
                     </div>
                     <div class="highlight-card">
-                        <i class="fas fa-tasks"></i>
-                        <h4>Deployment</h4>
-                        <p>The manager. You tell the deployment: "Keep 3 copies of my app running." If a server dies, the deployment immediately spawns a replacement.</p>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h4>GitHub</h4>
+                        <p>A cloud library where developers upload their repositories so others can download, collaborate, and review the code online.</p>
                     </div>
                 </div>
 
                 <div class="section-header">
                     <i class="fas fa-terminal"></i>
-                    <h2>7 Everyday kubectl Commands Every Engineer Needs</h2>
+                    <h2>11 Everyday Git Commands Every Engineer Needs</h2>
                 </div>
                 
-                <p>To control Kubernetes, you use a CLI tool called <strong>kubectl</strong> (pronounced "cube control"). Here is the cheat sheet of the 7 commands you will use daily:</p>
+                <p>To use Git, you open your terminal console inside your project folder and run commands. Here is a complete cheat sheet of the 11 commands you will use daily:</p>
 
                 <div class="table-wrapper">
                     <table class="compare-table">
                         <thead>
                             <tr>
                                 <th>Purpose</th>
-                                <th>kubectl Command</th>
-                                <th>Real-World Analogy & Example</th>
+                                <th>Git Command</th>
+                                <th>Real-World Metaphor & Example</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>List Running Pods</strong></td>
-                                <td><span class="tag-k8s">kubectl get pods</span></td>
+                                <td><strong>Start Tracking</strong></td>
+                                <td><span class="tag-git">git init</span></td>
                                 <td>
-                                    Lists all active app containers and shows if they are healthy or crashing.
-                                    <div class="example-box">Example: <code>kubectl get pods</code> (Shows names, status, and restarts).</div>
+                                    Initializes Git inside a folder. Like installing a black box flight recorder in a plane.
+                                    <div class="example-box">Example: <code>git init</code> (Run once at the start of a project).</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>List Server Nodes</strong></td>
-                                <td><span class="tag-k8s">kubectl get nodes</span></td>
+                                <td><strong>Download Project</strong></td>
+                                <td><span class="tag-git">git clone &lt;url&gt;</span></td>
                                 <td>
-                                    Lists all the physical/virtual computer servers linked to the cluster.
-                                    <div class="example-box">Example: <code>kubectl get nodes</code></div>
+                                    Downloads a copy of an existing cloud repository from GitHub to your computer.
+                                    <div class="example-box">Example: <code>git clone https://github.com/user/my-app.git</code></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Deploy/Modify Apps</strong></td>
-                                <td><span class="tag-k8s">kubectl apply -f &lt;file.yaml&gt;</span></td>
+                                <td><strong>Check Status</strong></td>
+                                <td><span class="tag-git">git status</span></td>
                                 <td>
-                                    Feeds a YAML configuration blueprint to the cluster to create or update resources.
-                                    <div class="example-box">Example: <code>kubectl apply -f deployment.yaml</code></div>
+                                    Asks Git: "What files have I modified since the last checkpoint?"
+                                    <div class="example-box">Example: <code>git status</code> (Shows modified files in red or green).</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Delete Resources</strong></td>
-                                <td><span class="tag-k8s">kubectl delete -f &lt;file.yaml&gt;</span></td>
+                                <td><strong>Stage Changes</strong></td>
+                                <td><span class="tag-git">git add &lt;file&gt;</span></td>
                                 <td>
-                                    Deletes deployed resources described in the YAML file from the cluster.
-                                    <div class="example-box">Example: <code>kubectl delete -f deployment.yaml</code></div>
+                                    Packs the modified files into a shipping container, ready to be locked.
+                                    <div class="example-box">Example: <code>git add index.html</code> (Or <code>git add .</code> to stage everything).</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>View Application Logs</strong></td>
-                                <td><span class="tag-k8s">kubectl logs &lt;pod-name&gt;</span></td>
+                                <td><strong>Create Checkpoint</strong></td>
+                                <td><span class="tag-git">git commit -m "msg"</span></td>
                                 <td>
-                                    Displays stdout logs from your app container to debug errors or warnings.
-                                    <div class="example-box">Example: <code>kubectl logs my-web-pod-a1b2</code></div>
+                                    Locks the shipping container and saves it as a checkpoint with a descriptive message.
+                                    <div class="example-box">Example: <code>git commit -m "Feat: Add dark mode toggle button"</code></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Describe Resource Details</strong></td>
-                                <td><span class="tag-k8s">kubectl describe pod &lt;pod-name&gt;</span></td>
+                                <td><strong>Upload to Cloud</strong></td>
+                                <td><span class="tag-git">git push</span></td>
                                 <td>
-                                    Prints detailed metadata, events, and configuration errors for troubleshooting.
-                                    <div class="example-box">Example: <code>kubectl describe pod my-web-pod-a1b2</code></div>
+                                    Uploads your local checkpoints from your computer to the repository on GitHub.
+                                    <div class="example-box">Example: <code>git push origin main</code></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Scale Manually</strong></td>
-                                <td><span class="tag-k8s">kubectl scale --replicas=&lt;N&gt; deploy/&lt;name&gt;</span></td>
+                                <td><strong>Download Updates</strong></td>
+                                <td><span class="tag-git">git pull</span></td>
                                 <td>
-                                    Tells K8s to immediately spin up or scale down your app to exactly N copies.
-                                    <div class="example-box">Example: <code>kubectl scale --replicas=10 deployment/my-api</code></div>
+                                    Fetches and merges the latest updates that other developers pushed to GitHub.
+                                    <div class="example-box">Example: <code>git pull</code></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>List/Create Branches</strong></td>
+                                <td><span class="tag-git">git branch</span></td>
+                                <td>
+                                    Creates a new branch path or lists the existing branches in your repository.
+                                    <div class="example-box">Example: <code>git branch feature-login-page</code></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Switch Workspace</strong></td>
+                                <td><span class="tag-git">git checkout &lt;branch&gt;</span></td>
+                                <td>
+                                    Jumps your workspace folder from one branch to another.
+                                    <div class="example-box">Example: <code>git checkout feature-login-page</code></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Merge Code</strong></td>
+                                <td><span class="tag-git">git merge &lt;branch&gt;</span></td>
+                                <td>
+                                    Combines and blends the code checkpoints of another branch into your current branch.
+                                    <div class="example-box">Example: <code>git merge feature-login-page</code> (Run from the main branch).</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>View History</strong></td>
+                                <td><span class="tag-git">git log</span></td>
+                                <td>
+                                    Outputs a scrollable history log of every single commit checkpoint created in the project.
+                                    <div class="example-box">Example: <code>git log --oneline</code> (Shows short commit list).</div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <div class="real-world-example" style="background: #f9fbfd; border-left: 4px solid #1e88e5; padding: 25px; margin: 30px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
+                    <h3 style="margin-bottom:12px; color:#1e88e5;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i> Real-World Scenario: Safe Checkout Page Updates</h3>
+                    <p>Suppose you are working on the checkout page of a massive shopping website. The marketing team wants a new discount code field, but the checkout page is incredibly sensitive. If you break it, checkout transactions stop instantly and the company loses crores of rupees!</p>
+                    <p>To implement this safely:
+                        <ol style="margin-left: 20px; margin-top: 10px;">
+                            <li>You switch to the master branch and download latest updates: <code>git checkout main; git pull</code>.</li>
+                            <li>You create a secure test branch: <code>git checkout -b feature-discount-code</code>.</li>
+                            <li>You write code, test it locally, stage, and save your checkpoints: <code>git add .; git commit -m "Feat: Add UPI discount code logic"</code>.</li>
+                            <li>You push the branch online to GitHub: <code>git push origin feature-discount-code</code>.</li>
+                            <li>You open a <strong>Pull Request</strong> on GitHub. The senior engineer reviews your changes, runs automated tests, approves it, and clicks <strong>Merge</strong>. Your code is safely blended into the main site!</li>
+                        </ol>
+                    </p>
+                </div>
+
                 <div class="pro-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Pro-Tip: Pod Self-Healing</h4>
-                    <p>In Kubernetes, never restart a pod manually! If you delete a crashing pod using <code>kubectl delete pod &lt;name&gt;</code>, the supervising Deployment will instantly spawn a brand new pod with a fresh IP address to replace it. K8s is self-healing!</p>
+                    <h4><i class="fas fa-lightbulb"></i> Pro-Tip for Git Commits</h4>
+                    <p>Always write clean commit messages! Instead of typing messages like <code>git commit -m "stuff done"</code>, write clear descriptions like <code>git commit -m "Fix: Resolve card page button layout padding"</code>. This makes debugging much easier when you use the history logs later!</p>
                 </div>
 
                 <div class="section-header">
                     <i class="fas fa-graduation-cap"></i>
                     <h2>Next Steps on Your DevOps Journey</h2>
                 </div>
-                <p>Now that you can run containerized clusters at scale using Kubernetes, you run into another DevOps roadblock: How do we write down all these server networks, K8s clusters, and databases as reusable code blueprints rather than clicking buttons on cloud dashboards? Enter Terraform (Infrastructure as Code)!</p>
+                <p>Now that you know how to save and cooperate on your codebase using Git, you are ready to packaging your application files alongside all of their runtime systems using Docker containers!</p>
             </div>
 
             <div class="blog-navigation">
-                <a href="blog-docker-beginner.html" class="nav-link-blog">&larr; Previous: Docker Basics</a>
-                <a href="blog-terraform-basics.html" class="nav-link-blog">Next: Terraform (IaC) &rarr;</a>
+                <a href="blog-linux-basics.html" class="nav-link-blog">&larr; Previous: Linux Basics</a>
+                <a href="blog-docker-beginner.html" class="nav-link-blog">Next: Docker &rarr;</a>
             </div>
         </article>
     </main>
