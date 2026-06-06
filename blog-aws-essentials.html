@@ -123,10 +123,6 @@
             margin-bottom: 25px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 25px;
-            align-items: center;
         }
 
         .service-card:hover {
@@ -171,35 +167,6 @@
             font-size: 0.95rem;
             margin-top: 15px;
             color: #444;
-        }
-
-        .service-img-container {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            height: 100%;
-        }
-
-        .service-img-container img {
-            width: 100%;
-            height: 100%;
-            min-height: 240px;
-            object-fit: cover;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .service-card {
-                grid-template-columns: 1fr !important;
-                gap: 15px;
-            }
-            .service-img-container {
-                height: 180px !important;
-            }
-            .service-img-container img {
-                height: 180px !important;
-                min-height: 180px !important;
-            }
         }
     </style>
 
@@ -348,42 +315,32 @@
                     <h2>Core AWS Services Explained Simply</h2>
                 </div>
 
-                <p>Let's break down each essential service with a kid-friendly analogy, real-world examples, and visual aids to make learning them attractive and easy!</p>
+                <p>Let's break down each essential service with a kid-friendly analogy and real-world examples to make learning them clean and easy!</p>
 
                 <!-- Category 1: Compute -->
                 <div class="service-category-title">1. Compute & Serverless Services</div>
 
                 <!-- EC2 -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-server"></i></span> AWS EC2 (Elastic Compute Cloud)</h3>
-                        <p><strong>What it is:</strong> Virtual servers (computers) that you rent in AWS data centres.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> It is like renting a virtual laptop in a secure cloud warehouse. Instead of buying a physical desktop, you rent one online, choose the size, and turn it off when you're done.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> When you search rooms on Airbnb, the page runs on hundreds of EC2 virtual machines, fetching matching room availability details.
-                        </div>
+                    <h3><span><i class="fas fa-server"></i></span> AWS EC2 (Elastic Compute Cloud)</h3>
+                    <p><strong>What it is:</strong> Virtual servers (computers) that you rent in AWS data centres.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> It is like renting a virtual laptop in a secure cloud warehouse. Instead of buying a physical desktop, you rent one online, choose the size, and turn it off when you're done.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=400&q=80" alt="EC2 Server Image">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> When you search rooms on Airbnb, the page runs on hundreds of EC2 virtual machines, fetching matching room availability details.
                     </div>
                 </div>
 
                 <!-- Lambda -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-bolt"></i></span> AWS Lambda</h3>
-                        <p><strong>What it is:</strong> A "Serverless" service that runs code only when triggered, without you keeping a server running.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Imagine a calculator. It doesn't draw power when sitting in your bag. It only turns on for the split-second you press "=", outputs the result, and goes completely dead.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> When you upload a picture on Instagram, a Lambda function triggers automatically to crop it into a thumbnail format, then shuts down.
-                        </div>
+                    <h3><span><i class="fas fa-bolt"></i></span> AWS Lambda</h3>
+                    <p><strong>What it is:</strong> A "Serverless" service that runs code only when triggered, without you keeping a server running.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine a calculator. It doesn't draw power when sitting in your bag. It only turns on for the split-second you press "=", outputs the result, and goes completely dead.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Lightning Fast Lambda">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> When you upload a picture on Instagram, a Lambda function triggers automatically to crop it into a thumbnail format, then shuts down.
                     </div>
                 </div>
 
@@ -393,35 +350,25 @@
 
                 <!-- VPC -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-network-wired"></i></span> AWS VPC (Virtual Private Cloud)</h3>
-                        <p><strong>What it is:</strong> Your own isolated private network partition inside AWS.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Imagine AWS is a massive public park. A VPC is like building a tall wooden fence around your private plot in that park, placing a locked gate, and hiring a guard.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> A bank hosts its public website in a public part of the cloud, but locks its customer transaction database inside a private VPC so hackers cannot access it.
-                        </div>
+                    <h3><span><i class="fas fa-network-wired"></i></span> AWS VPC (Virtual Private Cloud)</h3>
+                    <p><strong>What it is:</strong> Your own isolated private network partition inside AWS.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine AWS is a massive public park. A VPC is like building a tall wooden fence around your private plot in that park, placing a locked gate, and hiring a guard.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80" alt="Secure Network Lock">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> A bank hosts its public website in a public part of the cloud, but locks its customer transaction database inside a private VPC so hackers cannot access it.
                     </div>
                 </div>
 
                 <!-- ALB -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-traffic-light"></i></span> AWS ALB (Application Load Balancer)</h3>
-                        <p><strong>What it is:</strong> A traffic controller distributing user requests across multiple backend servers.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Imagine a super-busy billing counter. An ALB is like a store manager directing incoming shoppers equally to 10 open billing counters so no single cashier gets overwhelmed.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> During Flipkart Big Billion Days, ALB distributes the millions of shoppers equally among 100 EC2 servers to prevent a crash.
-                        </div>
+                    <h3><span><i class="fas fa-traffic-light"></i></span> AWS ALB (Application Load Balancer)</h3>
+                    <p><strong>What it is:</strong> A traffic controller distributing user requests across multiple backend servers.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine a super-busy billing counter. An ALB is like a store manager directing incoming shoppers equally to 10 open billing counters so no single cashier gets overwhelmed.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=400&q=80" alt="Traffic Routing">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> During Flipkart Big Billion Days, ALB distributes the millions of shoppers equally among 100 EC2 servers to prevent a crash.
                     </div>
                 </div>
 
@@ -431,52 +378,37 @@
 
                 <!-- IAM -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-user-shield"></i></span> AWS IAM (Identity & Access Management)</h3>
-                        <p><strong>What it is:</strong> Security dashboard managing user credentials, passwords, and permissions.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> It is like a smart keycard system in an office. The janitor's keycard opens the cleaning closet, the developer's opens the server room, but only the CEO's opens the finance vault.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> You create an IAM policy letting junior developers deploy code to testing, but blocking them from seeing the billing dashboard.
-                        </div>
+                    <h3><span><i class="fas fa-user-shield"></i></span> AWS IAM (Identity & Access Management)</h3>
+                    <p><strong>What it is:</strong> Security dashboard managing user credentials, passwords, and permissions.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> It is like a smart keycard system in an office. The janitor's keycard opens the cleaning closet, the developer's opens the server room, but only the CEO's opens the finance vault.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Security Card Portal">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> You create an IAM policy letting junior developers deploy code to testing, but blocking them from seeing the billing dashboard.
                     </div>
                 </div>
 
                 <!-- AWS Shield -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-shield-halved"></i></span> AWS Shield</h3>
-                        <p><strong>What it is:</strong> A security service that protects your web apps against DDoS (Distributed Denial of Service) attacks.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Imagine a giant, unbreakable shield protecting a fortress. When bad guys throw millions of tiny stones (fake web traffic) at once to block your entrance, AWS Shield deflects all of them automatically.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> When a competitor pays a botnet to spam your shopping website with millions of requests in one second, AWS Shield identifies and absorbs the attack, keeping the website open for real customers.
-                        </div>
+                    <h3><span><i class="fas fa-shield-halved"></i></span> AWS Shield</h3>
+                    <p><strong>What it is:</strong> A security service that protects your web apps against DDoS (Distributed Denial of Service) attacks.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine a giant, unbreakable shield protecting a fortress. When bad guys throw millions of tiny stones (fake web traffic) at once to block your entrance, AWS Shield deflects all of them automatically.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=400&q=80" alt="Security Shield">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> When a competitor pays a botnet to spam your shopping website with millions of requests in one second, AWS Shield identifies and absorbs the attack, keeping the website open for real customers.
                     </div>
                 </div>
 
                 <!-- AWS WAF -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-user-lock"></i></span> AWS WAF (Web Application Firewall)</h3>
-                        <p><strong>What it is:</strong> A firewall filtering out malicious code and bad requests targeting your web applications.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Imagine a security bouncer standing at the door of a club checking everyone's ID. If a person behaves suspiciously or tries to sneak in a weapon, the bouncer blocks them immediately. WAF blocks malicious requests at the web door.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> WAF detects and blocks SQL Injection attacks where hackers try to type database commands directly inside a website search bar to steal passwords.
-                        </div>
+                    <h3><span><i class="fas fa-user-lock"></i></span> AWS WAF (Web Application Firewall)</h3>
+                    <p><strong>What it is:</strong> A firewall filtering out malicious code and bad requests targeting your web applications.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine a security bouncer standing at the door of a club checking everyone's ID. If a person behaves suspiciously or tries to sneak in a weapon, the bouncer blocks them immediately. WAF blocks malicious requests at the web door.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=80" alt="Firewall WAF Protection">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> WAF detects and blocks SQL Injection attacks where hackers try to type database commands directly inside a website search bar to steal passwords.
                     </div>
                 </div>
 
@@ -486,18 +418,13 @@
 
                 <!-- S3 -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-database"></i></span> AWS S3 (Simple Storage Service)</h3>
-                        <p><strong>What it is:</strong> An infinite storage drive where you can store images, videos, and static files.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Think of S3 as an infinite digital bucket. You can toss in as many photos and files as you want. The bucket expands, and your items are safe from loss.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> Netflix stores all movie files inside AWS S3 buckets. When you click play, Netflix streams that video file directly from S3 to your TV screen.
-                        </div>
+                    <h3><span><i class="fas fa-database"></i></span> AWS S3 (Simple Storage Service)</h3>
+                    <p><strong>What it is:</strong> An infinite storage drive where you can store images, videos, and static files.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Think of S3 as an infinite digital bucket. You can toss in as many photos and files as you want. The bucket expands, and your items are safe from loss.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=400&q=80" alt="Infinite Vault Storage">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> Netflix stores all movie files inside AWS S3 buckets. When you click play, Netflix streams that video file directly from S3 to your TV screen.
                     </div>
                 </div>
 
@@ -507,35 +434,25 @@
 
                 <!-- ECR -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-box-archive"></i></span> AWS ECR (Elastic Container Registry)</h3>
-                        <p><strong>What it is:</strong> A catalog registry storing and managing your standardized software containers (Docker images).</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Think of it as a shipping yard garage. When you pack your application (toys) into standard boxes (Docker containers), you park them in ECR so they can be retrieved and shipped at any time.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> A DevOps engineer packages the code for a chat feature into a Docker image, saves it in ECR, and pulls it out whenever EKS needs to launch it.
-                        </div>
+                    <h3><span><i class="fas fa-box-archive"></i></span> AWS ECR (Elastic Container Registry)</h3>
+                    <p><strong>What it is:</strong> A catalog registry storing and managing your standardized software containers (Docker images).</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Think of it as a shipping yard garage. When you pack your application (toys) into standard boxes (Docker containers), you park them in ECR so they can be retrieved and shipped at any time.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80" alt="Container Shipping Registry">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> A DevOps engineer packages the code for a chat feature into a Docker image, saves it in ECR, and pulls it out whenever EKS needs to launch it.
                     </div>
                 </div>
 
                 <!-- EKS -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-dharmachakra"></i></span> AWS EKS (Elastic Kubernetes Service)</h3>
-                        <p><strong>What it is:</strong> A service managing and scaling containerized applications (Kubernetes clusters).</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Imagine a giant shipping port. EKS is the master harbor controller. It automatically tells cranes to load containers, and if a ship sinks, it instantly spawns a new ship so trade never stops.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> Fortnite uses EKS to run and scale game servers dynamically depending on how many gamers login at the same time.
-                        </div>
+                    <h3><span><i class="fas fa-dharmachakra"></i></span> AWS EKS (Elastic Kubernetes Service)</h3>
+                    <p><strong>What it is:</strong> A service managing and scaling containerized applications (Kubernetes clusters).</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine a giant shipping port. EKS is the master harbor controller. It automatically tells cranes to load containers, and if a ship sinks, it instantly spawns a new ship so trade never stops.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=400&q=80" alt="Harbor Crane Orchestrator">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> Fortnite uses EKS to run and scale game servers dynamically depending on how many gamers login at the same time.
                     </div>
                 </div>
 
@@ -545,52 +462,37 @@
 
                 <!-- CloudWatch -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-tv"></i></span> AWS CloudWatch</h3>
-                        <p><strong>What it is:</strong> A heartbeat monitor and camera system tracking the health of your server resources.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> It is like a combination of a security camera and a heartbeat monitor. If a server stops breathing or gets too hot (CPU > 95%), CloudWatch sounds an alarm.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> CloudWatch monitors your web app servers. If traffic spikes and servers slow down, CloudWatch triggers an auto-scaling rule to spin up 5 extra servers.
-                        </div>
+                    <h3><span><i class="fas fa-tv"></i></span> AWS CloudWatch</h3>
+                    <p><strong>What it is:</strong> A heartbeat monitor and camera system tracking the health of your server resources.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> It is like a combination of a security camera and a heartbeat monitor. If a server stops breathing or gets too hot (CPU > 95%), CloudWatch sounds an alarm.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" alt="Dashboard Monitoring">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> CloudWatch monitors your web app servers. If traffic spikes and servers slow down, CloudWatch triggers an auto-scaling rule to spin up 5 extra servers.
                     </div>
                 </div>
 
                 <!-- SNS -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-bullhorn"></i></span> AWS SNS (Simple Notification Service)</h3>
-                        <p><strong>What it is:</strong> A messaging service that sends SMS texts, push notifications, and emails to users.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> It is like a giant school broadcast speaker. When the principal speaks into the microphone, every classroom loudspeaker plays the sound instantly to thousands of students.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> When you purchase a movie ticket on BookMyShow, the system uses AWS SNS to send an instant transaction confirmation SMS to your phone.
-                        </div>
+                    <h3><span><i class="fas fa-bullhorn"></i></span> AWS SNS (Simple Notification Service)</h3>
+                    <p><strong>What it is:</strong> A messaging service that sends SMS texts, push notifications, and emails to users.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> It is like a giant school broadcast speaker. When the principal speaks into the microphone, every classroom loudspeaker plays the sound instantly to thousands of students.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=400&q=80" alt="Loudspeakers Broadcast">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> When you purchase a movie ticket on BookMyShow, the system uses AWS SNS to send an instant transaction confirmation SMS to your phone.
                     </div>
                 </div>
 
                 <!-- SQS -->
                 <div class="service-card">
-                    <div>
-                        <h3><span><i class="fas fa-list-ol"></i></span> AWS SQS (Simple Queue Service)</h3>
-                        <p><strong>What it is:</strong> A message queue holding tasks in an orderly line until servers are ready to process them.</p>
-                        <div class="analogy-box">
-                            <strong>👶 Simple Analogy:</strong> Imagine an ice-cream stand. If everyone rushed the counter at once, it would be chaos. Customers form a neat queue, and SQS holds the orders in a digital line so none get lost.
-                        </div>
-                        <div class="example-box">
-                            <strong>⚡ Real-World Example:</strong> During flash sales, SQS holds the payment order messages in a queue. Even if the database is slow, SQS holds them safely so no transaction gets lost.
-                        </div>
+                    <h3><span><i class="fas fa-list-ol"></i></span> AWS SQS (Simple Queue Service)</h3>
+                    <p><strong>What it is:</strong> A message queue holding tasks in an orderly line until servers are ready to process them.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine an ice-cream stand. If everyone rushed the counter at once, it would be chaos. Customers form a neat queue, and SQS holds the orders in a digital line so none get lost.
                     </div>
-                    <div class="service-img-container">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" alt="Waiting Queue">
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> During flash sales, SQS holds the payment order messages in a queue. Even if the database is slow, SQS holds them safely so no transaction gets lost.
                     </div>
                 </div>
 
