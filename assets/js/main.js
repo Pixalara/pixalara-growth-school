@@ -3,8 +3,7 @@
     const isBlogPage = window.location.pathname.includes('blog-');
     if (isBlogPage) {
         const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        const initialTheme = savedTheme || 'light';
         document.documentElement.setAttribute('data-theme', initialTheme);
     } else {
         // Force light mode on all other pages
