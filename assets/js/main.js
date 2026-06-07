@@ -1,38 +1,4 @@
-// Immediate Theme initialization to prevent layout flash
-(function() {
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', initialTheme);
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme Toggle Functionality
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    if (themeToggleBtn) {
-        const icon = themeToggleBtn.querySelector('i');
-        
-        // Set correct initial icon
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-            icon.classList.replace('fa-moon', 'fa-sun');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            const activeTheme = document.documentElement.getAttribute('data-theme');
-            let newTheme = 'light';
-            
-            if (activeTheme === 'light') {
-                newTheme = 'dark';
-                icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-            }
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    }
 
     // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
