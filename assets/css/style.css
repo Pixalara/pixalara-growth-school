@@ -3399,4 +3399,11 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     background: #251b3a !important;
     color: var(--text-title) !important;
     border-left: 5px solid var(--primary) !important;
-}
+}
+
+.blog-night-btn:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(101, 40, 247, 0.25) !important;
+}
+
