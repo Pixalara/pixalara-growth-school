@@ -1,23 +1,43 @@
 :root {
+    /* Theme Light (Default) */
+    --bg-main: #ffffff;
+    --bg-secondary: #F9F9FF;
+    --text-main: #584D66;
+    --text-title: #150E1F;
+    --card-bg: #ffffff;
+    --border-color: #eef2ff;
+    --modal-bg: #ffffff;
+
     /* Branding Colors */
     --primary: #6528F7;
     --primary-dark: #531ed6;
     --secondary: #000080;
     --hero-bg: #2a1b75;       /* Deep Purple */
-    --text-dark: #150E1F;
-    --text-light: #584D66;
-    --white: #ffffff;
-    --bg-light: #F9F9FF;
+    --text-dark: var(--text-title);
+    --text-light: var(--text-main);
+    --white: var(--bg-main);
+    --bg-light: var(--bg-secondary);
     
     /* Fonts */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
 
+[data-theme="dark"] {
+    --bg-main: #120d1e;
+    --bg-secondary: #1c142c;
+    --text-main: #c1b6d0;
+    --text-title: #f3f0ff;
+    --card-bg: #1c142c;
+    --border-color: #31254a;
+    --modal-bg: #1c142c;
+    --secondary: #d1c8e8;
+}
+
 /* --- RESET & GLOBAL --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); color: var(--text-light); line-height: 1.6; }
+body { font-family: var(--font-body); color: var(--text-light); line-height: 1.6; background-color: var(--white); }
 h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-dark); margin-bottom: 1rem; }
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; }
@@ -3211,3 +3231,172 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
         font-size: 0.85rem !important;
     }
 }
+
+/* ==========================================================================
+   DARK THEME STYLING & COMPONENT OVERRIDES
+   ========================================================================== */
+
+[data-theme="dark"] body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-main) !important;
+}
+
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .blog-main-title {
+    color: var(--text-title) !important;
+}
+
+[data-theme="dark"] .navbar {
+    background-color: var(--bg-main) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+}
+
+[data-theme="dark"] .nav-links a {
+    color: var(--text-main) !important;
+}
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .nav-links a.active {
+    color: var(--primary) !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn {
+    color: var(--text-title) !important;
+}
+
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .choose-card,
+[data-theme="dark"] .mentor-card,
+[data-theme="dark"] .modal-card,
+[data-theme="dark"] .blog-article-container,
+[data-theme="dark"] .quiz-container,
+[data-theme="dark"] .quiz-option,
+[data-theme="dark"] .connect-box,
+[data-theme="dark"] .contact-card,
+[data-theme="dark"] .faq-item,
+[data-theme="dark"] .tab-content,
+[data-theme="dark"] .module-card,
+[data-theme="dark"] .syllabus-container {
+    background: var(--card-bg) !important;
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .stat-card {
+    background: linear-gradient(135deg, #1c142c 0%, #251b3a 100%) !important;
+}
+
+[data-theme="dark"] .why-choose-section,
+[data-theme="dark"] .bg-light,
+[data-theme="dark"] section.bg-light {
+    background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .footer {
+    background-color: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .footer a {
+    color: var(--text-main) !important;
+}
+[data-theme="dark"] .footer a:hover {
+    color: var(--primary) !important;
+}
+
+[data-theme="dark"] .analogy-box {
+    background: #251c36 !important;
+    border-left: 4px solid #fab005 !important;
+    color: #ffd875 !important;
+}
+
+[data-theme="dark"] .example-box {
+    background: #171124 !important;
+    border: 1px dashed var(--primary) !important;
+    color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .tab-btn {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .tab-btn.active {
+    background-color: var(--primary) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .form-control {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-title) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .close-booking,
+[data-theme="dark"] .close-icon {
+    color: var(--text-title) !important;
+}
+
+[data-theme="dark"] .quiz-q-card {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .quiz-option:hover {
+    border-color: var(--primary) !important;
+    background-color: #251b3a !important;
+}
+
+[data-theme="dark"] .quiz-option.selected {
+    background-color: #251b3a !important;
+    border-color: var(--primary) !important;
+}
+
+[data-theme="dark"] .quiz-option.correct {
+    background-color: #1b4d22 !important;
+    border-color: #2ecc71 !important;
+    color: #fff !important;
+}
+
+[data-theme="dark"] .quiz-option.wrong {
+    background-color: #5d1b1b !important;
+    border-color: #e74c3c !important;
+    color: #fff !important;
+}
+
+[data-theme="dark"] .dropdown-trigger {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-title) !important;
+}
+
+[data-theme="dark"] .dropdown-options {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .dropdown-options li {
+    color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .dropdown-options li:hover {
+    background-color: #251b3a !important;
+}
+
+[data-theme="dark"] .service-category-title {
+    background: #251b3a !important;
+    color: var(--text-title) !important;
+    border-left: 5px solid var(--primary) !important;
+}
