@@ -1773,25 +1773,25 @@ img { max-width: 100%; height: auto; }
 
 /* Article Content Typography */
 .article-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #444;
+    font-size: 1.25rem;
+    line-height: 1.85;
+    color: #333; /* Slightly darker for better contrast */
 }
 
 .article-content h2 {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
     color: var(--text-dark);
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-weight: 700;
+    margin-top: 45px;
+    margin-bottom: 22px;
+    font-weight: 800;
 }
 
 .article-content h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--text-dark);
-    margin-top: 30px;
-    margin-bottom: 15px;
-    font-weight: 600;
+    margin-top: 35px;
+    margin-bottom: 18px;
+    font-weight: 700;
 }
 
 .article-content p {
@@ -2925,14 +2925,19 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
         font-size: 2rem !important;
     }
 
+    .article-content {
+        font-size: 1.15rem !important;
+        line-height: 1.8 !important;
+    }
+
     .article-content h2 {
-        font-size: 1.5rem !important;
-        margin-top: 30px !important;
+        font-size: 1.75rem !important;
+        margin-top: 35px !important;
     }
 
     .article-content h3 {
-        font-size: 1.25rem !important;
-        margin-top: 25px !important;
+        font-size: 1.45rem !important;
+        margin-top: 30px !important;
     }
 
     .section-header {
@@ -3048,13 +3053,13 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     }
 
     .article-content h2 {
-        font-size: 1.35rem !important;
-        margin-top: 25px !important;
+        font-size: 1.55rem !important;
+        margin-top: 30px !important;
     }
 
     .article-content h3 {
-        font-size: 1.15rem !important;
-        margin-top: 20px !important;
+        font-size: 1.3rem !important;
+        margin-top: 25px !important;
     }
 
     .section-header {
@@ -3115,8 +3120,8 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 
     /* 5. Code blocks and Tables */
     .article-content {
-        font-size: 1rem !important;
-        line-height: 1.7 !important;
+        font-size: 1.1rem !important;
+        line-height: 1.75 !important;
     }
 
     .code-block {
