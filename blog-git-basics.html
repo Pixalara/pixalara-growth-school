@@ -441,7 +441,353 @@
                 <p>Now that you know how to save and cooperate on your codebase using Git, you are ready to packaging your application files alongside all of their runtime systems using Docker containers!</p>
             </div>
 
-            <div class="blog-navigation">
+            <!-- Test Your Knowledge Quiz Section -->
+            <section class="quiz-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px;">
+                    <i class="fas fa-question-circle" style="color: var(--primary); margin-right: 10px;"></i>Test Your Knowledge
+                </h2>
+                <p style="color: #666; margin-bottom: 30px;">
+                    Answer these 15 questions to check your understanding of this module. Click on an option to reveal the correct answer instantly.
+                </p>
+                
+                <style>
+                    .quiz-section {
+                        margin-top: 40px;
+                    }
+                    .quiz-q-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .quiz-q-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    .quiz-q-num {
+                        font-size: 0.85rem;
+                        color: var(--primary);
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        margin-bottom: 8px;
+                        letter-spacing: 0.5px;
+                    }
+                    .quiz-q-text {
+                        font-size: 1.2rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 20px;
+                        line-height: 1.4;
+                    }
+                    .quiz-options {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                    }
+                    .quiz-option {
+                        padding: 14px 20px;
+                        border: 2px solid #f0f0f0;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        font-size: 0.95rem;
+                        font-weight: 600;
+                        color: #444;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .quiz-option:hover {
+                        border-color: #dcd6f7;
+                        background: #f9f9ff;
+                    }
+                    .quiz-option.correct {
+                        border-color: #28a745 !important;
+                        background-color: #d4edda !important;
+                        color: #155724 !important;
+                    }
+                    .quiz-option.incorrect {
+                        border-color: #dc3545 !important;
+                        background-color: #f8d7da !important;
+                        color: #721c24 !important;
+                    }
+                    .quiz-explanation {
+                        margin-top: 20px;
+                        padding: 15px 20px;
+                        background: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        border-radius: 4px;
+                        display: none;
+                        font-size: 0.95rem;
+                        line-height: 1.6;
+                        color: #555;
+                        animation: fadeIn 0.4s ease;
+                    }
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(5px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                </style>
+                
+                <div class="quiz-questions-list">
+
+                    <!-- Question 1 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 1 of 15</div>
+                        <div class="quiz-q-text">Which command initializes a new Git repository?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git start</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git init</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git create</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git new</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git init creates a new .git directory.
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 2 of 15</div>
+                        <div class="quiz-q-text">How do you check the status of files in the working directory?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git info</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. git log</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">C. git status</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git check</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git status shows working tree status.
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 3 of 15</div>
+                        <div class="quiz-q-text">Which command stages changes?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. git add</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. git stage</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git commit</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git push</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git add moves changes to the staging area.
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 4 of 15</div>
+                        <div class="quiz-q-text">How do you commit staged changes?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git save</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git commit</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git push</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git store</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git commit records changes to the repository.
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 5 of 15</div>
+                        <div class="quiz-q-text">Which command lists the commit history?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git history</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git log</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git past</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git list</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git log shows the commit logs.
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 6 of 15</div>
+                        <div class="quiz-q-text">How do you create a new branch?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. git checkout -b name</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. git branch -n name</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git new name</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git create name</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git checkout -b creates and switches to a new branch.
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 7 of 15</div>
+                        <div class="quiz-q-text">Which command merges a branch into the current branch?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git join</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git merge</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git combine</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git fuse</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git merge joins two or more development histories.
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 8 of 15</div>
+                        <div class="quiz-q-text">What is the command to clone a remote repository?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git copy</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git clone</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git download</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git pull</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git clone copies a repository into a new directory.
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 9 of 15</div>
+                        <div class="quiz-q-text">How do you fetch and merge changes from the remote?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git fetch</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git pull</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git push</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git sync</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git pull performs a fetch followed by a merge.
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 10 of 15</div>
+                        <div class="quiz-q-text">What is "HEAD" in Git?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. The first commit</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. The main branch</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">C. A pointer to the current commit</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. The remote repository</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> HEAD is a pointer to the current snapshot you are working on.
+                        </div>
+                    </div>
+
+                    <!-- Question 11 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 11 of 15</div>
+                        <div class="quiz-q-text">Which command temporarily saves dirty work without committing?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. git stash</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. git hide</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git store</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git pause</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git stash saves uncommitted changes for later use.
+                        </div>
+                    </div>
+
+                    <!-- Question 12 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 12 of 15</div>
+                        <div class="quiz-q-text">How do you unstage a file?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git remove</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git reset</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git delete</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git undo</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git reset HEAD <file> unstages a file.
+                        </div>
+                    </div>
+
+                    <!-- Question 13 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 13 of 15</div>
+                        <div class="quiz-q-text">Which command shows the difference between working dir and staging?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git show</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git diff</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git compare</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git status</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git diff shows changes between commits, commit and working tree, etc.
+                        </div>
+                    </div>
+
+                    <!-- Question 14 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 14 of 15</div>
+                        <div class="quiz-q-text">How do you discard local changes to a specific file?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. git checkout -- file</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. git remove file</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git drop file</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git clean file</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git checkout -- <file> restores the file from the last commit/staging.
+                        </div>
+                    </div>
+
+                    <!-- Question 15 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 15 of 15</div>
+                        <div class="quiz-q-text">What command handles remote URLs?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. git url</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. git remote</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. git origin</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. git connect</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> git remote manage set of tracked repositories.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+            function checkQuizAnswer(selectedOption) {
+                const parentOptions = selectedOption.parentElement;
+                if (parentOptions.classList.contains('answered')) return;
+                
+                parentOptions.classList.add('answered');
+                const options = parentOptions.querySelectorAll('.quiz-option');
+                const card = parentOptions.closest('.quiz-q-card');
+                const explanation = card.querySelector('.quiz-explanation');
+                
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.classList.add('correct');
+                    }
+                });
+                
+                if (selectedOption.getAttribute('data-correct') === 'false') {
+                    selectedOption.classList.add('incorrect');
+                }
+                
+                if (explanation) {
+                    explanation.style.display = 'block';
+                }
+            }
+            </script>
+
+<div class="blog-navigation">
                 <a href="blog-linux-basics.html" class="nav-link-blog">&larr; Previous: Linux Basics</a>
                 <a href="blog-docker-beginner.html" class="nav-link-blog">Next: Docker &rarr;</a>
             </div>

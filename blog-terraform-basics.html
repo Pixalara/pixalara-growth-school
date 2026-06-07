@@ -380,7 +380,353 @@
                 <p>Now that you can write code to automatically construct entire cloud architectures in minutes with Terraform, you face a new problem: How do we automate the testing, packaging, and deploying of our code whenever a developer pushes a change to Git? Enter CI/CD pipelines!</p>
             </div>
 
-            <div class="blog-navigation">
+            <!-- Test Your Knowledge Quiz Section -->
+            <section class="quiz-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px;">
+                    <i class="fas fa-question-circle" style="color: var(--primary); margin-right: 10px;"></i>Test Your Knowledge
+                </h2>
+                <p style="color: #666; margin-bottom: 30px;">
+                    Answer these 15 questions to check your understanding of this module. Click on an option to reveal the correct answer instantly.
+                </p>
+                
+                <style>
+                    .quiz-section {
+                        margin-top: 40px;
+                    }
+                    .quiz-q-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .quiz-q-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    .quiz-q-num {
+                        font-size: 0.85rem;
+                        color: var(--primary);
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        margin-bottom: 8px;
+                        letter-spacing: 0.5px;
+                    }
+                    .quiz-q-text {
+                        font-size: 1.2rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 20px;
+                        line-height: 1.4;
+                    }
+                    .quiz-options {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                    }
+                    .quiz-option {
+                        padding: 14px 20px;
+                        border: 2px solid #f0f0f0;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        font-size: 0.95rem;
+                        font-weight: 600;
+                        color: #444;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .quiz-option:hover {
+                        border-color: #dcd6f7;
+                        background: #f9f9ff;
+                    }
+                    .quiz-option.correct {
+                        border-color: #28a745 !important;
+                        background-color: #d4edda !important;
+                        color: #155724 !important;
+                    }
+                    .quiz-option.incorrect {
+                        border-color: #dc3545 !important;
+                        background-color: #f8d7da !important;
+                        color: #721c24 !important;
+                    }
+                    .quiz-explanation {
+                        margin-top: 20px;
+                        padding: 15px 20px;
+                        background: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        border-radius: 4px;
+                        display: none;
+                        font-size: 0.95rem;
+                        line-height: 1.6;
+                        color: #555;
+                        animation: fadeIn 0.4s ease;
+                    }
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(5px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                </style>
+                
+                <div class="quiz-questions-list">
+
+                    <!-- Question 1 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 1 of 15</div>
+                        <div class="quiz-q-text">What is Terraform?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. A game</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. Infrastructure as Code tool</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. A database</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. A monitoring tool</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> Terraform is an IaC tool for building, changing, and versioning infrastructure.
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 2 of 15</div>
+                        <div class="quiz-q-text">What file tracks the state of infrastructure?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. main.tf</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. terraform.tfstate</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. vars.tf</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. output.tf</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> terraform.tfstate tracks the IDs of created resources.
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 3 of 15</div>
+                        <div class="quiz-q-text">Which command initializes a directory?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. terraform start</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. terraform init</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. terraform begin</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. terraform create</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> terraform init prepares the working directory.
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 4 of 15</div>
+                        <div class="quiz-q-text">Which command creates an execution plan?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. terraform plan</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. terraform map</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. terraform preview</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. terraform test</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> terraform plan shows what actions will be taken.
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 5 of 15</div>
+                        <div class="quiz-q-text">Which command applies the changes?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. terraform go</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. terraform apply</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. terraform run</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. terraform exec</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> terraform apply executes the changes defined in the plan.
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 6 of 15</div>
+                        <div class="quiz-q-text">Which command destroys the infrastructure?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. terraform delete</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. terraform destroy</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. terraform remove</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. terraform kill</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> terraform destroy removes all managed infrastructure.
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 7 of 15</div>
+                        <div class="quiz-q-text">What is a "Provider"?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. The user</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. A plugin to interact with APIs (e.g., AWS)</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. The source code</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. The output</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> Providers interact with cloud providers, SaaS providers, etc.
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 8 of 15</div>
+                        <div class="quiz-q-text">What allows code reuse in Terraform?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. Functions</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. Modules</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. Scripts</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. Classes</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> Modules are containers for multiple resources that are used together.
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 9 of 15</div>
+                        <div class="quiz-q-text">What file usually contains the main configuration?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. config.tf</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. main.tf</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. index.tf</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. root.tf</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> main.tf is the convention for the primary entry point.
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 10 of 15</div>
+                        <div class="quiz-q-text">How do you define input variables?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. output block</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. variable block</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. input block</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. const block</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> Variables are defined using the variable block.
+                        </div>
+                    </div>
+
+                    <!-- Question 11 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 11 of 15</div>
+                        <div class="quiz-q-text">What command formats code to a canonical style?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. terraform style</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. terraform fmt</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. terraform lint</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. terraform clean</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> terraform fmt rewrites config files to a canonical format.
+                        </div>
+                    </div>
+
+                    <!-- Question 12 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 12 of 15</div>
+                        <div class="quiz-q-text">What is "HCL"?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. High Code Language</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. HashiCorp Configuration Language</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. Hyper Config Language</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. Hardware Control Language</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> HCL is the language used by Terraform.
+                        </div>
+                    </div>
+
+                    <!-- Question 13 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 13 of 15</div>
+                        <div class="quiz-q-text">Which command checks for syntax errors?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. terraform check</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. terraform validate</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. terraform verify</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. terraform test</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> terraform validate checks whether the configuration is syntactically valid.
+                        </div>
+                    </div>
+
+                    <!-- Question 14 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 14 of 15</div>
+                        <div class="quiz-q-text">How do you output values after apply?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. print</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. output block</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. echo</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. return</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> Output values are defined using the output block.
+                        </div>
+                    </div>
+
+                    <!-- Question 15 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 15 of 15</div>
+                        <div class="quiz-q-text">What is "terraform refresh"?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. Reloads page</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. Updates state to match real-world resources</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. Restarts server</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. Clears cache</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> It updates the state file with the current status of the infrastructure.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+            function checkQuizAnswer(selectedOption) {
+                const parentOptions = selectedOption.parentElement;
+                if (parentOptions.classList.contains('answered')) return;
+                
+                parentOptions.classList.add('answered');
+                const options = parentOptions.querySelectorAll('.quiz-option');
+                const card = parentOptions.closest('.quiz-q-card');
+                const explanation = card.querySelector('.quiz-explanation');
+                
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.classList.add('correct');
+                    }
+                });
+                
+                if (selectedOption.getAttribute('data-correct') === 'false') {
+                    selectedOption.classList.add('incorrect');
+                }
+                
+                if (explanation) {
+                    explanation.style.display = 'block';
+                }
+            }
+            </script>
+
+<div class="blog-navigation">
                 <a href="blog-kubernetes-intro.html" class="nav-link-blog">&larr; Previous: Kubernetes</a>
                 <a href="blog-cicd-mastery.html" class="nav-link-blog">Next: CI/CD Mastery &rarr;</a>
             </div>

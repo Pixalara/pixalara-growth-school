@@ -785,7 +785,353 @@
                 <p>Congratulations! You just completed the first step towards mastering the foundation of cloud computing and DevOps. By learning how operating systems evolved and getting comfortable with commands, you are ready to explore security permissions next.</p>
             </div>
 
-            <div class="blog-navigation">
+            <!-- Test Your Knowledge Quiz Section -->
+            <section class="quiz-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px;">
+                    <i class="fas fa-question-circle" style="color: var(--primary); margin-right: 10px;"></i>Test Your Knowledge
+                </h2>
+                <p style="color: #666; margin-bottom: 30px;">
+                    Answer these 15 questions to check your understanding of this module. Click on an option to reveal the correct answer instantly.
+                </p>
+                
+                <style>
+                    .quiz-section {
+                        margin-top: 40px;
+                    }
+                    .quiz-q-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .quiz-q-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    .quiz-q-num {
+                        font-size: 0.85rem;
+                        color: var(--primary);
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        margin-bottom: 8px;
+                        letter-spacing: 0.5px;
+                    }
+                    .quiz-q-text {
+                        font-size: 1.2rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 20px;
+                        line-height: 1.4;
+                    }
+                    .quiz-options {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                    }
+                    .quiz-option {
+                        padding: 14px 20px;
+                        border: 2px solid #f0f0f0;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        font-size: 0.95rem;
+                        font-weight: 600;
+                        color: #444;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .quiz-option:hover {
+                        border-color: #dcd6f7;
+                        background: #f9f9ff;
+                    }
+                    .quiz-option.correct {
+                        border-color: #28a745 !important;
+                        background-color: #d4edda !important;
+                        color: #155724 !important;
+                    }
+                    .quiz-option.incorrect {
+                        border-color: #dc3545 !important;
+                        background-color: #f8d7da !important;
+                        color: #721c24 !important;
+                    }
+                    .quiz-explanation {
+                        margin-top: 20px;
+                        padding: 15px 20px;
+                        background: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        border-radius: 4px;
+                        display: none;
+                        font-size: 0.95rem;
+                        line-height: 1.6;
+                        color: #555;
+                        animation: fadeIn 0.4s ease;
+                    }
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(5px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                </style>
+                
+                <div class="quiz-questions-list">
+
+                    <!-- Question 1 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 1 of 15</div>
+                        <div class="quiz-q-text">Which command is used to list all files, including hidden ones?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. ls -l</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. ls -a</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. ls -h</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. ls -x</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> The -a flag stands for "all" and includes hidden files starting with a dot.
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 2 of 15</div>
+                        <div class="quiz-q-text">How do you change the owner of a file?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. chmod</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. chown</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. chgrp</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. umask</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> chown (change owner) is used to change the file owner and group.
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 3 of 15</div>
+                        <div class="quiz-q-text">Which directory typically contains configuration files?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. /bin</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. /dev</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">C. /etc</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. /lib</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> /etc contains system-wide configuration files.
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 4 of 15</div>
+                        <div class="quiz-q-text">Which command shows disk usage of files and directories?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. df</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. du</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. ps</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. top</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> du (disk usage) estimates file space usage; df shows file system disk space usage.
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 5 of 15</div>
+                        <div class="quiz-q-text">What is the PID of the init/systemd process?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. 0</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. 1</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. 100</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. 999</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> The init or systemd process is the first process started and always has PID 1.
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 6 of 15</div>
+                        <div class="quiz-q-text">Which command displays the current working directory?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. pwd</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. cwd</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. dir</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. ls</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> pwd stands for Print Working Directory.
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 7 of 15</div>
+                        <div class="quiz-q-text">How do you create a new directory including parent directories if they don’t exist?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. mkdir -p</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. mkdir -r</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. mkdir -s</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. mkdir -f</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> mkdir -p creates parent directories as needed.
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 8 of 15</div>
+                        <div class="quiz-q-text">Which command is used to find text patterns within a file?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. find</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. locate</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">C. grep</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. sed</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> grep is a powerful utility for searching plain-text data sets for lines that match a regular expression.
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 9 of 15</div>
+                        <div class="quiz-q-text">Which permission code represents read, write, and execute for the owner?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. 4</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. 5</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. 6</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">D. 7</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> 7 (4+2+1) represents Read(4) + Write(2) + Execute(1).
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 10 of 15</div>
+                        <div class="quiz-q-text">How do you check the kernel version?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">A. uname -r</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. linux -v</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. ver</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. kernel -s</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> uname -r prints the kernel release version.
+                        </div>
+                    </div>
+
+                    <!-- Question 11 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 11 of 15</div>
+                        <div class="quiz-q-text">Which command displays real-time system processes?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. ps</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. top</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. jobs</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. proc</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> top provides a dynamic real-time view of a running system.
+                        </div>
+                    </div>
+
+                    <!-- Question 12 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 12 of 15</div>
+                        <div class="quiz-q-text">How do you force kill a process with PID 1234?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. kill 1234</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. kill -9 1234</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. stop 1234</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. end 1234</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> kill -9 sends the SIGKILL signal which forces the process to terminate immediately.
+                        </div>
+                    </div>
+
+                    <!-- Question 13 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 13 of 15</div>
+                        <div class="quiz-q-text">What does the command "touch file.txt" do?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. Opens the file</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">B. Deletes the file</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">C. Updates timestamp or creates empty file</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. Changes file permissions</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> touch updates the access and modification times, or creates an empty file if it does not exist.
+                        </div>
+                    </div>
+
+                    <!-- Question 14 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 14 of 15</div>
+                        <div class="quiz-q-text">Which file contains user password information (encrypted)?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. /etc/passwd</div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. /etc/shadow</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. /etc/group</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. /etc/secure</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> /etc/shadow contains encrypted user passwords.
+                        </div>
+                    </div>
+
+                    <!-- Question 15 -->
+                    <div class="quiz-q-card">
+                        <div class="quiz-q-num">Question 15 of 15</div>
+                        <div class="quiz-q-text">Which symbol redirects output to a file, overwriting it?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">A. >></div>
+                            <div class="quiz-option" data-correct="true" onclick="checkQuizAnswer(this)">B. ></div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">C. <</div>
+                            <div class="quiz-option" data-correct="false" onclick="checkQuizAnswer(this)">D. |</div>
+                        </div>
+                        <div class="quiz-explanation">
+                            <strong>Explanation:</strong> > redirects output and overwrites; >> appends.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+            function checkQuizAnswer(selectedOption) {
+                const parentOptions = selectedOption.parentElement;
+                if (parentOptions.classList.contains('answered')) return;
+                
+                parentOptions.classList.add('answered');
+                const options = parentOptions.querySelectorAll('.quiz-option');
+                const card = parentOptions.closest('.quiz-q-card');
+                const explanation = card.querySelector('.quiz-explanation');
+                
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.classList.add('correct');
+                    }
+                });
+                
+                if (selectedOption.getAttribute('data-correct') === 'false') {
+                    selectedOption.classList.add('incorrect');
+                }
+                
+                if (explanation) {
+                    explanation.style.display = 'block';
+                }
+            }
+            </script>
+
+<div class="blog-navigation">
                 <a href="blog-aws-essentials.html" class="nav-link-blog">&larr; Previous: AWS Cloud Essentials</a>
                 <a href="blog-git-basics.html" class="nav-link-blog">Next: Git Basics &rarr;</a>
             </div>
