@@ -393,6 +393,18 @@
                     </div>
                 </div>
 
+                <!-- AWS Route 53 -->
+                <div class="service-card">
+                    <h3><span><i class="fas fa-route"></i></span> AWS Route 53</h3>
+                    <p><strong>What it is:</strong> A global Domain Name System (DNS) service that acts as the internet's phonebook, translating easy-to-read web addresses (like growthschool.cc) into computer IP addresses.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine you want to call your friend but don't remember their phone number. You look up their name in your phone's contact list, and the phone dials the number for you. Route 53 is the internet's contact list!
+                    </div>
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> When you type growthschool.cc in your browser, Route 53 quickly translates that name into the server's numerical IP address (like 76.76.21.21) so your browser can load the page.
+                    </div>
+                </div>
+
 
                 <!-- Category 3: Security & Identity -->
                 <div class="service-category-title">3. Security, Identity & Compliance</div>
@@ -430,6 +442,30 @@
                     </div>
                     <div class="example-box">
                         <strong>⚡ Real-World Example:</strong> WAF detects and blocks SQL Injection attacks where hackers try to type database commands directly inside a website search bar to steal passwords.
+                    </div>
+                </div>
+
+                <!-- AWS Secrets Manager -->
+                <div class="service-card">
+                    <h3><span><i class="fas fa-key"></i></span> AWS Secrets Manager</h3>
+                    <p><strong>What it is:</strong> A secure vault that stores, manages, and automatically rotates database credentials, API keys, and passwords.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Instead of writing your house safe's passcode on a sticky note and pasting it on your laptop screen for everyone to see, you put the passcode in a high-security lockbox that changes the code automatically every few weeks.
+                    </div>
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> Instead of hardcoding database passwords directly inside the website code, developers configure the app to fetch the password securely from Secrets Manager whenever it needs to talk to the database.
+                    </div>
+                </div>
+
+                <!-- AWS Certificate Manager (ACM) -->
+                <div class="service-card">
+                    <h3><span><i class="fas fa-certificate"></i></span> AWS Certificate Manager (ACM)</h3>
+                    <p><strong>What it is:</strong> A service that creates, manages, and automatically renews security certificates (SSL/TLS) to enable secure HTTPS connections for your websites.</p>
+                    <div class="analogy-box">
+                        <strong>👶 Simple Analogy:</strong> Imagine a government office that issues verified digital ID cards to shops. When customers walk in and see this ID, they know the shop is safe and genuine. ACM issues these digital ID cards to your website so browsers show the secure padlock icon.
+                    </div>
+                    <div class="example-box">
+                        <strong>⚡ Real-World Example:</strong> To protect users entering their payment info on growthschool.cc, the team uses ACM to set up an SSL certificate. This turns the connection secure (HTTPS) and automatically renews it every year so the site never shows a "Not Secure" warning.
                     </div>
                 </div>
 
