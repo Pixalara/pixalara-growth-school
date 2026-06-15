@@ -870,30 +870,248 @@
             </section>
 
             <script>
+            let quizSubmitted = false;
             function checkQuizAnswer(selectedOption) {
+                if (quizSubmitted) return;
                 const parentOptions = selectedOption.parentElement;
-                if (parentOptions.classList.contains('answered')) return;
+                const siblings = parentOptions.querySelectorAll('.quiz-option');
+                siblings.forEach(opt => opt.classList.remove('selected'));
+                selectedOption.classList.add('selected');
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const questionsList = document.querySelector('.quiz-questions-list');
+                if (!questionsList) return;
                 
-                parentOptions.classList.add('answered');
-                const options = parentOptions.querySelectorAll('.quiz-option');
-                const card = parentOptions.closest('.quiz-q-card');
-                const explanation = card.querySelector('.quiz-explanation');
-                
-                options.forEach(opt => {
-                    opt.style.pointerEvents = 'none';
-                    if (opt.getAttribute('data-correct') === 'true') {
-                        opt.classList.add('correct');
+                // Add styling dynamically
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    .quiz-option.selected {
+                        border-color: var(--primary) !important;
+                        background-color: #f3eeff !important;
+                        color: var(--primary) !important;
                     }
+                    [data-theme="dark"] .quiz-option.selected {
+                        background-color: #251b3a !important;
+                        border-color: var(--primary) !important;
+                        color: #fff !important;
+                    }
+                    .quiz-submit-container {
+                        text-align: center;
+                        margin-top: 40px;
+                        margin-bottom: 20px;
+                    }
+                    .btn-submit-assessment {
+                        background: var(--primary);
+                        color: #fff;
+                        padding: 16px 40px;
+                        border-radius: 8px;
+                        font-weight: 700;
+                        font-size: 1.05rem;
+                        border: none;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 15px rgba(101, 40, 247, 0.2);
+                        font-family: var(--font-body);
+                    }
+                    .btn-submit-assessment:hover {
+                        background: var(--primary-dark);
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 20px rgba(101, 40, 247, 0.3);
+                    }
+                    .btn-submit-assessment:disabled {
+                        background: #cccccc;
+                        color: #666666;
+                        cursor: not-allowed;
+                        box-shadow: none;
+                        transform: none;
+                    }
+                    .quiz-results-card {
+                        margin-top: 30px;
+                        padding: 30px;
+                        background: #fcfbfe;
+                        border: 2px dashed var(--primary);
+                        border-radius: 12px;
+                        text-align: center;
+                        box-shadow: 0 8px 30px rgba(101, 40, 247, 0.05);
+                        animation: slideUp 0.5s ease forwards;
+                    }
+                    [data-theme="dark"] .quiz-results-card {
+                        background: var(--bg-secondary);
+                        border-color: var(--primary);
+                    }
+                    .results-title {
+                        font-family: var(--font-heading);
+                        font-size: 1.8rem;
+                        color: var(--text-title);
+                        margin-bottom: 15px;
+                        font-weight: 700;
+                    }
+                    .results-score {
+                        font-size: 1.5rem;
+                        color: var(--text-body);
+                        margin-bottom: 15px;
+                    }
+                    .results-score-num {
+                        font-size: 2.2rem;
+                        font-weight: 800;
+                        color: var(--primary);
+                    }
+                    .results-percentage {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        color: var(--text-light);
+                    }
+                    .results-feedback {
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        color: var(--text-body);
+                        margin-top: 15px;
+                    }
+                    @keyframes slideUp {
+                        from { opacity: 0; transform: translateY(20px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                const actionArea = document.createElement('div');
+                actionArea.className = 'quiz-action-area';
+                actionArea.style.textAlign = 'center';
+                actionArea.style.marginTop = '40px';
+                actionArea.style.marginBottom = '40px';
+                actionArea.innerHTML = `
+                    <div id="quiz-warning" style="display: none; color: #dc3545; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 12px 20px; border-radius: 8px; font-weight: 700; margin-bottom: 20px; font-size: 1rem; display: inline-block; width: 100%; max-width: 500px; box-sizing: border-box;">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i>Please answer all 25 questions before submitting. (Answered: <span id="answered-count">0</span>/25)
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <button id="submit-quiz-btn" class="btn-submit-assessment">Submit Assessment</button>
+                    </div>
+                    <div id="quiz-results-card" class="quiz-results-card" style="display: none; width: 100%; max-width: 600px; margin: 30px auto 0 auto; box-sizing: border-box;">
+                        <h3 class="results-title">Assessment Results</h3>
+                        <div class="results-score">
+                            Score: <span id="results-score-num" class="results-score-num">0</span> / 25
+                        </div>
+                        <div id="results-percentage" class="results-percentage">Percentage: 0%</div>
+                        <p id="results-feedback" class="results-feedback"></p>
+                        <button id="retry-quiz-btn" class="btn-submit-assessment" style="margin-top: 25px; background: #6c757d; box-shadow: 0 4px 15px rgba(108, 117, 125, 0.2);">
+                            <i class="fas fa-redo" style="margin-right: 8px;"></i>Try Again
+                        </button>
+                    </div>
+                `;
+                questionsList.parentNode.insertBefore(actionArea, questionsList.nextSibling);
+                
+                const retryBtn = actionArea.querySelector('#retry-quiz-btn');
+                if (retryBtn) {
+                    retryBtn.addEventListener('mouseenter', () => {
+                        retryBtn.style.background = '#5a6268';
+                    });
+                    retryBtn.addEventListener('mouseleave', () => {
+                        retryBtn.style.background = '#6c757d';
+                    });
+                }
+                
+                const submitBtn = actionArea.querySelector('#submit-quiz-btn');
+                const warningDiv = actionArea.querySelector('#quiz-warning');
+                const answeredCountSpan = actionArea.querySelector('#answered-count');
+                const resultsCard = actionArea.querySelector('#quiz-results-card');
+                const scoreNumSpan = actionArea.querySelector('#results-score-num');
+                const percentageSpan = actionArea.querySelector('#results-percentage');
+                const feedbackText = actionArea.querySelector('#results-feedback');
+                
+                submitBtn.addEventListener('click', () => {
+                    const totalQuestions = document.querySelectorAll('.quiz-q-card').length;
+                    const selectedOptions = document.querySelectorAll('.quiz-option.selected');
+                    const answeredCount = selectedOptions.length;
+                    
+                    if (answeredCount < totalQuestions) {
+                        answeredCountSpan.textContent = answeredCount;
+                        warningDiv.style.display = 'inline-block';
+                        warningDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                    }
+                    
+                    warningDiv.style.display = 'none';
+                    quizSubmitted = true;
+                    submitBtn.disabled = true;
+                    
+                    let score = 0;
+                    const questions = document.querySelectorAll('.quiz-q-card');
+                    
+                    questions.forEach(card => {
+                        const options = card.querySelectorAll('.quiz-option');
+                        const selectedOpt = card.querySelector('.quiz-option.selected');
+                        const explanation = card.querySelector('.quiz-explanation');
+                        
+                        options.forEach(opt => {
+                            opt.style.pointerEvents = 'none';
+                            if (opt.getAttribute('data-correct') === 'true') {
+                                opt.classList.add('correct');
+                            }
+                        });
+                        
+                        if (selectedOpt) {
+                            const isCorrect = selectedOpt.getAttribute('data-correct') === 'true';
+                            if (isCorrect) {
+                                score++;
+                            } else {
+                                selectedOpt.classList.add('incorrect');
+                                selectedOpt.classList.add('wrong');
+                            }
+                        }
+                        
+                        if (explanation) {
+                            explanation.style.display = 'block';
+                        }
+                    });
+                    
+                    scoreNumSpan.textContent = score;
+                    const percentage = Math.round((score / totalQuestions) * 100);
+                    percentageSpan.textContent = `Percentage: ${percentage}%`;
+                    
+                    let feedback = "";
+                    if (percentage >= 90) {
+                        feedback = "Outstanding! You have mastered this module's concepts perfectly.";
+                    } else if (percentage >= 75) {
+                        feedback = "Great job! You have a solid understanding of the material.";
+                    } else if (percentage >= 50) {
+                        feedback = "Good effort! We recommend reviewing the guide again to reinforce your learning.";
+                    } else {
+                        feedback = "Keep learning! Review the material and try the assessment again to improve.";
+                    }
+                    feedbackText.textContent = feedback;
+                    
+                    resultsCard.style.display = 'block';
+                    resultsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 });
                 
-                if (selectedOption.getAttribute('data-correct') === 'false') {
-                    selectedOption.classList.add('incorrect');
-                }
-                
-                if (explanation) {
-                    explanation.style.display = 'block';
-                }
-            }
+                retryBtn.addEventListener('click', () => {
+                    quizSubmitted = false;
+                    submitBtn.disabled = false;
+                    resultsCard.style.display = 'none';
+                    warningDiv.style.display = 'none';
+                    
+                    const questions = document.querySelectorAll('.quiz-q-card');
+                    questions.forEach(card => {
+                        const options = card.querySelectorAll('.quiz-option');
+                        const explanation = card.querySelector('.quiz-explanation');
+                        
+                        options.forEach(opt => {
+                            opt.style.pointerEvents = 'auto';
+                            opt.classList.remove('selected', 'correct', 'incorrect', 'wrong');
+                        });
+                        
+                        if (explanation) {
+                            explanation.style.display = 'none';
+                        }
+                    });
+                    
+                    const quizSection = document.querySelector('.quiz-section');
+                    if (quizSection) {
+                        quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
             </script>
 
 <div class="blog-navigation">
