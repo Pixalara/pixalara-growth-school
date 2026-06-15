@@ -1,50 +1,9 @@
-// Immediate Theme initialization to prevent layout flash on blogs
+// Immediate Theme initialization to force light mode
 (function() {
-    const isBlogPage = window.location.pathname.includes('blog-');
-    if (isBlogPage) {
-        const savedTheme = localStorage.getItem('theme');
-        const initialTheme = savedTheme || 'light';
-        document.documentElement.setAttribute('data-theme', initialTheme);
-    } else {
-        // Force light mode on all other pages
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
+    document.documentElement.setAttribute('data-theme', 'light');
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Blog Night Read Mode Toggle
-    const blogNightBtn = document.getElementById('blog-night-mode');
-    if (blogNightBtn) {
-        const btnIcon = blogNightBtn.querySelector('i');
-        const btnText = blogNightBtn.querySelector('span');
-
-        // Sync button state on initial load
-        const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        if (activeTheme === 'dark') {
-            btnIcon.className = 'fas fa-sun';
-            btnText.textContent = 'Light Read Mode';
-        } else {
-            btnIcon.className = 'fas fa-moon';
-            btnText.textContent = 'Night Read Mode';
-        }
-
-        blogNightBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            let newTheme = 'light';
-            
-            if (currentTheme === 'light') {
-                newTheme = 'dark';
-                btnIcon.className = 'fas fa-sun';
-                btnText.textContent = 'Light Read Mode';
-            } else {
-                btnIcon.className = 'fas fa-moon';
-                btnText.textContent = 'Night Read Mode';
-            }
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    }
 
     // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
