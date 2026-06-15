@@ -862,6 +862,172 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- Real-Time Interview Questions & Answers Section -->
+            <section class="interview-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 25px;">
+                    <i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Real-Time Interview Questions & Answers for 2 Years Experience
+                </h2>
+                <style>
+                    .qa-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .qa-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    [data-theme="dark"] .qa-card {
+                        background-color: var(--bg-secondary) !important;
+                        border-color: var(--border-color) !important;
+                    }
+                    .qa-card h3 {
+                        font-size: 1.15rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                        line-height: 1.4;
+                    }
+                    .qa-card p {
+                        margin-bottom: 12px;
+                        line-height: 1.6;
+                        color: var(--text-light);
+                    }
+                    [data-theme="dark"] .qa-card p {
+                        color: var(--text-main);
+                    }
+                    .qa-card p strong {
+                        color: var(--text-dark);
+                    }
+                    [data-theme="dark"] .qa-card p strong {
+                        color: var(--text-title);
+                    }
+                    .qa-card .example-block {
+                        background-color: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        padding: 12px 18px;
+                        border-radius: 4px;
+                        margin-top: 15px;
+                        font-style: italic;
+                        color: #555;
+                    }
+                    [data-theme="dark"] .qa-card .example-block {
+                        background-color: #1e1730;
+                        color: #b2abc2;
+                    }
+                </style>
+                <div class="qa-list">
+                    <div class="qa-card">
+                        <h3>1. What is a Pod, and how does it relate to containers?</h3>
+                        <p><strong>Answer:</strong> A Pod is the smallest deployable unit in Kubernetes. It represents a single instance of a running process and can contain one or more containers that share network namespaces, storage volumes, and IP addresses.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In our frontend pod, we deploy our main React container and a sidecar container that syncs assets from an S3 bucket.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>2. How do you troubleshoot a Pod stuck in `CrashLoopBackOff` status?</h3>
+                        <p><strong>Answer:</strong> I run `kubectl logs <pod-name>` to view application errors, and `kubectl describe pod <pod-name>` to check events, configuration issues, resource limits, or failing health probes.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I debugged a CrashLoopBackOff error and found the app was crashing due to a typo in a database hostname ConfigMap.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>3. What is the difference between ClusterIP, NodePort, and LoadBalancer Service types?</h3>
+                        <p><strong>Answer:</strong> `ClusterIP` exposes the service internally within the cluster. `NodePort` exposes the service on a static port on each Node IP. `LoadBalancer` creates an external cloud load balancer pointing to cluster nodes.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We configure a ClusterIP service for our internal payment API and a LoadBalancer service for our public-facing web gateway.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>4. What is Kubernetes Ingress, and why do we use it over LoadBalancer Services?</h3>
+                        <p><strong>Answer:</strong> Ingress manages external HTTP/HTTPS access to services, offering URL routing, SSL termination, and name-based hosting. This avoids spinning up expensive LoadBalancers for every single service.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We deploy a single NGINX Ingress Controller to route traffic to `app.com/api` and `app.com/web` using path-based rules.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>5. What is the difference between ConfigMaps and Secrets, and how do you secure Secrets?</h3>
+                        <p><strong>Answer:</strong> ConfigMaps store non-sensitive configuration data in plain text. Secrets store sensitive data (passwords, keys) encoded in Base64. Secrets should be encrypted at rest and accessed via RBAC controls.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We mount our DB credentials as environment variables from Kubernetes Secrets, keeping our configuration repo clean and secure.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>6. How do you update a Deployment in production without causing downtime?</h3>
+                        <p><strong>Answer:</strong> Kubernetes Deployments use a rolling update strategy by default. It replaces old pods with new ones gradually, ensuring a minimum number of pods remain available throughout the update.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `kubectl set image deployment/web-app web=app:v2.0` to trigger a rolling update, maintaining 100% application uptime.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>7. What are Liveness, Readiness, and Startup Probes in Kubernetes?</h3>
+                        <p><strong>Answer:</strong> Liveness probes check if a container needs to be restarted. Readiness probes determine if a container is ready to accept network traffic. Startup probes check if the application has completed its startup phase.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We configure a readiness probe on `/healthz` to prevent users from hitting our API containers before they load cache files.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>8. How do you scale a Deployment in Kubernetes?</h3>
+                        <p><strong>Answer:</strong> I scale deployments manually using `kubectl scale` or automatically by configuring a Horizontal Pod Autoscaler (HPA) that monitors resource usage (CPU/Memory) or custom metrics.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I set up an HPA to scale our web api deployment between 2 and 10 replicas when average CPU usage exceeds 75%.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>9. What are Namespaces, and why should we use them?</h3>
+                        <p><strong>Answer:</strong> Namespaces provide virtual isolation inside a single physical Kubernetes cluster. They help organize resources and allow setting resource quotas and network access control lists per environment.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We split our cluster into `dev`, `staging`, and `production` namespaces to prevent test runs from affecting production services.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>10. How do you debug a Pod stuck in `Pending` state?</h3>
+                        <p><strong>Answer:</strong> I run `kubectl describe pod <pod-name>` and look at the events at the bottom. A pending state usually indicates insufficient cluster resources, missing PV mounts, or node selector mismatches.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I resolved a pending pod issue by scaling our node pool, as the existing worker nodes had run out of allocatable CPU capacity.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>11. What is the function of the Kubelet on a worker node?</h3>
+                        <p><strong>Answer:</strong> The Kubelet is an agent running on each worker node that communicates with the API server. It receives PodSpecs and ensures that the specified containers are running, healthy, and report status back.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “When a node went offline, I checked `systemctl status kubelet` on the VM to verify if the agent process had crashed.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>12. What is a DaemonSet, and when would you use it?</h3>
+                        <p><strong>Answer:</strong> A DaemonSet ensures that a copy of a specific Pod runs on all (or selected) nodes in the cluster. As nodes are added, pods are started on them.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We run Fluentbit as a DaemonSet to collect and forward system logs from every worker node to our centralized Elasticsearch index.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>13. What is the difference between CPU Requests and Limits in a PodSpec?</h3>
+                        <p><strong>Answer:</strong> Requests define the minimum CPU guaranteed to a container for scheduling. Limits set the maximum CPU resources the container is allowed to consume before being throttled.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We set a CPU request of 250m and limit of 500m to ensure our backend pods perform well under peak load without starving others.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>14. What does OOMKilled mean, and how do you investigate it?</h3>
+                        <p><strong>Answer:</strong> OOMKilled (Exit Code 137) means a container was terminated by the Linux kernel Out-Of-Memory killer because it exceeded its configured memory limit.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “If `kubectl describe pod` shows OOMKilled, I check Grafana metrics to see if the app has memory leaks and adjust our container limits.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>15. How do you safely remove a node from the cluster for maintenance?</h3>
+                        <p><strong>Answer:</strong> I run `kubectl cordon` to stop new pods from scheduling on it, and then run `kubectl drain` to evict and reschedule running pods to other healthy nodes.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `kubectl drain node-02 --ignore-daemonsets --delete-emptydir-data` to safely upgrade node kernel versions without service disruption.”
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <script>

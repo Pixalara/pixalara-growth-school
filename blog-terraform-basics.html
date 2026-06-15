@@ -847,6 +847,172 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- Real-Time Interview Questions & Answers Section -->
+            <section class="interview-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 25px;">
+                    <i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Real-Time Interview Questions & Answers for 2 Years Experience
+                </h2>
+                <style>
+                    .qa-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .qa-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    [data-theme="dark"] .qa-card {
+                        background-color: var(--bg-secondary) !important;
+                        border-color: var(--border-color) !important;
+                    }
+                    .qa-card h3 {
+                        font-size: 1.15rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                        line-height: 1.4;
+                    }
+                    .qa-card p {
+                        margin-bottom: 12px;
+                        line-height: 1.6;
+                        color: var(--text-light);
+                    }
+                    [data-theme="dark"] .qa-card p {
+                        color: var(--text-main);
+                    }
+                    .qa-card p strong {
+                        color: var(--text-dark);
+                    }
+                    [data-theme="dark"] .qa-card p strong {
+                        color: var(--text-title);
+                    }
+                    .qa-card .example-block {
+                        background-color: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        padding: 12px 18px;
+                        border-radius: 4px;
+                        margin-top: 15px;
+                        font-style: italic;
+                        color: #555;
+                    }
+                    [data-theme="dark"] .qa-card .example-block {
+                        background-color: #1e1730;
+                        color: #b2abc2;
+                    }
+                </style>
+                <div class="qa-list">
+                    <div class="qa-card">
+                        <h3>1. Why is the Terraform State file critical, and how do you secure it in a team environment?</h3>
+                        <p><strong>Answer:</strong> The state file tracks the mapping between your configuration code and real-world deployed resources. We secure it by using a remote backend (like AWS S3) with state locking (via DynamoDB) and enabling encryption.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We configure our backend in a `backend.tf` file using S3 for encrypted storage and a DynamoDB table for concurrent state locks.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>2. What is the difference between `terraform plan` and `terraform apply`?</h3>
+                        <p><strong>Answer:</strong> `terraform plan` creates an execution plan, showing what actions Terraform will take without modifying real resources. `terraform apply` executes the actions proposed in the plan.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In our pipeline, we run `terraform plan -out=tfplan` for pull request reviews, and run `terraform apply tfplan` only after approval.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>3. What is Infrastructure Drift, and how does Terraform reconcile it?</h3>
+                        <p><strong>Answer:</strong> Drift occurs when resources are modified manually outside of Terraform. Running `terraform plan` reads the real state of resources and identifies discrepancies against the state file.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “When someone manually changed an EC2 security group rule, I ran `terraform plan` to identify the change, then applied to restore code configuration.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>4. How do you organize Terraform code using Modules?</h3>
+                        <p><strong>Answer:</strong> A module is a container for multiple resources used together. We write reusable modules for infrastructure blocks (like VPCs or ALB setups) and call them with environment-specific variables.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We created a standard `modules/database` folder and call it from our `prod/main.tf` to spin up PostgreSQL RDS instances consistently.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>5. What are Terraform Workspaces, and when should you use them?</h3>
+                        <p><strong>Answer:</strong> Workspaces allow you to manage separate state files for the same configuration code directory. This is useful for managing different environments (like dev, QA, prod) using the same IaC code.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We run `terraform workspace select dev` or `prod` to deploy similar resources with isolated states and settings.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>6. How do you import existing cloud resources into Terraform?</h3>
+                        <p><strong>Answer:</strong> I write the resource block configuration in code, then run `terraform import <resource_type>.<name> <resource_id>` to import the current real-world state into the state file.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I imported an existing S3 bucket by declaring `resource 'aws_s3_bucket' 'assets'` and running `terraform import aws_s3_bucket.assets my-bucket-name`.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>7. How do you destroy specific resources in Terraform without affecting the rest of the infrastructure?</h3>
+                        <p><strong>Answer:</strong> I use the `-target` flag to target a specific resource for destruction: `terraform destroy -target=<resource_type>.<name>`.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “To remove a temporary dev VM, I ran `terraform destroy -target=aws_instance.dev_test` to keep the surrounding network assets intact.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>8. What is the difference between input variables and local values in Terraform?</h3>
+                        <p><strong>Answer:</strong> Input variables act as parameters to pass configuration values into modules. Local values are internal variables defined within the module that calculate values dynamically (like constants).</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We declare an input variable `environment` for inputs, and define a local `name_prefix = '${var.project}-${var.environment}'` for naming resources.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>9. What do you do if a Terraform execution is interrupted, leaving the state locked?</h3>
+                        <p><strong>Answer:</strong> First, I verify that no other CI/CD pipeline is active. Then, I retrieve the Lock ID from the error output and run the `force-unlock` command to release the lock.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “After our Jenkins agent crashed, I ran `terraform force-unlock a1b2c3d4-e5f6-7890` to enable edits to the infrastructure again.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>10. What are Provisioners in Terraform, and why should they be avoided?</h3>
+                        <p><strong>Answer:</strong> Provisioners (like local-exec or remote-exec) execute scripts on local or remote machines. They should be avoided because they do not track state or offer declarative configuration management.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “Instead of using remote-exec provisioners, we use EC2 user_data scripts and Cloud-Init to handle initial package installs on VMs.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>11. How do you handle sensitive outputs (like passwords or API keys) in Terraform?</h3>
+                        <p><strong>Answer:</strong> I define the variable or output with the `sensitive = true` attribute. This prevents Terraform from printing the secret values in console output and logs.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We set `sensitive = true` on our database password output so it remains hidden in our automated Jenkins console outputs.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>12. What is the purpose of outputs in Terraform?</h3>
+                        <p><strong>Answer:</strong> Output values expose information about your resources. They are useful for querying attributes post-deployment or sharing data between separate Terraform configurations.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We output the DNS name of our ALB so our frontend CI/CD pipeline knows where to route API calls.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>13. How do you lock provider versions in Terraform configurations?</h3>
+                        <p><strong>Answer:</strong> I configure provider version locks inside a `required_providers` block inside the `terraform` configuration block, setting specific version requirements.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We configure `aws = { source = 'hashicorp/aws', version = '~> 5.0' }` to ensure our builds use stable AWS features.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>14. What is the difference between `terraform state rm` and destroying resources?</h3>
+                        <p><strong>Answer:</strong> `terraform state rm` removes the resource tracking from the Terraform state file, leaving the real-world resource untouched. Destroying deletes the resource entirely from the cloud provider.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I ran `terraform state rm aws_instance.legacy_app` to stop managing an old server in IaC without terminating the running VM.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>15. What is the difference between `terraform clean` and deleting `.terraform` directory?</h3>
+                        <p><strong>Answer:</strong> There is no `terraform clean` command. To reset local providers and modules, you delete the `.terraform` folder and the `.terraform.lock.hcl` file, then run `terraform init`.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “When provider configuration got corrupted, I deleted the `.terraform` folder locally and ran `terraform init` to download clean dependencies.”
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <script>

@@ -1044,6 +1044,172 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- Real-Time Interview Questions & Answers Section -->
+            <section class="interview-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 25px;">
+                    <i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Real-Time Interview Questions & Answers for 2 Years Experience
+                </h2>
+                <style>
+                    .qa-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .qa-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    [data-theme="dark"] .qa-card {
+                        background-color: var(--bg-secondary) !important;
+                        border-color: var(--border-color) !important;
+                    }
+                    .qa-card h3 {
+                        font-size: 1.15rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                        line-height: 1.4;
+                    }
+                    .qa-card p {
+                        margin-bottom: 12px;
+                        line-height: 1.6;
+                        color: var(--text-light);
+                    }
+                    [data-theme="dark"] .qa-card p {
+                        color: var(--text-main);
+                    }
+                    .qa-card p strong {
+                        color: var(--text-dark);
+                    }
+                    [data-theme="dark"] .qa-card p strong {
+                        color: var(--text-title);
+                    }
+                    .qa-card .example-block {
+                        background-color: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        padding: 12px 18px;
+                        border-radius: 4px;
+                        margin-top: 15px;
+                        font-style: italic;
+                        color: #555;
+                    }
+                    [data-theme="dark"] .qa-card .example-block {
+                        background-color: #1e1730;
+                        color: #b2abc2;
+                    }
+                </style>
+                <div class="qa-list">
+                    <div class="qa-card">
+                        <h3>1. What is the key difference between Security Groups and Network ACLs (NACLs) in AWS?</h3>
+                        <p><strong>Answer:</strong> Security Groups are stateful firewalls operating at the EC2 instance level, meaning outbound traffic is automatically allowed if inbound is allowed. NACLs are stateless firewalls operating at the subnet level, requiring explicit rules for both inbound and outbound traffic.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In production, I configure Security Groups to allow port 443 traffic to our web server, and use NACLs at the subnet boundaries to block specific malicious IP ranges entirely.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>2. When should we choose an Application Load Balancer (ALB) over a Network Load Balancer (NLB)?</h3>
+                        <p><strong>Answer:</strong> An ALB operates at Layer 7 (Application) and is best for routing HTTP/HTTPS traffic based on request characteristics like URL path or host header. An NLB operates at Layer 4 (Transport), handling millions of requests per second with ultra-low latency, and is used for TCP/UDP/TLS traffic.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use an ALB to route path-based traffic to our microservices (like /api or /auth) and deploy an NLB for our raw TCP log collector sockets.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>3. How would you troubleshoot an EC2 instance that is running but not accessible via SSH?</h3>
+                        <p><strong>Answer:</strong> I would check three areas: first, verify that the instance has a public IP and is inside a public subnet; second, verify that the Security Group allows inbound TCP traffic on port 22 from my IP; and third, ensure the route table has a route (0.0.0.0/0) pointing to the Internet Gateway.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In my previous role, a developer changed the Security Group rules, removing access to port 22. I verified the security group from the console and added my IP address back to resolve the issue.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>4. What is the IAM policy evaluation logic, and what happens if there's both an explicit deny and an explicit allow?</h3>
+                        <p><strong>Answer:</strong> By default, all requests are denied. An explicit allow in an IAM policy overrides this default behavior. However, an explicit deny in any policy (resource-based, IAM group, or role) always overrides any explicit allow.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In our setup, developers have full access to S3, but we placed an explicit deny policy on the production billing S3 bucket so only the finance team role can access it.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>5. How would you design a highly available database architecture on AWS using RDS?</h3>
+                        <p><strong>Answer:</strong> I would enable RDS Multi-AZ to dynamically replicate data synchronously to a secondary database instance in a different Availability Zone (AZ) for automatic failover. I would also deploy Read Replicas asynchronously in other AZs or regions to offload read traffic.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “To secure our application during database maintenance, we configure RDS Multi-AZ so AWS handles automatic failover without changing the application connection string.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>6. How do you optimize S3 costs for a system that generates gigabytes of logs daily?</h3>
+                        <p><strong>Answer:</strong> I would implement S3 Lifecycle policies to automatically transition files. Logs can start in S3 Standard, transition to S3 Standard-IA (Infrequent Access) after 30 days, move to S3 Glacier Flexible Retrieval after 90 days, and get deleted after 180 days.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “By setting up an S3 Lifecycle rule to transition application debug logs to Glacier after 30 days, we cut our storage costs by over 60%.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>7. What is the difference between target tracking and step scaling policies in AWS Auto Scaling?</h3>
+                        <p><strong>Answer:</strong> Target tracking scaling keeps a specific metric (like average CPU utilization) at a target value (e.g., 70%). Step scaling increases or decreases instance counts in steps based on the size of the alarm breach (e.g., add 2 instances if CPU is 80%, add 4 if CPU is 90%).</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use target tracking on CPU utilization set at 65% for our web server group because it automatically handles gradual traffic increases smoothly.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>8. What is VPC Peering, and does it support transitive routing?</h3>
+                        <p><strong>Answer:</strong> VPC Peering is a network connection between two VPCs that routes traffic using private IPv4/IPv6 addresses. It is non-transitive; if VPC A is peered with VPC B, and VPC B is peered with VPC C, VPC A cannot communicate with VPC C through VPC B.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “To avoid complex mesh networks when scaling, we replaced multiple VPC Peering connections with a centralized AWS Transit Gateway.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>9. How do you backup data on EBS volumes, and how do you automate copy actions to another region?</h3>
+                        <p><strong>Answer:</strong> EBS volumes are backed up using snapshots, which are incremental backups stored in S3. Automation can be done using AWS Lifecycle Manager (DLM) or AWS Backup, which can schedule snapshot creation and automatically copy them to a disaster recovery region.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I created an AWS Backup plan that takes snapshots of our production DB EBS volumes every night and copies them to the us-east-1 region for compliance.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>10. How do you troubleshoot a 502 Bad Gateway error on an Application Load Balancer?</h3>
+                        <p><strong>Answer:</strong> A 502 error indicates the load balancer received an invalid response from the backend targets. I would check target health checks in the console, verify if the backend application process is running on the EC2 instances, and check if the application is listening on the correct port.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I resolved a 502 error by checking the ALB Target Group and discovering that the Node.js application had crashed due to an out-of-memory error.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>11. What is the difference between a public subnet and a private subnet in a VPC?</h3>
+                        <p><strong>Answer:</strong> A public subnet has a route in its route table pointing to an Internet Gateway (IGW), allowing direct internet access. A private subnet does not route directly to the IGW and requires a NAT Gateway in a public subnet for secure outbound internet access.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In our production VPC, our backend APIs and databases are placed in private subnets, while the ALB is in a public subnet to accept user traffic.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>12. What are IAM roles, and how do they differ from IAM users?</h3>
+                        <p><strong>Answer:</strong> IAM users represent individuals or applications with permanent credentials (passwords or access keys). IAM roles do not have credentials associated with them; they are assumed by trusted entities (like EC2 instances or Lambda functions) to obtain temporary security keys.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We assign an IAM role directly to our ECS task definitions so containers can access AWS services without hardcoding secret keys inside code.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>13. How does AWS billing work, and how can we prevent unexpected cost overruns?</h3>
+                        <p><strong>Answer:</strong> AWS charges based on resource usage (on-demand, storage, data transfer). To prevent cost overruns, we configure AWS Budgets, enable CloudWatch billing alarms, set up Cost Anomaly Detection, and transition resources using Autoscaling.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I configured a CloudWatch billing alarm that sends an SNS notification to our Slack channel if our daily AWS budget exceeds 120% of its normal rate.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>14. What are Availability Zones (AZs), and how do they provide fault tolerance?</h3>
+                        <p><strong>Answer:</strong> AZs are distinct, isolated physical locations within an AWS Region, each consisting of one or more data centers. They are connected by low-latency private networking, allowing applications to replicate data across multiple zones to survive physical local outages.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “Our microservices are distributed across three AZs (a, b, and c) so that if one AZ experiences a power failure, traffic automatically fails over to the remaining zones.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>15. How do you resolve a 'disk full' status on an EC2 instance without downtime?</h3>
+                        <p><strong>Answer:</strong> I would modify the EBS volume size directly from the AWS Console to increase it, then connect to the instance via SSH and use commands like `growpart` and `resize2fs` (for ext4) or `xfs_growfs` (for XFS) to expand the file system online.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “When a logs directory filled an EBS volume on an application server, I increased the EBS size from 50GB to 100GB and ran `resize2fs` to expand it in under 5 minutes without restarting the app.”
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <script>

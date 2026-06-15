@@ -730,6 +730,172 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- Real-Time Interview Questions & Answers Section -->
+            <section class="interview-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 25px;">
+                    <i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Real-Time Interview Questions & Answers for 2 Years Experience
+                </h2>
+                <style>
+                    .qa-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .qa-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    [data-theme="dark"] .qa-card {
+                        background-color: var(--bg-secondary) !important;
+                        border-color: var(--border-color) !important;
+                    }
+                    .qa-card h3 {
+                        font-size: 1.15rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                        line-height: 1.4;
+                    }
+                    .qa-card p {
+                        margin-bottom: 12px;
+                        line-height: 1.6;
+                        color: var(--text-light);
+                    }
+                    [data-theme="dark"] .qa-card p {
+                        color: var(--text-main);
+                    }
+                    .qa-card p strong {
+                        color: var(--text-dark);
+                    }
+                    [data-theme="dark"] .qa-card p strong {
+                        color: var(--text-title);
+                    }
+                    .qa-card .example-block {
+                        background-color: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        padding: 12px 18px;
+                        border-radius: 4px;
+                        margin-top: 15px;
+                        font-style: italic;
+                        color: #555;
+                    }
+                    [data-theme="dark"] .qa-card .example-block {
+                        background-color: #1e1730;
+                        color: #b2abc2;
+                    }
+                </style>
+                <div class="qa-list">
+                    <div class="qa-card">
+                        <h3>1. What is the difference between Continuous Delivery (CD) and Continuous Deployment (CD)?</h3>
+                        <p><strong>Answer:</strong> Continuous Delivery automates code building, testing, and staging, but requires a manual approval step to push to production. Continuous Deployment automates the entire flow, releasing directly to production without manual gatekeeping.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “Our pipeline deploys changes to staging on git push, requiring lead approval (Continuous Delivery) before deploying to production.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>2. How do you secure secrets (like API keys and SSH keys) inside a CI/CD pipeline?</h3>
+                        <p><strong>Answer:</strong> We use credential managers (like Jenkins Credentials or GitHub Secrets) to store values securely, masking them in logs and referencing them as environment variables during build steps.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We load our AWS access keys from GitHub Secrets using the `${{ secrets.AWS_ACCESS_KEY_ID }}` syntax inside our workflows.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>3. What is the purpose of the Artifacts stage in a CI/CD pipeline?</h3>
+                        <p><strong>Answer:</strong> Artifacts are the compiled, packaged outputs of the build phase (like JARs, zip files, or docker images). Storing them allows the deploy phase to consume verified builds directly without rebuilding code.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In our Maven pipeline, the build stage uploads the generated `.war` file as an artifact, and the deploy stage copies it to our Tomcat server.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>4. How do you configure a rollback strategy in your deployment pipeline?</h3>
+                        <p><strong>Answer:</strong> I implement rollback logic by keeping track of the previous stable deployment version. If post-deployment integration tests fail, the pipeline automatically triggers a revert deployment.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In our Kubernetes deployment step, if the new pods fail readiness checks, the pipeline automatically triggers `kubectl rollout undo` to restore the last version.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>5. How do you troubleshoot a failing build stage in GitHub Actions?</h3>
+                        <p><strong>Answer:</strong> I inspect the run logs of the failing step to locate syntax errors, compiler issues, or failed unit tests. I also check environment variables and runner configuration parameters.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I resolved a Jenkins build failure by reviewing console logs and finding that the Node.js runner version was outdated for the new packages.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>6. What is the difference between commit-based triggers and scheduled triggers in CI/CD pipelines?</h3>
+                        <p><strong>Answer:</strong> Commit triggers initiate pipelines immediately when code is pushed to a branch. Scheduled triggers run pipelines at specified intervals (like a cron job) for tasks like security scans.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “Our main pipeline runs integration tests on git push, while our SonarQube static code analysis runs every night via a cron trigger.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>7. How do you ensure unit tests run automatically in a CI pipeline?</h3>
+                        <p><strong>Answer:</strong> I add a dedicated test stage in our pipeline script (Jenkinsfile or GitHub workflow) that runs before the build and packaging stages.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We set up a workflow step running `npm run test:unit` that blocks packaging if any unit test fails.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>8. How do you configure manual approvals for production deployments in GitHub Actions?</h3>
+                        <p><strong>Answer:</strong> I create a production environment in the repository settings, configure Environment Protection Rules, and assign specific team members as required approvers.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We configure a manual approval gate in GitHub Actions so that the dev lead must click 'Approve' before production deployment starts.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>9. What is the difference between hosted and self-hosted CI/CD runners?</h3>
+                        <p><strong>Answer:</strong> Hosted runners are managed VMs provided by the vendor (like GitHub). Self-hosted runners are physical servers or VMs you configure in your private network, offering more speed and security access.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We run our Jenkins agents inside our private AWS VPC to deploy code directly to internal EC2 instances without opening public ports.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>10. How do you prevent concurrent pipeline runs from conflicting during deployment?</h3>
+                        <p><strong>Answer:</strong> I configure concurrency limits or lock resources in the pipeline settings so that only one deployment job runs at a time, queueing or cancelling others.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We configure `concurrency: production` in our GitHub Actions workflow to prevent simultaneous releases from overwriting each other.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>11. How do you build and push Docker images inside a CI/CD pipeline?</h3>
+                        <p><strong>Answer:</strong> I configure steps to install Docker, log in to the image registry (like Docker Hub or ECR), run `docker build` with a commit tag, and run `docker push`.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use the `docker/build-push-action` in GitHub Actions to build our app image and tag it with the commit SHA before pushing to ECR.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>12. What is a Canary Deployment, and how can it be implemented in a CD pipeline?</h3>
+                        <p><strong>Answer:</strong> A canary deployment releases the new version to a tiny fraction of users (e.g. 5%) first. The pipeline monitors metrics, and if error rates remain low, rolls it out to 100% of users.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “Our CD pipeline updates our routing configuration to send 10% of traffic to the new container version, monitoring error logs for 10 minutes before full rollout.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>13. How do you pass environment variables between different stages in Jenkins?</h3>
+                        <p><strong>Answer:</strong> I define variables at the global environment block or use file writes to pass data between stages in declarative pipelines.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I use `env.BUILD_VERSION = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()` to reference the hash in later stages.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>14. How do you troubleshoot a pipeline job that is stuck in a queued state?</h3>
+                        <p><strong>Answer:</strong> A queued state indicates that no active runners match the required tags, or all executors are busy. I check runner online status and tag configuration in the admin console.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I fixed a queued Jenkins build by registering a new Docker executor container after the old executor disk filled up.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>15. How do you configure notification alerts for build failures in CI/CD?</h3>
+                        <p><strong>Answer:</strong> I configure post-action steps in the pipeline (like `post { failure { ... } }` in Jenkins or `if: failure()` in GitHub) to trigger a webhook sending logs to team chats.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We integrated a Slack webhook step in our workflow to alert the developer immediately when their branch build fails.”
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <script>

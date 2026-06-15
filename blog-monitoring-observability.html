@@ -742,6 +742,172 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- Real-Time Interview Questions & Answers Section -->
+            <section class="interview-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 25px;">
+                    <i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Real-Time Interview Questions & Answers for 2 Years Experience
+                </h2>
+                <style>
+                    .qa-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .qa-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    [data-theme="dark"] .qa-card {
+                        background-color: var(--bg-secondary) !important;
+                        border-color: var(--border-color) !important;
+                    }
+                    .qa-card h3 {
+                        font-size: 1.15rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                        line-height: 1.4;
+                    }
+                    .qa-card p {
+                        margin-bottom: 12px;
+                        line-height: 1.6;
+                        color: var(--text-light);
+                    }
+                    [data-theme="dark"] .qa-card p {
+                        color: var(--text-main);
+                    }
+                    .qa-card p strong {
+                        color: var(--text-dark);
+                    }
+                    [data-theme="dark"] .qa-card p strong {
+                        color: var(--text-title);
+                    }
+                    .qa-card .example-block {
+                        background-color: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        padding: 12px 18px;
+                        border-radius: 4px;
+                        margin-top: 15px;
+                        font-style: italic;
+                        color: #555;
+                    }
+                    [data-theme="dark"] .qa-card .example-block {
+                        background-color: #1e1730;
+                        color: #b2abc2;
+                    }
+                </style>
+                <div class="qa-list">
+                    <div class="qa-card">
+                        <h3>1. What is the difference between Monitoring and Observability?</h3>
+                        <p><strong>Answer:</strong> Monitoring tells you that something is failing by tracking predefined metrics (like CPU or error count). Observability lets you investigate why something is failing by analyzing inputs like metrics, logs, and traces.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “Monitoring alerts us when API response time exceeds 2 seconds; Observability lets us trace request parameters to find the database query causing the bottleneck.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>2. What are SLIs, SLOs, and SLAs, and how do they differ?</h3>
+                        <p><strong>Answer:</strong> An SLI (Service Level Indicator) is a metric measuring service performance (e.g., error rate). An SLO (Service Level Objective) is the target value for that indicator (e.g., error rate < 0.1%). An SLA (Service Level Agreement) is the legal commitment to customers (e.g., 99.9% uptime or pay a penalty).</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We monitor our API success rate SLI daily to ensure we meet our internal 99.9% SLO and prevent SLA breaches.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>3. How do you troubleshoot a sudden spike in application latency?</h3>
+                        <p><strong>Answer:</strong> I start by looking at APM dashboards to isolate the slow endpoints. Then, I check database load, thread pool utilization, and inspect distributed traces to pinpoint the bottleneck service.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I resolved a latency issue by analyzing Jaeger traces and finding that our API service was performing repeated queries due to an N+1 bug.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>4. What is the difference between Pull-based (Prometheus) and Push-based (CloudWatch) monitoring?</h3>
+                        <p><strong>Answer:</strong> Pull-based systems scrape metrics periodically from exposed endpoints on client systems. Push-based systems require clients or agents to push metrics directly to a central repository over HTTP.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use Prometheus to pull metrics from our Kubernetes pods on port 9090, and push custom system logs to CloudWatch using the unified agent.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>5. How do you design an alert configuration to avoid Alert Fatigue?</h3>
+                        <p><strong>Answer:</strong> I configure alerts based on customer impact (symptom-based) rather than cause-based. I send non-critical alerts (like disk usage at 75%) to Slack, and route critical alerts (like API error rate > 5%) to PagerDuty.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We set up paging alerts only when our API success rate drops below 99% for 5 minutes, reducing noise from short spikes.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>6. How do you configure a CloudWatch alarm to trigger Auto Scaling?</h3>
+                        <p><strong>Answer:</strong> I set up a metric alarm based on Average CPU Utilization exceeding a threshold (e.g., 75%) for a set period, then link it to an Auto Scaling Group scale-out policy.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I created a CloudWatch alarm that adds 1 instance to our ASG if our average CPU remains above 80% for 5 minutes.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>7. What is a Distributed Trace, and why is it useful in a microservice environment?</h3>
+                        <p><strong>Answer:</strong> A distributed trace tracks a request's journey as it hops across multiple services. It injects a unique trace ID into headers, allowing developers to see execution spans and latency breakdown.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use OpenTelemetry to trace user checkouts, helping us identify that a latency issue was caused by a slow payment gateway call.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>8. How do you set up Grafana dashboards to display server metrics?</h3>
+                        <p><strong>Answer:</strong> I configure Prometheus or CloudWatch as a data source in the Grafana settings, then write PromQL or CloudWatch queries to build panels visualizing CPU, RAM, and Disk I/O.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I imported the Node Exporter dashboard into Grafana to get instant visualization of our new worker nodes' system load.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>9. What is Root Cause Analysis (RCA), and what steps do you take during an outage?</h3>
+                        <p><strong>Answer:</strong> RCA is the process of identifying the primary cause of an incident. During an outage, I check active alerts, review the centralized dashboard, isolate recent deployments, and inspect system logs.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “During a DB outage, I checked the DB connections pool and resolved the root cause by killing a hung migration script.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>10. How do you troubleshoot a 'High Error Rate' alert on an API endpoint?</h3>
+                        <p><strong>Answer:</strong> I check the NGINX or API Gateway logs to find the HTTP status codes. If they are 5xx, I query centralized application logs to check stack traces and search for code exceptions.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I resolved a 500 error spike by searching logs in Kibana and finding that the database server had run out of connections.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>11. What are the 'Four Golden Signals' of site reliability engineering monitoring?</h3>
+                        <p><strong>Answer:</strong> The Four Golden Signals are Latency (time to serve request), Traffic (demand/requests per second), Errors (rate of failing requests), and Saturation (resource availability/exhaustion).</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We build our core Kubernetes dashboards around the Four Golden Signals to keep a clear view of our cluster health.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>12. What is Log Aggregation, and why is it necessary?</h3>
+                        <p><strong>Answer:</strong> Log aggregation collects logs from all servers and applications into a central repository (like Elasticsearch or Loki). This allows developers to query logs in one place instead of SSHing into individual hosts.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use Filebeat to send container logs to Elasticsearch, making logs instantly searchable in Kibana during debugging.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>13. How do you monitor memory usage on EC2 instances when CloudWatch does not track it by default?</h3>
+                        <p><strong>Answer:</strong> Memory is an operating system level metric. I install the unified CloudWatch agent on the instances, configure the `amazon-cloudwatch-agent.json` file to collect memory metrics, and start the agent.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I configured the CloudWatch agent to push memory and disk metrics to CloudWatch every 60 seconds, setting alarms on those parameters.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>14. How do you configure health checks for endpoint monitoring?</h3>
+                        <p><strong>Answer:</strong> I configure external synthetic monitors (like Route 53 health checks or Pingdom) to send HTTP requests to a `/health` endpoint periodically, checking for 200 OK status codes.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We have a Route 53 health check configured to alert us via email and SMS if our landing page endpoint fails to load.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>15. What is Saturation in monitoring, and how do you calculate it?</h3>
+                        <p><strong>Answer:</strong> Saturation measures how full your system resources are. It is calculated by checking resource metrics (like disk queue depth, memory swap usage, or database connection pool utilization).</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We set a saturation alert on our PostgreSQL database connection limit when it reaches 85% capacity to proactively avoid connection failures.”
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <script>

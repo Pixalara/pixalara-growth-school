@@ -887,6 +887,172 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- Real-Time Interview Questions & Answers Section -->
+            <section class="interview-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 25px;">
+                    <i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Real-Time Interview Questions & Answers for 2 Years Experience
+                </h2>
+                <style>
+                    .qa-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .qa-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    [data-theme="dark"] .qa-card {
+                        background-color: var(--bg-secondary) !important;
+                        border-color: var(--border-color) !important;
+                    }
+                    .qa-card h3 {
+                        font-size: 1.15rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                        line-height: 1.4;
+                    }
+                    .qa-card p {
+                        margin-bottom: 12px;
+                        line-height: 1.6;
+                        color: var(--text-light);
+                    }
+                    [data-theme="dark"] .qa-card p {
+                        color: var(--text-main);
+                    }
+                    .qa-card p strong {
+                        color: var(--text-dark);
+                    }
+                    [data-theme="dark"] .qa-card p strong {
+                        color: var(--text-title);
+                    }
+                    .qa-card .example-block {
+                        background-color: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        padding: 12px 18px;
+                        border-radius: 4px;
+                        margin-top: 15px;
+                        font-style: italic;
+                        color: #555;
+                    }
+                    [data-theme="dark"] .qa-card .example-block {
+                        background-color: #1e1730;
+                        color: #b2abc2;
+                    }
+                </style>
+                <div class="qa-list">
+                    <div class="qa-card">
+                        <h3>1. What is the difference between a Docker Image and a Docker Container?</h3>
+                        <p><strong>Answer:</strong> A Docker Image is a read-only, static blueprint containing all libraries and files. A Docker Container is a live, running instance of an image with a read-write layer on top.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “In our registry, we store our application image `web-app:v1.0`, and run multiple container instances of it on our staging server.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>2. What are Docker Volumes, and when should we use them?</h3>
+                        <p><strong>Answer:</strong> Docker Volumes are storage mechanisms designed to persist container data outside the container file system. Without volumes, all data generated inside a container is lost when the container is deleted.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We mount a named volume for our PostgreSQL containers using `docker run -v db_data:/var/lib/postgresql/data` to ensure data persists during upgrades.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>3. What is the difference between the COPY and ADD instructions in a Dockerfile?</h3>
+                        <p><strong>Answer:</strong> `COPY` only supports copying local files and directories from the host build context. `ADD` can copy remote files via URLs and automatically extract tar archives into the image.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I always use `COPY` for standard file additions to keep builds predictable, and only use `ADD` when importing local tar archive components.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>4. How do you troubleshoot a Docker container that exits immediately after starting?</h3>
+                        <p><strong>Answer:</strong> I start by running `docker logs <container-id>` to check stdout/stderr, then run `docker inspect <container-id>` to verify the CMD, ENTRYPOINT, and exit codes.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I resolved a startup crash by running `docker logs` and finding that the application was missing database environment variables.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>5. How do you run commands inside an already running Docker container?</h3>
+                        <p><strong>Answer:</strong> I use the `docker exec` command along with `-it` (interactive tty) flags to spawn a bash or sh shell inside the running container namespace.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `docker exec -it my-nginx /bin/bash` to verify if NGINX configuration files are correctly loaded inside the container.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>6. What is Docker Compose, and when should you use it?</h3>
+                        <p><strong>Answer:</strong> Docker Compose is a tool for defining and running multi-container Docker applications. It uses a YAML file to configure application services, networks, and volumes in one place.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use a `docker-compose.yml` file to spin up our Node.js app, Redis cache, and MongoDB database together for local testing.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>7. How do Docker Image Layers work, and how can we optimize image builds?</h3>
+                        <p><strong>Answer:</strong> Each instruction in a Dockerfile (like RUN, COPY, ADD) creates a read-only layer. Docker caches layers to speed up builds. We can optimize by combining commands and putting infrequently changed layers at the top.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I combine commands like `apt-get update && apt-get install -y curl` to avoid creating unnecessary intermediate layers in our images.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>8. What is the difference between CMD and ENTRYPOINT in a Dockerfile?</h3>
+                        <p><strong>Answer:</strong> `ENTRYPOINT` sets the primary executable of the container, which cannot be easily overridden. `CMD` provides default arguments for the entrypoint, which can be overridden at runtime.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We define `ENTRYPOINT ['node']` and `CMD ['server.js']` so developers can run the image or override parameters to run tests.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>9. How do you publish a port in Docker, and what is the difference between exposing and publishing?</h3>
+                        <p><strong>Answer:</strong> `EXPOSE` is informational, documenting which ports the container listens on. Publishing a port using `-p <host-port>:<container-port>` maps the host port to the container port, opening access to the outside.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I map a container port using `docker run -p 80:8080 my-app` to expose our internal Node.js port 8080 on the host’s standard port 80.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>10. How do you push a local Docker image to a registry like Amazon ECR or Docker Hub?</h3>
+                        <p><strong>Answer:</strong> I tag the image with the registry host name using `docker tag`, log in to the registry with `docker login`, and push the tagged image using `docker push`.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `docker tag local-app:latest 123456789.dkr.ecr.us-east-1.amazonaws.com/app:v1` then push it to deploy it to AWS.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>11. What is the default Docker bridge network, and how do containers communicate?</h3>
+                        <p><strong>Answer:</strong> The default `bridge` network connects containers on the same host. Containers on the default bridge can only communicate via IP addresses. On custom bridge networks, they can communicate using container names as hostnames (automatic DNS).</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We create a user-defined bridge network `docker network create app-net` so our app container can connect to `db-container:5432` easily.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>12. How do you limit resource usage (CPU and Memory) for Docker containers?</h3>
+                        <p><strong>Answer:</strong> I specify limits using flags like `-m` or `--memory` and `--cpus` in the `docker run` command, or define resource limits in docker-compose files.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `docker run -d -m 512m --cpus=0.5 nginx` to restrict our web container from consuming more than 512MB of RAM.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>13. What is a multi-stage Docker build, and what are its advantages?</h3>
+                        <p><strong>Answer:</strong> A multi-stage build uses multiple `FROM` instructions in a single Dockerfile. It compiles dependencies in a build stage, and copies only the output artifact to a clean production stage, reducing image size.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use multi-stage builds to compile our Go app in a 800MB golang container, then copy the binary into a 5MB alpine image for deployment.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>14. How do you configure a Docker container to start automatically if it crashes or the host reboots?</h3>
+                        <p><strong>Answer:</strong> I configure restart policies using the `--restart` flag in `docker run` (e.g., `always`, `unless-stopped`, `on-failure`).</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We run our critical service containers with the `--restart unless-stopped` flag to survive host server updates and unexpected failures.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>15. How do you clean up unused containers, images, volumes, and networks to free up disk space?</h3>
+                        <p><strong>Answer:</strong> I use the `docker system prune` command, which deletes stopped containers, unused networks, and dangling images. Adding `--volumes` cleans up unused volume space.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `docker system prune -a --volumes -f` in our Jenkins cron job to clean up disk space between automated builds.”
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <script>

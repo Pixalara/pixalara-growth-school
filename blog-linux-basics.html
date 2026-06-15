@@ -1252,6 +1252,172 @@
                         </div>
                     </div>
                 </div>
+            
+            <!-- Real-Time Interview Questions & Answers Section -->
+            <section class="interview-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid #eee;">
+                <h2 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 25px;">
+                    <i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Real-Time Interview Questions & Answers for 2 Years Experience
+                </h2>
+                <style>
+                    .qa-card {
+                        background: #fff;
+                        border: 1px solid #eee;
+                        border-radius: 12px;
+                        padding: 25px;
+                        margin-bottom: 25px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .qa-card:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(101, 40, 247, 0.05);
+                    }
+                    [data-theme="dark"] .qa-card {
+                        background-color: var(--bg-secondary) !important;
+                        border-color: var(--border-color) !important;
+                    }
+                    .qa-card h3 {
+                        font-size: 1.15rem;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                        line-height: 1.4;
+                    }
+                    .qa-card p {
+                        margin-bottom: 12px;
+                        line-height: 1.6;
+                        color: var(--text-light);
+                    }
+                    [data-theme="dark"] .qa-card p {
+                        color: var(--text-main);
+                    }
+                    .qa-card p strong {
+                        color: var(--text-dark);
+                    }
+                    [data-theme="dark"] .qa-card p strong {
+                        color: var(--text-title);
+                    }
+                    .qa-card .example-block {
+                        background-color: #f8f9ff;
+                        border-left: 4px solid var(--primary);
+                        padding: 12px 18px;
+                        border-radius: 4px;
+                        margin-top: 15px;
+                        font-style: italic;
+                        color: #555;
+                    }
+                    [data-theme="dark"] .qa-card .example-block {
+                        background-color: #1e1730;
+                        color: #b2abc2;
+                    }
+                </style>
+                <div class="qa-list">
+                    <div class="qa-card">
+                        <h3>1. How do Linux file permissions work, and what is the difference between 755 and 644 permissions?</h3>
+                        <p><strong>Answer:</strong> Permissions are split into Owner, Group, and Others. Each digit represents the sum of Read (4), Write (2), and Execute (1). 755 allows the owner to read/write/execute, and others to read/execute. 644 allows the owner to read/write, and others to only read.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I recursively set directories to 755 and files to 644 in web roots like /var/www to ensure users can browse directories but cannot write files maliciously.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>2. How do you troubleshoot a 'disk full' error if `df -h` shows 100% usage, but `du -sh` of all directories shows much less?</h3>
+                        <p><strong>Answer:</strong> This happens when deleted files are still held open by running processes. The space is not freed until the process is terminated or restarted.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I use `lsof +L1` to find deleted files still held open by active processes, then reload or restart the service (like NGINX or httpd) to free up the space.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>3. How do you locate files modified in the last 24 hours containing the word 'error' in `/var/log`?</h3>
+                        <p><strong>Answer:</strong> I combine the `find` command to look for files modified within 24 hours and pipe it to `grep` or use the `-exec` option of `find` to search for text.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `find /var/log -mtime -1 -type f -exec grep -i 'error' {} +` to quickly locate errors in active server logs from the past day.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>4. What is the difference between soft limits and hard limits for user resources in `/etc/security/limits.conf`?</h3>
+                        <p><strong>Answer:</strong> A soft limit is the default value that users can temporarily increase up to the hard limit. The hard limit is a strict ceiling enforced by the root user that users cannot exceed.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We set the soft open files limit (`nofile`) to 8192 and the hard limit to 65536 for the application user to allow scaling under high traffic load.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>5. How do you troubleshoot high CPU utilization on a Linux server?</h3>
+                        <p><strong>Answer:</strong> I run `top` or `htop` to identify the processes consuming the most CPU. Inside `top`, I can press `Shift+P` to sort by CPU usage, and `H` to see thread-level metrics.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “If I notice a high CPU spike, I run `top -b -n 1` to capture CPU state snapshot, then inspect the process IDs to see if they belong to background cron jobs.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>6. How do you set up a cron job to run a script every 5 minutes and capture its logs?</h3>
+                        <p><strong>Answer:</strong> I open the cron editor using `crontab -e` and add the cron syntax `*/5 * * * *` followed by the absolute path of the script and redirection symbols.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I configure cron jobs as `*/5 * * * * /opt/scripts/cleanup.sh >> /var/log/cleanup.log 2>&1` to ensure both standard logs and errors are captured.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>7. What is the difference between `systemctl start` and `systemctl enable`?</h3>
+                        <p><strong>Answer:</strong> `start` runs the service immediately in the current session but does not persist across restarts. `enable` configures the service symlinks so it starts automatically during the system boot sequence.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “When setting up a database server, I run `systemctl enable postgresql` to guarantee the database starts up automatically if the VM restarts.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>8. How do you verify if a specific port is open and listening on a remote server?</h3>
+                        <p><strong>Answer:</strong> I use networking commands like `telnet`, `nc` (netcat), or `curl` to probe the remote port. `nc -zv <ip> <port>` is the most effective command.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “Before deploying, I run `nc -zv db-host 5432` to confirm our database is accepting connections on port 5432 from our app host.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>9. How do you check memory utilization, and what do the 'cached' and 'buffers' fields mean in `free -m`?</h3>
+                        <p><strong>Answer:</strong> 'Cached' memory is RAM used by Linux to store files read from disk for faster access. Linux automatically reclaims this memory if applications need it, so it should not be treated as exhausted memory.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I always look at the 'available' column in `free -m` rather than 'free' to check how much memory our application can actually allocate.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>10. How do you secure SSH access to a Linux production server?</h3>
+                        <p><strong>Answer:</strong> I modify `/etc/ssh/sshd_config` to disable root login (`PermitRootLogin no`), disable password logins (`PasswordAuthentication no`), and specify key-based authentication.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “To block automated brute-force attacks, I changed our SSH configuration to passwordless access and set up Fail2ban to block suspicious IPs.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>11. What is the difference between a hard link and a soft link (symlink)?</h3>
+                        <p><strong>Answer:</strong> A soft link is a shortcut pointing to the file path name. If the original file is deleted, the link breaks. A hard link points directly to the file's underlying inode on the disk, remaining valid even if the original name is deleted.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “We use soft links `ln -s` to point system configuration folders to application directories across different mounted drives.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>12. How do you monitor log files in real-time, filtering out specific strings?</h3>
+                        <p><strong>Answer:</strong> I use `tail -f` to watch files in real-time and pipe it to `grep` to filter out specific keywords.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “To debug authentication failures live, I run `tail -f /var/log/secure | grep -i 'failed'` while trying to connect.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>13. How do you add a new user and grant them sudo permissions in Linux?</h3>
+                        <p><strong>Answer:</strong> I use `useradd` to create the account, and then add the user to the sudo group (called `sudo` on Ubuntu/Debian or `wheel` on CentOS/RHEL) using `usermod`.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I ran `usermod -aG wheel developer1` to grant administrative permissions to the new developer's account on our CentOS server.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>14. What are package managers, and how do you configure custom repositories?</h3>
+                        <p><strong>Answer:</strong> Package managers (like apt, yum, dnf) resolve dependencies and download software. Custom repositories are added by creating `.repo` files in `/etc/yum.repos.d/` or lists in `/etc/apt/sources.list.d/`.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I created `/etc/yum.repos.d/docker-ce.repo` to configure the official Docker repository, allowing us to install and update Docker CE via yum.”
+                        </div>
+                    </div>
+                    <div class="qa-card">
+                        <h3>15. How do you find out which process is listening on a specific port in Linux?</h3>
+                        <p><strong>Answer:</strong> I use command-line utilities like `ss`, `netstat`, or `lsof` with root privileges to trace the port allocation.</p>
+                        <div class="example-block">
+                            <strong>Example:</strong> “I run `ss -tulpn | grep :8080` to find the Process ID (PID) of the application currently blocking port 8080.”
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <script>
