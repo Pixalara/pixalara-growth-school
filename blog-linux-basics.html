@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linux Fundamentals: The Story of the OS That Runs the World | Growth School</title>
-    <meta name="description" content="Discover the history of Linux, who created it, why the whole world runs on it, and master 30+ basic Linux commands with examples.">
+    <meta name="description" content="Discover the history of Linux, who created it, why the whole world runs on it, and master 50+ basic Linux commands with examples.">
     <link rel="canonical" href="https://growthschool.cc/blog-linux-basics.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -443,10 +443,10 @@
 
                 <div class="section-header">
                     <i class="fas fa-list-check"></i>
-                    <h2>30+ Everyday Linux Commands</h2>
+                    <h2>50+ Everyday Linux Commands</h2>
                 </div>
 
-                <p>Here is your essential cheat sheet! We have compiled 30 of the most important, everyday Linux commands, including simple examples and analogies even a school student can understand.</p>
+                <p>Here is your essential cheat sheet! We have compiled 50 of the most important, everyday Linux commands, including simple examples and analogies even a school student can understand.</p>
 
                 <div class="table-wrapper">
                     <table class="compare-table">
@@ -767,6 +767,196 @@
                                 <td>
                                     <strong>Analogy:</strong> Making a secure phone call to log in and talk to a machine in another city.<br>
                                     <div class="example-box">Example: <code>ssh ubuntu@13.233.1.100</code> connects to AWS Mumbai.</div>
+                                </td>
+                            </tr>
+                            <!-- 32 -->
+                            <tr>
+                                <td>32</td>
+                                <td><strong>List all processes</strong></td>
+                                <td><span class="tag-linux">ps aux</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Looking at a master attendance sheet showing everyone in the school and what they are currently doing.<br>
+                                    <div class="example-box">Example: <code>ps aux | grep nginx</code> finds nginx-related processes.</div>
+                                </td>
+                            </tr>
+                            <!-- 33 -->
+                            <tr>
+                                <td>33</td>
+                                <td><strong>Find process ID</strong></td>
+                                <td><span class="tag-linux">pgrep [name]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Asking "What is student Amit's roll number?" to quickly find their ID.<br>
+                                    <div class="example-box">Example: <code>pgrep chrome</code> returns the PIDs of running Chrome instances.</div>
+                                </td>
+                            </tr>
+                            <!-- 34 -->
+                            <tr>
+                                <td>34</td>
+                                <td><strong>Process Tree</strong></td>
+                                <td><span class="tag-linux">pstree -p</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Drawing a family tree showing parent processes and their child processes with their IDs.<br>
+                                    <div class="example-box">Example: <code>pstree -p</code> displays the hierarchical layout of all active processes.</div>
+                                </td>
+                            </tr>
+                            <!-- 35 -->
+                            <tr>
+                                <td>35</td>
+                                <td><strong>Kill by Name</strong></td>
+                                <td><span class="tag-linux">killall [name]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> A supervisor announcing "Everyone in the packing department, stop working immediately!"<br>
+                                    <div class="example-box">Example: <code>killall firefox</code> terminates all running Firefox processes.</div>
+                                </td>
+                            </tr>
+                            <!-- 36 -->
+                            <tr>
+                                <td>36</td>
+                                <td><strong>Adjust Priority</strong></td>
+                                <td><span class="tag-linux">renice [priority] -p [PID]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Telling a worker, "Put down the cleaning broom and focus entirely on helping customers right now."<br>
+                                    <div class="example-box">Example: <code>renice 10 -p 1234</code> sets priority of PID 1234 to 10 (less CPU priority).</div>
+                                </td>
+                            </tr>
+                            <!-- 37 -->
+                            <tr>
+                                <td>37</td>
+                                <td><strong>Manage Jobs</strong></td>
+                                <td><span class="tag-linux">jobs</span> / <span class="tag-linux">fg</span> / <span class="tag-linux">bg</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Moving a kitchen chef to wash dishes in the back room (background) or bringing them back to the counter (foreground).<br>
+                                    <div class="example-box">Example: <code>jobs</code> lists background tasks; <code>fg %1</code> brings job 1 to foreground.</div>
+                                </td>
+                            </tr>
+                            <!-- 38 -->
+                            <tr>
+                                <td>38</td>
+                                <td><strong>Control Services</strong></td>
+                                <td><span class="tag-linux">systemctl [action] [service]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Turning the main water supply valve on, off, or restarting it for the whole building.<br>
+                                    <div class="example-box">Example: <code>sudo systemctl restart nginx</code> restarts the Nginx service.</div>
+                                </td>
+                            </tr>
+                            <!-- 39 -->
+                            <tr>
+                                <td>39</td>
+                                <td><strong>Active Connections</strong></td>
+                                <td><span class="tag-linux">netstat -tn</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Looking at a logbook of all active telephone calls going in and out of an office.<br>
+                                    <div class="example-box">Example: <code>netstat -tn</code> lists active numerical TCP connections.</div>
+                                </td>
+                            </tr>
+                            <!-- 40 -->
+                            <tr>
+                                <td>40</td>
+                                <td><strong>Capture Packets</strong></td>
+                                <td><span class="tag-linux">sudo tcpdump -i [interface] port [port]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Setting up a security camera at a gate to record and inspect every package passing through.<br>
+                                    <div class="example-box">Example: <code>sudo tcpdump -i eth0 port 80</code> captures web traffic on eth0.</div>
+                                </td>
+                            </tr>
+                            <!-- 41 -->
+                            <tr>
+                                <td>41</td>
+                                <td><strong>Trace Network Path</strong></td>
+                                <td><span class="tag-linux">traceroute [host]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Tracking a shipping parcel at every single transit warehouse it stops at on its way to your house.<br>
+                                    <div class="example-box">Example: <code>traceroute google.com</code> prints list of routers/hops to Google.</div>
+                                </td>
+                            </tr>
+                            <!-- 42 -->
+                            <tr>
+                                <td>42</td>
+                                <td><strong>List Port Owner</strong></td>
+                                <td><span class="tag-linux">lsof -i :[port]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Checking a hotel guest list to see exactly who is staying in room number 80.<br>
+                                    <div class="example-box">Example: <code>lsof -i :8080</code> shows which process is using port 8080.</div>
+                                </td>
+                            </tr>
+                            <!-- 43 -->
+                            <tr>
+                                <td>43</td>
+                                <td><strong>Socket Statistics</strong></td>
+                                <td><span class="tag-linux">ss -tulpn</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> A modern, faster digital billboard showing all open doors and who is guarding them.<br>
+                                    <div class="example-box">Example: <code>ss -tulpn</code> lists listening TCP/UDP ports with PIDs.</div>
+                                </td>
+                            </tr>
+                            <!-- 44 -->
+                            <tr>
+                                <td>44</td>
+                                <td><strong>DNS Query</strong></td>
+                                <td><span class="tag-linux">dig [domain]</span> / <span class="tag-linux">nslookup</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Looking up a person's name in a telephone directory to find their phone number.<br>
+                                    <div class="example-box">Example: <code>dig google.com</code> returns DNS records for Google.</div>
+                                </td>
+                            </tr>
+                            <!-- 45 -->
+                            <tr>
+                                <td>45</td>
+                                <td><strong>Test Port Connection</strong></td>
+                                <td><span class="tag-linux">nc -zv [host] [port]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Knocking on a specific shop door to see if the shop is open and responding.<br>
+                                    <div class="example-box">Example: <code>nc -zv 192.168.1.1 22</code> checks if SSH port 22 is open on the host.</div>
+                                </td>
+                            </tr>
+                            <!-- 46 -->
+                            <tr>
+                                <td>46</td>
+                                <td><strong>Inspect URL Headers</strong></td>
+                                <td><span class="tag-linux">curl -I [url]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Reading the nutrition label on a food package without opening the package itself.<br>
+                                    <div class="example-box">Example: <code>curl -I https://google.com</code> fetches only the HTTP headers.</div>
+                                </td>
+                            </tr>
+                            <!-- 47 -->
+                            <tr>
+                                <td>47</td>
+                                <td><strong>Service Logs</strong></td>
+                                <td><span class="tag-linux">journalctl -u [service]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Reading the diary of a specific security guard to see everything they did during their shift.<br>
+                                    <div class="example-box">Example: <code>journalctl -u sshd</code> views logs for the SSH service.</div>
+                                </td>
+                            </tr>
+                            <!-- 48 -->
+                            <tr>
+                                <td>48</td>
+                                <td><strong>Read bottom N lines</strong></td>
+                                <td><span class="tag-linux">tail -n [number] [file]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Reading just the final page of a long book to see how it ends.<br>
+                                    <div class="example-box">Example: <code>tail -n 20 error.log</code> shows the last 20 error entries.</div>
+                                </td>
+                            </tr>
+                            <!-- 49 -->
+                            <tr>
+                                <td>49</td>
+                                <td><strong>Read top N lines</strong></td>
+                                <td><span class="tag-linux">head -n [number] [file]</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Reading only the cover page and table of contents of a report.<br>
+                                    <div class="example-box">Example: <code>head -n 10 config.txt</code> displays the first 10 configuration lines.</div>
+                                </td>
+                            </tr>
+                            <!-- 50 -->
+                            <tr>
+                                <td>50</td>
+                                <td><strong>Kernel Logs</strong></td>
+                                <td><span class="tag-linux">dmesg -T</span></td>
+                                <td>
+                                    <strong>Analogy:</strong> Checking the black box voice recorder of an airplane to see all system alerts and boot logs.<br>
+                                    <div class="example-box">Example: <code>dmesg -T | grep -i usb</code> searches hardware logs for USB events.</div>
                                 </td>
                             </tr>
                         </tbody>
