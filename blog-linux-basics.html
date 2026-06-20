@@ -162,6 +162,16 @@
             line-height: 1.6;
         }
         
+        .compare-table th:first-child,
+        .compare-table td:first-child {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            width: 50px !important;
+            min-width: 50px !important;
+            white-space: nowrap !important;
+            text-align: center !important;
+        }
+        
         .compare-table tbody tr:hover {
             background-color: #fcfcff;
         }
@@ -452,7 +462,7 @@
                     <table class="compare-table">
                         <thead>
                             <tr>
-                                <th width="5%">#</th>
+                                <th>#</th>
                                 <th width="20%">Purpose</th>
                                 <th width="25%">Linux Command</th>
                                 <th width="50%">Real-World Analogy & Example</th>
