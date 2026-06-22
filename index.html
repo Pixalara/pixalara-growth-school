@@ -296,6 +296,324 @@
             </div>
         </section>
 
+        <!-- ==========================================
+             INTERACTIVE LABS & SIMULATORS SECTION
+             ========================================== -->
+        <section id="interactive-labs" class="section">
+            <div class="container">
+                <div class="badge-wrapper reveal">
+                    <div class="lab-inclusion-badge">
+                        <i class="fas fa-gift"></i> Included in Course Fee – $0 Extra Cost
+                    </div>
+                </div>
+                <h2 class="section-title reveal" style="color: #ffffff !important;">Learn by Doing: Interactive Labs & Simulators</h2>
+                <p class="labs-subtitle reveal">
+                    Stop reading slides. Master Linux terminal, live DevOps pipelines, and cloud architectures in real-time inside our custom-built interactive sandboxes.
+                </p>
+
+                <div class="labs-tabs reveal">
+                    <button class="lab-tab-btn active" id="btn-tab-linux" onclick="switchLabTab('linux-lab', this)">
+                        <i class="fab fa-linux"></i> Linux Sandbox Lab
+                    </button>
+                    <button class="lab-tab-btn" id="btn-tab-aws" onclick="switchLabTab('aws-lab', this)">
+                        <i class="fab fa-aws"></i> AWS Cloud Simulator
+                    </button>
+                </div>
+
+                <div class="mobile-swipe-notice reveal">
+                    <i class="fas fa-info-circle"></i> Interactive features perform best on desktop. Tap/click tasks on the left to execute.
+                </div>
+
+                <!-- Linux Lab Sandbox Window -->
+                <div id="linux-lab" class="lab-window active reveal">
+                    <div class="window-titlebar">
+                        <div class="window-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="window-title"><i class="fas fa-terminal"></i> Terminal Sandbox Console (Ubuntu)</div>
+                        <div class="window-user">
+                            <span>ubuntu@sandbox</span>
+                            <div class="user-avatar" style="background: #6528F7;">U</div>
+                        </div>
+                    </div>
+                    <div class="linux-lab-layout">
+                        <!-- Left Panel: Lessons -->
+                        <div class="linux-panel-left">
+                            <div class="panel-heading">
+                                <i class="fas fa-list-ol"></i> Sandbox Lessons
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>OVERALL PROGRESS</span>
+                                    <span class="progress-percent" id="linux-progress-text">0%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" id="linux-progress-bar"></div>
+                                </div>
+                            </div>
+                            <div class="badge-grid">
+                                <span class="badge-dot active" id="badge-1">1</span>
+                                <span class="badge-dot" id="badge-2">2</span>
+                                <span class="badge-dot" id="badge-3">3</span>
+                                <span class="badge-dot" id="badge-4">4</span>
+                                <span class="badge-dot" id="badge-5">5</span>
+                                <span class="badge-dot" id="badge-6">6</span>
+                                <span class="badge-dot" id="badge-7">7</span>
+                            </div>
+                            <div class="lessons-list">
+                                <div class="lesson-item active" id="lesson-1" onclick="runLinuxCommand(1, 'docker ps', 'docker_ps')">
+                                    <div class="lesson-title-row">
+                                        <span class="lesson-checkbox"><i class="fas fa-check"></i></span>
+                                        <span>1. Query running container state</span>
+                                    </div>
+                                    <div class="lesson-cmd">docker ps</div>
+                                </div>
+                                <div class="lesson-item" id="lesson-2" onclick="runLinuxCommand(2, 'docker logs web-server', 'docker_logs')">
+                                    <div class="lesson-title-row">
+                                        <span class="lesson-checkbox"><i class="fas fa-check"></i></span>
+                                        <span>2. Fetch web-server server logs</span>
+                                    </div>
+                                    <div class="lesson-cmd">docker logs web-server</div>
+                                </div>
+                                <div class="lesson-item" id="lesson-3" onclick="runLinuxCommand(3, 'df -h', 'df_h')">
+                                    <div class="lesson-title-row">
+                                        <span class="lesson-checkbox"><i class="fas fa-check"></i></span>
+                                        <span>3. Inspect partition disk space</span>
+                                    </div>
+                                    <div class="lesson-cmd">df -h</div>
+                                </div>
+                                <div class="lesson-item" id="lesson-4" onclick="runLinuxCommand(4, 'netstat -tulnp', 'netstat')">
+                                    <div class="lesson-title-row">
+                                        <span class="lesson-checkbox"><i class="fas fa-check"></i></span>
+                                        <span>4. Inspect open ports & programs</span>
+                                    </div>
+                                    <div class="lesson-cmd">netstat -tulnp</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Center Panel: Console -->
+                        <div class="linux-panel-center">
+                            <div class="terminal-console" id="terminal-console">
+                                <div class="terminal-welcome">
+                                    Welcome to Growth School Linux Sandbox Lesson Console (v2.4.1-LTS)<br>
+                                    Click any task on the left to type and run the terminal commands.
+                                </div>
+                                <div class="term-line" id="current-prompt-line">
+                                    <span class="term-prompt">ubuntu@sandbox:~$</span> <span class="term-cursor" id="term-cursor"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Visual Explorer -->
+                        <div class="linux-panel-right">
+                            <div class="explorer-header">
+                                <i class="fas fa-folder-open"></i> Visual Explorer
+                            </div>
+                            <p style="font-size: 0.75rem; color: #8b949e; margin-bottom: 15px; line-height: 1.35;">
+                                Watch directories and files materialize dynamically as commands run.
+                            </p>
+                            <div class="explorer-grid" id="explorer-grid">
+                                <div class="explorer-item active-item" id="dir-home">
+                                    <i class="fas fa-folder"></i>
+                                    <span>home</span>
+                                </div>
+                                <div class="explorer-item" id="dir-etc">
+                                    <i class="fas fa-folder"></i>
+                                    <span>etc</span>
+                                </div>
+                                <div class="explorer-item" id="dir-var">
+                                    <i class="fas fa-folder"></i>
+                                    <span>var</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AWS Architect Simulator Window -->
+                <div id="aws-lab" class="lab-window reveal">
+                    <div class="window-titlebar">
+                        <div class="window-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="window-title"><i class="fas fa-cloud"></i> AWS Cloud Architect & Traffic Simulator</div>
+                        <div class="window-user">
+                            <span>dileep.cloudops@gmail.com</span>
+                            <div class="user-avatar" style="background:#ff9900;">D</div>
+                        </div>
+                    </div>
+                    <div class="aws-lab-layout">
+                        <!-- Left Panel: Toolbox -->
+                        <div class="aws-toolbox">
+                            <div class="aws-toolbox-group">
+                                <div class="toolbox-title">Containers</div>
+                                <div class="toolbox-items">
+                                    <div class="toolbox-item region" onclick="highlightAwsNode('region')">
+                                        <i class="fas fa-globe"></i> AWS Region
+                                    </div>
+                                    <div class="toolbox-item vpc" onclick="highlightAwsNode('vpc')">
+                                        <i class="fas fa-box"></i> Production VPC
+                                    </div>
+                                    <div class="toolbox-item subnet" onclick="highlightAwsNode('subnet-public')">
+                                        <i class="fas fa-network-wired"></i> Public Subnet
+                                    </div>
+                                    <div class="toolbox-item subnet" onclick="highlightAwsNode('subnet-private')">
+                                        <i class="fas fa-shield-alt"></i> Private Subnets
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aws-toolbox-group">
+                                <div class="toolbox-title">Gateways & Routing</div>
+                                <div class="toolbox-items">
+                                    <div class="toolbox-item gateway" onclick="highlightAwsNode('igw')">
+                                        <i class="fas fa-door-open"></i> Internet Gtwy
+                                    </div>
+                                    <div class="toolbox-item lb" onclick="highlightAwsNode('alb')">
+                                        <i class="fas fa-random"></i> Load Balancer
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Panel: Canvas Panel -->
+                        <div class="aws-canvas-panel">
+                            <div class="aws-canvas-header">
+                                <div class="canvas-controls-left">
+                                    <div class="template-select-wrapper">
+                                        <span>TEMPLATE:</span>
+                                        <select class="template-select" id="aws-template-select" onchange="changeAwsTemplate()">
+                                            <option value="3-tier-ha">3-Tier HA Architecture</option>
+                                            <option value="single-instance">Single Instance (Standard)</option>
+                                            <option value="secure-vpc">Secure Private VPC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="canvas-action-btn btn-simulate" onclick="simulateAwsTraffic()">
+                                        <i class="fas fa-play"></i> Simulate Traffic
+                                    </button>
+                                    <button class="canvas-action-btn" onclick="resetAwsCanvas()">
+                                        <i class="fas fa-redo"></i> Reset
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Canvas Container with SVG Diagram -->
+                            <div class="aws-canvas">
+                                <!-- Simulation Alert Box -->
+                                <div id="aws-sim-alert" style="position: absolute; top: 12px; left: 50%; transform: translateX(-50%); background: rgba(22, 27, 34, 0.95); border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; color: #8b949e; z-index: 10; pointer-events: none; transition: all 0.3s ease; opacity: 0; display: flex; align-items: center; gap: 8px;">
+                                    <span id="aws-sim-alert-icon"><i class="fas fa-circle-notch fa-spin"></i></span>
+                                    <span id="aws-sim-alert-text">Ready for simulation...</span>
+                                </div>
+
+                                <svg class="aws-svg-canvas" viewBox="0 0 650 350" id="aws-svg">
+                                    <!-- BACKGROUND AND BORDERS (VPC) -->
+                                    <!-- Mumbai Region Container -->
+                                    <rect x="70" y="20" width="510" height="310" rx="10" ry="10" class="aws-container-box container-region" id="region-border" />
+                                    <text x="80" y="38" fill="#ff9900" font-size="9" font-weight="bold" font-family="sans-serif">ap-south-1 (Mumbai Region)</text>
+
+                                    <!-- VPC Container -->
+                                    <rect x="95" y="55" width="460" height="260" rx="8" ry="8" class="aws-container-box container-vpc" id="vpc-border" />
+                                    <text x="105" y="70" fill="#e8a202" font-size="9" font-weight="bold" font-family="sans-serif">Production VPC (10.0.0.0/16)</text>
+
+                                    <!-- Public Subnet Container -->
+                                    <rect x="170" y="85" width="100" height="215" rx="6" ry="6" class="aws-container-box container-public-subnet" id="subnet-public-border" />
+                                    <text x="175" y="100" fill="#2ecc71" font-size="8" font-weight="bold" font-family="sans-serif" id="subnet-public-title">Public Subnet 1A</text>
+
+                                    <!-- Private Subnet 1B (Web App) -->
+                                    <rect x="290" y="85" width="125" height="215" rx="6" ry="6" class="aws-container-box container-private-subnet" id="subnet-private-web-border" />
+                                    <text x="295" y="100" fill="#3498db" font-size="8" font-weight="bold" font-family="sans-serif" id="subnet-private-web-title">Private Subnet 1B</text>
+
+                                    <!-- Private Subnet 1C (RDS Database) -->
+                                    <rect x="435" y="85" width="110" height="215" rx="6" ry="6" class="aws-container-box container-private-subnet" id="subnet-private-db-border" />
+                                    <text x="440" y="100" fill="#3498db" font-size="8" font-weight="bold" font-family="sans-serif" id="subnet-private-db-title">Private Subnet 1C</text>
+
+                                    <!-- STATIC CONNECTION LINES -->
+                                    <!-- Clients to IGW -->
+                                    <line x1="45" y1="180" x2="95" y2="180" class="aws-connection-line" id="line-clients-igw" />
+                                    <!-- IGW to ALB -->
+                                    <line x1="155" y1="180" x2="190" y2="140" class="aws-connection-line" id="line-igw-alb" />
+                                    <!-- ALB to EC2 -->
+                                    <line x1="250" y1="140" x2="325" y2="180" class="aws-connection-line" id="line-alb-ec2" />
+                                    <!-- EC2 to RDS -->
+                                    <line x1="385" y1="180" x2="475" y2="180" class="aws-connection-line" id="line-ec2-rds" />
+                                    <!-- EC2 to NAT -->
+                                    <line x1="325" y1="180" x2="250" y2="240" class="aws-connection-line" id="line-ec2-nat" />
+                                    <!-- NAT to IGW -->
+                                    <line x1="190" y1="240" x2="125" y2="180" class="aws-connection-line" id="line-nat-igw" />
+                                    
+                                    <!-- Single Instance Direct Line (Hidden by default) -->
+                                    <line x1="155" y1="180" x2="325" y2="180" class="aws-connection-line" id="line-direct-instance" style="display: none;" />
+
+                                    <!-- PATHS FOR TRAFFIC SIMULATION (FLOWS) -->
+                                    <!-- Standard Path: Web Clients -> IGW -> ALB -> EC2 -> RDS -->
+                                    <path d="M 45 180 L 125 180 L 220 140 L 355 180 L 505 180" id="path-standard-flow" class="aws-flow-path" />
+                                    <!-- Outbound NAT Path: EC2 -> NAT Gateway -> IGW -->
+                                    <path d="M 355 180 L 220 240 L 125 180" id="path-nat-flow" class="aws-flow-path" />
+                                    <!-- Direct Path (for Single Instance) -->
+                                    <path d="M 45 180 L 125 180 L 355 180" id="path-direct-flow" class="aws-flow-path" style="display: none;" />
+
+                                    <!-- NODES -->
+                                    <!-- Web Clients -->
+                                    <g class="aws-node" id="node-clients">
+                                        <rect x="15" y="145" width="60" height="70" class="aws-node-box" />
+                                        <text x="45" y="178" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle">&#xf109;</text>
+                                        <text x="45" y="196" class="aws-node-title">Web Clients</text>
+                                        <text x="45" y="206" class="aws-node-subtitle">External users</text>
+                                    </g>
+
+                                    <!-- Internet Gateway -->
+                                    <g class="aws-node" id="node-igw">
+                                        <rect x="95" y="145" width="60" height="70" class="aws-node-box" />
+                                        <text x="125" y="178" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#e74c3c;">&#xf0ec;</text>
+                                        <text x="125" y="196" class="aws-node-title">IGW</text>
+                                        <text x="125" y="206" class="aws-node-subtitle">Internet Gtwy</text>
+                                    </g>
+
+                                    <!-- Load Balancer (inside Public Subnet) -->
+                                    <g class="aws-node" id="node-alb">
+                                        <rect x="190" y="105" width="60" height="70" class="aws-node-box" />
+                                        <text x="220" y="138" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#9b59b6;">&#xf074;</text>
+                                        <text x="220" y="156" class="aws-node-title">ALB</text>
+                                        <text x="220" y="166" class="aws-node-subtitle">Load Balancer</text>
+                                    </g>
+
+                                    <!-- NAT Gateway (inside Public Subnet) -->
+                                    <g class="aws-node" id="node-nat">
+                                        <rect x="190" y="205" width="60" height="70" class="aws-node-box" />
+                                        <text x="220" y="238" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#2ecc71;">&#xf012;</text>
+                                        <text x="220" y="256" class="aws-node-title">NAT Gtwy</text>
+                                        <text x="220" y="266" class="aws-node-subtitle">Network Egress</text>
+                                    </g>
+
+                                    <!-- EC2 Instance (inside Private Subnet 1B) -->
+                                    <g class="aws-node" id="node-ec2">
+                                        <rect x="325" y="145" width="60" height="70" class="aws-node-box" id="node-ec2-box" />
+                                        <text x="355" y="178" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#e8a202;">&#xf233;</text>
+                                        <text x="355" y="196" class="aws-node-title" id="node-ec2-title">EC2 Server</text>
+                                        <text x="355" y="206" class="aws-node-subtitle" id="node-ec2-subtitle">App Instance</text>
+                                    </g>
+
+                                    <!-- RDS Database (inside Private Subnet 1C) -->
+                                    <g class="aws-node" id="node-rds">
+                                        <rect x="475" y="145" width="60" height="70" class="aws-node-box" />
+                                        <text x="505" y="178" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#3498db;">&#xf1c0;</text>
+                                        <text x="505" y="196" class="aws-node-title">RDS DB</text>
+                                        <text x="505" y="206" class="aws-node-subtitle">MySQL Cluster</text>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="mentors" class="section">
             <div class="container">
                 <h2 class="section-title reveal">Meet Your Mentors</h2>
@@ -601,6 +919,435 @@
                 btnText.style.display = 'inline-block';
                 btnLoading.style.display = 'none';
             });
+        }
+
+        // ==========================================
+        // INTERACTIVE LABS SHOWCASE SCRIPTS
+        // ==========================================
+        function switchLabTab(tabId, btn) {
+            document.querySelectorAll('.lab-window').forEach(win => {
+                win.classList.remove('active');
+            });
+            document.querySelectorAll('.lab-tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // Predefined command outputs for Linux sandbox
+        const linuxCommandOutputs = {
+            'docker_ps': 'CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS\na8b7c6d5e4f3   nginx:alpine   "/docker-entrypoint.s…"   2 hours ago    Up 2 hours\nweb-server',
+            'docker_logs': '10.0.1.5 - - [23/Jun/2026:12:00:01 +0000] "GET / HTTP/1.1" 200 612\n10.0.1.5 - - [23/Jun/2026:12:00:15 +0000] "GET /index.html HTTP/1.1" 200 612\n[info] Web server active on port 80.',
+            'df_h': 'Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1        29G  8.4G   20G  30% /\ntmpfs           2.0G     0  2.0G   0% /dev/shm\n/dev/loop0       64M   64M     0 100% /snap/core20/1822',
+            'netstat': 'Active Internet connections (only servers)\nProto Recv-Q Send-Q Local Address           Foreign Address         State\ntcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1234/nginx: master\ntcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      820/sshd'
+        };
+
+        const completedLinuxLessons = new Set();
+        let linuxTypingActive = false;
+
+        function runLinuxCommand(stepNum, command, key) {
+            if (linuxTypingActive) return;
+
+            // Remove active class from all lessons and add to current
+            document.querySelectorAll('.lesson-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            const activeItem = document.getElementById(`lesson-${stepNum}`);
+            if (activeItem) activeItem.classList.add('active');
+
+            // Highlight progress badge
+            document.querySelectorAll('.badge-dot').forEach(badge => {
+                badge.classList.remove('active');
+            });
+            const currentBadge = document.getElementById(`badge-${stepNum}`);
+            if (currentBadge) currentBadge.classList.add('active');
+
+            const consoleEl = document.getElementById('terminal-console');
+            const promptLine = document.getElementById('current-prompt-line');
+            const cursor = document.getElementById('term-cursor');
+
+            // Set typing state
+            linuxTypingActive = true;
+
+            // Create command text span
+            const cmdTextSpan = document.createElement('span');
+            cmdTextSpan.className = 'term-input';
+            promptLine.insertBefore(cmdTextSpan, cursor);
+
+            let charIdx = 0;
+            function typeChar() {
+                if (charIdx < command.length) {
+                    cmdTextSpan.textContent += command.charAt(charIdx);
+                    charIdx++;
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                    setTimeout(typeChar, 40 + Math.random() * 40);
+                } else {
+                    // Done typing: Print output after brief delay
+                    setTimeout(() => {
+                        // Print Output
+                        const outputDiv = document.createElement('span');
+                        outputDiv.className = 'term-output';
+                        outputDiv.textContent = linuxCommandOutputs[key];
+                        consoleEl.appendChild(outputDiv);
+
+                        // Mark lesson complete
+                        if (activeItem) activeItem.classList.add('completed');
+                        completedLinuxLessons.add(stepNum);
+
+                        // Update badge dot
+                        if (currentBadge) {
+                            currentBadge.classList.remove('active');
+                            currentBadge.classList.add('completed');
+                        }
+
+                        // Activate next badge if not completed
+                        const nextBadge = document.getElementById(`badge-${stepNum + 1}`);
+                        if (nextBadge && !nextBadge.classList.contains('completed')) {
+                            nextBadge.classList.add('active');
+                        }
+
+                        // Update progress bar
+                        const totalLessons = 4;
+                        const progressPct = Math.min(100, Math.round((completedLinuxLessons.size / totalLessons) * 100));
+                        document.getElementById('linux-progress-text').textContent = `${progressPct}%`;
+                        document.getElementById('linux-progress-bar').style.width = `${progressPct}%`;
+
+                        // Update Visual Explorer
+                        updateVisualExplorer(key);
+
+                        // Remove cursor ID from current prompt
+                        cursor.removeAttribute('id');
+                        cursor.className = '';
+
+                        // Create new prompt line
+                        const newPrompt = document.createElement('div');
+                        newPrompt.className = 'term-line';
+                        newPrompt.id = 'current-prompt-line';
+                        newPrompt.innerHTML = '<span class="term-prompt">ubuntu@sandbox:~$</span> <span class="term-cursor" id="term-cursor"></span>';
+                        consoleEl.appendChild(newPrompt);
+
+                        consoleEl.scrollTop = consoleEl.scrollHeight;
+                        linuxTypingActive = false;
+                    }, 250);
+                }
+            }
+
+            typeChar();
+        }
+
+        function updateVisualExplorer(key) {
+            const grid = document.getElementById('explorer-grid');
+            
+            // Mute active item highlights
+            document.querySelectorAll('.explorer-item').forEach(item => {
+                item.classList.remove('active-item');
+            });
+
+            if (key === 'docker_ps') {
+                document.getElementById('dir-var').classList.add('active-item');
+                // Spawn a new visual folder
+                if (!document.getElementById('exp-docker-web')) {
+                    const newItem = document.createElement('div');
+                    newItem.className = 'explorer-item file new-file';
+                    newItem.id = 'exp-docker-web';
+                    newItem.innerHTML = '<i class="fas fa-file-code"></i><span>docker-web</span>';
+                    grid.appendChild(newItem);
+                }
+            } else if (key === 'docker_logs') {
+                document.getElementById('dir-var').classList.add('active-item');
+                // Spawn a log file
+                if (!document.getElementById('exp-nginx-log')) {
+                    const newItem = document.createElement('div');
+                    newItem.className = 'explorer-item file new-file';
+                    newItem.id = 'exp-nginx-log';
+                    newItem.innerHTML = '<i class="fas fa-file-alt"></i><span>nginx.log</span>';
+                    grid.appendChild(newItem);
+                }
+            } else if (key === 'df_h') {
+                document.getElementById('dir-home').classList.add('active-item');
+            } else if (key === 'netstat') {
+                document.getElementById('dir-etc').classList.add('active-item');
+            }
+        }
+
+        // ==========================================
+        // AWS SIMULATOR SCRIPTS
+        // ==========================================
+        let awsSimulating = false;
+
+        function simulateAwsTraffic() {
+            if (awsSimulating) return;
+
+            const svg = document.getElementById('aws-svg');
+            const alertBox = document.getElementById('aws-sim-alert');
+            const alertText = document.getElementById('aws-sim-alert-text');
+            const alertIcon = document.getElementById('aws-sim-alert-icon');
+            const template = document.getElementById('aws-template-select').value;
+
+            awsSimulating = true;
+            svg.classList.add('simulating');
+            
+            // Show Alert
+            alertBox.style.opacity = '1';
+            alertIcon.innerHTML = '<i class="fas fa-circle-notch fa-spin" style="color:#00f3ff;"></i>';
+            alertText.textContent = 'Simulating active network traffic requests...';
+
+            // Timer for completed state
+            setTimeout(() => {
+                if (!awsSimulating) return; // In case of reset
+                svg.classList.remove('simulating');
+                alertIcon.innerHTML = '<i class="fas fa-check-circle" style="color:#27c93f;"></i>';
+                
+                if (template === 'single-instance') {
+                    alertText.textContent = 'Simulation Complete: Direct Connection 200 OK';
+                } else if (template === 'secure-vpc') {
+                    alertText.textContent = 'Simulation Complete: Encrypted Private Tunnel Active (200 OK)';
+                } else {
+                    alertText.textContent = 'Simulation Complete: 3-Tier HA Routing Success (0% packet loss)';
+                }
+
+                // Fade alert out after 3 more seconds
+                setTimeout(() => {
+                    if (awsSimulating) {
+                        alertBox.style.opacity = '0';
+                        awsSimulating = false;
+                    }
+                }, 3000);
+
+            }, 4000);
+        }
+
+        function resetAwsCanvas() {
+            awsSimulating = false;
+            
+            const svg = document.getElementById('aws-svg');
+            svg.classList.remove('simulating');
+            
+            const alertBox = document.getElementById('aws-sim-alert');
+            alertBox.style.opacity = '0';
+
+            // Reset template selection
+            document.getElementById('aws-template-select').value = '3-tier-ha';
+            changeAwsTemplate();
+        }
+
+        function changeAwsTemplate() {
+            const template = document.getElementById('aws-template-select').value;
+            const svg = document.getElementById('aws-svg');
+            
+            // Cancel current simulation
+            awsSimulating = false;
+            svg.classList.remove('simulating');
+            document.getElementById('aws-sim-alert').style.opacity = '0';
+
+            // Reset nodes highlight or display properties
+            const albNode = document.getElementById('node-alb');
+            const natNode = document.getElementById('node-nat');
+            const rdsNode = document.getElementById('node-rds');
+            const igwNode = document.getElementById('node-igw');
+            
+            // Subnet borders
+            const subPublic = document.getElementById('subnet-public-border');
+            const subWeb = document.getElementById('subnet-private-web-border');
+            const subDb = document.getElementById('subnet-private-db-border');
+            
+            // Subnet titles
+            const subPublicTitle = document.getElementById('subnet-public-title');
+            const subWebTitle = document.getElementById('subnet-private-web-title');
+            const subDbTitle = document.getElementById('subnet-private-db-title');
+
+            // Static lines
+            const lineIgwAlb = document.getElementById('line-igw-alb');
+            const lineAlbEc2 = document.getElementById('line-alb-ec2');
+            const lineEc2Rds = document.getElementById('line-ec2-rds');
+            const lineEc2Nat = document.getElementById('line-ec2-nat');
+            const lineNatIgw = document.getElementById('line-nat-igw');
+            const lineDirect = document.getElementById('line-direct-instance');
+
+            // Paths
+            const pathStandard = document.getElementById('path-standard-flow');
+            const pathNat = document.getElementById('path-nat-flow');
+            const pathDirect = document.getElementById('path-direct-flow');
+
+            // EC2 styling
+            const ec2Box = document.getElementById('node-ec2-box');
+            const ec2Title = document.getElementById('node-ec2-title');
+            const ec2Subtitle = document.getElementById('node-ec2-subtitle');
+
+            if (template === 'single-instance') {
+                // Hide Public Subnet 1A, ALB, NAT, RDS
+                albNode.style.display = 'none';
+                natNode.style.display = 'none';
+                rdsNode.style.display = 'none';
+                subPublic.style.display = 'none';
+                subDb.style.display = 'none';
+                
+                subPublicTitle.style.display = 'none';
+                subDbTitle.style.display = 'none';
+
+                // Subnet 1B is Public Subnet Web
+                subWeb.className.baseVal = 'aws-container-box container-public-subnet';
+                subWebTitle.textContent = 'Public Subnet 1A';
+                subWebTitle.setAttribute('fill', '#2ecc71');
+                ec2Title.textContent = 'Web Instance';
+                ec2Subtitle.textContent = 'Standalone EC2';
+
+                // Adjust lines
+                lineIgwAlb.style.display = 'none';
+                lineAlbEc2.style.display = 'none';
+                lineEc2Rds.style.display = 'none';
+                lineEc2Nat.style.display = 'none';
+                lineNatIgw.style.display = 'none';
+                lineDirect.style.display = 'block';
+
+                // Adjust Flow Paths
+                pathStandard.style.display = 'none';
+                pathNat.style.display = 'none';
+                pathDirect.style.display = 'block';
+
+            } else if (template === 'secure-vpc') {
+                // Secure VPC (Private subnets + NAT only, no IGW direct ingress)
+                albNode.style.display = 'block';
+                natNode.style.display = 'block';
+                rdsNode.style.display = 'block';
+                igwNode.style.display = 'block'; // IGW still present for NAT egress
+                
+                subPublic.style.display = 'block';
+                subWeb.style.display = 'block';
+                subDb.style.display = 'block';
+                
+                subPublicTitle.style.display = 'block';
+                subDbTitle.style.display = 'block';
+
+                // Relabel ALB node to VPN Gateway
+                albNode.querySelector('.aws-node-title').textContent = 'VPN Gateway';
+                albNode.querySelector('.aws-node-subtitle').textContent = 'Secure Access';
+                albNode.querySelector('.aws-node-icon').style.fill = '#1e88e5';
+
+                // Reset Subnet 1B to Private
+                subWeb.className.baseVal = 'aws-container-box container-private-subnet';
+                subWebTitle.textContent = 'Private Subnet 1B';
+                subWebTitle.setAttribute('fill', '#3498db');
+                subDbTitle.textContent = 'Private Subnet 1C';
+                subDbTitle.setAttribute('fill', '#3498db');
+
+                ec2Title.textContent = 'Backend App';
+                ec2Subtitle.textContent = 'Private EC2';
+
+                // Adjust lines
+                lineIgwAlb.style.display = 'block';
+                lineAlbEc2.style.display = 'block';
+                lineEc2Rds.style.display = 'block';
+                lineEc2Nat.style.display = 'block';
+                lineNatIgw.style.display = 'block';
+                lineDirect.style.display = 'none';
+
+                // Adjust Flow Paths
+                pathStandard.style.display = 'block';
+                pathNat.style.display = 'block';
+                pathDirect.style.display = 'none';
+
+            } else {
+                // 3-Tier HA (Restore Defaults)
+                albNode.style.display = 'block';
+                natNode.style.display = 'block';
+                rdsNode.style.display = 'block';
+                igwNode.style.display = 'block';
+                
+                subPublic.style.display = 'block';
+                subWeb.style.display = 'block';
+                subDb.style.display = 'block';
+                
+                subPublicTitle.style.display = 'block';
+                subDbTitle.style.display = 'block';
+
+                // Reset ALB labels
+                albNode.querySelector('.aws-node-title').textContent = 'ALB';
+                albNode.querySelector('.aws-node-subtitle').textContent = 'Load Balancer';
+                albNode.querySelector('.aws-node-icon').style.fill = '#9b59b6';
+
+                // Reset Subnet 1B to Private
+                subWeb.className.baseVal = 'aws-container-box container-private-subnet';
+                subWebTitle.textContent = 'Private Subnet 1B';
+                subWebTitle.setAttribute('fill', '#3498db');
+                subDbTitle.textContent = 'Private Subnet 1C';
+                subDbTitle.setAttribute('fill', '#3498db');
+
+                ec2Title.textContent = 'EC2 Server';
+                ec2Subtitle.textContent = 'App Instance';
+
+                // Adjust lines
+                lineIgwAlb.style.display = 'block';
+                lineAlbEc2.style.display = 'block';
+                lineEc2Rds.style.display = 'block';
+                lineEc2Nat.style.display = 'block';
+                lineNatIgw.style.display = 'block';
+                lineDirect.style.display = 'none';
+
+                // Adjust Flow Paths
+                pathStandard.style.display = 'block';
+                pathNat.style.display = 'block';
+                pathDirect.style.display = 'none';
+            }
+        }
+
+        // Highlight visual nodes when clicked in toolbox
+        function highlightAwsNode(type) {
+            // Remove previous highlight classes if any
+            // Alert user briefly
+            const alertBox = document.getElementById('aws-sim-alert');
+            const alertText = document.getElementById('aws-sim-alert-text');
+            const alertIcon = document.getElementById('aws-sim-alert-icon');
+            
+            alertBox.style.opacity = '1';
+            alertIcon.innerHTML = '<i class="fas fa-info-circle" style="color:#00f3ff;"></i>';
+
+            let msg = '';
+            let targetNodeId = '';
+
+            if (type === 'region') {
+                msg = 'AWS Region: Geographically isolated partition (ap-south-1 Mumbai).';
+                targetNodeId = 'region-border';
+            } else if (type === 'vpc') {
+                msg = 'Production VPC: Logically isolated virtual network with IP range 10.0.0.0/16.';
+                targetNodeId = 'vpc-border';
+            } else if (type === 'subnet-public') {
+                msg = 'Public Subnet: Direct internet egress routing, hosts Load Balancer (ALB).';
+                targetNodeId = 'subnet-public-border';
+            } else if (type === 'subnet-private') {
+                msg = 'Private Subnets: Isolated instances, no direct inbound routing. Secure DB & Apps.';
+                targetNodeId = 'subnet-private-web-border';
+            } else if (type === 'igw') {
+                msg = 'Internet Gateway: VPC component allowing inbound/outbound communication.';
+                targetNodeId = 'node-igw';
+            } else if (type === 'alb') {
+                msg = 'Application Load Balancer: Distributes HTTP traffic across backend app servers.';
+                targetNodeId = 'node-alb';
+            }
+
+            alertText.textContent = msg;
+
+            // Flash target border/node
+            const el = document.getElementById(targetNodeId);
+            if (el) {
+                const originalStroke = el.style.stroke;
+                el.style.stroke = '#00f3ff';
+                el.style.strokeWidth = '3px';
+                
+                setTimeout(() => {
+                    el.style.stroke = originalStroke;
+                    el.style.strokeWidth = '';
+                }, 1500);
+            }
+
+            // Hide alert after 3.5 seconds
+            setTimeout(() => {
+                if (!awsSimulating) {
+                    alertBox.style.opacity = '0';
+                }
+            }, 3500);
         }
     </script>
 </body>
