@@ -8,7 +8,7 @@ for filepath in files:
         content = f.read()
     
     pattern = r'(<li>\s*<a href="contact\.html">\s*CONTACT\s*</a>\s*</li>)'
-    replacement = r'\1\n                    <li style="margin-left: 10px;">\n                        <a href="verify.html" class="nav-btn btn-verify">VERIFY CERTIFICATE</a>\n                    </li>'
+    replacement = r'\1\n                    <li style="margin-left: 10px;">\n                        <a href="https://labs.growthschool.cc/" target="_blank" class="nav-btn btn-verify">Interactive Labs</a>\n                    </li>'
     
     new_content, num_subs = re.subn(pattern, replacement, content)
     
