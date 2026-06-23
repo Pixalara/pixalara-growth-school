@@ -1,0 +1,175 @@
+{
+  "elements": [
+    {
+      "id": "user-1",
+      "type": "users",
+      "name": "Web Clients (Internet)",
+      "x": 40,
+      "y": 160,
+      "parentId": null
+    },
+    {
+      "id": "admin-1",
+      "type": "admin",
+      "name": "DevOps / Admin (SSH)",
+      "x": 40,
+      "y": 360,
+      "parentId": null
+    },
+    {
+      "id": "igw-1",
+      "type": "igw",
+      "name": "Internet Gateway",
+      "x": 280,
+      "y": 250,
+      "parentId": null
+    },
+    {
+      "id": "reg-1",
+      "type": "region",
+      "name": "ap-south-1 (Mumbai Region)",
+      "x": 480,
+      "y": 40,
+      "w": 920,
+      "h": 620,
+      "cidr": "",
+      "parentId": null
+    },
+    {
+      "id": "vpc-1",
+      "type": "vpc",
+      "name": "Production VPC — 10.0.0.0/16",
+      "x": 40,
+      "y": 60,
+      "w": 840,
+      "h": 500,
+      "cidr": "10.0.0.0/16",
+      "parentId": "reg-1"
+    },
+    {
+      "id": "sub-pub",
+      "type": "subnet-public",
+      "name": "Public Subnet — Web Tier",
+      "x": 60,
+      "y": 80,
+      "w": 260,
+      "h": 360,
+      "cidr": "10.0.1.0/24",
+      "parentId": "vpc-1"
+    },
+    {
+      "id": "ec2-web",
+      "type": "ec2",
+      "name": "EC2 Web Server",
+      "x": 65,
+      "y": 70,
+      "parentId": "sub-pub",
+      "ports": [80, 443, 22]
+    },
+    {
+      "id": "nat-1",
+      "type": "nat",
+      "name": "NAT Gateway",
+      "x": 65,
+      "y": 230,
+      "parentId": "sub-pub"
+    },
+    {
+      "id": "sub-priv",
+      "type": "subnet-private",
+      "name": "Private Subnet — DB Tier (Isolated)",
+      "x": 380,
+      "y": 80,
+      "w": 260,
+      "h": 360,
+      "cidr": "10.0.2.0/24",
+      "parentId": "vpc-1"
+    },
+    {
+      "id": "rds-db",
+      "type": "rds",
+      "name": "RDS PostgreSQL",
+      "x": 65,
+      "y": 140,
+      "parentId": "sub-priv",
+      "ports": [5432]
+    },
+    {
+      "id": "rt-pub",
+      "type": "rt-public",
+      "name": "Public Route Table",
+      "x": 680,
+      "y": 80,
+      "w": 200,
+      "h": 140,
+      "parentId": "vpc-1",
+      "routes": [
+        { "dest": "10.0.0.0/16", "target": "local" },
+        { "dest": "0.0.0.0/0", "target": "igw-1" }
+      ]
+    },
+    {
+      "id": "rt-priv",
+      "type": "rt-private",
+      "name": "Private Route Table (Local Only)",
+      "x": 680,
+      "y": 260,
+      "w": 200,
+      "h": 140,
+      "parentId": "vpc-1",
+      "routes": [
+        { "dest": "10.0.0.0/16", "target": "local" }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn-user-igw",
+      "from": "user-1",
+      "to": "igw-1",
+      "label": "① INBOUND — HTTP/HTTPS"
+    },
+    {
+      "id": "conn-admin-igw",
+      "from": "admin-1",
+      "to": "igw-1",
+      "label": "① INBOUND — SSH (22)"
+    },
+    {
+      "id": "conn-igw-ec2",
+      "from": "igw-1",
+      "to": "ec2-web",
+      "label": "② Forward to EC2 (Port 80/443)"
+    },
+    {
+      "id": "conn-ec2-rds",
+      "from": "ec2-web",
+      "to": "rds-db",
+      "label": "③ SQL Query (Port 5432)"
+    },
+    {
+      "id": "conn-ec2-nat",
+      "from": "ec2-web",
+      "to": "nat-1",
+      "label": "④ OUTBOUND — Updates / APIs"
+    },
+    {
+      "id": "conn-nat-igw",
+      "from": "nat-1",
+      "to": "igw-1",
+      "label": "⑤ NAT → IGW (Translated Outbound)"
+    },
+    {
+      "id": "conn-rt-pub-sub",
+      "from": "rt-pub",
+      "to": "sub-pub",
+      "label": "Associated"
+    },
+    {
+      "id": "conn-rt-priv-sub",
+      "from": "rt-priv",
+      "to": "sub-priv",
+      "label": "Associated (No Internet)"
+    }
+  ]
+}
