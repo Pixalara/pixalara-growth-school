@@ -377,6 +377,7 @@
                                         <select class="template-select" id="aws-template-select" onchange="changeAwsTemplate()">
                                             <option value="2-tier-web">2-Tier Web (Nginx + MySQL)</option>
                                             <option value="single-instance">Single Instance (Standard)</option>
+                                            <option value="netflix-cdn">Netflix Global CDN (High Scale)</option>
                                         </select>
                                     </div>
                                 </div>
@@ -495,6 +496,185 @@
                                         <text x="385" y="213" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#3498db;">&#xf1c0;</text>
                                         <text x="385" y="231" class="aws-node-title">RDS Database</text>
                                         <text x="385" y="241" class="aws-node-subtitle">MySQL DB Tier</text>
+                                    </g>
+                                </svg>
+
+                                <!-- Netflix Global CDN SVG (Hidden by default) -->
+                                <svg class="aws-svg-canvas" viewBox="0 0 1860 820" id="netflix-svg" style="display: none;">
+                                    <!-- AWS Origin Region (us-east-1) -->
+                                    <rect x="960" y="40" width="860" height="620" rx="10" ry="10" class="aws-container-box container-region subnet-active" id="netflix-region-border" />
+                                    <text x="970" y="58" class="subnet-label label-region active">AWS Origin Region (us-east-1)</text>
+
+                                    <!-- Production VPC -->
+                                    <rect x="1000" y="100" width="780" height="500" rx="8" ry="8" class="aws-container-box container-vpc subnet-active" id="netflix-vpc-border" />
+                                    <text x="1010" y="118" class="subnet-label label-vpc active">Production VPC (10.0.0.0/16)</text>
+
+                                    <!-- Public Subnet (ALB & NAT) -->
+                                    <rect x="1040" y="180" width="200" height="360" rx="6" ry="6" class="aws-container-box container-public-subnet subnet-active" id="netflix-subnet-public-border" />
+                                    <text x="1045" y="196" class="subnet-label label-public active">Public Subnet (10.0.1.0/24)</text>
+
+                                    <!-- Private Subnet (App Tier) -->
+                                    <rect x="1260" y="180" width="220" height="360" rx="6" ry="6" class="aws-container-box container-private-subnet subnet-active" id="netflix-subnet-private-app-border" />
+                                    <text x="1265" y="196" class="subnet-label label-private active">Private Subnet (App Tier - 10.0.2.0/24)</text>
+
+                                    <!-- Private Subnet (DB Tier) -->
+                                    <rect x="1500" y="180" width="220" height="360" rx="6" ry="6" class="aws-container-box container-private-subnet subnet-active" id="netflix-subnet-private-db-border" />
+                                    <text x="1505" y="196" class="subnet-label label-private active">Private Subnet (DB Tier - 10.0.3.0/24)</text>
+
+                                    <!-- STATIC CONNECTION LINES -->
+                                    <!-- US West Clients -> Route 53 -->
+                                    <line x1="100" y1="135" x2="280" y2="305" class="aws-connection-line line-active" id="netflix-line-us-r53" />
+                                    <text x="190" y="210" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">DNS Query</text>
+
+                                    <!-- EU Central Clients -> Route 53 -->
+                                    <line x1="100" y1="315" x2="280" y2="305" class="aws-connection-line line-active" id="netflix-line-eu-r53" />
+                                    <text x="190" y="300" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">DNS Query</text>
+
+                                    <!-- Asia East Clients -> Route 53 -->
+                                    <line x1="100" y1="495" x2="280" y2="305" class="aws-connection-line line-active" id="netflix-line-asia-r53" />
+                                    <text x="190" y="390" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">DNS Query</text>
+
+                                    <!-- Route 53 -> CloudFront -->
+                                    <line x1="340" y1="305" x2="520" y2="305" class="aws-connection-line line-active" id="netflix-line-r53-cf" />
+                                    <text x="430" y="295" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">Route to Nearest Edge</text>
+
+                                    <!-- CloudFront -> IGW -->
+                                    <line x1="580" y1="305" x2="760" y2="305" class="aws-connection-line line-active" id="netflix-line-cf-igw" />
+                                    <text x="670" y="295" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">Cache Miss → Origin</text>
+
+                                    <!-- IGW -> ALB -->
+                                    <path d="M 820 305 L 1090 295" fill="none" class="aws-connection-line line-active" id="netflix-line-igw-alb" />
+                                    <text x="955" y="290" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">HTTPS (443)</text>
+
+                                    <!-- ALB -> EC2 A -->
+                                    <path d="M 1150 295 L 1320 295" fill="none" class="aws-connection-line line-active" id="netflix-line-alb-ec2-1" />
+                                    <text x="1235" y="285" fill="#8b949e" font-size="8" font-family="sans-serif" text-anchor="middle">Port 80 (Round Robin)</text>
+
+                                    <!-- ALB -> EC2 B -->
+                                    <path d="M 1150 295 L 1320 435" fill="none" class="aws-connection-line line-active" id="netflix-line-alb-ec2-2" />
+                                    <text x="1235" y="380" fill="#8b949e" font-size="8" font-family="sans-serif" text-anchor="middle">Port 80 (Round Robin)</text>
+
+                                    <!-- EC2 A -> RDS -->
+                                    <path d="M 1380 295 L 1560 365" fill="none" class="aws-connection-line line-active" id="netflix-line-ec2-rds" />
+                                    <text x="1470" y="320" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">Query DB (5432)</text>
+
+                                    <!-- EC2 B -> RDS -->
+                                    <path d="M 1380 435 L 1560 365" fill="none" class="aws-connection-line line-active" id="netflix-line-ec2b-rds" />
+                                    <text x="1470" y="415" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">Query DB (5432)</text>
+
+                                    <!-- NAT -> IGW -->
+                                    <path d="M 1090 435 L 790 340" fill="none" class="aws-connection-line line-active" id="netflix-line-nat-igw" />
+                                    <text x="940" y="402" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">Outbound (Updates)</text>
+
+                                    <!-- EC2 A -> NAT -->
+                                    <path d="M 1320 295 L 1150 435" fill="none" class="aws-connection-line line-active" id="netflix-line-ec2-nat" />
+                                    <text x="1235" y="350" fill="#8b949e" font-size="8" font-family="sans-serif" text-anchor="middle">Outbound via NAT</text>
+
+                                    <!-- Admin -> IGW -->
+                                    <path d="M 100 755 L 790 340" fill="none" class="aws-connection-line line-active" id="netflix-line-admin-igw" />
+                                    <text x="445" y="535" fill="#8b949e" font-size="9" font-family="sans-serif" text-anchor="middle">SSH / Bastion (22)</text>
+
+                                    <!-- TRAFFIC PATHS FOR SIMULATION -->
+                                    <path d="M 100 135 L 280 305 L 520 305 L 100 135" id="path-netflix-us" class="aws-flow-path" />
+                                    <path d="M 100 315 L 280 305 L 520 305 L 760 305 L 1090 295 L 1320 295 L 1560 365" id="path-netflix-eu-miss" class="aws-flow-path" />
+                                    <path d="M 100 495 L 280 305 L 520 305 L 760 305 L 1090 295 L 1320 435 L 1560 365" id="path-netflix-asia-miss" class="aws-flow-path" />
+                                    <path d="M 100 755 L 790 340 L 1090 295 L 1320 295" id="path-netflix-admin" class="aws-flow-path" />
+
+                                    <!-- NODES -->
+                                    <!-- US West Clients -->
+                                    <g class="aws-node node-active" id="netflix-node-user-us">
+                                        <rect x="40" y="100" width="60" height="70" class="aws-node-box" />
+                                        <text x="70" y="133" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle">&#xf109;</text>
+                                        <text x="70" y="151" class="aws-node-title">US West Clients</text>
+                                        <text x="70" y="161" class="aws-node-subtitle">Web Client</text>
+                                    </g>
+
+                                    <!-- EU Central Clients -->
+                                    <g class="aws-node node-active" id="netflix-node-user-eu">
+                                        <rect x="40" y="280" width="60" height="70" class="aws-node-box" />
+                                        <text x="70" y="313" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle">&#xf109;</text>
+                                        <text x="70" y="331" class="aws-node-title">EU Clients</text>
+                                        <text x="70" y="341" class="aws-node-subtitle">Web Client</text>
+                                    </g>
+
+                                    <!-- Asia East Clients -->
+                                    <g class="aws-node node-active" id="netflix-node-user-asia">
+                                        <rect x="40" y="460" width="60" height="70" class="aws-node-box" />
+                                        <text x="70" y="493" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle">&#xf109;</text>
+                                        <text x="70" y="511" class="aws-node-title">Asia East Clients</text>
+                                        <text x="70" y="521" class="aws-node-subtitle">Web Client</text>
+                                    </g>
+
+                                    <!-- Route 53 (Geo DNS) -->
+                                    <g class="aws-node node-active" id="netflix-node-dns-route53">
+                                        <rect x="280" y="270" width="60" height="70" class="aws-node-box" />
+                                        <text x="310" y="303" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#ff9900;">&#xf0ec;</text>
+                                        <text x="310" y="321" class="aws-node-title">Route 53</text>
+                                        <text x="310" y="331" class="aws-node-subtitle">Geo DNS</text>
+                                    </g>
+
+                                    <!-- CloudFront CDN (Edge Cache) -->
+                                    <g class="aws-node node-active" id="netflix-node-cdn-cloudfront">
+                                        <rect x="520" y="270" width="60" height="70" class="aws-node-box" />
+                                        <text x="550" y="303" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#9b59b6;">&#xf0c2;</text>
+                                        <text x="550" y="321" class="aws-node-title">CloudFront CDN</text>
+                                        <text x="550" y="331" class="aws-node-subtitle">Edge Cache</text>
+                                    </g>
+
+                                    <!-- Internet Gateway -->
+                                    <g class="aws-node node-active" id="netflix-node-igw">
+                                        <rect x="760" y="270" width="60" height="70" class="aws-node-box" />
+                                        <text x="790" y="303" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#e74c3c;">&#xf0ec;</text>
+                                        <text x="790" y="321" class="aws-node-title">IGW</text>
+                                        <text x="790" y="331" class="aws-node-subtitle">Internet Gtwy</text>
+                                    </g>
+
+                                    <!-- Application Load Balancer -->
+                                    <g class="aws-node node-active" id="netflix-node-alb">
+                                        <rect x="1090" y="260" width="60" height="70" class="aws-node-box" />
+                                        <text x="1120" y="293" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#9b59b6;">&#xf074;</text>
+                                        <text x="1120" y="311" class="aws-node-title">ALB</text>
+                                        <text x="1120" y="321" class="aws-node-subtitle">Load Balancer</text>
+                                    </g>
+
+                                    <!-- NAT Gateway -->
+                                    <g class="aws-node node-active" id="netflix-node-nat">
+                                        <rect x="1090" y="400" width="60" height="70" class="aws-node-box" />
+                                        <text x="1120" y="433" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#2ecc71;">&#xf012;</text>
+                                        <text x="1120" y="451" class="aws-node-title">NAT Gateway</text>
+                                        <text x="1120" y="461" class="aws-node-subtitle">Network Egress</text>
+                                    </g>
+
+                                    <!-- EC2 App Server A -->
+                                    <g class="aws-node node-active" id="netflix-node-ec2-app-1">
+                                        <rect x="1320" y="260" width="60" height="70" class="aws-node-box" />
+                                        <text x="1350" y="293" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#e8a202;">&#xf233;</text>
+                                        <text x="1350" y="311" class="aws-node-title">EC2 App A</text>
+                                        <text x="1350" y="321" class="aws-node-subtitle">App Server</text>
+                                    </g>
+
+                                    <!-- EC2 App Server B -->
+                                    <g class="aws-node node-active" id="netflix-node-ec2-app-2">
+                                        <rect x="1320" y="400" width="60" height="70" class="aws-node-box" />
+                                        <text x="1350" y="433" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#e8a202;">&#xf233;</text>
+                                        <text x="1350" y="451" class="aws-node-title">EC2 App B</text>
+                                        <text x="1350" y="461" class="aws-node-subtitle">App Server</text>
+                                    </g>
+
+                                    <!-- RDS Database -->
+                                    <g class="aws-node node-active" id="netflix-node-rds">
+                                        <rect x="1560" y="330" width="60" height="70" class="aws-node-box" />
+                                        <text x="1590" y="363" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#3498db;">&#xf1c0;</text>
+                                        <text x="1590" y="381" class="aws-node-title">RDS DB</text>
+                                        <text x="1590" y="391" class="aws-node-subtitle">Multi-AZ DB</text>
+                                    </g>
+
+                                    <!-- DevOps / Admin -->
+                                    <g class="aws-node node-active" id="netflix-node-admin">
+                                        <rect x="40" y="720" width="60" height="70" class="aws-node-box" />
+                                        <text x="70" y="753" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle">&#xf21b;</text>
+                                        <text x="70" y="771" class="aws-node-title">DevOps / Admin</text>
+                                        <text x="70" y="781" class="aws-node-subtitle">SSH Access</text>
                                     </g>
                                 </svg>
                             </div>
@@ -1252,47 +1432,85 @@
             if (awsSimulating) return;
 
             const svg = document.getElementById('aws-svg');
+            const netflixSvg = document.getElementById('netflix-svg');
             const alertBox = document.getElementById('aws-sim-alert');
             const alertText = document.getElementById('aws-sim-alert-text');
             const alertIcon = document.getElementById('aws-sim-alert-icon');
             const template = document.getElementById('aws-template-select').value;
 
             awsSimulating = true;
-            svg.classList.add('simulating');
             
             // Show Alert
             alertBox.style.opacity = '1';
             alertIcon.innerHTML = '<i class="fas fa-circle-notch fa-spin" style="color:#00f3ff;"></i>';
             alertText.textContent = 'Simulating active network traffic requests...';
 
-            // Timer for completed state
-            setTimeout(() => {
-                if (!awsSimulating) return; // In case of reset
-                svg.classList.remove('simulating');
-                alertIcon.innerHTML = '<i class="fas fa-check-circle" style="color:#27c93f;"></i>';
+            if (template === 'netflix-cdn') {
+                netflixSvg.classList.add('simulating');
+                alertText.textContent = 'Route 53: Resolving Geo-DNS routing queries for worldwide clients...';
                 
-                if (template === 'single-instance') {
-                    alertText.textContent = 'Simulation Complete: Direct Connection 200 OK';
-                } else {
-                    alertText.textContent = 'Simulation Complete: 2-Tier Routing Success (0% packet loss)';
-                }
-
-                // Fade alert out after 3 more seconds
                 setTimeout(() => {
-                    if (awsSimulating) {
-                        alertBox.style.opacity = '0';
-                        awsSimulating = false;
-                    }
-                }, 3000);
+                    if (!awsSimulating) return;
+                    alertText.textContent = 'CloudFront: US West Cache Hit (low latency). EU & Asia Cache Miss: routing to AWS Origin...';
+                }, 1800);
 
-            }, 4000);
+                setTimeout(() => {
+                    if (!awsSimulating) return;
+                    alertText.textContent = 'Origin VPC: ALB balancing traffic; private EC2 servers querying Multi-AZ RDS database...';
+                }, 3600);
+
+                setTimeout(() => {
+                    if (!awsSimulating) return;
+                    netflixSvg.classList.remove('simulating');
+                    alertIcon.innerHTML = '<i class="fas fa-check-circle" style="color:#27c93f;"></i>';
+                    alertText.textContent = 'Simulation Complete: CDN Edge Hits & AWS Origin Queries Successful (0% loss).';
+
+                    // Fade alert out after 3 more seconds
+                    setTimeout(() => {
+                        if (awsSimulating) {
+                            alertBox.style.opacity = '0';
+                            awsSimulating = false;
+                        }
+                    }, 3000);
+                }, 5400);
+
+            } else {
+                svg.classList.add('simulating');
+                
+                // Timer for completed state
+                setTimeout(() => {
+                    if (!awsSimulating) return; // In case of reset
+                    svg.classList.remove('simulating');
+                    alertIcon.innerHTML = '<i class="fas fa-check-circle" style="color:#27c93f;"></i>';
+                    
+                    if (template === 'single-instance') {
+                        alertText.textContent = 'Simulation Complete: Direct Connection 200 OK';
+                    } else {
+                        alertText.textContent = 'Simulation Complete: 2-Tier Routing Success (0% packet loss)';
+                    }
+
+                    // Fade alert out after 3 more seconds
+                    setTimeout(() => {
+                        if (awsSimulating) {
+                            alertBox.style.opacity = '0';
+                            awsSimulating = false;
+                        }
+                    }, 3000);
+
+                }, 4000);
+            }
         }
 
         function resetAwsCanvas() {
             awsSimulating = false;
             
             const svg = document.getElementById('aws-svg');
+            const netflixSvg = document.getElementById('netflix-svg');
+            
             svg.classList.remove('simulating');
+            if (netflixSvg) {
+                netflixSvg.classList.remove('simulating');
+            }
             
             const alertBox = document.getElementById('aws-sim-alert');
             alertBox.style.opacity = '0';
@@ -1305,11 +1523,24 @@
         function changeAwsTemplate() {
             const template = document.getElementById('aws-template-select').value;
             const svg = document.getElementById('aws-svg');
+            const netflixSvg = document.getElementById('netflix-svg');
             
             // Cancel current simulation
             awsSimulating = false;
             svg.classList.remove('simulating');
+            if (netflixSvg) {
+                netflixSvg.classList.remove('simulating');
+            }
             document.getElementById('aws-sim-alert').style.opacity = '0';
+
+            if (template === 'netflix-cdn') {
+                svg.style.display = 'none';
+                netflixSvg.style.display = 'block';
+                return; // Nothing more to toggle inside Netflix's dedicated SVG structure
+            } else {
+                svg.style.display = 'block';
+                netflixSvg.style.display = 'none';
+            }
 
             // Nodes
             const rdsNode = document.getElementById('node-rds');
@@ -1396,47 +1627,83 @@
             const alertBox = document.getElementById('aws-sim-alert');
             const alertText = document.getElementById('aws-sim-alert-text');
             const alertIcon = document.getElementById('aws-sim-alert-icon');
+            const template = document.getElementById('aws-template-select').value;
             
             alertBox.style.opacity = '1';
             alertIcon.innerHTML = '<i class="fas fa-info-circle" style="color:#00f3ff;"></i>';
 
             let msg = '';
-            let targetNodeId = '';
+            let targetNodeIds = [];
 
             if (type === 'region') {
-                msg = 'AWS Region: Geographically isolated partition (ap-south-1 Mumbai).';
-                targetNodeId = 'region-border';
+                if (template === 'netflix-cdn') {
+                    msg = 'AWS Region: Geographically isolated partition (us-east-1 N. Virginia) hosting origin servers.';
+                    targetNodeIds = ['netflix-region-border'];
+                } else {
+                    msg = 'AWS Region: Geographically isolated partition (ap-south-1 Mumbai).';
+                    targetNodeIds = ['region-border'];
+                }
             } else if (type === 'vpc') {
-                msg = 'Production VPC: Logically isolated virtual network with IP range 10.0.0.0/16.';
-                targetNodeId = 'vpc-border';
+                if (template === 'netflix-cdn') {
+                    msg = 'Production VPC: Logically isolated virtual network with IP range 10.0.0.0/16.';
+                    targetNodeIds = ['netflix-vpc-border'];
+                } else {
+                    msg = 'Production VPC: Logically isolated virtual network with IP range 10.0.0.0/16.';
+                    targetNodeIds = ['vpc-border'];
+                }
             } else if (type === 'subnet-public') {
-                msg = 'Public Subnet: Direct internet routing, hosts Web Server and NAT Gateway.';
-                targetNodeId = 'subnet-public-border';
+                if (template === 'netflix-cdn') {
+                    msg = 'Public Subnet: Direct internet routing, hosts Application Load Balancer (ALB) and NAT Gateway.';
+                    targetNodeIds = ['netflix-subnet-public-border'];
+                } else {
+                    msg = 'Public Subnet: Direct internet routing, hosts Web Server and NAT Gateway.';
+                    targetNodeIds = ['subnet-public-border'];
+                }
             } else if (type === 'subnet-private') {
-                msg = 'Private Subnet: Isolated instances, no direct inbound routing. Secure DB.';
-                targetNodeId = 'subnet-private-border';
+                if (template === 'netflix-cdn') {
+                    msg = 'Private Subnets: Secure tiers isolated from direct internet ingress (App Server and DB Tiers).';
+                    targetNodeIds = ['netflix-subnet-private-app-border', 'netflix-subnet-private-db-border'];
+                } else {
+                    msg = 'Private Subnet: Isolated instances, no direct inbound routing. Secure DB.';
+                    targetNodeIds = ['subnet-private-border'];
+                }
             } else if (type === 'igw') {
-                msg = 'Internet Gateway: VPC component allowing inbound/outbound communication.';
-                targetNodeId = 'node-igw-box';
+                if (template === 'netflix-cdn') {
+                    msg = 'Internet Gateway: Allows public traffic path from CloudFront CDN Edge to AWS VPC.';
+                    targetNodeIds = ['netflix-node-igw'];
+                } else {
+                    msg = 'Internet Gateway: VPC component allowing inbound/outbound communication.';
+                    targetNodeIds = ['node-igw-box'];
+                }
             } else if (type === 'nat') {
-                msg = 'NAT Gateway: Allows private instances to send outbound requests to the internet.';
-                targetNodeId = 'node-nat-box';
+                if (template === 'netflix-cdn') {
+                    msg = 'NAT Gateway: Allows instances in private subnets to request internet outbound downloads/patches.';
+                    targetNodeIds = ['netflix-node-nat'];
+                } else {
+                    msg = 'NAT Gateway: Allows private instances to send outbound requests to the internet.';
+                    targetNodeIds = ['node-nat-box'];
+                }
             }
 
             alertText.textContent = msg;
 
-            // Flash target border/node
-            const el = document.getElementById(targetNodeId);
-            if (el) {
-                const originalStroke = el.style.stroke;
-                el.style.stroke = '#00f3ff';
-                el.style.strokeWidth = '3px';
-                
-                setTimeout(() => {
-                    el.style.stroke = originalStroke;
-                    el.style.strokeWidth = '';
-                }, 1500);
-            }
+            // Flash target borders/nodes
+            targetNodeIds.forEach(id => {
+                let el = document.getElementById(id);
+                if (el) {
+                    if (el.tagName.toLowerCase() === 'g') {
+                        el = el.querySelector('.aws-node-box') || el;
+                    }
+                    const originalStroke = el.style.stroke;
+                    el.style.stroke = '#00f3ff';
+                    el.style.strokeWidth = '3px';
+                    
+                    setTimeout(() => {
+                        el.style.stroke = originalStroke;
+                        el.style.strokeWidth = '';
+                    }, 1500);
+                }
+            });
 
             // Hide alert after 3.5 seconds
             setTimeout(() => {
