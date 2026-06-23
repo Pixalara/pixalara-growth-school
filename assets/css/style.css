@@ -39,6 +39,23 @@
 /* --- RESET & GLOBAL --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+/* Custom premium scrollbar for body */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+body::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+body::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+    border: 2px solid var(--bg-main);
+}
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
 body { font-family: var(--font-body); color: var(--text-light); line-height: 1.6; background-color: var(--white); }
 h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-dark); margin-bottom: 1rem; }
 a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -3855,6 +3872,50 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 /* ==========================================
    LINUX TERMINAL SANDBOX LAYOUT
    ========================================== */
+/* Custom premium dark scrollbars for simulator and terminal elements */
+.linux-panel-left::-webkit-scrollbar,
+.linux-panel-center::-webkit-scrollbar,
+.linux-panel-right::-webkit-scrollbar,
+.terminal-console::-webkit-scrollbar,
+.aws-toolbox::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.linux-panel-left::-webkit-scrollbar-track,
+.linux-panel-center::-webkit-scrollbar-track,
+.linux-panel-right::-webkit-scrollbar-track,
+.terminal-console::-webkit-scrollbar-track,
+.aws-toolbox::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.linux-panel-left::-webkit-scrollbar-thumb,
+.linux-panel-center::-webkit-scrollbar-thumb,
+.linux-panel-right::-webkit-scrollbar-thumb,
+.terminal-console::-webkit-scrollbar-thumb,
+.aws-toolbox::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+}
+
+.linux-panel-left::-webkit-scrollbar-thumb:hover,
+.linux-panel-center::-webkit-scrollbar-thumb:hover,
+.linux-panel-right::-webkit-scrollbar-thumb:hover,
+.terminal-console::-webkit-scrollbar-thumb:hover,
+.aws-toolbox::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.linux-panel-left,
+.linux-panel-center,
+.linux-panel-right,
+.terminal-console,
+.aws-toolbox {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
 .linux-lab-layout {
     display: grid;
     grid-template-columns: 290px 1fr 230px;
