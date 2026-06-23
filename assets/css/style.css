@@ -3674,11 +3674,15 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
    UNIFIED DEVOPS LIVE SANDBOX & CLOUD SIMULATOR
    ========================================================================== */
 #interactive-labs {
-    background: linear-gradient(135deg, #07050f 0%, #120b22 100%);
+    background: linear-gradient(180deg, #07050f 0%, #120b22 100%);
     color: #e4dfec;
-    padding: 140px 0;
+    padding: 85px 0;
     overflow: hidden;
     position: relative;
+    border-top: 1px solid rgba(101, 40, 247, 0.18);
+    border-bottom: 1px solid rgba(101, 40, 247, 0.18);
+    box-shadow: inset 0 25px 40px -20px rgba(0, 0, 0, 0.65), 
+                inset 0 -25px 40px -20px rgba(0, 0, 0, 0.65);
 }
 
 #interactive-labs .section-title {
@@ -3697,50 +3701,6 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     margin: 0 auto 30px auto;
     position: relative;
     z-index: 3;
-}
-
-/* Custom Shape Wave Dividers for Seamless Blending */
-.custom-shape-divider-top {
-    position: absolute;
-    top: -1px;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    z-index: 2;
-}
-
-.custom-shape-divider-top svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 70px;
-}
-
-.custom-shape-divider-top .shape-fill {
-    fill: var(--bg-light);
-}
-
-.custom-shape-divider-bottom {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    z-index: 2;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 70px;
-}
-
-.custom-shape-divider-bottom .shape-fill {
-    fill: var(--white);
 }
 
 /* Course Inclusion Badge */
@@ -4690,6 +4650,17 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     }
     .aws-toolbox .toolbox-items {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .aws-canvas {
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        padding: 15px;
+    }
+    .aws-svg-canvas {
+        min-width: 720px;
+        min-height: auto;
+        height: auto;
     }
 }
 
