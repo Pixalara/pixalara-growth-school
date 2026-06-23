@@ -1190,7 +1190,10 @@
                         // Update Visual Explorer
                         updateVisualExplorer(key);
 
-                        // Remove cursor ID from current prompt
+                        // Remove prompt line ID and cursor ID from completed prompt
+                        if (promptLine) {
+                            promptLine.removeAttribute('id');
+                        }
                         if (cursor) {
                             cursor.removeAttribute('id');
                             cursor.className = '';
