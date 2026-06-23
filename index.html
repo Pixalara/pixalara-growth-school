@@ -364,6 +364,15 @@
                                     <div class="toolbox-item gateway" onclick="highlightAwsNode('igw')">
                                         <i class="fas fa-door-open"></i> Internet Gtwy
                                     </div>
+                                    <div class="toolbox-item nat" onclick="highlightAwsNode('nat')">
+                                        <i class="fas fa-network-wired"></i> NAT Gateway
+                                    </div>
+                                    <div class="toolbox-item rt-pub" onclick="highlightAwsNode('rt-pub')">
+                                        <i class="fas fa-route"></i> Public Route Table
+                                    </div>
+                                    <div class="toolbox-item rt-priv" onclick="highlightAwsNode('rt-priv')">
+                                        <i class="fas fa-route"></i> Private Route Table
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1352,6 +1361,12 @@
             } else if (type === 'nat') {
                 msg = 'NAT Gateway: Allows private instances inside private subnets to send outbound internet requests.';
                 targetNodeIds = ['node-nat'];
+            } else if (type === 'rt-pub') {
+                msg = 'Public Route Table: Contains routing rules directing public subnet traffic (0.0.0.0/0) to the Internet Gateway.';
+                targetNodeIds = ['node-rt-pub'];
+            } else if (type === 'rt-priv') {
+                msg = 'Private Route Table: Local VPC routing rules only, keeping database instances fully isolated from the public internet.';
+                targetNodeIds = ['node-rt-priv'];
             }
 
             alertText.textContent = msg;

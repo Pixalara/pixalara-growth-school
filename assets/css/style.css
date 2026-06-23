@@ -4392,6 +4392,9 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 .toolbox-item.vpc i { color: #e8a202; }
 .toolbox-item.subnet i { color: #2ecc71; }
 .toolbox-item.gateway i { color: #e74c3c; }
+.toolbox-item.nat i { color: #2ecc71; }
+.toolbox-item.rt-pub i { color: #58a6ff; }
+.toolbox-item.rt-priv i { color: #3498db; }
 
 /* Canvas Panel */
 .aws-canvas-panel {
