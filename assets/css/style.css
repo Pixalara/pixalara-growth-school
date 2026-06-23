@@ -4576,7 +4576,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 .aws-container-box.subnet-active.container-private-subnet { stroke: rgba(52, 152, 219, 0.8); }
 
 .subnet-label {
-    font-size: 8px;
+    font-size: 7px;
     font-weight: bold;
     fill: #8b949e;
     font-family: sans-serif;
