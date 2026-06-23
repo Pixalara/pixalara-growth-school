@@ -415,11 +415,11 @@
 
                                     <!-- Public Subnet Container (Web Tier) -->
                                     <rect x="110" y="85" width="220" height="245" rx="6" ry="6" class="aws-container-box container-public-subnet subnet-active" id="subnet-public-border" />
-                                    <text x="115" y="100" class="subnet-label label-public active" id="subnet-public-title">Public Subnet 1A (Web Tier - 10.0.1.0/24)</text>
+                                    <text x="115" y="100" class="subnet-label label-public active" id="subnet-public-title">Public Subnet 1A (10.0.1.0/24)</text>
 
                                     <!-- Private Subnet Container (DB Tier) -->
                                     <rect x="350" y="85" width="140" height="245" rx="6" ry="6" class="aws-container-box container-private-subnet subnet-active" id="subnet-private-border" />
-                                    <text x="355" y="100" class="subnet-label label-private active" id="subnet-private-title">Private Subnet 1B (DB Tier - 10.0.2.0/24)</text>
+                                    <text x="355" y="100" class="subnet-label label-private active" id="subnet-private-title">Private Subnet 1B (10.0.2.0/24)</text>
 
                                     <!-- Route Tables -->
                                     <!-- Public Route Table -->
@@ -465,7 +465,7 @@
                                     <!-- NODES -->
                                     <!-- Web Clients (Outside VPC) -->
                                     <g class="aws-node node-active" id="node-clients">
-                                        <rect x="680" y="145" width="60" height="70" class="aws-node-box" />
+                                        <rect x="680" y="145" width="60" height="70" class="aws-node-box" id="node-clients-box" />
                                         <text x="710" y="178" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle">&#xf109;</text>
                                         <text x="710" y="196" class="aws-node-title">Web Traffic</text>
                                         <text x="710" y="206" class="aws-node-subtitle">Web Client</text>
@@ -473,7 +473,7 @@
 
                                     <!-- Internet Gateway (on right border of VPC) -->
                                     <g class="aws-node node-active" id="node-igw">
-                                        <rect x="600" y="145" width="60" height="70" class="aws-node-box" />
+                                        <rect x="600" y="145" width="60" height="70" class="aws-node-box" id="node-igw-box" />
                                         <text x="630" y="178" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#e74c3c;">&#xf0ec;</text>
                                         <text x="630" y="196" class="aws-node-title">IGW</text>
                                         <text x="630" y="206" class="aws-node-subtitle">Internet Gtwy</text>
@@ -489,7 +489,7 @@
 
                                     <!-- NAT Gateway (inside Public Subnet) -->
                                     <g class="aws-node node-active" id="node-nat">
-                                        <rect x="220" y="235" width="60" height="70" class="aws-node-box" />
+                                        <rect x="220" y="235" width="60" height="70" class="aws-node-box" id="node-nat-box" />
                                         <text x="250" y="268" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#2ecc71;">&#xf012;</text>
                                         <text x="250" y="286" class="aws-node-title">NAT Gateway</text>
                                         <text x="250" y="296" class="aws-node-subtitle">Network Egress</text>
@@ -497,7 +497,7 @@
 
                                     <!-- RDS Database (inside Private Subnet) -->
                                     <g class="aws-node node-active" id="node-rds">
-                                        <rect x="355" y="180" width="60" height="70" class="aws-node-box" />
+                                        <rect x="355" y="180" width="60" height="70" class="aws-node-box" id="node-rds-box" />
                                         <text x="385" y="213" class="fa aws-node-icon" font-family="FontAwesome" text-anchor="middle" style="fill:#3498db;">&#xf1c0;</text>
                                         <text x="385" y="231" class="aws-node-title">RDS Database</text>
                                         <text x="385" y="241" class="aws-node-subtitle">MySQL DB Tier</text>
@@ -1360,7 +1360,7 @@
                 subPrivateTitle.style.display = 'none';
                 
                 // Relabel Public Subnet title
-                subPublicTitle.textContent = 'Public Subnet (Web Tier - 10.0.1.0/24)';
+                subPublicTitle.textContent = 'Public Subnet (10.0.1.0/24)';
                 ec2Title.textContent = 'Web Server';
                 ec2Subtitle.textContent = 'Standalone EC2';
 
@@ -1385,7 +1385,7 @@
                 subPrivateBorder.style.display = 'block';
                 subPrivateTitle.style.display = 'block';
                 
-                subPublicTitle.textContent = 'Public Subnet 1A (Web Tier - 10.0.1.0/24)';
+                subPublicTitle.textContent = 'Public Subnet 1A (10.0.1.0/24)';
                 ec2Title.textContent = 'EC2 Web Server';
                 ec2Subtitle.textContent = 'Nginx Server';
 
@@ -1429,10 +1429,10 @@
                 targetNodeId = 'subnet-private-border';
             } else if (type === 'igw') {
                 msg = 'Internet Gateway: VPC component allowing inbound/outbound communication.';
-                targetNodeId = 'node-igw';
+                targetNodeId = 'node-igw-box';
             } else if (type === 'nat') {
                 msg = 'NAT Gateway: Allows private instances to send outbound requests to the internet.';
-                targetNodeId = 'node-nat';
+                targetNodeId = 'node-nat-box';
             }
 
             alertText.textContent = msg;
