@@ -3676,17 +3676,17 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 #interactive-labs {
     background: linear-gradient(135deg, #07050f 0%, #120b22 100%);
     color: #e4dfec;
-    padding: 90px 0;
+    padding: 140px 0;
     overflow: hidden;
     position: relative;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 #interactive-labs .section-title {
     color: #ffffff;
     margin-bottom: 15px;
     font-weight: 800;
+    position: relative;
+    z-index: 3;
 }
 
 .labs-subtitle {
@@ -3695,6 +3695,52 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     font-size: 1.1rem;
     max-width: 700px;
     margin: 0 auto 30px auto;
+    position: relative;
+    z-index: 3;
+}
+
+/* Custom Shape Wave Dividers for Seamless Blending */
+.custom-shape-divider-top {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 2;
+}
+
+.custom-shape-divider-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 70px;
+}
+
+.custom-shape-divider-top .shape-fill {
+    fill: var(--bg-light);
+}
+
+.custom-shape-divider-bottom {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 2;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 70px;
+}
+
+.custom-shape-divider-bottom .shape-fill {
+    fill: var(--white);
 }
 
 /* Course Inclusion Badge */
@@ -4049,19 +4095,113 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 
 /* Linux Terminal Console Box */
 .terminal-console {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.8rem;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.82rem;
     color: #c9d1d9;
-    line-height: 1.4;
+    line-height: 1.5;
     flex-grow: 1;
     overflow-y: auto;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .terminal-welcome {
     color: #8b949e;
-    margin-bottom: 12px;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-    padding-bottom: 8px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.welcome-header {
+    font-size: 0.85rem;
+    color: #58a6ff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.welcome-desc {
+    font-size: 0.78rem;
+    color: #8b949e;
+    line-height: 1.4;
+}
+
+.welcome-autoplay-btn {
+    align-self: flex-start;
+    background: rgba(39, 201, 63, 0.1);
+    border: 1px solid rgba(39, 201, 63, 0.4);
+    color: #27c93f;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 5px;
+}
+
+.welcome-autoplay-btn:hover {
+    background: #27c93f;
+    color: #0d1117;
+    border-color: #27c93f;
+    box-shadow: 0 0 12px rgba(39, 201, 63, 0.4);
+    transform: translateY(-1px);
+}
+
+.welcome-autoplay-btn:active {
+    transform: translateY(0);
+}
+
+/* Titlebar Status badge styling */
+.window-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4px 10px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #8b949e;
+    transition: all 0.3s ease;
+}
+
+.window-status.active {
+    background: rgba(39, 201, 63, 0.1);
+    border-color: rgba(39, 201, 63, 0.3);
+    color: #27c93f;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8b949e;
+}
+
+.window-status.active .status-dot {
+    background: #27c93f;
+    box-shadow: 0 0 8px #27c93f;
+}
+
+.pulsing {
+    animation: statusPulse 1.8s infinite alternate;
+}
+
+@keyframes statusPulse {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
 .term-line {
@@ -4100,6 +4240,8 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     margin-bottom: 8px;
     display: block;
     font-size: 0.75rem;
+    border-left: 2px solid rgba(0, 243, 255, 0.15);
+    padding-left: 8px;
 }
 
 /* Visual Directory Explorer */

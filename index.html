@@ -300,6 +300,12 @@
              INTERACTIVE LABS & SIMULATORS SECTION
              ========================================== -->
         <section id="interactive-labs" class="section">
+            <!-- Top Shape Divider -->
+            <div class="custom-shape-divider-top">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0c150,90,300,-30,450,30s300,60,450,0s150,-60,300,0v120H0Z" class="shape-fill"></path>
+                </svg>
+            </div>
             <div class="container">
                 <div class="badge-wrapper reveal">
                     <div class="lab-inclusion-badge">
@@ -511,9 +517,15 @@
                             <span class="dot dot-green"></span>
                         </div>
                         <div class="window-title"><i class="fas fa-terminal"></i> Terminal Sandbox Console (Ubuntu)</div>
-                        <div class="window-user">
-                            <span>ubuntu@sandbox</span>
-                            <div class="user-avatar" style="background: #6528F7;">U</div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="window-status" id="terminal-status-badge">
+                                <span class="status-dot pulsing"></span>
+                                <span class="status-text" id="terminal-status-text">Ready</span>
+                            </div>
+                            <div class="window-user">
+                                <span>ubuntu@sandbox</span>
+                                <div class="user-avatar" style="background: #6528F7;">U</div>
+                            </div>
                         </div>
                     </div>
                     <div class="linux-lab-layout">
@@ -571,10 +583,17 @@
 
                         <!-- Center Panel: Console -->
                         <div class="linux-panel-center">
-                            <div class="terminal-console" id="terminal-console">
+                            <div class="terminal-console" id="terminal-console" onclick="startTerminalAutoRun()">
                                 <div class="terminal-welcome">
-                                    Welcome to Growth School Linux Sandbox Lesson Console (v2.4.1-LTS)<br>
-                                    Click any task on the left to type and run the terminal commands.
+                                    <div class="welcome-header">
+                                        <i class="fas fa-terminal"></i> UBUNTU SANDBOX ENVIRONMENT (v2.4.1-LTS)
+                                    </div>
+                                    <div class="welcome-desc">
+                                        Click any task on the left to execute commands individually, or click anywhere inside this console to automatically play the demo.
+                                    </div>
+                                    <button class="welcome-autoplay-btn" onclick="event.stopPropagation(); startTerminalAutoRun();">
+                                        <i class="fas fa-play"></i> Auto-Play Demo
+                                    </button>
                                 </div>
                                 <div class="term-line" id="current-prompt-line">
                                     <span class="term-prompt">ubuntu@sandbox:~$</span> <span class="term-cursor" id="term-cursor"></span>
@@ -607,6 +626,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Bottom Shape Divider -->
+            <div class="custom-shape-divider-bottom">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0c150,90,300,-30,450,30s300,60,450,0s150,-60,300,0v120H0Z" class="shape-fill"></path>
+                </svg>
             </div>
         </section>
 
@@ -930,6 +955,12 @@
             
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
+
+            if (tabId === 'linux-lab') {
+                setTimeout(() => {
+                    startTerminalAutoRun();
+                }, 400);
+            }
         }
 
         // ==========================================
@@ -944,10 +975,146 @@
 
         const completedLinuxLessons = new Set();
         let linuxTypingActive = false;
+        let linuxAutoRunning = false;
 
-        function runLinuxCommand(stepNum, command, key) {
+        function updateAutoRunStatusLabel(isPlaying) {
+            const badge = document.getElementById('terminal-status-badge');
+            const text = document.getElementById('terminal-status-text');
+            if (badge && text) {
+                if (isPlaying) {
+                    badge.classList.add('active');
+                    text.textContent = 'Auto-running...';
+                } else {
+                    badge.classList.remove('active');
+                    text.textContent = 'Ready';
+                }
+            }
+        }
+
+        function resetLinuxSandbox() {
+            completedLinuxLessons.clear();
+            
+            // Reset progress UI
+            const textPct = document.getElementById('linux-progress-text');
+            const barFill = document.getElementById('linux-progress-bar');
+            if (textPct) textPct.textContent = '0%';
+            if (barFill) barFill.style.width = '0%';
+            
+            // Reset lesson item status
+            document.querySelectorAll('.lesson-item').forEach(item => {
+                item.classList.remove('completed', 'active');
+            });
+            const l1 = document.getElementById('lesson-1');
+            if (l1) l1.classList.add('active');
+            
+            // Reset badge dot status
+            document.querySelectorAll('.badge-dot').forEach(badge => {
+                badge.classList.remove('completed', 'active');
+            });
+            const b1 = document.getElementById('badge-1');
+            if (b1) b1.classList.add('active');
+            
+            // Reset Visual Explorer
+            const grid = document.getElementById('explorer-grid');
+            if (grid) {
+                grid.innerHTML = `
+                    <div class="explorer-item active-item" id="dir-home">
+                        <i class="fas fa-folder"></i>
+                        <span>home</span>
+                    </div>
+                    <div class="explorer-item" id="dir-etc">
+                        <i class="fas fa-folder"></i>
+                        <span>etc</span>
+                    </div>
+                    <div class="explorer-item" id="dir-var">
+                        <i class="fas fa-folder"></i>
+                        <span>var</span>
+                    </div>
+                `;
+            }
+            
+            // Reset Console
+            const consoleEl = document.getElementById('terminal-console');
+            if (consoleEl) {
+                consoleEl.innerHTML = `
+                    <div class="terminal-welcome">
+                        <div class="welcome-header">
+                            <i class="fas fa-terminal"></i> UBUNTU SANDBOX ENVIRONMENT (v2.4.1-LTS)
+                        </div>
+                        <div class="welcome-desc">
+                            Click any task on the left to execute commands individually, or click anywhere inside this console to automatically play the demo.
+                        </div>
+                        <button class="welcome-autoplay-btn" onclick="event.stopPropagation(); startTerminalAutoRun();">
+                            <i class="fas fa-play"></i> Auto-Play Demo
+                        </button>
+                    </div>
+                    <div class="term-line" id="current-prompt-line">
+                        <span class="term-prompt">ubuntu@sandbox:~$</span> <span class="term-cursor" id="term-cursor"></span>
+                    </div>
+                `;
+            }
+        }
+
+        function startTerminalAutoRun() {
+            if (linuxAutoRunning || linuxTypingActive) return;
+            
+            // If already completed all, reset first
+            if (completedLinuxLessons.size === 4) {
+                resetLinuxSandbox();
+            }
+            
+            linuxAutoRunning = true;
+            updateAutoRunStatusLabel(true);
+            
+            const steps = [
+                { num: 1, cmd: 'docker ps', key: 'docker_ps' },
+                { num: 2, cmd: 'docker logs web-server', key: 'docker_logs' },
+                { num: 3, cmd: 'df -h', key: 'df_h' },
+                { num: 4, cmd: 'netstat -tulnp', key: 'netstat' }
+            ];
+            
+            // Find first uncompleted step
+            let currentStepIdx = 0;
+            while (currentStepIdx < steps.length && completedLinuxLessons.has(steps[currentStepIdx].num)) {
+                currentStepIdx++;
+            }
+            
+            if (currentStepIdx >= steps.length) {
+                resetLinuxSandbox();
+                currentStepIdx = 0;
+            }
+            
+            function runNext() {
+                if (!linuxAutoRunning) return; // halted by manual interaction
+                if (currentStepIdx < steps.length) {
+                    const step = steps[currentStepIdx];
+                    runLinuxCommand(step.num, step.cmd, step.key, () => {
+                        currentStepIdx++;
+                        if (currentStepIdx < steps.length && linuxAutoRunning) {
+                            setTimeout(runNext, 1800);
+                        } else {
+                            linuxAutoRunning = false;
+                            updateAutoRunStatusLabel(false);
+                        }
+                    });
+                } else {
+                    linuxAutoRunning = false;
+                    updateAutoRunStatusLabel(false);
+                }
+            }
+            
+            runNext();
+        }
+
+        function runLinuxCommand(stepNum, command, key, onComplete) {
             if (linuxTypingActive) return;
 
+            // If user clicked manually without onComplete callback, stop auto-play
+            if (!onComplete) {
+                linuxAutoRunning = false;
+                updateAutoRunStatusLabel(false);
+            }
+ 
             // Remove active class from all lessons and add to current
             document.querySelectorAll('.lesson-item').forEach(item => {
                 item.classList.remove('active');
@@ -972,15 +1139,17 @@
             // Create command text span
             const cmdTextSpan = document.createElement('span');
             cmdTextSpan.className = 'term-input';
-            promptLine.insertBefore(cmdTextSpan, cursor);
+            if (promptLine && cursor) {
+                promptLine.insertBefore(cmdTextSpan, cursor);
+            }
 
             let charIdx = 0;
             function typeChar() {
                 if (charIdx < command.length) {
                     cmdTextSpan.textContent += command.charAt(charIdx);
                     charIdx++;
-                    consoleEl.scrollTop = consoleEl.scrollHeight;
-                    setTimeout(typeChar, 40 + Math.random() * 40);
+                    if (consoleEl) consoleEl.scrollTop = consoleEl.scrollHeight;
+                    setTimeout(typeChar, 30 + Math.random() * 30);
                 } else {
                     // Done typing: Print output after brief delay
                     setTimeout(() => {
@@ -988,7 +1157,7 @@
                         const outputDiv = document.createElement('span');
                         outputDiv.className = 'term-output';
                         outputDiv.textContent = linuxCommandOutputs[key];
-                        consoleEl.appendChild(outputDiv);
+                        if (consoleEl) consoleEl.appendChild(outputDiv);
 
                         // Mark lesson complete
                         if (activeItem) activeItem.classList.add('completed');
@@ -1009,25 +1178,34 @@
                         // Update progress bar
                         const totalLessons = 4;
                         const progressPct = Math.min(100, Math.round((completedLinuxLessons.size / totalLessons) * 100));
-                        document.getElementById('linux-progress-text').textContent = `${progressPct}%`;
-                        document.getElementById('linux-progress-bar').style.width = `${progressPct}%`;
+                        const pctText = document.getElementById('linux-progress-text');
+                        const barFill = document.getElementById('linux-progress-bar');
+                        if (pctText) pctText.textContent = `${progressPct}%`;
+                        if (barFill) barFill.style.width = `${progressPct}%`;
 
                         // Update Visual Explorer
                         updateVisualExplorer(key);
 
                         // Remove cursor ID from current prompt
-                        cursor.removeAttribute('id');
-                        cursor.className = '';
+                        if (cursor) {
+                            cursor.removeAttribute('id');
+                            cursor.className = '';
+                        }
 
                         // Create new prompt line
                         const newPrompt = document.createElement('div');
                         newPrompt.className = 'term-line';
                         newPrompt.id = 'current-prompt-line';
                         newPrompt.innerHTML = '<span class="term-prompt">ubuntu@sandbox:~$</span> <span class="term-cursor" id="term-cursor"></span>';
-                        consoleEl.appendChild(newPrompt);
-
-                        consoleEl.scrollTop = consoleEl.scrollHeight;
+                        if (consoleEl) {
+                            consoleEl.appendChild(newPrompt);
+                            consoleEl.scrollTop = consoleEl.scrollHeight;
+                        }
+                        
                         linuxTypingActive = false;
+                        if (typeof onComplete === 'function') {
+                            onComplete();
+                        }
                     }, 250);
                 }
             }
