@@ -4720,4 +4720,219 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     }
 }
 
+/* ==========================================================================
+   INTERACTIVE LABS CTA CARD STYLING (FOR BLOGS)
+   ========================================================================== */
+.labs-cta-card {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    background: linear-gradient(135deg, #07050f 0%, #170d2b 100%);
+    border: 1px solid rgba(101, 40, 247, 0.25);
+    border-radius: 16px;
+    padding: 35px;
+    margin: 45px 0;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 25px rgba(101, 40, 247, 0.08);
+    position: relative;
+    overflow: hidden;
+    color: #e4dfec;
+    align-items: center;
+    text-align: left;
+}
+
+.labs-cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(101, 40, 247, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.labs-cta-content {
+    flex: 1.2;
+    position: relative;
+    z-index: 2;
+}
+
+.labs-cta-visual {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    min-width: 280px;
+}
+
+.labs-cta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(101, 40, 247, 0.15);
+    border: 1px solid rgba(101, 40, 247, 0.3);
+    color: #a27bfa;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+}
+
+.labs-cta-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff !important;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.labs-cta-text {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #b2abc2;
+    margin-bottom: 20px;
+}
+
+.labs-cta-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.labs-cta-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #e4dfec;
+    font-weight: 600;
+}
+
+.labs-cta-feature i {
+    color: #28a745;
+    font-size: 1.05rem;
+}
+
+.labs-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #6528F7;
+    color: #ffffff !important;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(101, 40, 247, 0.3);
+}
+
+.labs-cta-btn:hover {
+    background: #531ed6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(101, 40, 247, 0.45);
+}
+
+/* Terminal Mockup Visual */
+.terminal-mock {
+    background: #0d091a;
+    border: 1px solid rgba(101, 40, 247, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-mock-header {
+    background: #141026;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(101, 40, 247, 0.1);
+}
+
+.terminal-mock-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.terminal-mock-header .dot.red { background: #ff5f56; }
+.terminal-mock-header .dot.yellow { background: #ffbd2e; }
+.terminal-mock-header .dot.green { background: #27c93f; }
+
+.terminal-mock-title {
+    color: #a89fbf;
+    font-size: 0.75rem;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.terminal-mock-body {
+    padding: 15px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #d1c8e8;
+}
+
+.term-line {
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.term-line.cmd::before {
+    content: '$ ';
+    color: #a27bfa;
+    font-weight: bold;
+}
+
+.term-line.output {
+    color: #8c83a5;
+}
+
+.term-line.success {
+    color: #2ec4b6;
+    font-weight: 600;
+}
+
+.term-line.success i {
+    margin-right: 4px;
+}
+
+.term-line.cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { color: transparent }
+    50% { color: #a27bfa }
+}
+
+/* Responsiveness for CTA Card */
+@media (max-width: 768px) {
+    .labs-cta-card {
+        flex-direction: column;
+        padding: 25px;
+        gap: 25px;
+    }
+    .labs-cta-visual {
+        width: 100%;
+        min-width: unset;
+    }
+    .labs-cta-title {
+        font-size: 1.5rem;
+    }
+}
+
 
