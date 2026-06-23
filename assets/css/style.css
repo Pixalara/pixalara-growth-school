@@ -4536,7 +4536,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 }
 
 .aws-node-title {
-    font-size: 9.5px;
+    font-size: 7.8px;
     font-weight: 700;
     fill: #8b949e;
     text-anchor: middle;
@@ -4548,7 +4548,7 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
 }
 
 .aws-node-subtitle {
-    font-size: 8px;
+    font-size: 6.5px;
     fill: #8b949e;
     text-anchor: middle;
 }
