@@ -961,6 +961,10 @@
                 setTimeout(() => {
                     startTerminalAutoRun();
                 }, 400);
+            } else if (tabId === 'aws-lab') {
+                setTimeout(() => {
+                    simulateAwsTraffic();
+                }, 400);
             }
         }
 
@@ -1452,31 +1456,43 @@
             }, 3500);
         }
 
-        // Auto-run when the terminal enters the viewport (no user action required)
+        // Auto-run when the active lab window enters the viewport (no user action required)
         document.addEventListener('DOMContentLoaded', () => {
-            const linuxLab = document.getElementById('linux-lab');
-            if (linuxLab) {
+            const interactiveSection = document.getElementById('interactive-labs');
+            if (interactiveSection) {
                 if ('IntersectionObserver' in window) {
                     const observer = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
                             if (entry.isIntersecting) {
-                                // Start auto-run if the linux lab tab is currently active
-                                if (linuxLab.classList.contains('active')) {
-                                    startTerminalAutoRun();
-                                    observer.unobserve(linuxLab); // run only once
+                                // Trigger whichever lab is active
+                                const activeWindow = document.querySelector('.lab-window.active');
+                                if (activeWindow) {
+                                    if (activeWindow.id === 'linux-lab') {
+                                        startTerminalAutoRun();
+                                    } else if (activeWindow.id === 'aws-lab') {
+                                        simulateAwsTraffic();
+                                    }
+                                    observer.unobserve(interactiveSection); // run only once
                                 }
                             }
                         });
                     }, { threshold: 0.15 });
-                    observer.observe(linuxLab);
+                    observer.observe(interactiveSection);
                 } else {
                     // Fallback to simple scroll listener if IntersectionObserver is not supported
                     const checkVisibility = () => {
-                        const rect = linuxLab.getBoundingClientRect();
+                        const rect = interactiveSection.getBoundingClientRect();
                         const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-                        if (isVisible && linuxLab.classList.contains('active')) {
-                            startTerminalAutoRun();
-                            window.removeEventListener('scroll', checkVisibility);
+                        if (isVisible) {
+                            const activeWindow = document.querySelector('.lab-window.active');
+                            if (activeWindow) {
+                                if (activeWindow.id === 'linux-lab') {
+                                    startTerminalAutoRun();
+                                } else if (activeWindow.id === 'aws-lab') {
+                                    simulateAwsTraffic();
+                                }
+                                window.removeEventListener('scroll', checkVisibility);
+                            }
                         }
                     };
                     window.addEventListener('scroll', checkVisibility);
