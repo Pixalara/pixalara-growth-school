@@ -318,10 +318,10 @@
                 </p>
 
                 <div class="labs-tabs reveal">
-                    <button class="lab-tab-btn active" id="btn-tab-aws" onclick="switchLabTab('aws-lab', this)">
+                    <button class="lab-tab-btn" id="btn-tab-aws" onclick="switchLabTab('aws-lab', this)">
                         <i class="fab fa-aws"></i> AWS Cloud Simulator
                     </button>
-                    <button class="lab-tab-btn" id="btn-tab-linux" onclick="switchLabTab('linux-lab', this)">
+                    <button class="lab-tab-btn active" id="btn-tab-linux" onclick="switchLabTab('linux-lab', this)">
                         <i class="fab fa-linux"></i> Linux Sandbox Lab
                     </button>
                 </div>
@@ -331,7 +331,7 @@
                 </div>
 
                 <!-- AWS Architect Simulator Window -->
-                <div id="aws-lab" class="lab-window active reveal">
+                <div id="aws-lab" class="lab-window reveal">
                     <div class="window-titlebar">
                         <div class="window-dots">
                             <span class="dot dot-red"></span>
@@ -509,7 +509,7 @@
                 </div>
 
                 <!-- Linux Lab Sandbox Window -->
-                <div id="linux-lab" class="lab-window reveal">
+                <div id="linux-lab" class="lab-window active reveal">
                     <div class="window-titlebar">
                         <div class="window-dots">
                             <span class="dot dot-red"></span>
@@ -1451,6 +1451,39 @@
                 }
             }, 3500);
         }
+
+        // Auto-run when the terminal enters the viewport (no user action required)
+        document.addEventListener('DOMContentLoaded', () => {
+            const linuxLab = document.getElementById('linux-lab');
+            if (linuxLab) {
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                // Start auto-run if the linux lab tab is currently active
+                                if (linuxLab.classList.contains('active')) {
+                                    startTerminalAutoRun();
+                                    observer.unobserve(linuxLab); // run only once
+                                }
+                            }
+                        });
+                    }, { threshold: 0.15 });
+                    observer.observe(linuxLab);
+                } else {
+                    // Fallback to simple scroll listener if IntersectionObserver is not supported
+                    const checkVisibility = () => {
+                        const rect = linuxLab.getBoundingClientRect();
+                        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+                        if (isVisible && linuxLab.classList.contains('active')) {
+                            startTerminalAutoRun();
+                            window.removeEventListener('scroll', checkVisibility);
+                        }
+                    };
+                    window.addEventListener('scroll', checkVisibility);
+                    checkVisibility();
+                }
+            }
+        });
     </script>
 </body>
 </html>
