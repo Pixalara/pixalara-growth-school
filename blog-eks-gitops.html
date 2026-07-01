@@ -966,6 +966,40 @@
                     </div>
                 </div>
 
+                <!-- Section 4.5: Rollback Strategy -->
+                <div class="section-header">
+                    <i class="fas fa-undo-alt"></i>
+                    <h2>Disaster Recovery: The Rollback Strategy</h2>
+                </div>
+
+                <p>No matter how thoroughly code is tested, production failures can happen—especially in a high-stakes multi-tenant environment. When a regression slips through, the priority is minimizing the **Mean Time to Recovery (MTTR)**. In a GitOps architecture, rolling back changes is safe, structured, and auditable.</p>
+
+                <p>ClassKira uses a two-tier rollback strategy depending on the severity of the failure:</p>
+
+                <h3>1. The GitOps-Native Rollback (Preferred Strategy)</h3>
+                <p>Because Git is the source of truth, the cleanest way to roll back is to declare the rollback in Git. If a buggy deployment is detected, engineers perform a Git revert on the manifest repository:</p>
+
+                <div class="highlight-box">
+                    <strong>Reverting Git State:</strong>
+                    <code>git revert &lt;commit-sha&gt; && git push origin main</code>
+                    <br><br>
+                    Once this revert commit is pushed to the main branch, Argo CD detects the drift (the image tag reverts to the previous version) and automatically triggers EKS to perform a rolling downgrade. EKS spins up the old stable pods and terminates the buggy ones, resolving the incident in under a minute.
+                </div>
+
+                <h3>2. The "Break-Glass" Emergency Rollback</h3>
+                <p>If Git is temporarily inaccessible, or if the pipeline is blocked and every second counts to prevent downtime, engineers bypass the pipeline for immediate recovery:</p>
+                
+                <ul>
+                    <li><strong>Step A: Disable Argo CD Auto-Sync:</strong> Engineers pause Argo CD's auto-sync setting using the CLI or dashboard. This prevents Argo CD from fighting manual intervention and trying to re-apply the buggy Git configuration.</li>
+                    <li><strong>Step B: Rollback via Kubernetes:</strong> Run the native Kubernetes rollout command to instantly switch the deployment back to the previous revision:
+                        <div class="flow-node-term" style="margin-top: 10px; margin-bottom: 10px;">
+                            <code>kubectl rollout undo deployment/classkira-app</code>
+                        </div>
+                        This directs EKS to immediately stop the buggy pods and spin the previous healthy replica set back up.
+                    </li>
+                    <li><strong>Step C: Resolve and Re-enable Sync:</strong> Once the system is stable, engineers diagnose the issue, push a clean fix to Git, and re-enable Argo CD auto-sync to let the standard pipeline resume control.</li>
+                </ul>
+
                 <!-- Section 5: Traffic Routing -->
                 <div class="section-header">
                     <i class="fas fa-network-wired"></i>
