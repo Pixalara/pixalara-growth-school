@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitOps on AWS EKS: Deploying ClassKira's Multi-Tenant SaaS LMS | Growth School</title>
+    <meta name="description" content="Learn how ClassKira LMS deploys its multi-tenant SaaS application on AWS EKS using secure OIDC and Argo CD GitOps pipelines.">
+    <link rel="canonical" href="https://growthschool.cc/blog-eks-gitops.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        :root {
+            --ink: #172033;
+            --muted: #5f6b7f;
+            --line: #cbd5e1;
+            --panel: #ffffff;
+            --bg: #f8fafc;
+            --github: #24292f;
+            --actions: #2f81f7;
+            --runner: #0969da;
+            --oidc: #0891b2;
+            --iam: #334155;
+            --sts: #9333ea;
+            --ecr: #ff9900;
+            --git: #1f9d72;
+            --argo: #ef6c5b;
+            --eks: #7c3aed;
+            --pod: #0f766e;
+            --dns: #0ea5e9;
+            --user: #475569;
+            --metric: #dc2626;
+            --scale: #16a34a;
+            --node: #ea580c;
+            --shadow: 0 10px 30px rgba(23, 32, 51, 0.06);
+        }
+
+        /* Section headers inside article */
+        .section-header { 
+            margin-top: 50px; 
+            margin-bottom: 25px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            border-bottom: 2px solid #eee; 
+            padding-bottom: 10px; 
+        }
+        .section-header i { font-size: 1.8rem; color: var(--primary); }
+        .section-header h2 { margin: 0; font-size: 1.6rem; color: var(--text-dark); font-weight: 700; }
+
+        .story-img-wrapper {
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .story-img-wrapper img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .story-img-wrapper:hover img {
+            transform: scale(1.02);
+        }
+        .story-img-caption {
+            background: rgba(21, 14, 31, 0.85);
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Multi-tenancy Visualizer */
+        .saas-visualizer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            padding: 30px 20px;
+            margin: 35px 0;
+            color: #f1f5f9;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .saas-visualizer h4 {
+            color: #38bdf8;
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .saas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 20px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .saas-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        .saas-col {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tenant-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px 15px;
+            text-align: center;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tenant-card.blue { border-color: rgba(14, 165, 233, 0.4); background: rgba(14, 165, 233, 0.04); }
+        .tenant-card.green { border-color: rgba(22, 163, 74, 0.4); background: rgba(22, 163, 74, 0.04); }
+        .tenant-card.orange { border-color: rgba(249, 115, 22, 0.4); background: rgba(249, 115, 22, 0.04); }
+
+        .tenant-card strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .tenant-card.blue strong { color: #38bdf8; }
+        .tenant-card.green strong { color: #4ade80; }
+        .tenant-card.orange strong { color: #fb923c; }
+
+        .tenant-card span {
+            color: #94a3b8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .router-box {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px dashed rgba(124, 58, 237, 0.5);
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+        }
+
+        .router-box i {
+            font-size: 2rem;
+            color: #a78bfa;
+            margin-bottom: 12px;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .router-title {
+            font-weight: 700;
+            color: #ddd;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .router-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .db-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+
+        .db-card i {
+            font-size: 1.5rem;
+            color: #64748b;
+        }
+
+        .db-card.blue i { color: #38bdf8; }
+        .db-card.green i { color: #4ade80; }
+        .db-card.orange i { color: #fb923c; }
+
+        .db-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .db-info b {
+            color: #e2e8f0;
+        }
+
+        .db-info small {
+            color: #64748b;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Pulsing dot animations for visualizer data flow */
+        .data-flow-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+            height: 2px;
+            width: 80px;
+            z-index: 1;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.08); opacity: 1; color: #c084fc; }
+        }
+
+        /* Diagram grid inside article content */
+        .diag-container {
+            margin: 35px 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f8fafc;
+            padding: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .diag-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            color: var(--ink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .diag-title span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--muted);
+        }
+
+        /* CI/CD Flow layout adjusted for blog */
+        .cicd-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .flow-node {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .flow-node:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(23, 32, 51, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .flow-node::before {
+            content: attr(data-step);
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e0e7ff;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #c7d2fe;
+        }
+
+        .flow-node-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            width: max-content;
+            color: #fff;
+        }
+
+        .badge-github { background: var(--github); }
+        .badge-ci { background: var(--actions); }
+        .badge-runner { background: var(--runner); }
+        .badge-ecr { background: var(--ecr); }
+        .badge-git { background: var(--git); }
+        .badge-argo { background: var(--argo); }
+        .badge-eks { background: var(--eks); }
+        .badge-pod { background: var(--pod); }
+
+        .flow-node strong {
+            font-size: 1.05rem;
+            color: var(--ink);
+            margin-top: 4px;
+        }
+
+        .flow-node p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        .flow-node-term {
+            background: #0f172a;
+            color: #38bdf8;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            margin-top: 8px;
+            border: 1px solid #1e293b;
+        }
+
+        .flow-node-term code {
+            display: block;
+            line-height: 1.4;
+        }
+
+        .flow-node-term code::before {
+            content: "$ ";
+            color: #64748b;
+        }
+
+        /* OIDC Flow visualization */
+        .oidc-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .oidc-step {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+        }
+
+        .oidc-step i {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .oidc-step.step-vm i { color: var(--runner); }
+        .oidc-step.step-token i { color: var(--oidc); }
+        .oidc-step.step-iam i { color: var(--iam); }
+        .oidc-step.step-sts i { color: var(--sts); }
+        .oidc-step.step-ecr i { color: var(--ecr); }
+
+        .oidc-step strong {
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+
+        .oidc-step span {
+            font-size: 0.75rem;
+            color: var(--muted);
+            line-height: 1.35;
+        }
+
+        /* Traffic flow styling */
+        .traffic-route-map {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .traffic-route-hop {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .traffic-route-hop:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .traffic-route-hop-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .traffic-route-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .traffic-icon-user { background: var(--user); }
+        .traffic-icon-dns { background: var(--dns); }
+        .traffic-icon-alb { background: #0f766e; }
+        .traffic-icon-svc { background: #2563eb; }
+        .traffic-icon-pods { background: var(--pod); }
+
+        .traffic-route-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .traffic-route-text b {
+            font-size: 0.95rem;
+            color: var(--ink);
+        }
+
+        .traffic-route-text span {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 5px solid #16a34a;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
+            color: #14532d;
+            font-size: 0.95rem;
+        }
+        
+        .highlight-box strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .labs-cta-card {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+            color: #f1f5f9;
+            border-radius: 16px;
+            padding: 35px;
+            margin: 45px 0;
+            box-shadow: 0 15px 35px rgba(49, 16, 66, 0.2);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .labs-cta-card {
+                flex-direction: column;
+                padding: 25px;
+            }
+        }
+
+        .labs-cta-content {
+            flex: 1.3;
+        }
+
+        .labs-cta-badge {
+            background: rgba(236, 72, 153, 0.15);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            color: #f472b6;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .labs-cta-title {
+            color: #fff;
+            font-size: 1.45rem;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .labs-cta-text {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .labs-cta-features {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .labs-cta-feature {
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .labs-cta-feature i {
+            color: #10b981;
+        }
+
+        .labs-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #6366f1;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .labs-cta-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.4);
+        }
+
+        .labs-cta-visual {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .terminal-mock {
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .terminal-mock-header {
+            background: #1e293b;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-mock-header .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-mock-header .dot.red { background: #ef4444; }
+        .terminal-mock-header .dot.yellow { background: #eab308; }
+        .terminal-mock-header .dot.green { background: #22c55e; }
+
+        .terminal-mock-title {
+            color: #94a3b8;
+            margin-left: 10px;
+            font-size: 0.7rem;
+        }
+
+        .terminal-mock-body {
+            padding: 14px;
+            color: #e2e8f0;
+        }
+
+        .term-line.cmd::before {
+            content: "ubuntu@eks-node:~$ ";
+            color: #64748b;
+        }
+
+        .term-line.success {
+            color: #4ade80;
+        }
+
+        .term-line.output {
+            color: #94a3b8;
+        }
+    </style>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo text-logo">
+                <img src="assets/images/logo.png" alt="Growth School">
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links" style="align-items: center;">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="mentors.html">MENTORS</a></li>
+                    <li><a href="blogs.html">BLOGS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li style="margin-left: 10px;">
+                        <a href="https://labs.growthschool.cc/" target="_blank" class="nav-btn btn-verify" style="font-weight: 800;">Interactive Labs</a>
+                    </li>
+                    <li style="margin-left: 10px;">
+                        <a href="https://careerhub.growthschool.cc/" target="_blank" class="nav-btn btn-career">Career Hub</a>
+                    </li>
+                    <li>
+                        <a href="https://resumeai.pixalara.io/" target="_blank" class="nav-btn btn-resume">ResumeAI</a>
+                    </li>
+                    <li>
+                        <a href="https://dashboard.growthschool.cc/" target="_blank" class="nav-btn btn-login">Login</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <article class="blog-article-container">
+            <div class="blog-header-section">
+                <span class="blog-category">Case Study</span>
+                <h1 class="blog-main-title">GitOps on AWS EKS: Deploying ClassKira's Multi-Tenant SaaS LMS</h1>
+                <div class="blog-meta" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <span><i class="far fa-calendar"></i> Updated July 2026</span>
+                    <span><i class="fas fa-clock"></i> 10 Min Read</span>
+                </div>
+                
+                <!-- Splash Image -->
+                <div class="story-img-wrapper" style="margin-top: 30px;">
+                    <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=1200&q=80" alt="Kubernetes EKS Container Orchestration">
+                    <div class="story-img-caption">Deploying multi-tenant architectures requires robust pipelines, zero-downtime rollouts, and secure OIDC integration.</div>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>Scaling a modern Software-as-a-Service (SaaS) application requires balancing resource efficiency with strict security. In the educational sector, this challenge is amplified. Educational platforms experience massive spikes in traffic during active class hours and exam periods, followed by complete silence at night. Furthermore, schools and universities demand absolute data isolation—no student or administrator should ever see data belonging to another institution.</p>
+                
+                <p>This case study dissects the architectural design and deployment flow of <a href="https://classkira.com" target="_blank" style="font-weight: 600;">classkira.com</a>, a leading multi-tenant Learning Management System (LMS) SaaS. We will explore how it utilizes a database-per-tenant architecture, runs efficiently on <strong>AWS Elastic Kubernetes Service (EKS)</strong>, secures connections via <strong>GitHub OIDC</strong>, and automates continuous deployments using <strong>GitOps with Argo CD</strong>.</p>
+
+                <!-- Section 1: Multi-Tenancy -->
+                <div class="section-header">
+                    <i class="fas fa-users-cog"></i>
+                    <h2>Understanding Multi-Tenant LMS SaaS</h2>
+                </div>
+                
+                <p>In a single-tenant architecture, each customer gets their own separate server and database. While secure, this is incredibly expensive to maintain and update. In contrast, <strong>multi-tenancy</strong> allows multiple customers (called "tenants") to share the same computing infrastructure, drastically reducing operational costs.</p>
+                
+                <p>For ClassKira, multi-tenancy is structured around a <strong>"Shared Compute, Isolated Data"</strong> model:</p>
+                
+                <ul>
+                    <li><strong>Subdomain Routing:</strong> Each school receives a custom subdomain (e.g., <code>academy.classkira.com</code>, <code>school-a.classkira.com</code>).</li>
+                    <li><strong>Shared Application Pool:</strong> All incoming requests hit the same pool of Laravel containers running inside AWS EKS, avoiding the overhead of maintaining individual servers for every academy.</li>
+                    <li><strong>Dynamic Database Routing:</strong> At the application level, a custom Laravel middleware identifies the tenant based on the incoming subdomain host header. It instantly switches the active database connection to that specific tenant's dedicated database schema (Database-per-Tenant model).</li>
+                </ul>
+
+                <!-- SaaS Visualizer Widget -->
+                <div class="saas-visualizer">
+                    <h4>ClassKira Multi-Tenant Dynamic Database Routing</h4>
+                    <div class="saas-grid">
+                        <!-- Tenants -->
+                        <div class="saas-col">
+                            <div class="tenant-card blue">
+                                <strong>School A</strong>
+                                <span>school-a.classkira.com</span>
+                            </div>
+                            <div class="tenant-card green">
+                                <strong>School B</strong>
+                                <span>school-b.classkira.com</span>
+                            </div>
+                            <div class="tenant-card orange">
+                                <strong>School C</strong>
+                                <span>school-c.classkira.com</span>
+                            </div>
+                        </div>
+
+                        <!-- Router -->
+                        <div class="saas-col">
+                            <div class="router-box">
+                                <i class="fas fa-random"></i>
+                                <div class="router-title">ALB & Tenant Middleware</div>
+                                <div class="router-desc">Parses subdomain Host header & dynamically sets active connection string.</div>
+                            </div>
+                        </div>
+
+                        <!-- Databases -->
+                        <div class="saas-col">
+                            <div class="db-card blue">
+                                <i class="fas fa-database"></i>
+                                <div class="db-info">
+                                    <b>db_school_a</b>
+                                    <small>Isolated Schema</small>
+                                </div>
+                            </div>
+                            <div class="db-card green">
+                                <i class="fas fa-database"></i>
+                                <div class="db-info">
+                                    <b>db_school_b</b>
+                                    <small>Isolated Schema</small>
+                                </div>
+                            </div>
+                            <div class="db-card orange">
+                                <i class="fas fa-database"></i>
+                                <div class="db-info">
+                                    <b>db_school_c</b>
+                                    <small>Isolated Schema</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Why Database-per-Tenant?</strong>
+                    "While a shared database with a <code>tenant_id</code> column is easier to set up, it carries a higher risk of data leakage due to programmer bugs. By using isolated database schemas, ClassKira guarantees that an SQL injection or coding error in one tenant's portal can never leak data from another."
+                </div>
+
+                <!-- Section 2: Why EKS and GitOps -->
+                <div class="section-header">
+                    <i class="fas fa-cubes"></i>
+                    <h2>Why AWS EKS and GitOps?</h2>
+                </div>
+
+                <p>Deploying updates in a multi-tenant environment is high-stakes. A single broken deployment doesn't just affect one user; it can instantly halt operations for hundreds of schools, locking thousands of teachers and students out of classrooms.</p>
+                
+                <p>To mitigate this risk, ClassKira relies on <strong>AWS Elastic Kubernetes Service (EKS)</strong> coupled with a strict <strong>GitOps</strong> continuous delivery pipeline:</p>
+
+                <ol>
+                    <li><strong>Infrastructure elasticity:</strong> Kubernetes allows ClassKira to scale container pods up in seconds during peak morning logins, and scale them down to a minimum configuration overnight to save costs.</li>
+                    <li><strong>Declarative State:</strong> With GitOps, the desired state of the EKS cluster is fully written out in YAML manifest files inside a Git repository. We don't log into servers to run commands. Git is the single source of truth.</li>
+                    <li><strong>Continuous Reconciliation:</strong> <strong>Argo CD</strong> runs inside EKS, continuously comparing the live cluster state with the declared files in Git. If someone manually alters a setting in EKS, Argo CD immediately detects the drift and overrides it back to the Git-defined configuration.</li>
+                </ol>
+
+                <!-- Section 3: OIDC Security -->
+                <div class="section-header">
+                    <i class="fas fa-key"></i>
+                    <h2>Securing the Cloud Handshake: OIDC & STS</h2>
+                </div>
+
+                <p>Traditional CI/CD pipelines require storing long-lived credentials (like <code>AWS_ACCESS_KEY_ID</code>) in GitHub secrets. If a developer account or repository is compromised, those credentials can leak, giving hackers administrative access to the entire AWS account.</p>
+                
+                <p>ClassKira solves this using **OpenID Connect (OIDC)** and **AWS STS (Security Token Service)** to implement a passwordless, short-lived trust relationship:</p>
+
+                <div class="diag-container">
+                    <div class="diag-title">
+                        <span>OIDC Token Exchange Process</span>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="oidc-flow-grid">
+                        <div class="oidc-step step-vm">
+                            <i class="fas fa-server"></i>
+                            <strong>1. Runner Job</strong>
+                            <span>Workflow starts on temporary runner VM.</span>
+                        </div>
+                        <div class="oidc-step step-token">
+                            <i class="fas fa-id-card"></i>
+                            <strong>2. JWT Token</strong>
+                            <span>Runner requests identity token from GitHub.</span>
+                        </div>
+                        <div class="oidc-step step-iam">
+                            <i class="fas fa-lock"></i>
+                            <strong>3. IAM Trust</strong>
+                            <span>AWS IAM trusts GitHub repository identity.</span>
+                        </div>
+                        <div class="oidc-step step-sts">
+                            <i class="fas fa-exchange-alt"></i>
+                            <strong>4. AWS STS</strong>
+                            <span>Exchanges JWT for temporary credentials.</span>
+                        </div>
+                        <div class="oidc-step step-ecr">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <strong>5. ECR Access</strong>
+                            <span>Runner pushes Docker image to ECR securely.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Because the generated credentials expire automatically after a short period (typically 1 hour), there are no permanent keys to be stolen, making the system incredibly resilient to credential leaks.</p>
+
+                <!-- Section 4: CI/CD Architectural & Deployment Flow -->
+                <div class="section-header">
+                    <i class="fas fa-project-diagram"></i>
+                    <h2>The CI/CD Code Deployment Flow</h2>
+                </div>
+
+                <p>From a developer committing code to a live update in production, the ClassKira pipeline operates as a fully automated conveyor belt. Let's trace the steps of a code change:</p>
+
+                <div class="diag-container">
+                    <div class="diag-title">
+                        <span>CI/CD & GitOps Loop</span>
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <div class="cicd-flow">
+                        <div class="flow-node" data-step="1">
+                            <span class="flow-node-badge badge-github">GitHub</span>
+                            <strong>Commit Code</strong>
+                            <p>A developer merges their code changes or bug fixes to the main branch.</p>
+                        </div>
+                        
+                        <div class="flow-node" data-step="2">
+                            <span class="flow-node-badge badge-ci">Actions</span>
+                            <strong>Trigger Pipeline</strong>
+                            <p>GitHub Actions detects the push event and launches the pipeline workflow.</p>
+                        </div>
+                        
+                        <div class="flow-node" data-step="3">
+                            <span class="flow-node-badge badge-runner">Runner</span>
+                            <strong>Build & Test</strong>
+                            <p>A temporary VM boots up, runs tests, and packages the app into a container.</p>
+                            <div class="flow-node-term">
+                                <code>composer install</code>
+                                <code>php artisan test</code>
+                                <code>docker build -t app:sha .</code>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-node" data-step="4">
+                            <span class="flow-node-badge badge-ecr">ECR</span>
+                            <strong>Push Image</strong>
+                            <p>Runner authenticates via OIDC and pushes the tagged Docker image to ECR.</p>
+                        </div>
+                        
+                        <div class="flow-node" data-step="5">
+                            <span class="flow-node-badge badge-git">Git</span>
+                            <strong>Update Manifest</strong>
+                            <p>Workflow commits the new image tag back to the Kubernetes deployment YAML file in GitHub.</p>
+                        </div>
+                        
+                        <div class="flow-node" data-step="6">
+                            <span class="flow-node-badge badge-argo">Argo CD</span>
+                            <strong>Sync Cluster</strong>
+                            <p>Argo CD detects the manifest change in Git, reconciles, and applies it to EKS.</p>
+                        </div>
+                        
+                        <div class="flow-node" data-step="7">
+                            <span class="flow-node-badge badge-eks">EKS</span>
+                            <strong>Pull Image</strong>
+                            <p>EKS worker nodes pull the new container image from ECR to spin up new pods.</p>
+                        </div>
+                        
+                        <div class="flow-node" data-step="8">
+                            <span class="flow-node-badge badge-pod">Pod</span>
+                            <strong>Rolling Update</strong>
+                            <p>New pods undergo health checks. Once active, old pods are terminated with zero downtime.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Traffic Routing -->
+                <div class="section-header">
+                    <i class="fas fa-network-wired"></i>
+                    <h2>Runtime Traffic Flow & Auto-scaling</h2>
+                </div>
+
+                <p>When teachers, students, and parents open ClassKira, their browsers establish connections directly to the production cluster. Here is the step-by-step route internet traffic takes:</p>
+
+                <div class="diag-container">
+                    <div class="diag-title">
+                        <span>End User Access Path</span>
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="traffic-route-map">
+                        <div class="traffic-route-hop">
+                            <div class="traffic-route-hop-num">1</div>
+                            <div class="traffic-route-icon traffic-icon-user">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="traffic-route-text">
+                                <b>End User Requests</b>
+                                <span>A teacher opens <code>schoolname.classkira.com</code> in their browser.</span>
+                            </div>
+                        </div>
+
+                        <div class="traffic-route-hop">
+                            <div class="traffic-route-hop-num">2</div>
+                            <div class="traffic-route-icon traffic-icon-dns">
+                                <i class="fas fa-search-location"></i>
+                            </div>
+                            <div class="traffic-route-text">
+                                <b>DNS Resolution</b>
+                                <span>Route 53 resolves the domain request and forwards it to the Application Load Balancer (ALB).</span>
+                            </div>
+                        </div>
+
+                        <div class="traffic-route-hop">
+                            <div class="traffic-route-hop-num">3</div>
+                            <div class="traffic-route-icon traffic-icon-alb">
+                                <i class="fas fa-sliders-h"></i>
+                            </div>
+                            <div class="traffic-route-text">
+                                <b>AWS ALB & Ingress</b>
+                                <span>ALB terminates HTTPS, inspects host headers, and routes traffic through the Kubernetes Ingress controller.</span>
+                            </div>
+                        </div>
+
+                        <div class="traffic-route-hop">
+                            <div class="traffic-route-hop-num">4</div>
+                            <div class="traffic-route-icon traffic-icon-svc">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="traffic-route-text">
+                                <b>Kubernetes Service</b>
+                                <span>Distributes requests among the list of healthy application pods inside the EKS cluster.</span>
+                            </div>
+                        </div>
+
+                        <div class="traffic-route-hop">
+                            <div class="traffic-route-hop-num">5</div>
+                            <div class="traffic-route-icon traffic-icon-pods">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="traffic-route-text">
+                                <b>Laravel Application Pods</b>
+                                <span>Pods process requests, load tenant configurations, read/write isolated database data, and return HTML/JSON.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>How ClassKira Dynamic Auto-Scaling Works:</h3>
+                <ul>
+                    <li><strong>Pod Auto-scaling (HPA):</strong> The Kubernetes **Horizontal Pod Autoscaler (HPA)** watches the CPU/Memory utilization of ClassKira pods. If usage crosses 70%, HPA commands EKS to scale up pod counts (e.g., from 3 to 10 replicas).</li>
+                    <li><strong>Node Auto-scaling (Karpenter):</strong> If the EKS cluster lacks the CPU/Memory capacity to schedule these new pods, **Karpenter** acts immediately, provisioning new EC2 instances in less than 30 seconds and joining them to the cluster.</li>
+                    <li><strong>Shrinking Capacity:</strong> As traffic drops in the evening, the reverse process occurs. Karpenter terminates idle EC2 instances and EKS deletes unused pods, ensuring ClassKira only pays for what it actually uses.</li>
+                </ul>
+
+                <!-- Conclusion -->
+                <div class="section-header">
+                    <i class="fas fa-award"></i>
+                    <h2>Conclusion: Key Architectural Lessons</h2>
+                </div>
+                <p>ClassKira's EKS GitOps deployment strategy showcases the maturity of modern cloud-native systems. By separating concerns—using GitHub Actions strictly to build/test, and Argo CD to enforce EKS state—the platform gains stability and auditability. Combined with temporary OIDC token exchanges and strict database-per-tenant isolation, ClassKira delivers a highly secure, reliable, and cost-effective LMS SaaS for educational organizations worldwide.</p>
+            </div>
+
+            <!-- START: Interactive Labs CTA -->
+            <div class="labs-cta-card">
+                <div class="labs-cta-content">
+                    <span class="labs-cta-badge"><i class="fas fa-terminal"></i> Live Sandbox</span>
+                    <h3 class="labs-cta-title">Build Your Own GitOps Pipeline!</h3>
+                    <p class="labs-cta-text">Tired of reading theory? Connect to our live interactive sandbox. You can set up a GitHub Actions workflow, configure OIDC permissions, build Docker containers, and sync manifests using Argo CD on a real, temporary Kubernetes cluster right from your browser.</p>
+                    <div class="labs-cta-features">
+                        <span class="labs-cta-feature"><i class="fas fa-check-circle"></i> 100% Free & Interactive for Growth School Community</span>
+                        <span class="labs-cta-feature"><i class="fas fa-check-circle"></i> No AWS Account or Local Setup Required</span>
+                        <span class="labs-cta-feature"><i class="fas fa-check-circle"></i> Guided walkthroughs with instant feedback</span>
+                    </div>
+                    <a href="https://labs.growthschool.cc/" target="_blank" class="labs-cta-btn">
+                        Access EKS Live Lab <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="labs-cta-visual">
+                    <div class="terminal-mock">
+                        <div class="terminal-mock-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="terminal-mock-title">student@growthschool:~/argocd</span>
+                        </div>
+                        <div class="terminal-mock-body">
+                            <p class="term-line cmd">argocd app create classkira --repo github.com/classkira --path k8s --dest https://kubernetes.default.svc</p>
+                            <p class="term-line output">Creating application 'classkira'...</p>
+                            <p class="term-line output">Application 'classkira' created successfully.</p>
+                            <p class="term-line cmd">argocd app sync classkira</p>
+                            <p class="term-line success"><i class="fas fa-check"></i> Cluster synced. 8 pods running.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Interactive Labs CTA -->
+
+            <div class="blog-navigation">
+                <a href="blog-cicd-mastery.html" class="nav-link-blog">&larr; Previous: CI/CD Pipelines</a>
+                <a href="blog-monitoring-observability.html" class="nav-link-blog">Next: Monitoring & Observability &rarr;</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col" style="text-align: center;">
+                <h3 class="footer-brand"><span class="brand-green">Growth School</span></h3>
+                <p class="footer-tagline">Unlock Your Potential With Every Step</p>
+                <div class="social-links" style="margin-top: 20px;">
+                    <a href="https://www.instagram.com/growthschool.cc/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="mentors.html">Mentors</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="https://labs.growthschool.cc/" target="_blank">Interactive Labs</a></li>
+                    <li style="margin-top: 10px;">
+                        <a href="https://careerhub.growthschool.cc/" target="_blank" style="color: var(--primary); font-weight: 700;">
+                            Career Hub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://resumeai.pixalara.io/" target="_blank" style="color: #1e88e5; font-weight: 700;">
+                            ResumeAI
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://dashboard.growthschool.cc/" target="_blank" style="font-weight: 700;">
+                            Student Login
+                        </a>
+                    </li>
+                    <li><a href="verify.html" style="color: #4cd137;">Verify Certificate</a></li>
+</ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> contact@growthschool.cc</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                &copy; 2026 Growth School. All rights reserved. | 
+                Powered by <a href="https://pixalara.com" target="_blank" style="color: inherit; text-decoration: none; font-weight: 600;">pixalara.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+
+    <a href="https://wa.me/919988688654?text=Hello%20Growth%20School%20Team%2C%20I%20am%20interested%20in%20your%20courses." class="float-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp my-float"></i>
+    </a>
+
+</body>
+</html>

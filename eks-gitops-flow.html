@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClassKira AWS EKS GitOps Flow</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5f6b7f;
+      --line: #cbd5e1;
+      --panel: #ffffff;
+      --bg: #f6f8fc;
+      --github: #24292f;
+      --actions: #2f81f7;
+      --runner: #0969da;
+      --oidc: #0891b2;
+      --iam: #334155;
+      --sts: #9333ea;
+      --ecr: #ff9900;
+      --git: #1f9d72;
+      --argo: #ef6c5b;
+      --eks: #7c3aed;
+      --pod: #0f766e;
+      --dns: #0ea5e9;
+      --user: #475569;
+      --metric: #dc2626;
+      --scale: #16a34a;
+      --node: #ea580c;
+      --shadow: 0 14px 34px rgba(23, 32, 51, 0.11);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 248, 252, 0.96)),
+        radial-gradient(circle at 16% 7%, rgba(47, 129, 247, 0.12), transparent 32%),
+        radial-gradient(circle at 86% 14%, rgba(255, 153, 0, 0.14), transparent 30%),
+        var(--bg);
+    }
+
+    main {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 30px 0 44px;
+    }
+
+    header {
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 980px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .board {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section {
+      border: 1px solid rgba(95, 107, 127, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    .flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .flow.deploy {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-areas:
+        "github actions runner ecr"
+        "handoff handoff handoff handoff"
+        "manifest argo eks pod"
+        "notes notes notes notes";
+    }
+
+    .flow.deploy::before {
+      content: "";
+      position: absolute;
+      inset: 74px 10% auto 10%;
+      height: calc(100% - 250px);
+      pointer-events: none;
+      background:
+        linear-gradient(var(--line), var(--line)) 0 0 / 100% 3px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 calc(50% + 54px) / 100% 3px no-repeat,
+        linear-gradient(var(--line), var(--line)) 100% 0 / 3px calc(50% + 56px) no-repeat,
+        linear-gradient(135deg, transparent 48%, var(--ecr) 49%, var(--ecr) 51%, transparent 52%) 58% 10px / 26% calc(50% + 72px) no-repeat;
+      opacity: 0.58;
+      z-index: 0;
+    }
+
+    .flow.users::before {
+      content: "";
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 50%;
+      height: 3px;
+      background: var(--line);
+      opacity: 0.68;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .flow.users {
+      grid-template-columns: 1.25fr 0.8fr 1fr 1fr 1.1fr;
+      grid-template-areas:
+        "users dns alb svc app"
+        "userwire userwire userwire userwire userwire";
+    }
+
+    .flow.scale {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-areas:
+        "traffic route service pods metrics hpa"
+        "spread spread spread spread spread spread"
+        "capacity capacity nodes nodes rollout rollout";
+    }
+
+    .flow.scale::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 29%;
+      height: 3px;
+      background: var(--line);
+      opacity: 0.68;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .flow.scale::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 31%;
+      height: 3px;
+      border-top: 3px dashed rgba(22, 163, 74, 0.45);
+      z-index: 0;
+    }
+
+    .flow.auth {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-areas:
+        "authrunner oidc iam sts ecraccess"
+        "authnote authnote authnote authnote authnote";
+    }
+
+    .flow.auth::before {
+      content: "";
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 36%;
+      height: 3px;
+      background: var(--line);
+      opacity: 0.68;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .node {
+      position: relative;
+      min-height: 148px;
+      min-width: 0;
+      border: 1px solid rgba(23, 32, 51, 0.1);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 10px 28px rgba(23, 32, 51, 0.08);
+      padding: 16px;
+      display: grid;
+      gap: 9px;
+      align-content: start;
+      overflow: hidden;
+    }
+
+    .node::after {
+      content: "\2192";
+      position: absolute;
+      top: 50%;
+      right: -16px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(95, 107, 127, 0.2);
+      border-radius: 50%;
+      background: #fff;
+      color: #64748b;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(23, 32, 51, 0.08);
+      transform: translateY(-50%);
+      z-index: 3;
+    }
+
+    .node {
+      z-index: 1;
+    }
+
+    .node::before {
+      content: attr(data-step);
+      position: absolute;
+      top: 14px;
+      right: 42px;
+      min-width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #334155;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 900;
+      border: 1px solid rgba(100, 116, 139, 0.14);
+    }
+
+    .ecr::after {
+      content: "\2198";
+      right: -16px;
+      top: calc(100% + 10px);
+    }
+
+    .pod::after {
+      display: none;
+    }
+
+    .pull-line {
+      position: absolute;
+      left: 50%;
+      right: 18px;
+      bottom: 16px;
+      border-radius: 999px;
+      background: #fff7ed;
+      color: #9a3412;
+      border: 1px solid rgba(255, 153, 0, 0.26);
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(23, 32, 51, 0.06);
+      transform: translateX(-4%);
+    }
+
+    .control-line {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 0;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .control-line span {
+      border-radius: 999px;
+      border: 1px dashed rgba(100, 116, 139, 0.28);
+      background: rgba(248, 250, 252, 0.86);
+      padding: 7px 8px;
+    }
+
+    .wire-label {
+      grid-column: 1 / -1;
+      justify-self: center;
+      margin: -4px 0;
+      border-radius: 999px;
+      border: 1px solid rgba(100, 116, 139, 0.18);
+      background: #ffffff;
+      color: #475569;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(23, 32, 51, 0.07);
+      z-index: 2;
+    }
+
+    .node.end::after,
+    .notes::after,
+    .spread::after,
+    .rollout::after {
+      display: none;
+    }
+
+    .notes::before,
+    .auth-note::before,
+    .spread::before,
+    .users-card::before,
+    .dns::before,
+    .alb::before,
+    .svc::before,
+    .app::before {
+      display: none;
+    }
+
+    .node strong {
+      font-size: 18px;
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    .node span,
+    .node li {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.38;
+      overflow-wrap: anywhere;
+    }
+
+    .node ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .badge {
+      min-width: 46px;
+      width: max-content;
+      height: 46px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 0 10px;
+    }
+
+    .github { grid-area: github; }
+    .actions { grid-area: actions; }
+    .runner { grid-area: runner; }
+    .ecr { grid-area: ecr; }
+    .manifest { grid-area: manifest; }
+    .argo { grid-area: argo; }
+    .eks { grid-area: eks; }
+    .pod { grid-area: pod; }
+    .notes { grid-area: notes; }
+    .handoff { grid-area: handoff; }
+    .user-wire { grid-area: userwire; }
+    .users-card { grid-area: users; }
+    .dns { grid-area: dns; }
+    .alb { grid-area: alb; }
+    .svc { grid-area: svc; }
+    .app { grid-area: app; }
+    .traffic { grid-area: traffic; }
+    .route { grid-area: route; }
+    .service-route { grid-area: service; }
+    .pod-pool { grid-area: pods; }
+    .metrics { grid-area: metrics; }
+    .hpa { grid-area: hpa; }
+    .spread { grid-area: spread; }
+    .capacity { grid-area: capacity; }
+    .nodes { grid-area: nodes; }
+    .rollout { grid-area: rollout; }
+    .auth-runner { grid-area: authrunner; }
+    .oidc { grid-area: oidc; }
+    .iam { grid-area: iam; }
+    .sts { grid-area: sts; }
+    .ecr-access { grid-area: ecraccess; }
+    .auth-note { grid-area: authnote; }
+
+    .github .badge { background: var(--github); }
+    .actions .badge { background: var(--actions); }
+    .runner .badge { background: var(--runner); }
+    .auth-runner .badge { background: var(--runner); }
+    .oidc .badge { background: var(--oidc); }
+    .iam .badge { background: var(--iam); }
+    .sts .badge { background: var(--sts); }
+    .ecr-access .badge { background: var(--ecr); }
+    .ecr .badge { background: var(--ecr); }
+    .manifest .badge { background: var(--git); }
+    .argo .badge { background: var(--argo); }
+    .eks .badge { background: var(--eks); }
+    .pod .badge { background: var(--pod); }
+    .dns .badge { background: var(--dns); }
+    .alb .badge { background: #0f766e; }
+    .svc .badge { background: #2563eb; }
+    .app .badge { background: var(--eks); }
+    .users-card .badge { background: var(--user); }
+    .traffic .badge { background: var(--user); }
+    .route .badge { background: #0f766e; }
+    .service-route .badge { background: #2563eb; }
+    .pod-pool .badge { background: var(--pod); }
+    .metrics .badge { background: var(--metric); }
+    .hpa .badge { background: var(--scale); }
+    .capacity .badge { background: var(--scale); }
+    .nodes .badge { background: var(--node); }
+    .rollout .badge { background: var(--eks); }
+
+    .runner {
+      border-color: rgba(9, 105, 218, 0.28);
+      background:
+        linear-gradient(180deg, rgba(9, 105, 218, 0.06), transparent 52%),
+        var(--panel);
+    }
+
+    .runner .terminal {
+      display: grid;
+      gap: 5px;
+      margin-top: 2px;
+      border-radius: 8px;
+      background: #111827;
+      color: #d1fae5;
+      padding: 10px;
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .user-icons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .person {
+      display: grid;
+      justify-items: center;
+      gap: 6px;
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 10px 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .avatar {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 42px;
+      height: 24px;
+      border-radius: 20px 20px 8px 8px;
+      background: inherit;
+      transform: translateX(-50%);
+      opacity: 0.74;
+    }
+
+    .teacher .avatar { background: #2563eb; }
+    .student .avatar { background: #16a34a; }
+    .parent .avatar { background: #f97316; }
+    .admin .avatar { background: #7c3aed; }
+
+    .domain {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      border: 1px solid rgba(14, 165, 233, 0.28);
+      border-radius: 8px;
+      background: #ecfeff;
+      padding: 10px;
+      color: #0369a1;
+      font-weight: 900;
+      font-size: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    .notes {
+      min-height: 128px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: #f8fafc;
+    }
+
+    .auth-note {
+      min-height: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: #f8fafc;
+    }
+
+    .fact {
+      border: 1px solid rgba(95, 107, 127, 0.16);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+    }
+
+    .fact b {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .fact small {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.38;
+    }
+
+    .pulse {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 7px currentColor;
+      opacity: 0.18;
+      animation: glow 2.4s ease-in-out infinite;
+    }
+
+    .github .pulse { color: var(--github); }
+    .actions .pulse { color: var(--actions); animation-delay: 0.2s; }
+    .runner .pulse { color: var(--runner); animation-delay: 0.4s; }
+    .auth-runner .pulse { color: var(--runner); }
+    .oidc .pulse { color: var(--oidc); animation-delay: 0.2s; }
+    .iam .pulse { color: var(--iam); animation-delay: 0.4s; }
+    .sts .pulse { color: var(--sts); animation-delay: 0.6s; }
+    .ecr-access .pulse { color: var(--ecr); animation-delay: 0.8s; }
+    .ecr .pulse { color: var(--ecr); animation-delay: 0.6s; }
+    .manifest .pulse { color: var(--git); animation-delay: 0.8s; }
+    .argo .pulse { color: var(--argo); animation-delay: 1s; }
+    .eks .pulse { color: var(--eks); animation-delay: 1.2s; }
+    .pod .pulse { color: var(--pod); animation-delay: 1.4s; }
+    .users-card .pulse { color: var(--user); }
+    .dns .pulse { color: var(--dns); animation-delay: 0.2s; }
+    .alb .pulse { color: #0f766e; animation-delay: 0.4s; }
+    .svc .pulse { color: #2563eb; animation-delay: 0.6s; }
+    .app .pulse { color: var(--eks); animation-delay: 0.8s; }
+    .traffic .pulse { color: var(--user); }
+    .route .pulse { color: #0f766e; animation-delay: 0.2s; }
+    .service-route .pulse { color: #2563eb; animation-delay: 0.4s; }
+    .pod-pool .pulse { color: var(--pod); animation-delay: 0.6s; }
+    .metrics .pulse { color: var(--metric); animation-delay: 0.8s; }
+    .hpa .pulse { color: var(--scale); animation-delay: 1s; }
+    .capacity .pulse { color: var(--scale); animation-delay: 1.2s; }
+    .nodes .pulse { color: var(--node); animation-delay: 1.4s; }
+    .rollout .pulse { color: var(--eks); animation-delay: 1.6s; }
+
+    .pod-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+
+    .mini-pod {
+      min-height: 42px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #ccfbf1;
+      color: #115e59;
+      border: 1px solid rgba(15, 118, 110, 0.2);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .mini-pod.new {
+      background: #dcfce7;
+      color: #166534;
+      border-color: rgba(22, 163, 74, 0.24);
+    }
+
+    .meter {
+      display: grid;
+      gap: 7px;
+    }
+
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #ef4444);
+    }
+
+    .scale-note {
+      min-height: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: #f8fafc;
+    }
+
+    .traffic-map {
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.9fr 0.9fr 1fr 1fr 1.35fr;
+      gap: 12px;
+      align-items: stretch;
+      margin-bottom: 16px;
+      padding: 14px;
+      border: 1px solid rgba(95, 107, 127, 0.16);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.94)),
+        radial-gradient(circle at 18% 50%, rgba(14, 165, 233, 0.12), transparent 28%),
+        radial-gradient(circle at 84% 50%, rgba(22, 163, 74, 0.12), transparent 30%);
+      overflow: hidden;
+    }
+
+    .traffic-map::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 18%;
+      top: 50%;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #94a3b8, #0ea5e9, #2563eb, #16a34a);
+      transform: translateY(-50%);
+      opacity: 0.4;
+    }
+
+    .traffic-hop {
+      position: relative;
+      min-height: 112px;
+      border: 1px solid rgba(23, 32, 51, 0.1);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 10px 22px rgba(23, 32, 51, 0.07);
+      padding: 12px;
+      display: grid;
+      gap: 7px;
+      align-content: center;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .traffic-hop b {
+      font-size: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .traffic-hop span {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    .traffic-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      justify-self: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .traffic-hop.users-hop .traffic-icon { background: var(--user); }
+    .traffic-hop.dns-hop .traffic-icon { background: var(--dns); }
+    .traffic-hop.alb-hop .traffic-icon { background: #0f766e; }
+    .traffic-hop.svc-hop .traffic-icon { background: #2563eb; }
+    .traffic-hop.pods-hop .traffic-icon { background: var(--pod); }
+
+    .packet {
+      position: absolute;
+      top: calc(50% - 5px);
+      left: 8%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0ea5e9;
+      box-shadow: 0 0 0 6px rgba(14, 165, 233, 0.14);
+      z-index: 2;
+      animation: packetMove 4.8s linear infinite;
+    }
+
+    .packet:nth-child(2) {
+      animation-delay: 1.2s;
+      background: #16a34a;
+      box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.14);
+    }
+
+    .packet:nth-child(3) {
+      animation-delay: 2.4s;
+      background: #f97316;
+      box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.14);
+    }
+
+    @keyframes packetMove {
+      0% { left: 8%; opacity: 0; }
+      8% { opacity: 1; }
+      92% { opacity: 1; }
+      100% { left: 82%; opacity: 0; }
+    }
+
+    .traffic-pods {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .traffic-pods span {
+      border-radius: 8px;
+      background: #ccfbf1;
+      border: 1px solid rgba(15, 118, 110, 0.18);
+      color: #115e59;
+      padding: 8px 4px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .traffic-caption {
+      grid-column: 1 / -1;
+      justify-self: center;
+      border-radius: 999px;
+      border: 1px solid rgba(100, 116, 139, 0.18);
+      background: #fff;
+      color: #475569;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      z-index: 1;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        transform: scale(0.72);
+        opacity: 0.14;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 0.34;
+      }
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .step {
+      min-height: 102px;
+      border: 1px solid rgba(95, 107, 127, 0.18);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      animation: stepPulse 16s linear infinite;
+    }
+
+    .step:nth-child(2) { animation-delay: 2s; }
+    .step:nth-child(3) { animation-delay: 4s; }
+    .step:nth-child(4) { animation-delay: 6s; }
+    .step:nth-child(5) { animation-delay: 8s; }
+    .step:nth-child(6) { animation-delay: 10s; }
+    .step:nth-child(7) { animation-delay: 12s; }
+    .step:nth-child(8) { animation-delay: 14s; }
+
+    .step b {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
+
+    .step small {
+      display: block;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+    }
+
+    @keyframes stepPulse {
+      0%, 12%, 100% {
+        border-color: rgba(95, 107, 127, 0.18);
+        box-shadow: none;
+        transform: translateY(0);
+      }
+      4%, 8% {
+        border-color: rgba(47, 129, 247, 0.5);
+        box-shadow: 0 10px 22px rgba(47, 129, 247, 0.16);
+        transform: translateY(-3px);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      main {
+        width: min(100% - 28px, 1280px);
+      }
+
+      .flow.deploy {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "github actions"
+          "runner ecr"
+          "handoff handoff"
+          "manifest argo"
+          "eks pod"
+          "notes notes";
+      }
+
+      .control-line {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pull-line {
+        position: static;
+        transform: none;
+        margin-top: 8px;
+      }
+
+      .flow.users {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "users dns"
+          "alb svc"
+          "app app"
+          "userwire userwire";
+      }
+
+      .flow.auth {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "authrunner oidc"
+          "iam sts"
+          "ecraccess ecraccess"
+          "authnote authnote";
+      }
+
+      .flow.scale {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "traffic route"
+          "service pods"
+          "metrics hpa"
+          "spread spread"
+          "capacity nodes"
+          "rollout rollout";
+      }
+
+      .auth-note,
+      .scale-note {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .traffic-map {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .traffic-map::before,
+      .packet {
+        display: none;
+      }
+
+      .pods-hop {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .section {
+        padding: 14px;
+      }
+
+      .flow.users,
+      .flow.auth,
+      .flow.scale {
+        grid-template-columns: 1fr;
+      }
+
+      .flow.users {
+        grid-template-areas:
+          "users"
+          "dns"
+          "alb"
+          "svc"
+          "app"
+          "userwire";
+      }
+
+      .flow.auth {
+        grid-template-areas:
+          "authrunner"
+          "oidc"
+          "iam"
+          "sts"
+          "ecraccess"
+          "authnote";
+      }
+
+      .flow.scale {
+        grid-template-areas:
+          "traffic"
+          "route"
+          "service"
+          "pods"
+          "metrics"
+          "hpa"
+          "spread"
+          "capacity"
+          "nodes"
+          "rollout";
+      }
+
+      .flow.deploy::before,
+      .flow.users::before,
+      .flow.auth::before,
+      .flow.scale::before,
+      .flow.scale::after {
+        display: none;
+      }
+
+      .auth-note,
+      .scale-note,
+      .notes {
+        grid-template-columns: 1fr;
+      }
+
+      .traffic-map {
+        grid-template-columns: 1fr;
+      }
+
+      .pods-hop {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 700px) {
+      main {
+        width: min(100% - 20px, 1280px);
+        padding: 20px 0 32px;
+      }
+
+      .section-title {
+        display: grid;
+        gap: 8px;
+      }
+
+      .section-title p {
+        text-align: left;
+      }
+
+      .flow.deploy {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "github"
+          "actions"
+          "runner"
+          "ecr"
+          "handoff"
+          "manifest"
+          "argo"
+          "eks"
+          "pod"
+          "notes";
+      }
+
+      .flow.users {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "users"
+          "dns"
+          "alb"
+          "svc"
+          "app"
+          "userwire";
+      }
+
+      .flow.auth {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "authrunner"
+          "oidc"
+          "iam"
+          "sts"
+          "ecraccess"
+          "authnote";
+      }
+
+      .flow.scale {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "traffic"
+          "route"
+          "service"
+          "pods"
+          "metrics"
+          "hpa"
+          "spread"
+          "capacity"
+          "nodes"
+          "rollout";
+      }
+
+      .flow.deploy::before,
+      .flow.users::before,
+      .flow.auth::before,
+      .flow.scale::before,
+      .flow.scale::after {
+        display: none;
+      }
+
+      .node::after {
+        top: auto;
+        right: 50%;
+        bottom: -14px;
+        width: 30px;
+        height: 30px;
+        transform: translateX(50%);
+        content: "\2193";
+      }
+
+      .ecr::after {
+        top: auto;
+        right: 50%;
+        bottom: -14px;
+        content: "\2193";
+      }
+
+      .control-line {
+        grid-template-columns: 1fr;
+      }
+
+      .notes {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      h1 {
+        font-size: 30px;
+        line-height: 1.12;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .section-title h2 {
+        font-size: 18px;
+      }
+
+      .node {
+        min-height: 132px;
+        padding: 14px;
+      }
+
+      .node strong {
+        font-size: 16px;
+      }
+
+      .node span,
+      .node li,
+      .fact small {
+        font-size: 12.8px;
+      }
+
+      .user-icons,
+      .pod-grid,
+      .traffic-pods {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .wire-label {
+        width: 100%;
+        border-radius: 8px;
+        text-align: center;
+        line-height: 1.35;
+      }
+
+      .domain {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>ClassKira AWS EKS GitOps Deployment Flow</h1>
+      <p class="lead">
+        GitHub Actions starts a temporary GitHub-hosted runner. The runner builds/tests the Laravel app,
+        creates the Docker image, authenticates to AWS through OIDC with short-lived credentials, pushes it
+        to ECR, and updates the Kubernetes manifest. Argo CD then syncs the changed manifest to EKS, where
+        Kubernetes performs a rolling update.
+      </p>
+    </header>
+
+    <div class="board">
+      <section class="section" aria-label="CI/CD GitOps deployment flow">
+        <div class="section-title">
+          <h2>1. CI/CD and GitOps Deployment</h2>
+          <p>Image goes to ECR. Manifest change goes to GitHub. Argo CD syncs GitHub to EKS.</p>
+        </div>
+
+        <div class="flow deploy">
+          <article class="node github" data-step="1">
+            <div class="pulse"></div>
+            <div class="badge">GH</div>
+            <strong>GitHub main</strong>
+            <span>Developer commits source code to the main branch.</span>
+          </article>
+
+          <article class="node actions" data-step="2">
+            <div class="pulse"></div>
+            <div class="badge">CI</div>
+            <strong>GitHub Actions workflow</strong>
+            <span>The main-branch event starts the pipeline defined in `.github/workflows`.</span>
+          </article>
+
+          <article class="node runner" data-step="3">
+            <div class="pulse"></div>
+            <div class="badge">VM</div>
+            <strong>GitHub-hosted runner</strong>
+            <span>Temporary Ubuntu VM where build, test, Docker build, tag, and push happen.</span>
+            <div class="terminal">
+              <code>composer install</code>
+              <code>php artisan test</code>
+              <code>docker build</code>
+              <code>docker push ECR</code>
+            </div>
+          </article>
+
+          <article class="node ecr" data-step="4">
+            <div class="pulse"></div>
+            <div class="badge">ECR</div>
+            <strong>AWS ECR</strong>
+            <span>Private Docker image registry. It stores images only; it does not deploy to EKS.</span>
+            <div class="pull-line">Later: EKS pulls this image from ECR</div>
+          </article>
+
+          <div class="wire-label handoff">After image push: workflow commits the new image tag to GitHub, then Argo CD syncs EKS</div>
+
+          <article class="node manifest" data-step="5">
+            <div class="pulse"></div>
+            <div class="badge">Git</div>
+            <strong>Kubernetes manifest</strong>
+            <span>The workflow commits the new ECR image tag into the manifest file in GitHub.</span>
+          </article>
+
+          <article class="node argo" data-step="6">
+            <div class="pulse"></div>
+            <div class="badge">Argo</div>
+            <strong>Argo CD</strong>
+            <span>Runs inside EKS, watches GitHub, detects the manifest update, and syncs it.</span>
+          </article>
+
+          <article class="node eks" data-step="7">
+            <div class="pulse"></div>
+            <div class="badge">EKS</div>
+            <strong>AWS EKS cluster</strong>
+            <span>Receives the updated Deployment from Argo CD with the same ECR image tag committed in GitHub.</span>
+            <span>EKS worker nodes pull that exact image tag from ECR before starting the new pods.</span>
+          </article>
+
+          <article class="node pod end" data-step="8">
+            <div class="pulse"></div>
+            <div class="badge">Pod</div>
+            <strong>Rolling update</strong>
+            <span>New pods pull the new image from ECR, become ready, then old pods are removed.</span>
+          </article>
+
+          <article class="node notes">
+            <div class="fact">
+              <b>Who pushes image?</b>
+              <small>The GitHub-hosted runner pushes the Docker image to AWS ECR.</small>
+            </div>
+            <div class="fact">
+              <b>Does ECR push to EKS?</b>
+              <small>No. ECR stores images. After Argo CD applies the updated tag, EKS worker nodes pull that same tag from ECR.</small>
+            </div>
+            <div class="fact">
+              <b>Where does Argo CD work?</b>
+              <small>Inside EKS. It watches GitHub and applies Kubernetes manifests.</small>
+            </div>
+            <div class="fact">
+              <b>What triggers deployment?</b>
+              <small>The Kubernetes manifest image tag commit, not the image push alone.</small>
+            </div>
+          </article>
+        </div>
+
+        <div class="timeline" aria-label="Deployment timeline">
+          <div class="step">
+            <b>1. Commit</b>
+            <small>Code lands on GitHub main.</small>
+          </div>
+          <div class="step">
+            <b>2. Workflow</b>
+            <small>GitHub Actions receives the push event.</small>
+          </div>
+          <div class="step">
+            <b>3. Runner</b>
+            <small>GitHub starts a temporary Ubuntu runner VM.</small>
+          </div>
+          <div class="step">
+            <b>4. Build Image</b>
+            <small>Runner tests code and builds the Docker image.</small>
+          </div>
+          <div class="step">
+            <b>5. Push ECR</b>
+            <small>Runner pushes the tagged image to ECR.</small>
+          </div>
+          <div class="step">
+            <b>6. Update Git</b>
+            <small>Runner commits the new image tag to the manifest.</small>
+          </div>
+          <div class="step">
+            <b>7. Argo Sync</b>
+            <small>Argo CD applies the new manifest to EKS.</small>
+          </div>
+          <div class="step">
+            <b>8. Rollout</b>
+            <small>EKS pulls the same Argo CD-updated image tag from ECR and performs a rolling update.</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="OIDC AWS authentication flow">
+        <div class="section-title">
+          <h2>2. Secure AWS Connection With OIDC</h2>
+          <p>No AWS access key or secret access key is stored in GitHub. The runner receives short-lived AWS credentials only for this job.</p>
+        </div>
+
+        <div class="flow auth">
+          <article class="node auth-runner" data-step="A1">
+            <div class="pulse"></div>
+            <div class="badge">VM</div>
+            <strong>GitHub-hosted runner</strong>
+            <span>The workflow job runs on a temporary runner and needs AWS access for ECR push.</span>
+          </article>
+
+          <article class="node oidc" data-step="A2">
+            <div class="pulse"></div>
+            <div class="badge">OIDC</div>
+            <strong>GitHub OIDC token</strong>
+            <span>The runner asks GitHub for an identity token proving repo, branch, workflow, and job identity.</span>
+          </article>
+
+          <article class="node iam" data-step="A3">
+            <div class="pulse"></div>
+            <div class="badge">IAM</div>
+            <strong>AWS IAM role trust</strong>
+            <span>AWS trusts only the allowed GitHub repo and branch, for example `Pixalara/classkira-platform` on `main`.</span>
+          </article>
+
+          <article class="node sts" data-step="A4">
+            <div class="pulse"></div>
+            <div class="badge">STS</div>
+            <strong>AWS STS credentials</strong>
+            <span>AWS STS exchanges the OIDC identity for temporary AWS credentials scoped to the IAM role.</span>
+          </article>
+
+          <article class="node ecr-access end" data-step="A5">
+            <div class="pulse"></div>
+            <div class="badge">ECR</div>
+            <strong>Push to ECR</strong>
+            <span>The runner uses temporary credentials to login to ECR and push the Docker image tag.</span>
+          </article>
+
+          <article class="node auth-note">
+            <div class="fact">
+              <b>Stored in GitHub</b>
+              <small>No AWS access keys. Use repository variables or workflow env for non-secret values like region and role ARN.</small>
+            </div>
+            <div class="fact">
+              <b>AWS permissions</b>
+              <small>The IAM role should allow only required actions, such as ECR push and read access needed by the job.</small>
+            </div>
+            <div class="fact">
+              <b>Why safer?</b>
+              <small>Credentials are short-lived and issued only when the trusted GitHub workflow runs.</small>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-label="End user access flow">
+        <div class="section-title">
+          <h2>3. End Users Accessing ClassKira</h2>
+          <p>Teachers, students, parents, and admins reach the application through `classkira.com`.</p>
+        </div>
+
+        <div class="flow users">
+          <article class="node users-card">
+            <div class="pulse"></div>
+            <div class="badge">Users</div>
+            <strong>End users</strong>
+            <div class="user-icons" aria-label="User groups">
+              <div class="person teacher">
+                <div class="avatar"></div>
+                <span>Teachers</span>
+              </div>
+              <div class="person student">
+                <div class="avatar"></div>
+                <span>Students</span>
+              </div>
+              <div class="person parent">
+                <div class="avatar"></div>
+                <span>Parents</span>
+              </div>
+              <div class="person admin">
+                <div class="avatar"></div>
+                <span>Admin</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="node dns">
+            <div class="pulse"></div>
+            <div class="badge">DNS</div>
+            <strong>classkira.com</strong>
+            <span class="domain">classkira.com</span>
+            <span>DNS points the domain to the AWS load balancer.</span>
+          </article>
+
+          <article class="node alb">
+            <div class="pulse"></div>
+            <div class="badge">ALB</div>
+            <strong>AWS Load Balancer</strong>
+            <span>Ingress routes HTTPS traffic from the public internet into the EKS cluster.</span>
+          </article>
+
+          <article class="node svc">
+            <div class="pulse"></div>
+            <div class="badge">SVC</div>
+            <strong>Kubernetes Service</strong>
+            <span>Routes traffic to healthy ClassKira application pods.</span>
+          </article>
+
+          <article class="node app end">
+            <div class="pulse"></div>
+            <div class="badge">App</div>
+            <strong>ClassKira on EKS</strong>
+            <span>Laravel app runs in pods inside EKS. Users do not talk to ECR or Argo CD.</span>
+          </article>
+
+          <div class="wire-label user-wire">Runtime access path: users open classkira.com, DNS sends traffic to AWS load balancer, then EKS serves the app</div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="AWS load balancing and Kubernetes autoscaling flow">
+        <div class="section-title">
+          <h2>4. Traffic Distribution and Autoscaling</h2>
+          <p>ALB spreads requests across healthy pods. Kubernetes adds pods, and the node layer adds capacity when pods need more room.</p>
+        </div>
+
+        <div class="traffic-map" aria-label="Visual traffic path from users to EKS pods">
+          <span class="packet" aria-hidden="true"></span>
+          <span class="packet" aria-hidden="true"></span>
+          <span class="packet" aria-hidden="true"></span>
+
+          <div class="traffic-hop users-hop">
+            <div class="traffic-icon">Users</div>
+            <b>Browser requests</b>
+            <span>Students, teachers, parents, and admins open ClassKira.</span>
+          </div>
+
+          <div class="traffic-hop dns-hop">
+            <div class="traffic-icon">DNS</div>
+            <b>classkira.com</b>
+            <span>DNS resolves the domain to the public AWS load balancer.</span>
+          </div>
+
+          <div class="traffic-hop alb-hop">
+            <div class="traffic-icon">ALB</div>
+            <b>AWS ALB</b>
+            <span>HTTPS is accepted and only healthy Kubernetes targets receive traffic.</span>
+          </div>
+
+          <div class="traffic-hop svc-hop">
+            <div class="traffic-icon">SVC</div>
+            <b>Ingress + Service</b>
+            <span>Kubernetes routes each request to a ready ClassKira pod.</span>
+          </div>
+
+          <div class="traffic-hop pods-hop">
+            <div class="traffic-icon">Pods</div>
+            <b>Laravel pods</b>
+            <div class="traffic-pods" aria-label="Traffic split across pods">
+              <span>Pod A</span>
+              <span>Pod B</span>
+              <span>Pod C</span>
+            </div>
+          </div>
+
+          <div class="traffic-caption">Traffic path: Users -> DNS -> AWS ALB -> Kubernetes Ingress/Service -> healthy ClassKira pods</div>
+        </div>
+
+        <div class="flow scale">
+          <article class="node traffic" data-step="T1">
+            <div class="pulse"></div>
+            <div class="badge">Load</div>
+            <strong>User traffic increases</strong>
+            <span>More students, teachers, parents, and admins open ClassKira at the same time.</span>
+          </article>
+
+          <article class="node route" data-step="T2">
+            <div class="pulse"></div>
+            <div class="badge">ALB</div>
+            <strong>AWS Application Load Balancer</strong>
+            <span>The ALB terminates HTTPS, checks pod health through the ingress target group, and sends each request to a healthy target.</span>
+          </article>
+
+          <article class="node service-route" data-step="T3">
+            <div class="pulse"></div>
+            <div class="badge">SVC</div>
+            <strong>Kubernetes Service</strong>
+            <span>The Service keeps a stable internal address and tracks which pods are ready to receive traffic.</span>
+          </article>
+
+          <article class="node pod-pool" data-step="T4">
+            <div class="pulse"></div>
+            <div class="badge">Pods</div>
+            <strong>ClassKira pod pool</strong>
+            <div class="pod-grid" aria-label="Application pods">
+              <div class="mini-pod">Pod A</div>
+              <div class="mini-pod">Pod B</div>
+              <div class="mini-pod">Pod C</div>
+            </div>
+            <span>Requests are distributed across ready Laravel pods instead of overloading one container.</span>
+          </article>
+
+          <article class="node metrics" data-step="T5">
+            <div class="pulse"></div>
+            <div class="badge">CPU</div>
+            <strong>Metrics rise</strong>
+            <div class="meter" aria-label="Resource usage">
+              <span>CPU / memory / request pressure</span>
+              <div class="bar"><span style="width: 82%"></span></div>
+            </div>
+            <span>Metrics Server reports usage so Kubernetes can compare current load with the scaling target.</span>
+          </article>
+
+          <article class="node hpa" data-step="T6">
+            <div class="pulse"></div>
+            <div class="badge">HPA</div>
+            <strong>Horizontal Pod Autoscaler</strong>
+            <span>When usage stays above the target, HPA increases the deployment replica count, for example from 3 pods to 6 pods.</span>
+          </article>
+
+          <article class="node spread scale-note">
+            <div class="fact">
+              <b>Load balancing</b>
+              <small>ALB and Kubernetes only send traffic to healthy, ready pods. Failed pods are removed from rotation.</small>
+            </div>
+            <div class="fact">
+              <b>Pod scaling</b>
+              <small>HPA does not create servers. It changes desired pod replicas on the Kubernetes deployment.</small>
+            </div>
+            <div class="fact">
+              <b>Node scaling</b>
+              <small>If there is no space for new pods, Cluster Autoscaler or Karpenter adds EC2 worker capacity.</small>
+            </div>
+          </article>
+
+          <article class="node capacity" data-step="T7">
+            <div class="pulse"></div>
+            <div class="badge">More</div>
+            <strong>New pods requested</strong>
+            <div class="pod-grid" aria-label="Scaled application pods">
+              <div class="mini-pod">Pod A</div>
+              <div class="mini-pod">Pod B</div>
+              <div class="mini-pod">Pod C</div>
+              <div class="mini-pod new">Pod D</div>
+              <div class="mini-pod new">Pod E</div>
+              <div class="mini-pod new">Pod F</div>
+            </div>
+            <span>The deployment controller starts more ClassKira pods to absorb the traffic spike.</span>
+          </article>
+
+          <article class="node nodes" data-step="T8">
+            <div class="pulse"></div>
+            <div class="badge">EC2</div>
+            <strong>Worker nodes expand</strong>
+            <span>If existing EKS nodes are full, an autoscaler provisions more EC2 capacity and Kubernetes schedules pending pods there.</span>
+          </article>
+
+          <article class="node rollout" data-step="T9">
+            <div class="pulse"></div>
+            <div class="badge">Ready</div>
+            <strong>Traffic rebalances</strong>
+            <span>As new pods become ready, ALB and Service routing include them, so the same user load is shared across more capacity.</span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
