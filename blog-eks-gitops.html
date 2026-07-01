@@ -705,6 +705,115 @@
                 font-size: 1.25rem !important;
             }
         }
+
+        /* --- GRAPHICAL ARCHITECTURE DIAGRAM --- */
+        .arch-diagram-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .arch-tier {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 130px;
+        }
+
+        .arch-tier-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .arch-nodes-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .arch-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 8px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: #e2e8f0;
+        }
+
+        .arch-box i {
+            font-size: 1.1rem;
+        }
+
+        /* Styling nodes types */
+        .arch-box-user { border-color: rgba(148, 163, 184, 0.2); }
+        .arch-box-user i { color: #94a3b8; }
+        .arch-box-dns { border-color: rgba(14, 165, 233, 0.3); }
+        .arch-box-dns i { color: #38bdf8; }
+        .arch-box-alb { border-color: rgba(45, 212, 191, 0.3); }
+        .arch-box-alb i { color: #2dd4bf; }
+        .arch-box-ingress { border-color: rgba(59, 130, 246, 0.3); }
+        .arch-box-ingress i { color: #3b82f6; }
+        .arch-box-pod { border-color: rgba(16, 185, 129, 0.3); }
+        .arch-box-pod i { color: #10b981; }
+        .arch-box-db { border-color: rgba(249, 115, 22, 0.3); }
+        .arch-box-db i { color: #fb923c; }
+
+        .arch-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 1rem;
+            animation: arrow-slide 1.5s infinite;
+        }
+
+        @keyframes arrow-slide {
+            0% { transform: translateX(-3px); opacity: 0.5; }
+            50% { transform: translateX(3px); opacity: 1; color: #38bdf8; }
+            100% { transform: translateX(-3px); opacity: 0.5; }
+        }
+
+        /* Responsiveness for Diagram */
+        @media (max-width: 768px) {
+            .arch-diagram-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .arch-connector {
+                transform: rotate(90deg);
+                animation: arrow-slide-vertical 1.5s infinite;
+                margin: 5px 0;
+            }
+            .arch-tier {
+                width: 100%;
+            }
+        }
+
+        @keyframes arrow-slide-vertical {
+            0% { transform: rotate(90deg) translateX(-3px); opacity: 0.5; }
+            50% { transform: rotate(90deg) translateX(3px); opacity: 1; color: #38bdf8; }
+            100% { transform: rotate(90deg) translateX(-3px); opacity: 0.5; }
+        }
     </style>
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
@@ -1088,6 +1197,85 @@
                     <li><strong>Node Auto-scaling (Karpenter):</strong> If the EKS cluster lacks the CPU/Memory capacity to schedule these new pods, <strong>Karpenter</strong> acts immediately, provisioning new EC2 instances in less than 30 seconds and joining them to the cluster.</li>
                     <li><strong>Shrinking Capacity:</strong> As traffic drops in the evening, the reverse process occurs. Karpenter terminates idle EC2 instances and EKS deletes unused pods, ensuring ClassKira only pays for what it actually uses.</li>
                 </ul>
+
+                <!-- Section 5.5: Visual Infrastructure Map -->
+                <div class="diag-container" style="background: #0f172a; border-color: rgba(255, 255, 255, 0.1); padding: 25px 20px;">
+                    <div class="diag-title" style="color: #fff; border-left-color: #38bdf8; margin-bottom: 25px;">
+                        <span>ClassKira User Traffic & EKS Architecture Map</span>
+                        <i class="fas fa-network-wired" style="color: #38bdf8;"></i>
+                    </div>
+
+                    <div class="arch-diagram-wrapper">
+                        <!-- Step 1: Users -->
+                        <div class="arch-tier">
+                            <div class="arch-tier-title">User requests</div>
+                            <div class="arch-nodes-row">
+                                <div class="arch-box arch-box-user">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>school-a.com</span>
+                                </div>
+                                <div class="arch-box arch-box-user">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>school-b.com</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+
+                        <!-- Step 2: Edge Routing -->
+                        <div class="arch-tier">
+                            <div class="arch-tier-title">Routing & DNS</div>
+                            <div class="arch-nodes-row">
+                                <div class="arch-box arch-box-dns">
+                                    <i class="fas fa-route"></i>
+                                    <span>Route 53</span>
+                                </div>
+                                <div class="arch-box arch-box-alb">
+                                    <i class="fas fa-sliders-h"></i>
+                                    <span>AWS ALB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+
+                        <!-- Step 3: EKS Cluster -->
+                        <div class="arch-tier" style="border-color: rgba(124, 58, 237, 0.4); background: rgba(124, 58, 237, 0.03);">
+                            <div class="arch-tier-title" style="color: #c084fc;">AWS EKS Cluster</div>
+                            <div class="arch-nodes-row">
+                                <div class="arch-box arch-box-ingress">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Ingress Controller</span>
+                                </div>
+                                <div class="arch-box arch-box-pod" style="background: rgba(16, 185, 129, 0.08);">
+                                    <i class="fas fa-cubes"></i>
+                                    <span>Laravel Pod Pool</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+
+                        <!-- Step 4: Databases -->
+                        <div class="arch-tier">
+                            <div class="arch-tier-title">Isolated Data</div>
+                            <div class="arch-nodes-row">
+                                <div class="arch-box arch-box-db">
+                                    <i class="fas fa-database"></i>
+                                    <span>db_school_a</span>
+                                </div>
+                                <div class="arch-box arch-box-db">
+                                    <i class="fas fa-database"></i>
+                                    <span>db_school_b</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Conclusion -->
                 <div class="section-header">
