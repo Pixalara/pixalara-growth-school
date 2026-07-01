@@ -859,7 +859,7 @@
 
                 <p>Traditional CI/CD pipelines require storing long-lived credentials (like <code>AWS_ACCESS_KEY_ID</code>) in GitHub secrets. If a developer account or repository is compromised, those credentials can leak, giving hackers administrative access to the entire AWS account.</p>
                 
-                <p>ClassKira solves this using **OpenID Connect (OIDC)** and **AWS STS (Security Token Service)** to implement a passwordless, short-lived trust relationship:</p>
+                <p>ClassKira solves this using <strong>OpenID Connect (OIDC)</strong> and <strong>AWS STS (Security Token Service)</strong> to implement a passwordless, short-lived trust relationship:</p>
 
                 <div class="diag-container">
                     <div class="diag-title">
@@ -972,7 +972,7 @@
                     <h2>Disaster Recovery: The Rollback Strategy</h2>
                 </div>
 
-                <p>No matter how thoroughly code is tested, production failures can happen—especially in a high-stakes multi-tenant environment. When a regression slips through, the priority is minimizing the **Mean Time to Recovery (MTTR)**. In a GitOps architecture, rolling back changes is safe, structured, and auditable.</p>
+                <p>No matter how thoroughly code is tested, production failures can happen—especially in a high-stakes multi-tenant environment. When a regression slips through, the priority is minimizing the <strong>Mean Time to Recovery (MTTR)</strong>. In a GitOps architecture, rolling back changes is safe, structured, and auditable.</p>
 
                 <p>ClassKira uses a two-tier rollback strategy depending on the severity of the failure:</p>
 
@@ -1073,8 +1073,8 @@
 
                 <h3>How ClassKira Dynamic Auto-Scaling Works:</h3>
                 <ul>
-                    <li><strong>Pod Auto-scaling (HPA):</strong> The Kubernetes **Horizontal Pod Autoscaler (HPA)** watches the CPU/Memory utilization of ClassKira pods. If usage crosses 70%, HPA commands EKS to scale up pod counts (e.g., from 3 to 10 replicas).</li>
-                    <li><strong>Node Auto-scaling (Karpenter):</strong> If the EKS cluster lacks the CPU/Memory capacity to schedule these new pods, **Karpenter** acts immediately, provisioning new EC2 instances in less than 30 seconds and joining them to the cluster.</li>
+                    <li><strong>Pod Auto-scaling (HPA):</strong> The Kubernetes <strong>Horizontal Pod Autoscaler (HPA)</strong> watches the CPU/Memory utilization of ClassKira pods. If usage crosses 70%, HPA commands EKS to scale up pod counts (e.g., from 3 to 10 replicas).</li>
+                    <li><strong>Node Auto-scaling (Karpenter):</strong> If the EKS cluster lacks the CPU/Memory capacity to schedule these new pods, <strong>Karpenter</strong> acts immediately, provisioning new EC2 instances in less than 30 seconds and joining them to the cluster.</li>
                     <li><strong>Shrinking Capacity:</strong> As traffic drops in the evening, the reverse process occurs. Karpenter terminates idle EC2 instances and EKS deletes unused pods, ensuring ClassKira only pays for what it actually uses.</li>
                 </ul>
 
