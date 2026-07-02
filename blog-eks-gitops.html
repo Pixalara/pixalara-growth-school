@@ -814,6 +814,628 @@
             50% { transform: rotate(90deg) translateX(3px); opacity: 1; color: #38bdf8; }
             100% { transform: rotate(90deg) translateX(-3px); opacity: 0.5; }
         }
+
+        /* --- FULL-SCALE ARCHITECTURE DASHBOARD --- */
+        .fsa-container {
+            background: #0b0f19;
+            border: 1px solid rgba(101, 40, 247, 0.25);
+            border-radius: 16px;
+            padding: 30px 24px;
+            margin: 45px 0;
+            color: #f1f5f9;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(101, 40, 247, 0.1);
+        }
+
+        .fsa-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .fsa-title-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .fsa-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .fsa-live-badge {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .fsa-pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #22c55e;
+            animation: fsa-pulse 1.8s infinite;
+        }
+
+        @keyframes fsa-pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .fsa-tabs {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .fsa-tab-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .fsa-tab-btn:hover {
+            color: #f1f5f9;
+        }
+
+        .fsa-tab-btn.active {
+            background: rgba(101, 40, 247, 0.2);
+            color: #a5b4fc;
+            border: 1px solid rgba(101, 40, 247, 0.3);
+        }
+
+        .fsa-tab-content {
+            display: none;
+        }
+
+        .fsa-tab-content.active {
+            display: block;
+            animation: fsa-fade-in 0.35s ease-out;
+        }
+
+        @keyframes fsa-fade-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tab 1 Grid Layout */
+        .fsa-blueprint-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .fsa-tier {
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .fsa-tier-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 8px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fsa-tier-title i {
+            font-size: 0.8rem;
+        }
+
+        .fsa-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .fsa-card:hover {
+            border-color: rgba(101, 40, 247, 0.4);
+            background: rgba(101, 40, 247, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(101, 40, 247, 0.15);
+        }
+
+        .fsa-card.active-hover {
+            border-color: rgba(34, 197, 94, 0.4);
+            background: rgba(34, 197, 94, 0.06);
+        }
+
+        .fsa-card-icon {
+            font-size: 1.1rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            flex-shrink: 0;
+        }
+
+        /* Custom color styles per component group */
+        .color-gitops { color: #10b981; }
+        .color-edge { color: #38bdf8; }
+        .color-eks { color: #a78bfa; }
+        .color-data { color: #fb923c; }
+
+        .fsa-card-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .fsa-card-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .fsa-card-sub {
+            font-size: 0.68rem;
+            color: #64748b;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .fsa-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+        .fsa-status-dot.green { background: #22c55e; box-shadow: 0 0 6px #22c55e; }
+        .fsa-status-dot.blue { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; }
+        .fsa-status-dot.orange { background: #ea580c; box-shadow: 0 0 6px #ea580c; }
+
+        /* Dynamic Info Panel */
+        .fsa-info-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .fsa-info-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(101, 40, 247, 0.1);
+            border: 1px solid rgba(101, 40, 247, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #a5b4fc;
+            flex-shrink: 0;
+        }
+
+        .fsa-info-text {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .fsa-info-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 2px;
+        }
+
+        .fsa-info-role {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .fsa-info-desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        .fsa-info-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .fsa-tag {
+            font-size: 0.7rem;
+            font-family: 'Fira Code', monospace;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+        }
+
+        /* Tab 2: Flow pipeline */
+        .fsa-flow-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .fsa-flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fsa-flow-step {
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+
+        .fsa-flow-step:hover, .fsa-flow-step.active {
+            border-color: rgba(101, 40, 247, 0.4);
+            background: rgba(101, 40, 247, 0.06);
+        }
+
+        .fsa-flow-step.active {
+            box-shadow: inset 3px 0 0 #6366f1;
+        }
+
+        .fsa-flow-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .fsa-flow-step.active .fsa-flow-num {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: #fff;
+        }
+
+        .fsa-flow-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fsa-flow-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .fsa-flow-summary {
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        .fsa-flow-step.active .fsa-flow-summary {
+            color: #a5b4fc;
+        }
+
+        .fsa-flow-code-wrapper {
+            background: #07090e;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .fsa-code-header {
+            background: #0f131a;
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fsa-code-title {
+            font-size: 0.72rem;
+            font-family: 'Fira Code', monospace;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .fsa-code-lang {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #64748b;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .fsa-code-body {
+            padding: 16px;
+            margin: 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.78rem;
+            color: #a78bfa;
+            overflow-x: auto;
+            line-height: 1.45;
+            background: #07090e;
+            height: 100%;
+            min-height: 250px;
+        }
+
+        .fsa-code-body pre {
+            margin: 0;
+        }
+
+        /* Tab 3 styling */
+        .fsa-tenant-isolation-map {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .fsa-tenant-card-row {
+            display: flex;
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 18px;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .fsa-tenant-actor {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 200px;
+        }
+
+        .fsa-tenant-actor-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #38bdf8;
+            flex-shrink: 0;
+        }
+
+        .fsa-tenant-actor-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fsa-tenant-actor-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .fsa-tenant-actor-detail {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .fsa-tenant-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6366f1;
+            font-size: 1rem;
+            min-width: 80px;
+        }
+
+        .fsa-tenant-arrow-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #38bdf8);
+            position: relative;
+        }
+
+        .fsa-tenant-arrow-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #38bdf8;
+            border-right: 2px solid #38bdf8;
+            transform: rotate(45deg);
+        }
+
+        .fsa-tenant-arrow-label {
+            font-size: 0.65rem;
+            font-family: 'Fira Code', monospace;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .fsa-tenant-target {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+
+        .fsa-tenant-target-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            color: #fb923c;
+            background: rgba(251, 146, 60, 0.1);
+            border: 1px solid rgba(251, 146, 60, 0.25);
+            flex-shrink: 0;
+        }
+
+        .fsa-tenant-target-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fsa-tenant-target-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .fsa-tenant-target-detail {
+            font-size: 0.7rem;
+            color: #64748b;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Responsive Breakpoints for FSA Dashboard */
+        @media (max-width: 1024px) {
+            .fsa-blueprint-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fsa-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .fsa-tabs {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .fsa-tab-btn {
+                flex: 1;
+                text-align: center;
+                font-size: 0.75rem;
+                padding: 6px 8px;
+            }
+            .fsa-flow-container {
+                grid-template-columns: 1fr;
+            }
+            .fsa-flow-code-wrapper {
+                min-height: auto;
+            }
+            .fsa-tenant-card-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .fsa-tenant-arrow {
+                width: 100%;
+                align-items: flex-start;
+                min-width: auto;
+            }
+            .fsa-tenant-arrow-line {
+                width: 100%;
+                height: 2px;
+                margin: 5px 0;
+            }
+            .fsa-tenant-target {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .fsa-blueprint-grid {
+                grid-template-columns: 1fr;
+            }
+            .fsa-info-panel {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
@@ -1277,6 +1899,323 @@
                     </div>
                 </div>
 
+                <!-- Section 6: Full-Scale Production GitOps & EKS Architecture -->
+                <div class="section-header">
+                    <i class="fas fa-sitemap"></i>
+                    <h2>Full-Scale Production GitOps & EKS Architecture</h2>
+                </div>
+
+                <p>For a production-grade multi-tenant SaaS, the infrastructure must be partitioned across several secure, scalable tiers. Below is the interactive blueprint representing ClassKira's full-scale architecture. Toggle between the tabs to explore the <strong>Infrastructure Blueprint</strong>, follow the <strong>Code-to-Cloud GitOps Pipeline</strong>, or deep-dive into the <strong>Multi-Tenant Data Isolation</strong> design.</p>
+
+                <div class="fsa-container">
+                    <div class="fsa-header">
+                        <div class="fsa-title-area">
+                            <h3>Production Console</h3>
+                            <span class="fsa-live-badge"><span class="fsa-pulse-dot"></span> Active Cluster</span>
+                        </div>
+                        <div class="fsa-tabs">
+                            <button class="fsa-tab-btn active" onclick="switchFsaTab('blueprint', this)">Blueprint</button>
+                            <button class="fsa-tab-btn" onclick="switchFsaTab('pipeline', this)">GitOps Pipeline</button>
+                            <button class="fsa-tab-btn" onclick="switchFsaTab('isolation', this)">Tenant Isolation</button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 1: Blueprint -->
+                    <div id="fsa-tab-blueprint" class="fsa-tab-content active">
+                        <div class="fsa-blueprint-grid">
+                            <!-- Tier 1: Delivery -->
+                            <div class="fsa-tier">
+                                <div class="fsa-tier-title">
+                                    <span>Code & Delivery</span>
+                                    <i class="fas fa-code-branch color-gitops"></i>
+                                </div>
+                                
+                                <div class="fsa-card active-hover" data-fsa-id="gitops-workspace" onmouseover="showFsaDetails('gitops-workspace')">
+                                    <div class="fsa-card-icon color-gitops"><i class="fab fa-git-alt"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">Git Workspace</span>
+                                        <span class="fsa-card-sub">Developer Env</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+                                
+                                <div class="fsa-card" data-fsa-id="gitops-actions" onmouseover="showFsaDetails('gitops-actions')">
+                                    <div class="fsa-card-icon color-gitops"><i class="fab fa-github"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">GitHub Actions</span>
+                                        <span class="fsa-card-sub">CI Pipeline</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+
+                                <div class="fsa-card" data-fsa-id="gitops-ecr" onmouseover="showFsaDetails('gitops-ecr')">
+                                    <div class="fsa-card-icon color-gitops"><i class="fas fa-box-open"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">AWS ECR</span>
+                                        <span class="fsa-card-sub">Container Registry</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+                            </div>
+
+                            <!-- Tier 2: Edge & Net -->
+                            <div class="fsa-tier">
+                                <div class="fsa-tier-title">
+                                    <span>Edge & Gateway</span>
+                                    <i class="fas fa-network-wired color-edge"></i>
+                                </div>
+                                
+                                <div class="fsa-card" data-fsa-id="edge-route53" onmouseover="showFsaDetails('edge-route53')">
+                                    <div class="fsa-card-icon color-edge"><i class="fas fa-globe"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">AWS Route 53</span>
+                                        <span class="fsa-card-sub">Global DNS</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+
+                                <div class="fsa-card" data-fsa-id="edge-alb" onmouseover="showFsaDetails('edge-alb')">
+                                    <div class="fsa-card-icon color-edge"><i class="fas fa-exchange-alt"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">AWS ALB</span>
+                                        <span class="fsa-card-sub">Load Balancer</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+
+                                <div class="fsa-card" data-fsa-id="edge-ingress" onmouseover="showFsaDetails('edge-ingress')">
+                                    <div class="fsa-card-icon color-edge"><i class="fas fa-door-open"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">Ingress Controller</span>
+                                        <span class="fsa-card-sub">Nginx Ingress</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+                            </div>
+
+                            <!-- Tier 3: Compute -->
+                            <div class="fsa-tier">
+                                <div class="fsa-tier-title">
+                                    <span>EKS Compute</span>
+                                    <i class="fas fa-cubes color-eks"></i>
+                                </div>
+                                
+                                <div class="fsa-card" data-fsa-id="eks-pods" onmouseover="showFsaDetails('eks-pods')">
+                                    <div class="fsa-card-icon color-eks"><i class="fas fa-cubes"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">Laravel Pod Pool</span>
+                                        <span class="fsa-card-sub">App Runtime</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+
+                                <div class="fsa-card" data-fsa-id="eks-argocd" onmouseover="showFsaDetails('eks-argocd')">
+                                    <div class="fsa-card-icon color-eks"><i class="fas fa-sync-alt"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">Argo CD</span>
+                                        <span class="fsa-card-sub">GitOps Controller</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+
+                                <div class="fsa-card" data-fsa-id="eks-karpenter" onmouseover="showFsaDetails('eks-karpenter')">
+                                    <div class="fsa-card-icon color-eks"><i class="fas fa-server"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">Karpenter</span>
+                                        <span class="fsa-card-sub">Node Autoscaling</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+                            </div>
+
+                            <!-- Tier 4: Data -->
+                            <div class="fsa-tier">
+                                <div class="fsa-tier-title">
+                                    <span>Data & Secrets</span>
+                                    <i class="fas fa-database color-data"></i>
+                                </div>
+                                
+                                <div class="fsa-card" data-fsa-id="data-db" onmouseover="showFsaDetails('data-db')">
+                                    <div class="fsa-card-icon color-data"><i class="fas fa-database"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">RDS Aurora PG</span>
+                                        <span class="fsa-card-sub">Tenant DB Pool</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+
+                                <div class="fsa-card" data-fsa-id="data-redis" onmouseover="showFsaDetails('data-redis')">
+                                    <div class="fsa-card-icon color-data"><i class="fas fa-history"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">ElastiCache Redis</span>
+                                        <span class="fsa-card-sub">Cache & Queues</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+
+                                <div class="fsa-card" data-fsa-id="data-secrets" onmouseover="showFsaDetails('data-secrets')">
+                                    <div class="fsa-card-icon color-data"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="fsa-card-info">
+                                        <span class="fsa-card-name">Secrets Manager</span>
+                                        <span class="fsa-card-sub">AWS Secrets</span>
+                                    </div>
+                                    <span class="fsa-status-dot green"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Detail Display Box -->
+                        <div class="fsa-info-panel" id="fsa-details-panel">
+                            <div class="fsa-info-icon-wrapper" id="fsa-detail-icon-box">
+                                <i class="fab fa-git-alt" id="fsa-detail-icon"></i>
+                            </div>
+                            <div class="fsa-info-text">
+                                <div class="fsa-info-title">
+                                    <span id="fsa-detail-title">Git Workspace</span>
+                                    <span class="fsa-live-badge" style="background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 0.65rem;">Active</span>
+                                </div>
+                                <div class="fsa-info-role" id="fsa-detail-role">Developer Environment</div>
+                                <div class="fsa-info-desc" id="fsa-detail-desc">Developers work in a local workspace, committing configuration changes to Helm/Kustomize charts and application code. All configurations are tracked in Git.</div>
+                                <div class="fsa-info-tags" id="fsa-detail-tags">
+                                    <span class="fsa-tag">Git</span>
+                                    <span class="fsa-tag">Localhost</span>
+                                    <span class="fsa-tag">YAML manifests</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: GitOps Pipeline -->
+                    <div id="fsa-tab-pipeline" class="fsa-tab-content">
+                        <div class="fsa-flow-container">
+                            <div class="fsa-flow-steps">
+                                <div class="fsa-flow-step active" onclick="switchFsaPipelineStep(1, this)">
+                                    <div class="fsa-flow-num">1</div>
+                                    <div class="fsa-flow-details">
+                                        <span class="fsa-flow-title">Developer Push</span>
+                                        <span class="fsa-flow-summary">Git merge triggers CI workflow</span>
+                                    </div>
+                                </div>
+                                <div class="fsa-flow-step" onclick="switchFsaPipelineStep(2, this)">
+                                    <div class="fsa-flow-num">2</div>
+                                    <div class="fsa-flow-details">
+                                        <span class="fsa-flow-title">GitHub Actions & OIDC</span>
+                                        <span class="fsa-flow-summary">Short-lived trust exchange</span>
+                                    </div>
+                                </div>
+                                <div class="fsa-flow-step" onclick="switchFsaPipelineStep(3, this)">
+                                    <div class="fsa-flow-num">3</div>
+                                    <div class="fsa-flow-details">
+                                        <span class="fsa-flow-title">Build & Push to ECR</span>
+                                        <span class="fsa-flow-summary">Securely pushing artifacts</span>
+                                    </div>
+                                </div>
+                                <div class="fsa-flow-step" onclick="switchFsaPipelineStep(4, this)">
+                                    <div class="fsa-flow-num">4</div>
+                                    <div class="fsa-flow-details">
+                                        <span class="fsa-flow-title">Manifest Update</span>
+                                        <span class="fsa-flow-summary">Auto-committing the new image tag</span>
+                                    </div>
+                                </div>
+                                <div class="fsa-flow-step" onclick="switchFsaPipelineStep(5, this)">
+                                    <div class="fsa-flow-num">5</div>
+                                    <div class="fsa-flow-details">
+                                        <span class="fsa-flow-title">Argo CD Reconciliation</span>
+                                        <span class="fsa-flow-summary">Continuous cluster state sync</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="fsa-flow-code-wrapper">
+                                <div class="fsa-code-header">
+                                    <div class="fsa-code-title">
+                                        <i class="far fa-file-code"></i> <span id="fsa-code-filename">ci-workflow.yml</span>
+                                    </div>
+                                    <span class="fsa-code-lang" id="fsa-code-lang">YAML</span>
+                                </div>
+                                <pre class="fsa-code-body"><code id="fsa-code-content">on:
+  push:
+    branches: [ main ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run PHPUnit Tests
+        run: php artisan test</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Tenant Isolation -->
+                    <div id="fsa-tab-isolation" class="fsa-tab-content">
+                        <div class="fsa-tenant-isolation-map">
+                            <div class="fsa-tenant-card-row">
+                                <div class="fsa-tenant-actor">
+                                    <div class="fsa-tenant-actor-icon"><i class="fas fa-laptop"></i></div>
+                                    <div class="fsa-tenant-actor-info">
+                                        <span class="fsa-tenant-actor-name">School A User</span>
+                                        <span class="fsa-tenant-actor-detail">school-a.classkira.com</span>
+                                    </div>
+                                </div>
+                                <div class="fsa-tenant-arrow">
+                                    <div class="fsa-tenant-arrow-line"></div>
+                                    <span class="fsa-tenant-arrow-label">Subdomain routing</span>
+                                </div>
+                                <div class="fsa-tenant-target">
+                                    <div class="fsa-tenant-target-icon"><i class="fas fa-database"></i></div>
+                                    <div class="fsa-tenant-target-info">
+                                        <span class="fsa-tenant-target-name">db_school_a</span>
+                                        <span class="fsa-tenant-target-detail">Isolated PostgreSQL Schema</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fsa-tenant-card-row">
+                                <div class="fsa-tenant-actor">
+                                    <div class="fsa-tenant-actor-icon"><i class="fas fa-laptop"></i></div>
+                                    <div class="fsa-tenant-actor-info">
+                                        <span class="fsa-tenant-actor-name">School B User</span>
+                                        <span class="fsa-tenant-actor-detail">school-b.classkira.com</span>
+                                    </div>
+                                </div>
+                                <div class="fsa-tenant-arrow">
+                                    <div class="fsa-tenant-arrow-line"></div>
+                                    <span class="fsa-tenant-arrow-label">Subdomain routing</span>
+                                </div>
+                                <div class="fsa-tenant-target">
+                                    <div class="fsa-tenant-target-icon"><i class="fas fa-database"></i></div>
+                                    <div class="fsa-tenant-target-info">
+                                        <span class="fsa-tenant-target-name">db_school_b</span>
+                                        <span class="fsa-tenant-target-detail">Isolated PostgreSQL Schema</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fsa-tenant-card-row">
+                                <div class="fsa-tenant-actor">
+                                    <div class="fsa-tenant-actor-icon" style="background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.25); color: #a78bfa;"><i class="fas fa-key"></i></div>
+                                    <div class="fsa-tenant-actor-info">
+                                        <span class="fsa-tenant-actor-name">Laravel Pod (IRSA)</span>
+                                        <span class="fsa-tenant-actor-detail">IAM Role for Service Account</span>
+                                    </div>
+                                </div>
+                                <div class="fsa-tenant-arrow" style="color: #a78bfa;">
+                                    <div class="fsa-tenant-arrow-line" style="background: linear-gradient(90deg, #a78bfa, #f472b6);"></div>
+                                    <span class="fsa-tenant-arrow-label">OIDC credential fetch</span>
+                                </div>
+                                <div class="fsa-tenant-target" style="border-color: rgba(167, 139, 250, 0.25);">
+                                    <div class="fsa-tenant-target-icon" style="background: rgba(244, 114, 182, 0.1); border-color: rgba(244, 114, 182, 0.25); color: #f472b6;"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="fsa-tenant-target-info">
+                                        <span class="fsa-tenant-target-name">Secrets Manager</span>
+                                        <span class="fsa-tenant-target-detail">AWS Secrets Storage</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Conclusion -->
                 <div class="section-header">
                     <i class="fas fa-award"></i>
@@ -1377,6 +2316,224 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+
+    <script>
+        // --- Full-Scale Architecture Interaction JS ---
+        function switchFsaTab(tabName, btnEl) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.fsa-tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = btnEl.parentNode.querySelectorAll('.fsa-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show target content and add active class to button
+            document.getElementById('fsa-tab-' + tabName).classList.add('active');
+            btnEl.classList.add('active');
+        }
+
+        const fsaDetails = {
+            'gitops-workspace': {
+                icon: 'fab fa-git-alt',
+                title: 'Git Workspace',
+                role: 'Developer Workspace',
+                desc: 'Developers manage Helm values and Laravel app source files locally, committing changes to Helm/Kustomize charts and application code. Git history serves as the single source of truth for deployments.',
+                tags: ['Git', 'Localhost', 'YAML configs']
+            },
+            'gitops-actions': {
+                icon: 'fab fa-github',
+                title: 'GitHub Actions',
+                role: 'CI Automation Engine',
+                desc: 'Automatically triggers on code push, runs linting, executes PHPUnit unit tests, and requests temporary cloud authorization using passwordless OpenID Connect (OIDC).',
+                tags: ['GitHub Actions', 'CI Pipeline', 'OIDC']
+            },
+            'gitops-ecr': {
+                icon: 'fas fa-box-open',
+                title: 'AWS Elastic Container Registry (ECR)',
+                role: 'Secure Docker Registry',
+                desc: 'Stores private multi-tenant Laravel container images. ECR tags images with unique git-commit SHAs for precise version tracking and rapid container deployment.',
+                tags: ['Docker ECR', 'Image Registry', 'AWS IAM']
+            },
+            'edge-route53': {
+                icon: 'fas fa-globe',
+                title: 'AWS Route 53',
+                role: 'Global Multi-Tenant DNS',
+                desc: 'Resolves subdomains dynamically (e.g., school-a.classkira.com) and points traffic directly to the Application Load Balancer (ALB) endpoint.',
+                tags: ['Route 53', 'Subdomain routing', 'AWS DNS']
+            },
+            'edge-alb': {
+                icon: 'fas fa-exchange-alt',
+                title: 'AWS Application Load Balancer (ALB)',
+                role: 'Perimeter Load Balancer',
+                desc: 'Terminates secure HTTPS connections, applies AWS WAF rules, and dynamically routes client requests based on Host headers to the EKS cluster ingress.',
+                tags: ['ALB', 'SSL Termination', 'WAF Protection']
+            },
+            'edge-ingress': {
+                icon: 'fas fa-door-open',
+                title: 'Nginx Ingress Controller',
+                role: 'Kubernetes Cluster Gateway',
+                desc: 'Receives external requests inside the cluster and maps subdomains to the respective Kubernetes Service resource inside the multi-tenant namespace.',
+                tags: ['Nginx Ingress', 'Virtual Hosts', 'K8s Ingress']
+            },
+            'eks-pods': {
+                icon: 'fas fa-cubes',
+                title: 'Laravel Application Pods',
+                role: 'Multi-Tenant Laravel Runtime',
+                desc: 'Shared compute pool running PHP-FPM containers. Subdomain middleware dynamically swaps database schemas at runtime based on incoming HTTP request headers.',
+                tags: ['Laravel Pods', 'Horizontal Pod Autoscaler (HPA)', 'Multi-tenant App']
+            },
+            'eks-argocd': {
+                icon: 'fas fa-sync-alt',
+                title: 'Argo CD Operator',
+                role: 'GitOps Synchronization Engine',
+                desc: 'Continuously monitors git manifest repositories. When a new image tag is detected in Git, Argo CD applies the changes to EKS, maintaining zero cluster drift.',
+                tags: ['Argo CD', 'GitOps Sync', 'K8s Controller']
+            },
+            'eks-karpenter': {
+                icon: 'fas fa-server',
+                title: 'Karpenter Node Provisioner',
+                role: 'Dynamic Compute Scaling',
+                desc: 'Monitors unschedulable pods due to high traffic, immediately provisions right-sized, cost-effective EC2 Spot instances in under 30 seconds to join the cluster.',
+                tags: ['Karpenter', 'EC2 Node Scaling', 'Zero-Downtime scaling']
+            },
+            'data-db': {
+                icon: 'fas fa-database',
+                title: 'AWS RDS Aurora PostgreSQL',
+                role: 'Isolated Database Layer',
+                desc: 'Houses independent tenant schemas. Each tenant receives a dedicated logical database or schema, preventing cross-tenant data leakage by design.',
+                tags: ['RDS Aurora', 'PostgreSQL', 'Isolated Schemas']
+            },
+            'data-redis': {
+                icon: 'fas fa-history',
+                title: 'AWS ElastiCache Redis',
+                role: 'High-Performance Cache & Queues',
+                desc: 'Provides low-latency shared caching, session persistence, and asynchronous worker queues for background job processing (e.g., student notifications).',
+                tags: ['Redis Cache', 'ElastiCache', 'Worker Queues']
+            },
+            'data-secrets': {
+                icon: 'fas fa-shield-alt',
+                title: 'AWS Secrets Manager',
+                role: 'Secure Credentials Provider',
+                desc: 'Stores tenant database credentials securely. Pods retrieve credentials on startup using IAM Roles for Service Accounts (IRSA) without any hardcoded keys.',
+                tags: ['Secrets Manager', 'AWS Security', 'IRSA Integration']
+            }
+        };
+
+        function showFsaDetails(compId) {
+            const data = fsaDetails[compId];
+            if (!data) return;
+            
+            // Update UI elements in detail panel
+            document.getElementById('fsa-detail-icon').className = data.icon;
+            document.getElementById('fsa-detail-title').innerText = data.title;
+            document.getElementById('fsa-detail-role').innerText = data.role;
+            document.getElementById('fsa-detail-desc').innerText = data.desc;
+            
+            // Update tag list
+            const tagsWrapper = document.getElementById('fsa-detail-tags');
+            tagsWrapper.innerHTML = '';
+            data.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'fsa-tag';
+                span.innerText = tag;
+                tagsWrapper.appendChild(span);
+            });
+
+            // Set active class on hovered card and remove from others
+            const cards = document.querySelectorAll('.fsa-card');
+            cards.forEach(card => {
+                if (card.getAttribute('data-fsa-id') === compId) {
+                    card.classList.add('active-hover');
+                } else {
+                    card.classList.remove('active-hover');
+                }
+            });
+        }
+
+        const pipelineCodeSnippets = {
+            1: {
+                filename: 'developer-workspace.sh',
+                lang: 'Shell',
+                content: `# Local commit and push
+git add .
+git commit -m "feat: optimize student dashboard performance"
+git push origin main`
+            },
+            2: {
+                filename: 'github-actions-oidc.yml',
+                lang: 'YAML',
+                content: `# Configure AWS credentials via OIDC
+- name: Configure AWS Credentials
+  uses: aws-actions/configure-aws-credentials@v2
+  with:
+    role-to-assume: arn:aws:iam::1234567:role/github-actions-role
+    aws-region: us-east-1`
+            },
+            3: {
+                filename: 'ecr-push.sh',
+                lang: 'Shell',
+                content: `# Authenticate and push Docker image
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 1234567.dkr.ecr.us-east-1.amazonaws.com
+
+docker tag classkira-app:latest 1234567.dkr.ecr.us-east-1.amazonaws.com/classkira-app:sha-\${{ github.sha }}
+
+docker push 1234567.dkr.ecr.us-east-1.amazonaws.com/classkira-app:sha-\${{ github.sha }}`
+            },
+            4: {
+                filename: 'update-manifest.sh',
+                lang: 'Shell',
+                content: `# Auto-update Kubernetes Helm values in Git
+cd manifests-repository
+
+yq eval '.image.tag = "sha-'\${{ github.sha }}'"' -i values-prod.yaml
+
+git add values-prod.yaml
+git commit -m "chore: bump prod app tag to sha-\${{ github.sha }}"
+git push origin main`
+            },
+            5: {
+                filename: 'argocd-app.yaml',
+                lang: 'YAML',
+                content: `apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: classkira-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/classkira/manifests-repo.git'
+    targetRevision: HEAD
+    path: k8s/production
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: classkira-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true`
+            }
+        };
+
+        function switchFsaPipelineStep(stepNum, el) {
+            // Remove active class from all step buttons
+            const steps = el.parentNode.querySelectorAll('.fsa-flow-step');
+            steps.forEach(step => step.classList.remove('active'));
+            
+            // Add active class to selected step button
+            el.classList.add('active');
+            
+            // Get code config data
+            const data = pipelineCodeSnippets[stepNum];
+            if (!data) return;
+            
+            // Update code editor layout
+            document.getElementById('fsa-code-filename').innerText = data.filename;
+            document.getElementById('fsa-code-lang').innerText = data.lang;
+            document.getElementById('fsa-code-content').textContent = data.content;
+        }
+    </script>
 
     <a href="https://wa.me/919988688654?text=Hello%20Growth%20School%20Team%2C%20I%20am%20interested%20in%20your%20courses." class="float-whatsapp" target="_blank">
         <i class="fab fa-whatsapp my-float"></i>
